@@ -1,0 +1,141 @@
+body {
+    margin-top: 1.0em;
+    background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, FreeSans, san-serif;
+    color: #222;
+}
+
+h1 {
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 3px;
+    background-color:#2bbefa;
+}
+
+h1 .small {
+    font-size: 0.4em;
+}
+
+h1 a {
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #444;
+}
+
+h2.line {
+    border-bottom: 1px dashed #bbb;
+}
+
+h3 {
+    color: #444;
+    font-weight: lighter;
+}
+
+a {
+    color: #2bbefa;
+    font-weight: lighter;
+}
+
+.text {
+    font-size:0.9em;
+    line-height:22px;
+    width:70%;
+}
+
+.description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+.code {
+    font-family:monospace;
+    /*padding:1px;
+    border:1px solid #ddd;
+    background-color:#eee;*/
+    font-size:1.2em;
+}
+
+div.note {
+    border:1px solid #ddd;
+    background-color:#efefef;
+    padding:10px;
+    border-radius:10px;
+    font-style:italic;
+}
+
+table.reference {
+    /*border:1px solid #dedede;*/
+    font-size:0.9em;
+    width:100%;
+}
+
+table.reference tr td {
+    padding-top:10px;
+    padding-bottom:20px;
+    border-bottom:1px solid #dedede;
+    vertical-align:top;
+    font-weight: lighter;
+}
+
+table.reference tr th {
+    text-align:left;
+    vertical-align:top;
+}
+
+.download {
+    float: right;
+}
+
+pre {
+    width:70%;
+    color: #222;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+
+hr {
+    border: 0;
+    width: 80%;
+    border-bottom: 1px solid #aaa
+}
+
+.footer {
+    text-align: center;
+    padding-top: 30px;
+    font-style: italic;
+}
+
+div.directoryPath {
+    margin-top:-3px;
+    border:1px solid #dedede;
+    padding:1px;
+    margin-bottom:3px;
+    font-family:monospace;
+}
+
+#sidebar {
+    float: left;
+    width: 200px;
+    padding-top: 50px; /* url repeat left top */
+    background: url('../images/logo_small.png') no-repeat 15px 15px;
+    overflow-y:auto;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+}
+
+#container {
+    width: 75%; /*width: 700px;*/
+    float: left;
+    padding: 0px 20px 20px 20px;
+    overflow-y:auto;
+    position:relative;
+    margin-left:220px;
+}
