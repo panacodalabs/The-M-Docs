@@ -16,11 +16,7 @@ function loadArticle(path) {
     $.ajax({
         url: 'content/' + path + '.html',
         success: function(data) {
-            alert('success');
             $('#container').html(data);
-        },
-        error: function(xhr, error) {
-            alert(error);
         }
     });
 }
