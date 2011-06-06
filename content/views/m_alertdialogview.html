@@ -4,10 +4,9 @@
 </div>
 
 <a href="#basics">Basics</a> &#183; <a href="#properties">Properties</a> &#183; <a href="#methods">Methods</a> &#183; <a
-        href="#use">Use</a>
-&#183; <a href="#example">Example</a>
+        href="#example">Example</a>
 
-<h2 class="line">Basics</h2>
+<a name="basics"><h2 class="line">Basics</h2></a>
 <p class="text">
     The alert dialog view is a simple view that has two mandatory and two optional parameters: <br/>
     The dialog is similar to the alert dialog that JavaScript offers with the alert('Hello World') call, except that the
@@ -21,7 +20,7 @@
 </div>
 </p>
 
-<h2 class="line">Properties</h2>
+<a name="properties"><h2 class="line">Properties</h2></a>
 
 <table class="reference" cellpadding="0" cellspacing="0">
     <tr style="height:50px;">
@@ -64,24 +63,26 @@
     </tr>
 </table>
 
-<h2 class="line">Methods</h2>
+<a name="methods"><h2 class="line">Methods</h2></a>
 
 
-<h2 class="line">How do I used it</h2>
+<a name="example"><h2 class="line">Example</h2></a>
+The object to make the call on is M.DialogView. It encapsulates the creation of a dialog and its show up and hide. You find a complete example of a M.AlertDialogView
+with a callback for pressing the confirm button. 
 <pre>
-            <code class="javascript">
-                M.DialogView.alert({
-                title: 'No Connection',
-                message: 'No Connection available. Request failed.'
-                confirmButtonValue: 'Sad.',
-                callbacks: {
-                confirm: {
+<code class="javascript">
+    M.DialogView.alert({
+        title: 'No Connection',
+        message: 'No Connection available. Request failed.'
+        confirmButtonValue: 'Sad.',
+        callbacks: {
+            confirm: {
                 target: myApp.myController,
                 action: function() {
-                console.log('Sad.');
+                    console.log('Sad.');
                 }
-                }
-                }
-                });
-            </code>
-        </pre>
+            }
+        }
+    });
+</code>
+</pre>

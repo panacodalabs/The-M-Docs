@@ -39,4 +39,7 @@ function collapseCategory(category) {
 
 $('document').ready(function() {
     registerArticles();
+
+    // load home as first page to enter
+    loadArticle('home');
 });
