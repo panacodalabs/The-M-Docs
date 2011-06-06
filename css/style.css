@@ -141,6 +141,7 @@ ul.nav ul.subnav {
 ul.nav ul.subnav li {
     font-size:0.8em;
     font-weight:lighter;
+    cursor: pointer;
 }
 
 #header {
