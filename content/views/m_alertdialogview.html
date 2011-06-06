@@ -1,9 +1,10 @@
+<a name="top"></a>
 <h1>M.AlertDialogView</h1>
 <div class="directoryPath">
     modules/ui/dialogs/alert_dialog.js
 </div>
 
-<a href="#basics">Basics</a> &#183; <a href="#properties">Properties</a> &#183; <a href="#methods">Methods</a> &#183; <a
+<a href="#basics">Basics</a> &#183; <a href="#screens">Screenshots</a> &#183; <a href="#properties">Properties</a> &#183; <a href="#methods">Methods</a> &#183; <a
         href="#example">Example</a>
 
 <a name="basics"><h2 class="line">Basics</h2></a>
@@ -18,7 +19,13 @@
 <div class="note text">Note: It is also possible to pass a function as action instead of a string (this is possible
     throughout every callback passing). It is executed in the scope of the target.
 </div>
-</p>
+</p><a href="#top">&uarr; top</a>
+
+<a name="screens"><h2 class="line">Screenshots</h2></a>
+<div class="screens">
+    <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
+</div>
+<a href="#top">&uarr; top</a>
 
 <a name="properties"><h2 class="line">Properties</h2></a>
 
@@ -31,7 +38,7 @@
         <th style="width:35%;">Description</th>
     </tr>
     <tr>
-        <td><span class="code">title</span</td>
+        <td><span class="code">title</span></td>
         <td>recommended</td>
         <td>String</td>
         <td style="font-family:monospace">"Alert"</td>
@@ -61,14 +68,18 @@
                 class="code">action</span> for the callback.
         </td>
     </tr>
-</table>
+</table><a href="#top">&uarr; top</a>
 
 <a name="methods"><h2 class="line">Methods</h2></a>
-
+<p class="text">There are no public methods available. <br />
+    Showing the dialog is done with the method <span class="code">alert</span> of <span class="code">M.DialogView</span>
+        and hiding the dialog is automatically performed by pressing the rendered button of the dialog.</p>
+<a href="#top">&uarr; top</a>
 
 <a name="example"><h2 class="line">Example</h2></a>
+        <p class="text">
 The object to make the call on is M.DialogView. It encapsulates the creation of a dialog and its show up and hide. You find a complete example of a M.AlertDialogView
-with a callback for pressing the confirm button. 
+with a callback for pressing the confirm button.</p>
 <pre>
 <code class="javascript">
     M.DialogView.alert({
@@ -86,3 +97,4 @@ with a callback for pressing the confirm button.
     });
 </code>
 </pre>
+<a href="#top">&uarr; top</a>
