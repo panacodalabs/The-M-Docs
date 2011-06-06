@@ -15,11 +15,18 @@ function registerArticles() {
     });
 }
 
-function loadArticle(path) {
+function loadArticle(path, firstTry) {
+    if(path === '404' && !firstTry) {
+        return;
+    }
+
     $.ajax({
         url: 'content/' + path + '.html',
         success: function(data) {
             $('#container').html(data);
+        },
+        error: function(xhr, error) {
+            loadArticle('404', firstTry ? false : true);
         }
     });
 }
