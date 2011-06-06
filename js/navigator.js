@@ -1,6 +1,9 @@
 function registerArticles() {
     $('.nav li h3').each(function() {
         var category = $(this).text().toLocaleLowerCase().replace(/[\.\s]+/g, '_');
+        $(this).bind('click', function(evt) {
+            collapseCategory($(this).siblings('ul .subnav'));
+        });
         $(this).siblings('ul .subnav').each(function() {
             $(this).find('li').each(function() {
                 var path = category + '/' + $(this).text().toLocaleLowerCase().replace(/[\.\s]+/g, '_');
@@ -19,6 +22,12 @@ function loadArticle(path) {
             $('#container').html(data);
         }
     });
+}
+
+function collapseCategory(category) {
+    category.children().each(function() {
+        $(this).toggle();
+    })
 }
 
 $('document').ready(function() {
