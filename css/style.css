@@ -163,6 +163,7 @@ ul.nav ul.subnav li {
 #header .logo {
     margin-left: 15px;
     margin-top:8px;
+    cursor:pointer;
 }
 
 #content {
