@@ -46,7 +46,7 @@ function scroll(anchor, disableAnimation) {
         window.scrollTo(0, 0);
     } else {
         $('html, body').animate({
-            scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#content').offset().top
+            scrollTop: anchor === 'top' ? 0 : $('a[name="' + anchor + '"]').offset().top - $('#content').offset().top
         }, 'slow');
     }
 }
