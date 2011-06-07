@@ -1,12 +1,15 @@
 <!-- HEADER -->
 <div class="contentHeader">
     <a name="top"></a>
+
     <h1>M.AlertDialogView</h1>
+
     <div class="directoryPath">
         modules/ui/dialogs/alert_dialog.js
     </div>
 
-<a href="#basics">Basics</a> &#183; <a href="#screens">Screenshots</a> &#183; <a href="#properties">Properties</a> &#183; <a href="#methods">Methods</a> &#183; <a
+    <a href="#basics">Basics</a> &#183; <a href="#screens">Screenshots</a> &#183; <a href="#properties">Properties</a>
+    &#183; <a href="#methods">Methods</a> &#183; <a
         href="#example">Example</a>
 </div>
 <!-- END OF HEADER -->
@@ -14,112 +17,124 @@
 
 <!-- BASICS-->
 <div class="contentBasics">
-<a name="basics"><h2 class="line">Basics</h2></a>
-<p class="text">
-    The alert dialog view is a simple view that has two mandatory and two optional parameters: <br/>
-    The dialog is similar to the alert dialog that JavaScript offers with the alert('Hello World') call, except that the
-    TMP alert dialog does not block the application. In addition it can show a much more customized title than the
-    native JavaScript alert dialog (this one usually shows something strange like "Die Seite auf www.the-m-project.net
-    says:" in the title bar). It is also possible to pass a callback to the dialog, that is executed after the user
-    clicked the confirm button in the dialog. Therefore we pass the callback object with a nested object named confirm
-    to the call. In this confirm object we define target and action.
-<div class="note text">Note: It is also possible to pass a function as action instead of a string (this is possible
-    throughout every callback passing). It is executed in the scope of the target.
-</div>
-</p><a href="#top">&uarr; top</a>
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        The alert dialog view is a simple view that has two mandatory and two optional parameters: <br/>
+        The dialog is similar to the alert dialog that JavaScript offers with the alert('Hello World') call, except that
+        the
+        TMP alert dialog does not block the application. In addition it can show a much more customized title than the
+        native JavaScript alert dialog (this one usually shows something strange like "Die Seite auf
+        www.the-m-project.net
+        says:" in the title bar). It is also possible to pass a callback to the dialog, that is executed after the user
+        clicked the confirm button in the dialog. Therefore we pass the callback object with a nested object named
+        confirm
+        to the call. In this confirm object we define target and action.
+    </p>
+
+    <div class="note text">Note: It is also possible to pass a function as action instead of a string (this is possible
+        throughout every callback passing). It is executed in the scope of the target.
+    </div>
+    <a href="#top">&uarr; top</a>
 </div>
 <!-- END OF BASICS -->
 
 <!-- SCREENSHOTS -->
 <div class="contentScreenshots">
-<a name="screens"><h2 class="line">Screenshots</h2></a>
-<div class="screens">
-    <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-</div>
-<a href="#top">&uarr; top</a>
+    <a name="screens"><h2 class="line">Screenshots</h2></a>
+
+    <div class="screens">
+        <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView"/>
+    </div>
+    <a href="#top">&uarr; top</a>
 </div>
 <!-- END OF SCREENSHOTS -->
 
 
 <!-- PROPERTIES -->
 <div class="contentProperties">
-<a name="properties"><h2 class="line">Properties</h2></a>
-<table class="reference" cellpadding="0" cellspacing="0">
-    <tr style="height:50px;">
-        <th style="width:20%;">Name</th>
-        <th style="width:15%;">Relevance</th>
-        <th style="width:10%;">Expected type</th>
-        <th style="width:20%;">Default value</th>
-        <th style="width:35%;">Description</th>
-    </tr>
-    <tr>
-        <td><span class="code">title</span></td>
-        <td>recommended</td>
-        <td>String</td>
-        <td style="font-family:monospace">"Alert"</td>
-        <td>Defines the title of the alert dialog. The title is shown on the top of the dialog.</td>
-    </tr>
-    <tr>
-        <td><span class="code">message</span</td>
-        <td>optional</td>
-        <td>String</td>
-        <td style="font-family:monospace"></td>
-        <td>Defines the message of the confirm dialog.</td>
-    </tr>
-    <tr>
-        <td><span class="code">confirmButtonValue</span></td>
-        <td>optional</td>
-        <td>String</td>
-        <td style="font-family:monospace">"Ok"</td>
-        <td>Defines the value of the button shown in the dialog.</td>
-    </tr>
-    <tr>
-        <td><span class="code">callbacks</span></td>
-        <td>optional</td>
-        <td>Object</td>
-        <td style="font-family:monospace"></td>
-        <td>The object defining the confirm callback. This is optional. If it is passed, a sub object named <span
-                class="code">confirm</span>, defining <span class="code">target</span> and <span
-                class="code">action</span> for the callback.
-        </td>
-    </tr>
-</table><a href="#top">&uarr; top</a>
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:15%;">Relevance</th>
+            <th style="width:10%;">Expected type</th>
+            <th style="width:20%;">Default value</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">title</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace">"Alert"</td>
+            <td>Defines the title of the alert dialog. The title is shown on the top of the dialog.</td>
+        </tr>
+        <tr>
+            <td><span class="code">message</span</td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>Defines the message of the confirm dialog.</td>
+        </tr>
+        <tr>
+            <td><span class="code">confirmButtonValue</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">"Ok"</td>
+            <td>Defines the value of the button shown in the dialog.</td>
+        </tr>
+        <tr>
+            <td><span class="code">callbacks</span></td>
+            <td>optional</td>
+            <td>Object</td>
+            <td style="font-family:monospace"></td>
+            <td>The object defining the confirm callback. This is optional. If it is passed, a sub object named <span
+                    class="code">confirm</span>, defining <span class="code">target</span> and <span
+                    class="code">action</span> for the callback.
+            </td>
+        </tr>
+    </table>
+    <a href="#top">&uarr; top</a>
 </div>
 <!-- END OF PROPERTIES -->
 
 <!-- METHODS -->
 <div class="contentMethods">
-<a name="methods"><h2 class="line">Methods</h2></a>
-<p class="text">There are no public methods available. <br />
-    Showing the dialog is done with the method <span class="code">alert</span> of <span class="code">M.DialogView</span>
+    <a name="methods"><h2 class="line">Methods</h2></a>
+
+    <p class="text">There are no public methods available. <br/>
+        Showing the dialog is done with the method <span class="code">alert</span> of <span
+                class="code">M.DialogView</span>
         and hiding the dialog is automatically performed by pressing the rendered button of the dialog.</p>
-<a href="#top">&uarr; top</a>
+    <a href="#top">&uarr; top</a>
 </div>
 <!-- END OF METHODS -->
 
 <!-- EXAMPLE -->
 <div class="contentExample">
-<a name="example"><h2 class="line">Example</h2></a>
-        <p class="text">
-The object to make the call on is M.DialogView. It encapsulates the creation of a dialog and its show up and hide. You find a complete example of a M.AlertDialogView
-with a callback for pressing the confirm button.</p>
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        The object to make the call on is M.DialogView. It encapsulates the creation of a dialog and its show up and
+        hide. You find a complete example of a M.AlertDialogView
+        with a callback for pressing the confirm button.</p>
 <pre>
 <code class="javascript">
     M.DialogView.alert({
-        title: 'No Connection',
-        message: 'No Connection available. Request failed.'
-        confirmButtonValue: 'Sad.',
-        callbacks: {
-            confirm: {
-                target: myApp.myController,
-                action: function() {
-                    console.log('Sad.');
-                }
-            }
-        }
+    title: 'No Connection',
+    message: 'No Connection available. Request failed.'
+    confirmButtonValue: 'Sad.',
+    callbacks: {
+    confirm: {
+    target: myApp.myController,
+    action: function() {
+    console.log('Sad.');
+    }
+    }
+    }
     });
 </code>
 </pre>
-<a href="#top">&uarr; top</a>
+    <a href="#top">&uarr; top</a>
 </div>
 <!-- END OF EXAMPLE -->
