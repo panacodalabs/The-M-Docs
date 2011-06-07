@@ -48,7 +48,7 @@ function top() {
 
 function scroll(anchor) {
     $('html, body').animate({
-        scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#header').height()
+        scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#conent').css('margin-top')
     }, 'slow');
 }
 
