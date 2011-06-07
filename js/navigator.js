@@ -42,7 +42,13 @@ function collapseCategory(category) {
 
 function top() {
     $('html, body').animate({
-        scrollTop:0
+        scrollTop: 0
+    }, 'slow');
+}
+
+function scroll() {
+    $('html, body').animate({
+        scrollTop: $('body').find('#methods').position()[1]
     }, 'slow');
 }
 
