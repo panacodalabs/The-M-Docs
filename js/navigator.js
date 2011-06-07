@@ -27,7 +27,6 @@ function loadArticle(path, firstTry) {
             $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e, '    ')
             });
-            document.location.hash = '';
             scroll('top');
         },
         error: function(xhr, error) {
