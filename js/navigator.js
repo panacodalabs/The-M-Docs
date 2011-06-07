@@ -27,6 +27,8 @@ function loadArticle(path, firstTry) {
             $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e, '    ')
             });
+            document.location.hash = '';
+            scroll('top');
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
