@@ -48,7 +48,7 @@ function top() {
 
 function scroll(anchor) {
     $('html, body').animate({
-        scrollTop: $('#' + anchor).offset().top
+        scrollTop: $('a[name="' + anchor + '"').offset().top
     }, 'slow');
 }
 
