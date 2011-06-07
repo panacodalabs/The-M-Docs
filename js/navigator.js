@@ -46,9 +46,9 @@ function top() {
     }, 'slow');
 }
 
-function scroll() {
+function scroll(anchor) {
     $('html, body').animate({
-        scrollTop: $('body').find('#methods').position()[1]
+        scrollTop: $('#' + anchor).offset().top
     }, 'slow');
 }
 
