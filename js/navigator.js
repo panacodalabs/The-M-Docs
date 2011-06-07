@@ -43,7 +43,7 @@ function collapseCategory(category) {
 
 function scroll(anchor) {
     $('html, body').animate({
-        scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#content').css('margin-top')
+        scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#content').offset().top
     }, 'slow');
 }
 
