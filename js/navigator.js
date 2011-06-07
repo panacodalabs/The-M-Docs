@@ -38,6 +38,10 @@ function collapseCategory(category) {
     })
 }
 
+function top() {
+    $.scrollTo(0, 0);
+}
+
 $('document').ready(function() {
     registerArticles();
 

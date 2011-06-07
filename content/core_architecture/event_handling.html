@@ -11,12 +11,18 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
+        Handling events and being able to respond to a user's actions is essential to any UI based application.
+        As a developer you need to be able to make UI elements listen to events, more precisely to DOM events, in
+        order to perform a certain action once the corresponding event was fired.<br/>
+
+        Within the The-M-Project framework, we provide a component called <span class="code">M.EventDispatcher</span>.
+
+
         The alert dialog view is a simple view that has two mandatory and two optional parameters: <br/>
         The dialog is similar to the alert dialog that JavaScript offers with the alert('Hello World') call, except that
         the
         TMP alert dialog does not block the application. In addition it can show a much more customized title than the
-        native JavaScript alert dialog (this one usually shows something strange like "Die Seite auf
-        www.the-m-project.net
+        native JavaScript alert dialog (this one usually shows something strange like "The page at www.the-m-project.net
         says:" in the title bar). It is also possible to pass a callback to the dialog, that is executed after the user
         clicked the confirm button in the dialog. Therefore we pass the callback object with a nested object named
         confirm
@@ -26,7 +32,7 @@
     <div class="note text">Note: It is also possible to pass a function as action instead of a string (this is possible
         throughout every callback passing). It is executed in the scope of the target.
     </div>
-    <a href="#top">&uarr; top</a>
+    <a href="javascript:;" onclick="top()">&uarr; top</a>
 </div>
 
 <h2 class="line">Properties</h2>
