@@ -16,7 +16,7 @@ function registerArticles() {
 }
 
 function loadArticle(path, firstTry) {
-    if(path === '404' && !firstTry) {
+    if (path === '404' && !firstTry) {
         return;
     }
 
@@ -24,7 +24,9 @@ function loadArticle(path, firstTry) {
         url: 'content/' + path + '.html',
         success: function(data) {
             $('#container').html(data);
-            $('pre code').each(function(i, e) {hljs.highlightBlock(e, '    ')});
+            $('pre code').each(function(i, e) {
+                hljs.highlightBlock(e, '    ')
+            });
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
@@ -39,7 +41,9 @@ function collapseCategory(category) {
 }
 
 function top() {
-    $.scrollTo(0, 0);
+    $('html, body').animate({
+        scrollTop:0
+    }, 'slow');
 }
 
 $('document').ready(function() {
