@@ -27,7 +27,7 @@ function loadArticle(path, firstTry) {
             $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e, '    ')
             });
-            scroll('top');
+            scroll('top', true);
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
@@ -41,10 +41,16 @@ function collapseCategory(category) {
     })
 }
 
-function scroll(anchor) {
-    $('html, body').animate({
-        scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#content').offset().top
-    }, 'slow');
+function scroll(anchor, disableAnimation) {
+    if(disableAnimation) {
+        $('html, body').animate({
+            scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#content').offset().top
+        });
+    } else {
+        $('html, body').animate({
+            scrollTop: $('a[name="' + anchor + '"]').offset().top - $('#content').offset().top
+        }, 'slow');
+    }
 }
 
 $('document').ready(function() {
