@@ -29,9 +29,7 @@ function loadArticle(path, firstTry) {
             });
             scroll('top', true);
             $.syntax({
-                blockSelector: "pre.syntax",
-                inlineSelector: "code.syntax",
-                blockLayout: "fixed"
+                blockLayout: "plain"
             });
         },
         error: function(xhr, error) {
