@@ -30,7 +30,7 @@ function loadArticle(path, firstTry) {
             scroll('top', true);
             jQuery(function($) {
                 $.syntax({
-                    root: 'syntax_highlighting'
+                    root: '/syntax_highlighting'
                 });
             });
         },
