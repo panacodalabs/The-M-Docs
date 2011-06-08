@@ -47,7 +47,7 @@ a {
     font-weight: lighter;
 }
 
-.text {
+.text, ol li {
     font-size:0.9em;
     line-height:22px;
     width:70%;
