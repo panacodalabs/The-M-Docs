@@ -8,26 +8,34 @@
         modules/ui/dialogs/confirm_dialog.js
     </div>
 
-    <a href="javascript:;" onclick="scroll('basics')">Basics</a> &#183;
-    <a href="javascript:;" onclick="scroll('screens')">Screenshots</a> &#183;
-    <a href="javascript:;" onclick="scroll('properties')">Properties</a> &#183;
-    <a href="javascript:;" onclick="scroll('methods')">Methods</a> &#183;
-    <a href="javascript:;" onclick="scroll('example')">Example</a>
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
 <!-- END OF HEADER -->
-
 
 <!-- BASICS-->
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        Lorem Ipsum...
+        The confirm dialog is a little more complex than the alert dialog.
+        It also takes the two parameters of the alert dialog but additionaly has
+        another mandatory parameter (callbacks) and two optional parameters.
+        <br />
+        You might ask yourself "Why do I need callbacks for a confirm dialog?".
+        A confirm dialog marks a fork in your application flow. You want the user to make a decision.
+        And for every decision the application continues in different directions. For this purpose,
+        you pass callbacks that define where to go after the user made a decision.
     </p>
 
-    <div class="note text">Note: Lorem Ipsum...
+    <div class="note text">Note: It is also possible to pass a function as action instead of a string (this is possible
+        throughout every callback passing). It is executed in the scope of the target.
     </div>
-    <a href="javascript:;" onclick="scroll('top')">&uarr; top</a>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
@@ -35,18 +43,18 @@
 <div class="contentScreenshots">
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
-    <!--<div class="screens">
-        <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView"/>
-    </div>-->
-    <a href="javascript:;" onclick="scroll('top')">&uarr; top</a>
+    <div class="screens">
+        <img src="images/views/screen_confirmdialogview.png" alt="M.ConfirmDialogView"/>
+    </div>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF SCREENSHOTS -->
-
 
 <!-- PROPERTIES -->
 <div class="contentProperties">
     <a name="properties"><h2 class="line">Properties</h2></a>
-    <!--<table class="reference" cellpadding="0" cellspacing="0">
+
+    <table class="reference" cellpadding="0" cellspacing="0">
         <tr style="height:50px;">
             <th style="width:20%;">Name</th>
             <th style="width:15%;">Relevance</th>
@@ -58,35 +66,54 @@
             <td><span class="code">title</span></td>
             <td>recommended</td>
             <td>String</td>
-            <td style="font-family:monospace">"Alert"</td>
-            <td>Defines the title of the alert dialog. The title is shown on the top of the dialog.</td>
+            <td style="font-family:monospace">"Confirm"</td>
+            <td>Defines the title of the confirm dialog. The title is shown on the top of the dialog.</td>
         </tr>
         <tr>
-            <td><span class="code">message</span</td>
+            <td><span class="code">message</span></td>
             <td>optional</td>
             <td>String</td>
             <td style="font-family:monospace"></td>
-            <td>Defines the message of the confirm dialog.</td>
+            <td>
+                Defines the value shown on the destructive button.
+                If this property is not used, no destructive button is shown.
+            </td>
         </tr>
         <tr>
             <td><span class="code">confirmButtonValue</span></td>
             <td>optional</td>
             <td>String</td>
-            <td style="font-family:monospace">"Ok"</td>
-            <td>Defines the value of the button shown in the dialog.</td>
+            <td style="font-family:monospace">"Confirm"</td>
+            <td>
+                Defines the value shown on the confirm button.
+                If this value is not set, the default value is used.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">cancelButtonValue</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">"Cancel"</td>
+            <td>
+                Defines the value shown on the cancel button.
+                If this value is not set, the default value is used.
+            </td>
         </tr>
         <tr>
             <td><span class="code">callbacks</span></td>
-            <td>optional</td>
+            <td>mandatory</td>
             <td>Object</td>
             <td style="font-family:monospace"></td>
-            <td>The object defining the confirm callback. This is optional. If it is passed, a sub object named <span
-                    class="code">confirm</span>, defining <span class="code">target</span> and <span
-                    class="code">action</span> for the callback.
+            <td>
+                The object defining the callbacks for confirm and cancel. Two sub objects have to be defined:
+                <ul>
+                    <li><span class="code">confirm</span> : the callback for the confirm button.</li>
+                    <li><span class="code">cancel</span> : the callback for the cancel button.</li>
+                </ul>
             </td>
         </tr>
-    </table>-->
-    <a href="javascript:;" onclick="scroll('top')">&uarr; top</a>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF PROPERTIES -->
 
@@ -94,11 +121,10 @@
 <div class="contentMethods">
     <a name="methods"><h2 class="line">Methods</h2></a>
 
-    <!--<p class="text">There are no public methods available. <br/>
-        Showing the dialog is done with the method <span class="code">alert</span> of <span
-                class="code">M.DialogView</span>
-        and hiding the dialog is automatically performed by pressing the rendered button of the dialog.</p>-->
-    <a href="javascript:;" onclick="scroll('top')">&uarr; top</a>
+    <p class="text">There are no public methods available. <br/>
+        Showing the dialog is done with the method <span class="code">actionSheet</span> of <span class="code">M.DialogView</span>
+        and hiding the dialog is automatically performed by pressing on of the rendered buttons of the dialog.</p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
 
@@ -106,27 +132,54 @@
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
-    <!--<p class="text">
+    <p class="text">
         The object to make the call on is M.DialogView. It encapsulates the creation of a dialog and its show up and
-        hide. You find a complete example of a M.AlertDialogView
-        with a callback for pressing the confirm button.</p>
-<pre>
-<code class="javascript">
-    M.DialogView.alert({
-    title: 'No Connection',
-    message: 'No Connection available. Request failed.'
-    confirmButtonValue: 'Sad.',
-    callbacks: {
+        hide. You find a complete example of a M.ConfirmDialogView
+        with callbacks for pressing the confirm and cancel buttons.</p>
+    <pre>
+        <code class="javascript">
+M.DialogView.confirm({
+  title: 'Remove a Task',
+  message: 'Do you really want to get rid of this task?',
+  confirmButtonValue: 'Kick it!',
+  cancelButtonValue: 'NOT!',
+  callbacks: {
     confirm: {
-    target: myApp.myController,
-    action: function() {
-    console.log('Sad.');
+      target: myApp.myController,
+      action: 'myActionForConfirm'
+    },
+    cancel: {
+      target: myApp.myController,
+      action: 'myActionForCancel'
     }
-    }
-    }
-    });
-</code>
-</pre>-->
-    <a href="javascript:;" onclick="scroll('top')">&uarr; top</a>
+  }
+});
+        </code>
+    </pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF EXAMPLE -->
+
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        The styling of the dialogs is written down in a CSS file named tmp.css located in <span class="code">modules/tmp_themes/</span>
+        in the framework's directory.
+        All relevant styling properties are written down here. They are prefixed in the following manner:</p>
+    <ul class="text">
+        <li><span class="code">tmp-dialog</span>: for all dialog relevant stylings</li>
+        <li><span class="code">tmp-actionsheet</span>: for the additional stylings of the actionsheet</li>
+    </ul>
+    <p class="text">
+        The CSS should be self-explanatory.<br/>
+        The animations are used from jQuery Mobile's CSS.
+        It is <span class="code">pop</span> for the action and confirm dialog and <span class="code">slideup</span> for
+        the action sheet.
+        These animations are non-configurable, except you're hacking the framework code.
+    </p>
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS STYLES -->
