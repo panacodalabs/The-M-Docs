@@ -12,7 +12,8 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
-    <span class="navlink" onclick="scroll('example')">Example</span>
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -71,11 +72,11 @@
             <td>Defines the title of the alert dialog. The title is shown on the top of the dialog.</td>
         </tr>
         <tr>
-            <td><span class="code">message</span</td>
+            <td><span class="code">message</span></td>
             <td>optional</td>
             <td>String</td>
             <td style="font-family:monospace"></td>
-            <td>Defines the message of the confirm dialog.</td>
+            <td>Defines the message of the alert dialog.</td>
         </tr>
         <tr>
             <td><span class="code">confirmButtonValue</span></td>
@@ -139,3 +140,27 @@
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        The styling of the dialogs is written down in a CSS file named tmp.css located in <span class="code">modules/tmp_themes/</span>
+        in the framework's directory.
+        All relevant styling properties are written down here. They are prefixed in the following manner:</p>
+    <ul class="text">
+        <li><span class="code">tmp-dialog</span>: for all dialog relevant stylings</li>
+        <li><span class="code">tmp-actionsheet</span>: for the additional stylings of the actionsheet</li>
+    </ul>
+    <p class="text">
+        The CSS should be self-explanatory.<br/>
+        The animations are used from jQuery Mobile's CSS.
+        It is <span class="code">pop</span> for the action and confirm dialog and <span class="code">slideup</span> for
+        the action sheet.
+        These animations are non-configurable, except you're hacking the framework code.
+    </p>
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS STYLES -->
