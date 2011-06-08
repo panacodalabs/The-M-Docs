@@ -28,6 +28,11 @@ function loadArticle(path, firstTry) {
                 hljs.highlightBlock(e, '    ')
             });
             scroll('top', true);
+            jQuery(function($) {
+                $.syntax({
+                    root: 'syntax_highlighting'
+                });
+            });
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
