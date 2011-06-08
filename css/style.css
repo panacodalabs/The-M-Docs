@@ -202,3 +202,9 @@ span.navlink {
     padding-left:0px !important;
     padding-right:0px !important;
 }
+
+.syntax.plain {
+    -moz-border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    border-radius: 5px !important;
+}
