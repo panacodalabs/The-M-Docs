@@ -200,3 +200,9 @@ ul.nav ul.subnav li {
 #container h1:first-child {
     margin-top:13px;
 }
+
+span .navlink {
+    color: #2bbefa;
+    font-weight: lighter;
+    cursor: pointer;
+}
