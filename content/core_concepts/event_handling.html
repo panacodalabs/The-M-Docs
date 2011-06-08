@@ -35,8 +35,6 @@
         <span class="code">M.ButtonView</span>, provides the tap event, a page provides the pageshow event.
     </p>
 
-    <div class="note text">Lorem Ipsum
-    </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -45,9 +43,29 @@
 <div class="contentScreenshots">
     <a name="howto1"><h2 class="line">How to bind events?</h2></a>
 
-    <!--<div class="screens">
-        <img src="images/views/screen_actionsheetdialogview.png" alt="M.ActionSheetDialogView"/>
-    </div>-->
+    <p class="text">
+        Binding events, no matter what type of events, is pretty easy and follows the same syntax all across the framework.
+        <span class="code">M.View</span>, which is the base object for all views, provides a propety called <span class="code">events</span>.
+        This is used to register a view's events out of an application. While the base structure of such an event registration
+        is always the same, there are three different ways of assigning an action to a certain event:
+
+        <ol>
+            <li>
+                Specify a scope and a name of a method, that is available within this scope.
+            </li>
+            <li>
+                Specify a scope and a method (as an object), that will be executed within this scope.
+            </li>
+            <li>
+                Specify a method (as an object), that will be executed within the <span class="code">window</span> scope.
+            </li>
+        </ol>
+    </p>
+
+    <p class="text">
+        The following code sample shows how to bind a tap event to a button by specifying a scope and a name of a method within this scope.
+    </p>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF HOWTO PART 1 -->
