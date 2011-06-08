@@ -28,10 +28,8 @@ function loadArticle(path, firstTry) {
                 hljs.highlightBlock(e, '    ')
             });
             scroll('top', true);
-            jQuery(function($) {
-                $.syntax({
-                    root: '/syntax_highlighting'
-                });
+            $.syntax({
+                root: '/syntax_highlighting/'
             });
         },
         error: function(xhr, error) {
