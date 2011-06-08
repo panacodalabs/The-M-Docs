@@ -204,3 +204,8 @@ span.navlink {
     font-weight: lighter;
     cursor: pointer;
 }
+
+.syntax-container {
+    padding-left:0px;
+    padding-right:0px;
+}
