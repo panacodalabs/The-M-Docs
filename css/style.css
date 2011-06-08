@@ -50,7 +50,6 @@ a {
 .text, ol li {
     font-size:0.9em;
     line-height:22px;
-    width:70%;
 }
 
 .description {
@@ -100,7 +99,6 @@ table.reference tr th {
 }
 
 pre {
-    width:70%;
     color: #222;
     padding: 15px;
     border-radius: 5px;
