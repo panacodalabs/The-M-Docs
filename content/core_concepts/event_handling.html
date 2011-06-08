@@ -52,19 +52,6 @@
         <ol>
             <li>
                 Specify a scope and a name of a method, that is available within this scope.
-            </li>
-            <li>
-                Specify a scope and a method (as an object), that will be executed within this scope.
-            </li>
-            <li>
-                Specify a method (as an object), that will be executed within the <span class="code">window</span> scope.
-            </li>
-        </ol>
-    </p>
-
-    <p class="text">
-        The following code sample shows how to bind a tap event to a button by specifying a scope and a name of a method within this scope.
-    </p>
 <pre>
 <code class="javascript">
 M.ButtonView.design({
@@ -78,10 +65,9 @@ M.ButtonView.design({
 });
 </code>
 </pre>
-
-    <p class="text">
-        The following code sample shows how to bind a tap event to a button by specifying a scope and a method (as object), that will be executed within this scope.
-    </p>
+            </li>
+            <li>
+                Specify a scope and a method (as an object), that will be executed within this scope.
 <pre>
 <code class="javascript">
 M.ButtonView.design({
@@ -96,10 +82,9 @@ M.ButtonView.design({
 });
 </code>
 </pre>
-
-    <p class="text">
-        The following code sample shows how to bind a tap event to a button by simply specifying a method (as object), that will be executed within the <span class="code">window</span> scope.
-    </p>
+            </li>
+            <li>
+                Specify a method (as an object), that will be executed within the <span class="code">window</span> scope.
 <pre>
 <code class="javascript">
 M.ButtonView.design({
@@ -113,6 +98,9 @@ M.ButtonView.design({
 });
 </code>
 </pre>
+            </li>
+        </ol>
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
