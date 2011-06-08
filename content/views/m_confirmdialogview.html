@@ -136,26 +136,24 @@
         The object to make the call on is M.DialogView. It encapsulates the creation of a dialog and its show up and
         hide. You find a complete example of a M.ConfirmDialogView
         with callbacks for pressing the confirm and cancel buttons.</p>
-    <pre>
-        <code class="javascript">
+<pre class="syntax javascript">
 M.DialogView.confirm({
-  title: 'Remove a Task',
-  message: 'Do you really want to get rid of this task?',
-  confirmButtonValue: 'Kick it!',
-  cancelButtonValue: 'NOT!',
-  callbacks: {
-    confirm: {
-      target: myApp.myController,
-      action: 'myActionForConfirm'
-    },
-    cancel: {
-      target: myApp.myController,
-      action: 'myActionForCancel'
+    title: 'Remove a Task',
+    message: 'Do you really want to get rid of this task?',
+    confirmButtonValue: 'Kick it!',
+    cancelButtonValue: 'NOT!',
+    callbacks: {
+        confirm: {
+            target: myApp.myController,
+            action: 'myActionForConfirm'
+        },
+        cancel: {
+            target: myApp.myController,
+            action: 'myActionForCancel'
+        }
     }
-  }
 });
-        </code>
-    </pre>
+</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 
