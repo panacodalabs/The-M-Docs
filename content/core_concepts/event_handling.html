@@ -65,19 +65,54 @@
     <p class="text">
         The following code sample shows how to bind a tap event to a button by specifying a scope and a name of a method within this scope.
     </p>
-    <pre>
-    <code class="javascript">
-    M.ButtonView.design({
-        value: 'myButton',
-        events: {
-            tap: {
-                target: myApp.myController,
-                action: 'myMethod'
-            }
+<pre>
+<code class="javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            target: myApp.myController,
+            action: 'myMethod'
         }
-    });
-    </code>
-    </pre>
+    }
+});
+</code>
+</pre>
+
+    <p class="text">
+        The following code sample shows how to bind a tap event to a button by specifying a scope and a method (as object), that will be executed within this scope.
+    </p>
+<pre>
+<code class="javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            target: myApp.myController,
+            action: function() {
+                alert('Hello World');
+        }
+    }
+});
+</code>
+</pre>
+
+    <p class="text">
+        The following code sample shows how to bind a tap event to a button by simply specifying a method (as object), that will be executed within the <span class="code">window</span> scope.
+    </p>
+<pre>
+<code class="javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            action: function() {
+                alert('Hello World');
+        }
+    }
+});
+</code>
+</pre>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
