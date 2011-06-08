@@ -98,13 +98,6 @@ table.reference tr th {
     float: right;
 }
 
-pre {
-    color: #222;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #bbb;
-}
-
 hr {
     border: 0;
     width: 80%;
