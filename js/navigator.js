@@ -28,7 +28,11 @@ function loadArticle(path, firstTry) {
                 hljs.highlightBlock(e, '    ')
             });
             scroll('top', true);
-            $.syntax();
+            $.syntax({
+                blockSelector: "pre.syntax",
+                inlineSelector: "code.syntax",
+                blockLayout: "fixed"
+            });
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
