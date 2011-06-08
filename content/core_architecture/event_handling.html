@@ -24,9 +24,15 @@
     <p class="text">
         Handling events and being able to respond to a user's actions is essential to any UI based application.
         As a developer you need to be able to make UI elements listen to events, more precisely to DOM events, in
-        order to perform a certain action once the corresponding event was fired.<br/>
+        order to perform a certain action once the corresponding event was fired.
+    </p>
 
+    <p class="text">
         Within the The-M-Project framework, we provide a component called <span class="code">M.EventDispatcher</span>.
+        This object is used to register DOM events for all UI components. This includes events that are typically
+        fired by a certain user action, like tapping on a button (tap), and events that are fired by the framework itself,
+        like indicating that a page will be shown now (pagewillshow). The available events depend on the particular view. A button,
+        <span class="code">M.ButtonView</span>, provides the tap event, a page provides the pageshow event.
     </p>
 
     <div class="note text">Lorem Ipsum
