@@ -28,9 +28,7 @@ function loadArticle(path, firstTry) {
                 hljs.highlightBlock(e, '    ')
             });
             scroll('top', true);
-            $.syntax({
-                root: '/syntax_highlighting/'
-            });
+            $.syntax();
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
