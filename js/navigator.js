@@ -24,9 +24,6 @@ function loadArticle(path, firstTry) {
         url: 'content/' + path + '.html',
         success: function(data) {
             $('#container').html(data);
-            $('pre code').each(function(i, e) {
-                hljs.highlightBlock(e, '    ')
-            });
             scroll('top', true);
             $.syntax({
                 blockLayout: "plain"
