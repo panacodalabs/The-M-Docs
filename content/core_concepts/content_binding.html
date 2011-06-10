@@ -9,8 +9,9 @@
     </div>-->
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <!--<span class="navlink" onclick="scroll('howto1')">How to bind events?</span>
-    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('start')">Let's get started!</span> &#183;
+    <span class="navlink" onclick="scroll('howto1')">How to set up content binding?</span>
+    <!--<span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>-->
@@ -22,20 +23,43 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        Handling events and being able to respond to a user's actions is essential to any UI based application.
-        As a developer you need to be able to make UI elements listen to events, more precisely to DOM events, in
-        order to perform a certain action once the corresponding event was fired.
+        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
+        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
+        we implemented the observer pattern as shown in simplified the UML diagram below.
     </p>
 
-    <p class="text">
-        Within the The-M-Project framework, we provide a component called <span class="code">M.EventDispatcher</span>.
-        This object is used to register DOM events for all UI components. This includes events that are typically
-        fired by a certain user action, like tapping on a button (tap), and events that are fired by the framework itself,
-        like indicating that a page will be shown now (pagewillshow). The available events depend on the particular view. A button,
-        <span class="code">M.ButtonView</span>, provides the tap event, a page provides the pageshow event. A list of all events that
-        are provided by a cerain view can be found within the documentation of the view itself.
-    </p>
+    <div class="screens">
+        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
+    </div>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
+
+<!-- START-->
+<div class="contentBasics">
+    <a name="start"><h2 class="line">Let's get started!</h2></a>
+
+    <p class="text">
+        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
+        Imagine you've got two textfield on your screen. You click into the first one – the master, begin to type
+        and want the second one – the slave – to display exactly the same text. The figure below shows how this
+        could look like.
+    </p>
+
+    <div class="screens">
+        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
+    </div>
+
+    <p class="text">
+        How does this work? How does the first textfield tell the second one that it's content changed? Do they
+        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
+        they don't. Instead there is a “central instance”, an M.Observable, that knows that the second textfield observes
+        a property that is again set by the first textfield. This “central instance” is realised as a property of the
+        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
+        value inside the first textfield and delegating these changes right to the second textfield.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
