@@ -208,3 +208,7 @@ span.navlink {
     -webkit-border-radius: 5px !important;
     border-radius: 5px !important;
 }
+
+td ul {
+    margin-left: 0px;
+}
