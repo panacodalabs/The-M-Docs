@@ -71,7 +71,7 @@ $('document').ready(function() {
         }
 
         history.back(-1);
-        loadArticle(window.location.hash, true, true);
+        loadArticle(window.location.hash.substring(1), false, true);
     });
 
 });
