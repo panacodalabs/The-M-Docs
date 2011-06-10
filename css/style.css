@@ -209,7 +209,7 @@ span.navlink {
     border-radius: 5px !important;
 }
 
-td ul {
+td ul.isFirstLine {
     padding-left: 15px;
     margin-top: 0px;
     margin-bottom: 0px;
