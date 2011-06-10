@@ -14,9 +14,8 @@
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('childviews')">Child Views</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
-    <span class="navlink" onclick="scroll('properties')">Child Views</span> &#183;
-    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
-    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -64,45 +63,99 @@
         </tr>
         <tr>
             <td><span class="code">childViews</span></td>
-            <td></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
+            <td>optional (not necessary when using content binding)</td>
+            <td>'String'</td>
             <td style="font-family:monospace"></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
-        </tr>
-        <tr>
-            <td><span class="code">selectionMode</span></td>
-            <td></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td>
+                A string naming the child views of this element. E.g.
+                <pre class="syntax javascript">
+childViews: 'item1 item2 item3'</pre>
+                Those childViews have to be defined inside the definition of this view, see the
+                <span class="navlink" onclick="scroll('example')">examples</span>.
+            </td>
         </tr>
         <tr>
             <td><span class="code">contentBinding</span></td>
-            <td></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
-        </tr>
-        <tr>
-            <td><span class="code">removeItemsOnUpdate</span></td>
-            <td></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td>optional</td>
+            <td>Object</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                In a SelectionListView the content binding defines the content of a SelectionView, means: its selectable entries.
+                If childViews are also given, these are used until the first time contentBinding is 'activated'.
+            </td>
         </tr>
         <tr>
             <td><span class="code">initialText</span></td>
-            <td></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property is used to specify an initial value for the selection list if
+                it is running in 'single selection dialog' (M.SINGLE_SELECTION_DIALOG) mode.
+                This value is then displayed at startup. You would typically use this e.g. to
+                specify something like: 'Please select...'.
+                <br />
+                As long as this initial value is 'selected', the getSelection() of this selection
+                list will return nothing. Once a 'real' option is selected, this value is
+                removed from the selection list.
+            </td>
         </tr>
         <tr>
-            <td><span class="code">label</span></td>
-            <td></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td>
+                <span class="code">label</span>
+            </td>
+            <td>
+                optional
+            </td>
+            <td>
+                String
+            </td>
+            <td style="font-family:monospace">
+
+            </td>
+            <td>
+                The label property defines a text that is shown above or next to the selection list as a 'title'
+                for the selection list. e.g. "Name:". If no label is specified, no label will be displayed.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeItemsOnUpdate</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>Determines whether to remove all item if the list is updated (via content binding) or not.</td>
+        </tr>
+        <tr>
+            <td><span class="code">selectionMode</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M.SINGLE_SELECTION</td>
+            <td>
+                Defines which type of SelectionView shall be rendered. There's tree possible types:
+                <ul>
+                    <li>
+                        Single Selection: <span class="code">M.SINGLE_SELECTION</span>. This selection mode will render a selection list with several list items
+                        of which only one can be selected. Whenever a new item is selected, the
+                        previously selected item automatically gets de-selected. This selection
+                        mode's behaviour is equivalent to the plain HTML's radio button.
+                    </li>
+                    <li>
+                        Multiple Selection: <span class="code">M.MULTIPLE_SELECTION</span>.
+                        This selection mode will render a selection list with several list items
+                        of which all be selected. So the selection of a new item doesn't lead to
+                        automatic de-selected of previously selected items. This selection mode's
+                        behaviour is equivalent to the plain HTML's checkboxes.
+                    </li>
+                    <li>
+                        Single Selection Dialog: <span class="code">M.SINGLESELECTION_DIALOG</span>. This selection mode will render a selection list equivalent to the plain
+                        HTML's select menu. Only the currently selected item will be visible, and
+                        by clicking on this item, the selection list will be displayed in a dialog
+                        respectively a popup view. By selecting on of the items, this popup will
+                        automatically close and the selected value will be displayed.
+                    </li>
+                </ul>
+                If no value is passed, the default value is used.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -127,21 +180,70 @@
         </tr>
         <tr>
             <td><span class="code">getSelection</span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td>
+                <span class="code">returnObject</span> (Boolean): Determines whether
+                to return the selected item(s) as object or not.
+            </td>
+            <td>String, Object or Array</td>
+            <td>
+                This method returns the selected item's value(s) either as a String (if type is <span class="code">M.SINGLE_SELECTION</span>)
+                or as an Array (if type is <span class="code">M.MULTIPLE_SELECTION</span>). If YES/true is passed as parameter, object(s) (a
+                <span class="code">M.SelectionListItemView</span> (or an array of them) is returned.
+            </td>
         </tr>
         <tr>
             <td><span class="code">setSelection</span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td>
+                <span class="code">selection</span> (String or Array): The item/entry (its value) that should be selected.</td>
+            <td></td>
+            <td>
+                This method can be used to select items programmatically. The given parameter can either
+                be a String (if type is <span class="code">M.SINGLE_SELECTION</span>) or an Array (if type is <span class="code">M.MULTIPLE_SELECTION</span>).
+            </td>
         </tr>
     </table>
     
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
+
+<!-- PUBLIC EVENTS -->
+<div class="contentMethods">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">change</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">value(s)</span> (String or Array): The value of the selected item. In a
+                        <span class="code">M.MULTIPLE_SELECTION</span> selection view, an array of all selected values.
+                    </li>
+                    <li>
+                        <span class="code">M.SelectionListItemView</span> (Object or Array): The selected item or an array
+                        of it for <span class="code">M.MULTIPLE_SELECTION</span>.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user changes the selection.
+                <div class="note text">
+                    Note: No change event is fired, when the user sets the selection programmatically via
+                    <span class="code">setSelection</span>.
+                </div>
+                
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
 
 <!-- EXAMPLE -->
 <div class="contentExample">
@@ -150,30 +252,59 @@
     <p class="text">
         <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}
+M.SelectionListView.design({
+
+    childViews: 'item1 item2 item3 item4',
+    /* renders a selection view like radio buttons */
+    selectionMode: M.SINGLE_SELECTION,
+
+    item1: M.SelectionListItemView.design({
+        value: 'item1',
+        label: 'Item 1',
+        isSelected: YES
+    }),
+    item2: M.SelectionListItemView.design({
+        value: 'item2',
+        label: 'Item 2'
+    }),
+    item3: M.SelectionListItemView.design({
+        value: 'item3',
+        label: 'Item 3'
+    }),
+    item4: M.SelectionListItemView.design({
+        value: 'item4',
+        label: 'Item 4'
+    })
+})
+
 </pre>
-    -->
-</code>
+
+<pre class="syntax javascript">
+M.SelectionListView.design({
+
+    /* renders a selection view like check boxes */
+    selectionMode: M.MULTIPLE_SELECTION,
+
+    /* this seleciton view has no static entries, instead it is filled via content binding. */
+    contentBinding: {
+        target: myApp.myController,
+        property: 'mySelections'
+    }
+
+    events: {
+        change: {
+            /* executed in scope of DOMWindow because no target defined */
+            action: function(itemValues, items) {
+                /* itemValues is an array because mode of selection is M.MULTIPLE_SELECTION */
+                for(var i = 0; i < itemValues.length; i++) {
+                    console.log(itemValues[i] + ' selected.');
+                }
+            }
+        }
+    }
+})
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
-
-<!-- CSS STYLES -->
-<div class="contentCss">
-    <a name="css"><h2 class="line">CSS Styles</h2></a>
-
-    <p class="text">
-        
-    </p>
-
-    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
-</div>
-<!-- END OF CSS -->
