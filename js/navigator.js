@@ -65,6 +65,7 @@ $('document').ready(function() {
     bookmarks.initialize();
 
     $(window).bind('hashchange', function() {
-        alert('ok');
+        alert('fuck');
     });
+
 });
