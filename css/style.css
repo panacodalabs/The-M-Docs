@@ -220,3 +220,8 @@ a.navlink, a.navlink:hover, a.navlink:visited {
     font-weight: lighter;
     text-decoration: none;
 }
+
+.imgBox {
+    float:left;
+    padding:2px;
+}
