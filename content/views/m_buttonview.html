@@ -150,16 +150,28 @@
     <table class="reference" cellpadding="0" cellspacing="0">
         <tr style="height:50px;">
             <th style="width:20%;">Name</th>
-            <th style="width:80%;">Description</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
         </tr>
         <tr>
             <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The button's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
             <td>
                 This event is fired when a user taps a button. We recommend to use this event instead of click!
             </td>
         </tr>
         <tr>
             <td><span class="code">click</span></td>
+            <td>This event is fired when a user clicks a button.</td>
             <td>This event is fired when a user clicks a button.</td>
         </tr>
     </table>
