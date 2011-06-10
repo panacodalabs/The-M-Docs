@@ -62,11 +62,25 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">isSelectable</span></td>
+            <td><span class="code">buttonsPerLine</span></td>
             <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>This property determines whether the buttons of this button group are selectable or not.</td>
+            <td>Number</td>
+            <td style="font-family:monospace"></td>
+            <td>This property, if set, defines how many buttons are rendered per line. If there are more buttons defined
+                that fitting into one line, the following buttons are rendered into a new line. Make sure, the number of
+                your buttons is divisible by the number of buttons per line, since only full lines are displayed. So if you
+                for example specify 5 buttons and 2 buttons per line, the fifth button won't be visible.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">cssClass</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>With this property one or more css classes can be added to the button group view. The string passed with this
+                property is assigned to the <span class="code">class</span> property of the surrounding <span class="code">div</span>
+                container of the button group view.
+            </td>
         </tr>
         <tr>
             <td><span class="code">direction</span></td>
@@ -78,13 +92,6 @@
             </td>
         </tr>
         <tr>
-            <td><span class="code">isInset</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>Determines whether to display the button group view 'inset' or at full width.</td>
-        </tr>
-        <tr>
             <td><span class="code">isCompact</span></td>
             <td>optional</td>
             <td>Boolean</td>
@@ -94,15 +101,18 @@
             </td>
         </tr>
         <tr>
-            <td><span class="code">buttonsPerLine</span></td>
+            <td><span class="code">isInset</span></td>
             <td>optional</td>
-            <td>Number</td>
-            <td style="font-family:monospace"></td>
-            <td>This property, if set, defines how many buttons are rendered per line. If there are more buttons defined
-                that fitting into one line, the following buttons are rendered into a new line. Make sure, the number of
-                your buttons is divisible by the number of buttons per line, since only full lines are displayed. So if you
-                for example specify 5 buttons and 2 buttons per line, the fifth button won't be visible.
-            </td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>Determines whether to display the button group view 'inset' or at full width.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isSelectable</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property determines whether the buttons of this button group are selectable or not.</td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -204,6 +214,14 @@ buttonGroup: M.ButtonGroupView.design({
     /* configure the button group as needed */
     direction: M.VERTICAL,
 
+    /* add event listener for the 'change' event */
+    events: {
+        change: {
+            target: MyApplication.MyController,
+            action: 'myFunction'
+        }
+    }
+
     /* add the child views (of type M.ButtonView) */
     childViews: 'button1 button2',
     
@@ -226,13 +244,10 @@ buttonGroup: M.ButtonGroupView.design({
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        Since styling a button view is currently a bit of a pain, we are working on a simplified version of a button.
-        So we spare you details on the current css. Stay tuned for updates!
+        Since the button group view is basically a container view for buttons, you normally would apply a
+        custom styling to your button views rather than to this view. But by using the <span class="code">cssClass</span>
+        property, you can create a hook into the DOM to do some custom styling stuff with this view.
     </p>
-
-    <div class="note text">
-        Note: If there are questions / issues concerning this anyway, please <a class="navlink" href="http://www.the-m-project.org/contact.html" target="_blank">contact us</a>.
-    </div>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
