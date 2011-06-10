@@ -110,7 +110,7 @@ MyApplication.MyController = M.Controller.extend({
     myProperty: null,
 
     /* This is an arbitrary function that will trigger the content update */
-    myFunction: {
+    myFunction: function() {
         this.set('myProperty', 'I am the new value!');
     }
 });
