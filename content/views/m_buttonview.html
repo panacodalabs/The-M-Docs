@@ -93,9 +93,23 @@
             <td>optional</td>
             <td>Boolean</td>
             <td style="font-family:monospace">NO</td>
-            <td>Determines whether this button is active or not. Note, that this property is only used if the button
-                is part of a button group
-                (<span class="code navlink" onclick="loadArticle('views/m_buttongroupview');">M.ButtonGroupView</span>).
+            <td>Determines whether this button is active or not.
+                <div class="note text">
+                    Note: This property is only used if the button is part of a button group
+                    (<span class="code navlink" onclick="loadArticle('views/m_buttongroupview');">M.ButtonGroupView</span>).
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">cssClass</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                With this property one or more css classes can be added to the button view.
+                <div class="note text">
+                    Note: By doing this, the default styling of the button view almost fully disappears. You will need to style the button view yourself.
+                </div>
             </td>
         </tr>
     </table>
