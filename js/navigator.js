@@ -1,3 +1,5 @@
+var forcedHashChange = false;
+
 function registerArticles() {
     $('.nav li h3').each(function() {
         var category = $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
@@ -29,6 +31,7 @@ function loadArticle(path, firstTry) {
                 blockLayout: "plain"
             });
             window.location.hash = path.replace('/', '-');
+            forcedHashChange = true;
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
@@ -60,4 +63,8 @@ $('document').ready(function() {
 
     // initialize the bookmarks script
     bookmarks.initialize();
+
+    $(window).bind('hashchange', function() {
+        alert('ok');
+    });
 });
