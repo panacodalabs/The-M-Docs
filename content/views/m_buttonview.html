@@ -144,7 +144,7 @@
     
     <ol>
             <li>
-                Specifiy a simple button with a value.
+                This is the simplest configuration for a button view.
 <pre class="syntax javascript">
 M.ButtonView.design({
     value: 'myButton'
@@ -152,20 +152,21 @@ M.ButtonView.design({
 </pre>
             </li>
             <li>
-                Specify a button with a value and an icon.
+                With this configuration a button view get an icon in addition to its text value.
 <pre class="syntax javascript">
 M.ButtonView.design({
     value: 'myButton',
-    icon: 'grid'
+    icon: 'star'
 });
 </pre>
-                This configuration will create a button that has a text value and a icon at its left side. Since The-M-Project
-                usese jQuery Mobile for the UI, the following icons are available: <span class="code">plus</span>, <span class="code">minus</span>, <span class="code">delete</span>, <span class="code">arrow-r</span>, <span class="code">arrow-l</span>, <span class="code">arrow-u</span>, <span class="code">arrow-d</span>, <span class="code">check</span>, <span class="code">gear</span>, <span class="code">refresh</span>, <span class="code">forward</span>, <span class="code">back</span>, <span class="code">grid</span>, <span class="code">star</span>, <span class="code">alert</span>, <span class="code">info</span>, <span class="code">home</span> and <span class="code">search</span>.
+                This configuration will create a button that has a text value and a <span class="code">star</span> icon at its left side. Since The-M-Project
+                usese jQuery Mobile for the UI, the following icons are available: <span class="code">plus</span>, <span class="code">minus</span>, <span class="code">delete</span>, <span class="code">arrow-r</span>, <span class="code">arrow-l</span>, <span class="code">arrow-u</span>, <span class="code">arrow-d</span>, <span class="code">check</span>, <span class="code">gear</span>, <span class="code">refresh</span>, <span class="code">forward</span>, <span class="code">back</span>, <span class="code">grid</span>, <span class="code">star</span>, <span class="code">alert</span>, <span class="code">info</span>, <span class="code">home</span> and <span class="code">search</span>:
                 <br/>
                 <img src="images/views/screen_buttonview_icons.png" alt="M.ButtonView - Icons"/>
             </li>
             <li>
-                Specify a method (as an object), that will be executed within the <span class="code">window</span> scope.
+                This sample shows how to bind a button view to a tap event. If tapped, an alert will be raised. For further
+                information concerning the event handling, take a look at <span onclick="loadArticle('core_concepts/event_handling');">this section</span>.
 <pre class="syntax javascript">
 M.ButtonView.design({
     value: 'myButton',
