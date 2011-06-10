@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -24,8 +25,19 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        The loader view indicates a user that something is taking so much time that you need to inform him about it.
+        Typically a loader view would be shown everytime a request is done, a complex operation is performed or
+        maybe even if the application switches to another page. Besides showing and hiding a loader view, you can define
+        the message that is displayed within the loader view.
     </p>
+
+    <div class="note text">
+        Note: By showing the loader view, an internal reference counter will be increased, by hiding the loader view, this
+        counter will be decreased. We do this since it can happen, that your application fires several request at a time, but
+        receives the responses asynchronously. So without this internal stack, the first response would hide the loader view
+        visually event though other operations are still in progress.
+    </div>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -35,10 +47,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <img src="images/views/screen_loaderview.png" alt="M.LoaderView" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +66,11 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">defaultTitle</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">"loading"</td>
+            <td>This property can be used to specify the default title of a loader.</td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -85,16 +94,50 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">hide</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">force</span> (Boolean): Determines whether to force the hide of the loader.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method hides the loader. If the <span class="code">force</span> parameter is not set to YES, this method only
+                decreases the internal reference counter. If the counter gets down to 0, the loader view visually disappears.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">show</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">title</span> (String): The loader view's current title.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method shows the default loader. You can specify the displayed label with the title parameter. By calling this
+                method, the internal reference counter get increased by one.
+            </td>
         </tr>
     </table>
     
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
+
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <p class="text">There are no events available.</p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
 
 <!-- EXAMPLE -->
 <div class="contentExample">
@@ -103,17 +146,13 @@
     <p class="text">
         <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
-<pre>
-<code class="javascript">
+<pre class="syntax javascript">
     <!-- THE EXAMPLE CODE  -->
     <!--
-<pre class="syntax javascript">
 test function() {
     alert('blabla');
 }
-</pre>
     -->
-</code>
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -124,8 +163,12 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
-    </p>
+        The styling of the loader view is done by jQuery Mobile. There are three css classes responsilble for the layout:</p>
+    <ul class="text">
+        <li><span class="code">ui-loader</span>: This defines the size and position of the loader view.</li>
+        <li><span class="code">ui-body-a</span>: This defines the color and styling of the loader view.</li>
+        <li><span class="code">ui-corner-all</span>: This adds round corners to the loader view.</li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
