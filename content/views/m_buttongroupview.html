@@ -196,55 +196,27 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        As described, there are several properties available for configuring a button. The following examples show how
-        to use them properly.
+        The following sample shows how to use <span class="code">M.ButtonGroupView</span>.
     </p>
 
-    <ol>
-            <li>
-                This is the simplest configuration for a button view.
 <pre class="syntax javascript">
-M.ButtonView.design({
-    value: 'myButton'
-});
+buttonGroup: M.ButtonGroupView.design({
+    /* configure the button group as needed */
+    direction: M.VERTICAL,
+
+    /* add the child views (of type M.ButtonView) */
+    childViews: 'button1 button2',
+    
+    button1: M.ButtonView.design({
+        value: 'Button 1'
+    }),
+
+    button2: M.ButtonView.design({
+        value: 'Button 2'
+    })
+
+})
 </pre>
-            </li>
-            <li>
-                With this configuration a button view get an icon in addition to its text value.
-<pre class="syntax javascript">
-M.ButtonView.design({
-    value: 'myButton',
-    icon: 'star'
-});
-</pre>
-                This configuration will create a button that has a text value and a <span class="code">star</span> icon
-                at its left side. Since The-M-Project uses jQuery Mobile for the UI, the following icons are available:
-                <span class="code">plus</span>, <span class="code">minus</span>, <span class="code">delete</span>,
-                <span class="code">arrow-r</span>, <span class="code">arrow-l</span>, <span class="code">arrow-u</span>,
-                <span class="code">arrow-d</span>, <span class="code">check</span>, <span class="code">gear</span>,
-                <span class="code">refresh</span>, <span class="code">forward</span>, <span class="code">back</span>,
-                <span class="code">grid</span>, <span class="code">star</span>, <span class="code">alert</span>,
-                <span class="code">info</span>, <span class="code">home</span> and <span class="code">search</span>:
-                <br/>
-                <img src="images/views/screen_buttonview_icons.png" alt="M.ButtonView - Icons"/>
-            </li>
-            <li>
-                This sample shows how to bind a button view to a tap event. If tapped, an alert will be raised. For further
-                information concerning the event handling, take a look at
-                <span class="navlink" onclick="loadArticle('core_concepts/event_handling');">that section</span>.
-<pre class="syntax javascript">
-M.ButtonView.design({
-    value: 'myButton',
-    events: {
-        tap: {
-            action: function() {
-                alert('Hello World');
-        }
-    }
-});
-</pre>
-            </li>
-        </ol>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
