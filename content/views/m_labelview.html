@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -24,7 +25,10 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        The <span class="code">M.LabelView</span> is basically a view to display a text. E.g. the text that is often displayed in a
+        <span class="navlink" onclick="loadArticle('views/m_toolbarview');">M.ToolBarView</span> is a LabelView inside this bar.
+        The value of the label can be statical or dynamical. It's also a common task to localize the value of a label. It can also
+        used as a link inside the application and to external URLs.
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -35,10 +39,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+            <img src="images/views/screen_label.png" alt="M.labelView" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +58,76 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">cssClass</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to set CSS classes for a label.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">hyperlinkTarget</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+               This property can be used to specify a hyperlink target for this label. It only
+               works in combination with the <span class="code">hyperlinkType</span> property.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">hyperlinkType</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to specify a certain hyperlink type for this label. It only
+                works in combination with the <span class="code">hyperlinkTarget</span> property. Three types are available:
+                <ul>
+                    <li><span class="code">M.HYPERLINK_EMAIL</span>, for linking to an e-mail adress.</li>
+                    <li><span class="code">M.HYPERLINK_WEBSITE</span>, for linking to a URL.</li>
+                    <li><span class="code">M.HYPERLINK_PHONE</span>, for linking to a phone number.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">isInline</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                Can be used to let a label float with another following label. Both labels need to have it set to YES.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">newLineToBreak</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                Determines whether a new line '\n' within the label's value should be transformed
+                into a line break '<br/>' before it is rendered.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">tabToSpaces</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                Determines whether a tabulator '\t' within the label's value should be transformed
+                into four spaces '&#160;' before it is rendered.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">value</span></td>
+            <td>mandatory (if computedValue is not used)</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property defines the value of the label, which means the text that is displayed.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -85,16 +151,54 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">setValue</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">value</span> (String): The value to be applied on the label view..
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>Sets the label's value and initiates its re-rendering.</td>
         </tr>
     </table>
     
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
+
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">viewId</span> (String): The Id of the label, e.g. 'm_502';
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The event object.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The event is fired when a user taps on the label.
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
 
 <!-- EXAMPLE -->
 <div class="contentExample">
@@ -103,17 +207,61 @@
     <p class="text">
         <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}
+M.LabelView.design({
+    value: 'Hello, World',
+    cssClass: 'bigLabel'
+});
 </pre>
-    -->
-</code>
+<p class="text">
+A label with a content binding:
+</p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    value: '',
+    cssClass: 'bigLabel',
+    contentBinding: {
+        target: myApp.myController,
+        property: 'labelText'
+    }
+});
+
+/* activating content binding in a controller action */
+...
+this.set('labelText', 'Hello, World');
+</pre>
+<p class="text">
+A label using computed value:
+</p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    cssClass: 'dateLabel',
+    computedValue: {
+        contentBinding: {
+            target: myApp.myController,
+            property: 'timestamp'
+        },
+        value: '',
+        operation: function(v) { /* format timestamp to a readable date string */
+            return M.Date.create(v).format('dd.mm.yyyy HH:MM:ss');
+        }
+    }
+});
+
+/* activating content binding in a controller action */
+...
+this.set('timestamp', 1307720438815);
+</pre>
+<p class="text">
+A label representing a hyperlink to a website:
+</p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    cssClass: 'urlLabel',
+    value: 'Go to www.the-m-project.org',
+    hyperlinkTarget: 'http://www.the-m-project.org',
+    hyperlinkType: M.HYPERLINK_WEBSITE
+});
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -124,7 +272,9 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
+        No CSS classes are added to the LabelView by default.
+        Style it by passing classes to it via the <span class="code">cssClass</span>
+        property.
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>

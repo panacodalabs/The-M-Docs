@@ -1,0 +1,133 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.SelectionListItemView</h1>
+
+    <div class="directoryPath">
+        modules/ui/selection_list_item.js
+    </div>
+
+    <!-- remove unused links -->
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span>
+</div>
+<!-- END OF HEADER -->
+
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        <!-- TEXT DESCRIBING THE BASICS -->
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- SCREENSHOTS -->
+<div class="contentScreenshots">
+    <a name="screens"><h2 class="line">Screenshots</h2></a>
+
+    <div class="screens">
+        <p class="text">
+            See <span class="navlink" onclick="loadArticle('views/m_selectionlistview');">M.SelectionListView</span> for screenshots.
+            The entries of a SelectionListView are objects <span class="code">M.SelectionListItemView</span>.
+        </p>
+    </div>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF SCREENSHOTS -->
+
+
+<!-- PROPERTIES -->
+<div class="contentProperties">
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:15%;">Relevance</th>
+            <th style="width:10%;">Type</th>
+            <th style="width:20%;">Default value</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">isSelected</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property states whether a selection list item is selected or not.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">label</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to specify a label for a selection list item. If
+                set, the label will be displayed instead of the value, so you can use the
+                item's value as an internal value.
+                <br />
+                E.g. if you use a selection list to select a color, you could set an item's
+                value to '#FF0000' but its label to 'Red'. If there is no label specified,
+                the value is displayed instead.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">value</span></td>
+            <td>mandatory</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used internally to identify an item. If no label is defined for the
+                item, the value is also used as label.
+            </td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF PROPERTIES -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+        <p class="text">There are no public methods available. <br />
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+        <p class="text">There are no events available for the SelectionListItemView. <br /> All events are defined for
+        its parent, <span class="navlink" onclick="loadArticle('views/m_selectionlistview');">M.SelectionListView</span>.
+            <br />
+        <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        The items are defined inside the definition of a <span class="code">M.SelectionListView</span>. 
+    </p>
+<pre class="syntax javascript">
+M.SelectionListItemView.design({
+    value: 'ff0000',
+    label: 'red',
+    isSelected: YES
+});
+</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
