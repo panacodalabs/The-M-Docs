@@ -1,3 +1,5 @@
+var forcedHashChange = false;
+
 function registerArticles() {
     $('.nav li h3').each(function() {
         var category = $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
@@ -15,7 +17,7 @@ function registerArticles() {
     });
 }
 
-function loadArticle(path, firstTry) {
+function loadArticle(path, firstTry, isBack) {
     if (path === '404' && !firstTry) {
         return;
     }
@@ -28,6 +30,11 @@ function loadArticle(path, firstTry) {
             $.syntax({
                 blockLayout: "plain"
             });
+
+            if(!isBack) {
+                window.location.hash = path;
+                forcedHashChange = true;
+            }
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
@@ -56,4 +63,15 @@ $('document').ready(function() {
 
     // load home as first page to enter
     loadArticle('home');
+
+    $(window).bind('hashchange', function() {
+        if(forcedHashChange) {
+            forcedHashChange = false;
+            return;
+        }
+
+        history.back(-1);
+        loadArticle(window.location.hash, true, true);
+    });
+
 });

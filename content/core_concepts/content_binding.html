@@ -10,11 +10,8 @@
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
     <span class="navlink" onclick="scroll('start')">Let's get started!</span> &#183;
-    <span class="navlink" onclick="scroll('howto1')">How to set up content binding?</span>
-    <!--<span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
-    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
-    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
-    <span class="navlink" onclick="scroll('css')">CSS Styles</span>-->
+    <span class="navlink" onclick="scroll('howto1')">How to set up content binding?</span> &#183;
+    <span class="navlink" onclick="scroll('howto2')">How to trigger content update?</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -67,3 +64,72 @@
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF START -->
+
+<!-- HOWTO1 -->
+<div class="contentBasics">
+    <a name="howto1"><h2 class="line">How to set up content binding?</h2></a>
+
+    <p class="text">
+        Setting up the content binding for a view element is pretty convenient. You simply assign a scope and a property,
+        that is available at this scope. The following code snippet shows how to do this, using the example of a label view.
+    </p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    contentBinding: {
+        target: MyApplication.MyController
+        property: 'myProperty'
+    }
+});
+</pre>
+    <p class="text">
+        As you can see you use the <span class="code">contentBinding</span> property and pass an object, consisting of
+        <span class="code">target</span> and <span class="code">property</span>. While <span class="code">target</span>
+        specifies the scope (as an object) for the content binding, <span class="code">target</span> (as a string) defines
+        the name of a property within this scope. This property is what the view gets bound to.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF HOWTO1 -->
+
+<!-- HOWTO2 -->
+<div class="contentBasics">
+    <a name="howto2"><h2 class="line">How to trigger content update?</h2></a>
+
+    <p class="text">
+        Once you're set up, you can change the bound content and the view will update itself automatically. How do you
+        do this? It's pretty easy: Use the <span class="code">set</span> method of <span class="code">M.Controller</span>.
+        This will trigger the <span class="code">contentDidChange</span> method (c.p. observer pattern). The following source
+        code shows how to do this with a label like shown in the section above.
+    </p>
+<pre class="syntax javascript">
+/* This is the responsible controller */
+MyApplication.MyController = M.Controller.extend({
+
+    /* This is the bound property */
+    myProperty: null,
+
+    /* This is an arbitrary function that will trigger the content update */
+    myFunction: {
+        this.set('myProperty', 'I am the new value!');
+    }
+});
+</pre>
+    <p class="text">
+        By calling the controller's <span class="code">set</span> method, mainly three things happen:
+        <ol>
+            <li>
+                The property <span class="code">myProperty</span> get the value <span class="code">'I am the new value!'</span>.
+            </li>
+            <li>
+                The value of the label view gets set to exactly this value (<span class="code">'I am the new value!'</span>).
+            </li>
+            <li>
+                The <span class="code">contentDidChange</span> method of the label view gets called, to make the view update its representation.
+            </li>
+        </ol>
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF HOWTO2 -->
