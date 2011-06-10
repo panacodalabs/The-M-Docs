@@ -24,7 +24,10 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        The button view is one of the basic views of the UI library of The-M-Project. Though it is not rendered as the
+        typical HTML-based button you might know if you are a web developer, its functionality is pretty much the same.
+        A button view is a tappable / clickable area, that displays a text value and mostly will be used to trigger a
+        certain action.
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -35,10 +38,8 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <img src="images/views/screen_buttonview_1.png" alt="M.ButtonView"/>
+        <img src="images/views/screen_buttonview_2.png" alt="M.ButtonView"/>
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +58,44 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">value</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>Defines the value of the button. This value is displayed as the button's text.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isIconOnly</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>Determines whether the button is only displayed as an icon, without a text value.</td>
+        </tr>
+        <tr>
+            <td><span class="code">hyperlinkType</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>This property can be used to specify a certain hyperlink type for this button. It only works
+                in combination with the <span class="code">hyperlinkTarget</span> property.</td>
+        </tr>
+        <tr>
+            <td><span class="code">hyperlinkTarget</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>This property can be used to specify a hyperlink target for this button. It only works in combination
+                with the <span class="code">hyperlinkType</span> property.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isActive</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>Determines whether this button is active or not. Note, that this property is only used if the button
+                is part of a button group
+                (<span class="code navlink" onclick="loadArticle('views/m_buttongroupview');">M.ButtonGroupView</span>).
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -80,15 +114,23 @@
     <table class="reference" cellpadding="0" cellspacing="0">
         <tr style="height:50px;">
             <th style="width:20%;">Name</th>
-            <th style="width:35%;">Parameters</th>
-            <th style="width:10%;">Return Type</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">setValue</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">value</span> (String): The button's new value.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>This method can be used to set the button's value at runtime.
+                It updates both the <span class="code">value</span> property and the button's visual representation.
+            </td>
         </tr>
     </table>
     
@@ -96,25 +138,111 @@
 </div>
 <!-- END OF METHODS -->
 
+<!-- PUBLIC EVENTS -->
+<div class="contentMethods">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <!--
+        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no events available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The button's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user taps a button. We recommend to use this event instead of click!
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">click</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The button's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>This event is fired when a user clicks a button.</td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        As described, there are several properties available for configuring a button. The following examples show how
+        to use them properly.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
+    
+    <ol>
+            <li>
+                This is the simplest configuration for a button view.
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}
+M.ButtonView.design({
+    value: 'myButton'
+});
 </pre>
-    -->
-</code>
+            </li>
+            <li>
+                With this configuration a button view get an icon in addition to its text value.
+<pre class="syntax javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    icon: 'star'
+});
 </pre>
+                This configuration will create a button that has a text value and a <span class="code">star</span> icon
+                at its left side. Since The-M-Project uses jQuery Mobile for the UI, the following icons are available:
+                <span class="code">plus</span>, <span class="code">minus</span>, <span class="code">delete</span>,
+                <span class="code">arrow-r</span>, <span class="code">arrow-l</span>, <span class="code">arrow-u</span>,
+                <span class="code">arrow-d</span>, <span class="code">check</span>, <span class="code">gear</span>,
+                <span class="code">refresh</span>, <span class="code">forward</span>, <span class="code">back</span>,
+                <span class="code">grid</span>, <span class="code">star</span>, <span class="code">alert</span>,
+                <span class="code">info</span>, <span class="code">home</span> and <span class="code">search</span>:
+                <br/>
+                <img src="images/views/screen_buttonview_icons.png" alt="M.ButtonView - Icons"/>
+            </li>
+            <li>
+                This sample shows how to bind a button view to a tap event. If tapped, an alert will be raised. For further
+                information concerning the event handling, take a look at
+                <span class="navlink" onclick="loadArticle('core_concepts/event_handling');">that section</span>.
+<pre class="syntax javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            action: function() {
+                alert('Hello World');
+        }
+    }
+});
+</pre>
+            </li>
+        </ol>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -124,8 +252,13 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
+        Since styling a button view is currently a bit of a pain, we are working on a simplified version of a button.
+        So we spare you details on the current css. Stay tuned for updates!
     </p>
+
+    <div class="note text">
+        Note: If there are questions / issues concerning this anyway, please <a class="navlink" href="http://www.the-m-project.org/contact.html" target="_blank">contact us</a>.
+    </div>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>

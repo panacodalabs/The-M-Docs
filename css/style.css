@@ -208,3 +208,15 @@ span.navlink {
     -webkit-border-radius: 5px !important;
     border-radius: 5px !important;
 }
+
+td ul.isFirstLine {
+    padding-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+a.navlink, a.navlink:hover, a.navlink:visited {
+    color: #2bbefa;
+    font-weight: lighter;
+    text-decoration: none;
+}
