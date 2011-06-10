@@ -180,12 +180,12 @@ ul.nav ul.subnav li {
 }
 
 #container {
-    /*width: 100%; /*width: 700px;*/
+    width: 100%; /*width: 700px;*/
     float: left;
     padding: 0px 20px 20px 20px;
     overflow-y:auto;
-    position:relative;
-    margin-left:240px;
+    position:absolute;
+    left:240px;
 }
 
 #container h1:first-child {
