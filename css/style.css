@@ -214,3 +214,9 @@ td ul.isFirstLine {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+a.navlink, a.navlink:hover, a.navlink:visited {
+    color: #2bbefa;
+    font-weight: lighter;
+    text-decoration: none;
+}
