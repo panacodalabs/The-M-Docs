@@ -1,0 +1,41 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>Content Binding</h1>
+
+    <!--<div class="directoryPath">
+        modules/core/foundation/event_dispatcher.js
+    </div>-->
+
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <!--<span class="navlink" onclick="scroll('howto1')">How to bind events?</span>
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>-->
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        Handling events and being able to respond to a user's actions is essential to any UI based application.
+        As a developer you need to be able to make UI elements listen to events, more precisely to DOM events, in
+        order to perform a certain action once the corresponding event was fired.
+    </p>
+
+    <p class="text">
+        Within the The-M-Project framework, we provide a component called <span class="code">M.EventDispatcher</span>.
+        This object is used to register DOM events for all UI components. This includes events that are typically
+        fired by a certain user action, like tapping on a button (tap), and events that are fired by the framework itself,
+        like indicating that a page will be shown now (pagewillshow). The available events depend on the particular view. A button,
+        <span class="code">M.ButtonView</span>, provides the tap event, a page provides the pageshow event. A list of all events that
+        are provided by a cerain view can be found within the documentation of the view itself.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
