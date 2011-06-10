@@ -40,11 +40,22 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <img src="images/views/screen_selectionlistview_singleselection.png" alt="M.SelectionView - Single Selection" />
-        <img src="images/views/screen_selectionlistview_multipleselection.png" alt="M.SelectionView - Multiple Selection" />
-        <br />
-        <img src="images/views/screen_selectionlistview_singledialog.png" alt="M.SelectionView - Single Selection Dialog" />
+
+        <div class="imgBox">
+            M.SINGLE_SELECTION <br />
+            <img src="images/views/screen_selectionlistview_singleselection.png" alt="M.SelectionView - Single Selection" />
+        </div>
+        <div class="imgBox">
+            M.MULTIPLE_SELECTION <br />
+            <img src="images/views/screen_selectionlistview_multipleselection.png" alt="M.SelectionView - Multiple Selection" />
+        </div>
+        <div class="imgBox">
+            M.SINGLE_SELECTION_DIALOG <br />
+            <img src="images/views/screen_selectionlistview_singledialog.png" alt="M.SelectionView - Single Selection Dialog" />
+        </div>
+
     </div>
+    <div style="clear:both;"/>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF SCREENSHOTS -->
@@ -276,7 +287,7 @@ M.SelectionListView.design({
         value: 'item4',
         label: 'Item 4'
     })
-})
+});
 
 </pre>
 
@@ -303,7 +314,27 @@ M.SelectionListView.design({
             }
         }
     }
-})
+});
+
+/* activating the content binding in a controller action (means, filling the SelectionListView) */
+...
+this.set('mySelections', [  /* the value that's set must be an array of objects */
+    { /* object has value and label as property */
+        value: 'ff0000',
+        label: 'red'
+    },
+    {
+        value: '00ff00',
+        label: 'green'
+    },
+    {
+        value: '0000ff',
+        label: 'blue'
+    }
+]);
+...
+
+
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
