@@ -28,6 +28,7 @@ function loadArticle(path, firstTry) {
             $.syntax({
                 blockLayout: "plain"
             });
+            window.location.hash = path;
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
