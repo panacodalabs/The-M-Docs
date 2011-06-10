@@ -122,17 +122,26 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">setValue</span></td>
+            <td><span class="code">getActiveButton</span></td>
+            <td></td>
+            <td>M.ButtonView</td>
+            <td>
+                This method returns the currently selected button of this button group. If no
+                button is selected, null is returned.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">setActiveButton</span></td>
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">value</span> (String): The button's new value.
+                        <span class="code">button</span> (M.ButtonView, String): The button to be set active or its id.
                     </li>
                 </ul>
             </td>
             <td></td>
-            <td>This method can be used to set the button's value at runtime.
-                It updates both the <span class="code">value</span> property and the button's visual representation.
+            <td>
+                This method activates one button within the button group.
             </td>
         </tr>
     </table>
