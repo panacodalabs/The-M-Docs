@@ -204,6 +204,14 @@ buttonGroup: M.ButtonGroupView.design({
     /* configure the button group as needed */
     direction: M.VERTICAL,
 
+    /* add event listener for the 'change' event */
+    events: {
+        change: {
+            target: MyApplication.MyController,
+            action: 'myFunction'
+        }
+    }
+
     /* add the child views (of type M.ButtonView) */
     childViews: 'button1 button2',
     
