@@ -54,8 +54,8 @@
     <p class="text">
         How does this work? How does the first textfield tell the second one that it's content changed? Do they
         communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a “central instance”, an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This “central instance” is realised as a property of the
+        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
+        a property that is again set by the first textfield. This "central instance" is realised as a property of the
         corresponding controller to our views. The following sequence diagram illustrates this process of changing the
         value inside the first textfield and delegating these changes right to the second textfield.
     </p>
