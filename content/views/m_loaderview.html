@@ -144,15 +144,23 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        The only thing you can do with a loader view is to show / hide it. So the following coe snippets show how to do this:
     </p>
 <pre class="syntax javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
-test function() {
-    alert('blabla');
-}
-    -->
+/* show the loader with the default title */
+M.LoaderView.show();
+
+/* hide the loader view */
+M.LoaderView.show();
+
+/* set the loader view's default title */
+M.LoaderView.defaultTitle = 'in progress...';
+
+/* show the loader with a custom title */
+M.LoaderView.show('custom message');
+
+/* fore the loader view to hide */
+M.LoaderView.hide(YES);
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
