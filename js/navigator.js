@@ -61,9 +61,6 @@ $('document').ready(function() {
     // load home as first page to enter
     loadArticle('home');
 
-    // initialize the bookmarks script
-    bookmarks.initialize();
-
     $(window).bind('hashchange', function() {
         alert('fuck');
     });
