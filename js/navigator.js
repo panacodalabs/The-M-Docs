@@ -89,6 +89,17 @@ function generateIndex() {
     console.log(index);
 }
 
+function find(searchString) {
+    var results = [];
+    for(var i in index) {
+        if(index[i].indexOf(searchString) >= 0) {
+            results.push(i);
+        }
+    }
+    console.log(searchString + ' found in :');
+    console.log(results);
+}
+
 $('document').ready(function() {
     registerArticles();
 
