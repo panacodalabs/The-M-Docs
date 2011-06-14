@@ -124,8 +124,10 @@ DynamicValueComputing.app = M.Application.design({
             button1: M.ButtonView.design({
                 value: 'Click Me',
                 events: {
-                    target: BindingSample.CountController,
-                    action: 'addClick'
+                    tap: {
+                        target: DynamicValueComputing.CountController,
+                        action: 'addClick'
+                    }
                 }
             })
         })
