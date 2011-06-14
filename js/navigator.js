@@ -69,15 +69,23 @@ function filter(predicate) {
 }
 
 function generateIndex() {
-    $.ajax({
-        url: 'index_builder/generator.php',
-        success: function(data) {
-            console.log(data);
-        },
-        error: function(xhr, error) {
-            alert(error);
-        }
+    index = {};
+    $('.nav li h3').each(function() {
+        var category = $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
+        $(this).siblings('ul .subnav').each(function() {
+            $(this).find('li').each(function() {
+                var path = category + '/' + $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
+                var text = $(this).text();
+                $.ajax({
+                    url: 'content/' + path + '.html',
+                    success: function(data) {
+                        index[text] = data;
+                    }
+                });
+            });
+        });
     });
+    console.log(index);
 }
 
 $('document').ready(function() {
