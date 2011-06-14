@@ -86,7 +86,6 @@ $('document').ready(function() {
             return;
         }
 
-        history.back(-1);
         loadArticle(window.location.hash.substring(1), false, true);
     });
 
