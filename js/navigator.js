@@ -79,7 +79,7 @@ function generateIndex() {
                 $.ajax({
                     url: 'content/' + path + '.html',
                     success: function(data) {
-                        index[text] = data;
+                        index[text] = data.replace(/(<.*?>)/ig,"");
                     }
                 });
             });
