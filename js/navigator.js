@@ -71,7 +71,7 @@ function filter(predicate) {
 function generateIndex() {
     /* register keyup event to search bar */
     $('#search').bind('keyup', function() {
-        find($('#search').text());
+        find($('#search').val());
     });
 
     /* build index */
