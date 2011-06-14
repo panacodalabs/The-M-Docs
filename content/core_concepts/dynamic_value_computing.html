@@ -9,7 +9,7 @@
     </div>-->
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('howto1')">How do I use it?</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -18,34 +18,59 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+        Dynamic Value Computing is a special feature within our framework to enrich the default Data Binding
+        with the functionality to dynamically generate an output value based on both a bound property and a
+        custom method, that is applied to this value right before it is output. So for example you are able to
+        format an <span class="code">M.LabelView</span> or to add CSS classes based on the given value. Besides
+        processing single values, it is also possible to use Dynamic Value Computing with our
+        <span class="code">M.ListView</span> to apply a custom method to multiple uniform elements in a row.
     </p>
-
-    <div class="screens">
-        <!--<img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />-->
-    </div>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
-<!-- START-->
+<!-- HOWTO1 -->
 <div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
+    <a name="howto1"><h2 class="line">How do I use it?</h2></a>
 
     <p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
+        To explain you how to use Dynamic Value Computing, it is the best to dive right into some sample code:
     </p>
 
-    <div class="screens">
-        <!--<img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />-->
-    </div>
+<pre class="syntax javascript">
+M.LabelView.design({
+    computedValue: {
+        contentBinding: {
+            target: MyApp.MyController,
+            property: 'myNumber'
+        },
+        value: 0,
+        operation: function(v) {
+            return M.Math.pow(v, 2);
+        }
+    }
+})
+</pre>
+
+    <p class="text">
+        As you can see, we defined an <span class="code">M.LabelView</span> and its <span class="code">computedValue</span>
+        property. This property is kind of the trigger for using Dynamic Value Computing at all. Now everytime the bound
+        controller property, <span class="code">SampleApp.MyController.aNumber</span>, changes, the method defined with
+        the <span class="code">operation</span> property is applied to the value and the result of this method is then
+        assigned to the label's value. For example, let's say <span class="code">SampleApp.MyController.aNumber</span> is
+        set to 4, then this number is passed as he first parameter, <span class="code">v</span>, to our custom method.
+        So internally this method looks like:
+    </p>
+
+<pre class="syntax javascript">
+return M.Math.pow(4, 2);
+</pre>
+
+    <p class="text">
+        The result of this operation, 16, is then assigned to the label's value. 
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF START -->
+<!-- HOWTO1 -->
