@@ -9,7 +9,8 @@
     </div>-->
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('howto1')">How do I use it?</span>
+    <span class="navlink" onclick="scroll('howto1')">How do I use it?</span> &#183;
+    <span class="navlink" onclick="scroll('howto2')">A real example</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -74,3 +75,74 @@ return M.Math.pow(4, 2);
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- HOWTO1 -->
+
+<!-- HOWTO2 -->
+<div class="contentBasics">
+    <a name="howto2"><h2 class="line">Ok, nice. But how about a real example?</h2></a>
+
+    <p class="text">
+        What you should know so far is what Dynamic Value Computing basically means and that there is a view
+        property called <span class="code">computedValue</span> available. Now we will take a look at a real example
+        app. Let's say our app has a simple button and everytime we click this button, a controller property counting
+        these clicks is increased. Besides this button, there are two labels defined, the first simply displays the
+        number of clicks, the second displays this number squared. What we could do to solve this problem is to
+        create two controller properties that are individually set every the button is clicked. But to keep the
+        controller as simple as possible and to encapsulate view-related things within the view itself, we will
+        use Dynamic Value Computing instead. Now let's take a look at our view:
+    </p>
+
+<pre class="syntax javascript">
+DynamicValueComputing.app = M.Application.design({
+    page: M.PageView.design({
+        childViews: 'content',
+
+        content: M.ScrollView.design({
+            childViews: 'label1 label2 button1',
+    
+            label1: M.LabelView.design({
+                contentBinding: {
+                    target: DynamicValueComputing.CountController,
+                    property: 'numberOfClicks'
+                }
+                value: '0'
+            }),
+
+            label2: M.LabelView.design({
+                computedValue: {
+                    contentBinding: {
+                        target: DynamicValueComputing.CountController,
+                        property: 'numberOfClicks'
+                    },
+                    value: 0,
+                    operation: function(v) {
+                        return M.Math.pow(v, 2);
+                    }
+                }
+            }),
+
+            button1: M.ButtonView.design({
+                value: 'Click Me',
+                events: {
+                    target: BindingSample.CountController,
+                    action: 'addClick'
+                }
+            })
+        })
+    })
+});
+</pre>
+
+    <p class="text">
+        As you can see, <span class="code">label1</span> simply uses the <span class="code">contentBinding</span>
+        property to display the number of clicks stored in the <span class="code">CountController</span>'s
+        <span class="code">numberOfClicks</span> property. The second label instead, <span class="code">label2</span>,
+        uses the <span class="code">computedValue</span> property to apply a method to this bound value.
+        So after e.g. 10 clicks, the first label will display a simple <span class="code">10</span>. The second label instead
+        will compute the square of this value and display a <span class="code">100</span>. But neither the button nor the
+        controller now about this computation. Only the view, <span class="code">label2</span>, that is responsible for
+        displaying it, knows this computed value. So the whole process is totally encapsulated within the view itself.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- HOWTO2 -->
