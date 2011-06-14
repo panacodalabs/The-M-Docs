@@ -69,6 +69,12 @@ function filter(predicate) {
 }
 
 function generateIndex() {
+    /* register keyup event to search bar */
+    $('#search').bind('keyup', function() {
+        find($('#search').text());
+    });
+
+    /* build index */
     index = {};
     $('.nav li h3').each(function() {
         var category = $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
@@ -86,7 +92,6 @@ function generateIndex() {
             });
         });
     });
-    console.log(index);
 }
 
 function find(searchString) {
@@ -96,7 +101,7 @@ function find(searchString) {
             results.push(i);
         }
     }
-    alert(searchString + ' found in :\n' + results);
+    console.log(searchString + ' found in :\n' + results);
 }
 
 $('document').ready(function() {
