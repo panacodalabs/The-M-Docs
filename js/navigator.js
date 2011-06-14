@@ -70,7 +70,13 @@ function filter(predicate) {
 
 function generateIndex() {
     $.ajax({
-        url: 'index_builder/generate.php'
+        url: 'index_builder/generate.php',
+        success: function(data) {
+            alert(data);
+        },
+        error: function(xhr, error) {
+            alert(error);
+        }
     });
 }
 

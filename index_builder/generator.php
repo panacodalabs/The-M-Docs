@@ -4,4 +4,6 @@
     fwrite($handle, 'TEST');
     fclose($handle);
 
+    die('TEST');
+
 ?>
