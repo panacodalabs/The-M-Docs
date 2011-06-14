@@ -10,7 +10,8 @@
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
     <span class="navlink" onclick="scroll('howto1')">How do I use it?</span> &#183;
-    <span class="navlink" onclick="scroll('howto2')">A real example</span>
+    <span class="navlink" onclick="scroll('howto2')">A real example</span> &#183;
+    <span class="navlink" onclick="scroll('howto3')">DVC and list views</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -103,7 +104,7 @@ DynamicValueComputing.app = M.Application.design({
                 contentBinding: {
                     target: DynamicValueComputing.CountController,
                     property: 'numberOfClicks'
-                }
+                },
                 value: '0'
             }),
 
@@ -146,3 +147,45 @@ DynamicValueComputing.app = M.Application.design({
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- HOWTO2 -->
+
+<!-- HOWTO2 -->
+<div class="contentBasics">
+    <a name="howto3"><h2 class="line">What about list views?</h2></a>
+
+    <p class="text">
+        As mentioned above, you can also use Dynamic Value Computing with <span class="code">M.ListView</span>. It
+        basically works the same as with a normal view, only that we do not use the <span class="code">contentBinding</span>
+        property but the <span class="code">valuePattern</span> property within our template view. The following code
+        snippet shows how this could look:
+    </p>
+
+<pre class="syntax javascript">
+// Here we define our list view
+myList: M.ListView.design({
+    contentBinding: {
+        target: ListApp.ListController,
+        property: 'listItems'
+    },
+    listItemTemplateView: ListApp.ListItemView
+})
+
+// ...
+
+// Here we define our list view's list item template view
+ListApp.ListItemView= M.ListItemView.design({
+    childViews: 'label1',
+
+    label1: M.LabelView.design({
+        computedValue: {
+            valuePattern: '<%= property1 %>',
+            operation: function(v) {
+                return '_' + property1 + '_';
+            }
+        }
+    })
+});
+</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- HOWTO3 -->
