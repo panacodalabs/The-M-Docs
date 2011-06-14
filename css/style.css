@@ -139,6 +139,15 @@ ul.nav ul.subnav li {
 #filterField {
     margin-top:15px;
     margin-left:15px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    width: 80%;
+    color: #888;
+    font-size:0.9em;
+    line-heigt:1em;
+    font-weight: 100;
+    font-family: Helvetica, Arial, san-serif;
+    box-shadow: 0 0 5px 1px #aaa;
 }
 
 #header {

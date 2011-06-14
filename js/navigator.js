@@ -60,7 +60,7 @@ function scroll(anchor, disableAnimation) {
 
 function filter(predicate) {
     $("ul.subnav li").each(function() {
-        if($(this).text().indexOf(predicate) !== -1) {
+        if($(this).text().toLowerCase().indexOf(predicate.toLowerCase()) !== -1) {
             $(this).show();
         } else {
             $(this).hide();
