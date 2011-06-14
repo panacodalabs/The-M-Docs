@@ -59,19 +59,13 @@ function scroll(anchor, disableAnimation) {
 }
 
 function filter(predicate) {
-    var regex = new RegExp(maskForRegex(predicate));
-
     $("ul.subnav li").each(function() {
-        if(!regex.test($(this).text()) && predicate !== "") {
-            $(this).hide();
-        } else {
+        if($(this).text().indexOf(predicate) !== -1) {
             $(this).show();
+        } else {
+            $(this).hide();
         }
     });
-}
-
-function maskForRegex(predicate) {
-    return predicate.replace('.', '\.');
 }
 
 $('document').ready(function() {
@@ -91,7 +85,6 @@ $('document').ready(function() {
 
     // bind changes in filter field to filter funtion
     $("input[id='filterField']").keyup(function() {
-        var predicate = $(this).val();
-        filter(predicate);
+        filter($(this).val());
     });
 });
