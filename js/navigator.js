@@ -68,11 +68,20 @@ function filter(predicate) {
     });
 }
 
+function generateIndex() {
+    $.ajax({
+        url: 'index_builder/generate.php'
+    });
+}
+
 $('document').ready(function() {
     registerArticles();
 
     // load home as first page to enter
     loadArticle('home');
+
+    // generate the index
+    generateIndex();
 
     $(window).bind('hashchange', function() {
         if(forcedHashChange) {
