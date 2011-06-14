@@ -136,6 +136,11 @@ ul.nav ul.subnav li {
     cursor: pointer;
 }
 
+#filterField {
+    margin-top:15px;
+    margin-left:15px;
+}
+
 #header {
     height:50px;
     margin:0px;

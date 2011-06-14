@@ -58,6 +58,22 @@ function scroll(anchor, disableAnimation) {
     }
 }
 
+function filter(predicate) {
+    var regex = new RegExp(maskForRegex(predicate));
+
+    $("ul.subnav li").each(function() {
+        if(!regex.test($(this).text()) && predicate !== "") {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
+}
+
+function maskForRegex(predicate) {
+    return predicate.replace('.', '\.');
+}
+
 $('document').ready(function() {
     registerArticles();
 
@@ -74,4 +90,9 @@ $('document').ready(function() {
         loadArticle(window.location.hash.substring(1), false, true);
     });
 
+    // bind changes in filter field to filter funtion
+    $("input[id='filterField']").keyup(function() {
+        var predicate = $(this).val();
+        filter(predicate);
+    });
 });
