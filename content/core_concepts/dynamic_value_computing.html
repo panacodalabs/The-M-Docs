@@ -155,24 +155,24 @@ DynamicValueComputing.app = M.Application.design({
     <p class="text">
         As mentioned above, you can also use Dynamic Value Computing with <span class="code">M.ListView</span>. It
         basically works the same as with a normal view, only that we do not use the <span class="code">contentBinding</span>
-        property but the <span class="code">valuePattern</span> property within our template view. The following code
-        snippet shows how this could look:
+        property but the <span class="code">valuePattern</span> property within our template view
+        (<span class="code">MyApp.myTemplateView</span>). The following code snippet shows how this could look:
     </p>
 
 <pre class="syntax javascript">
 // Here we define our list view
-myList: M.ListView.design({
+M.ListView.design({
     contentBinding: {
-        target: ListApp.ListController,
-        property: 'listItems'
+        target: MyApp.MyController,
+        property: 'myListItems'
     },
-    listItemTemplateView: ListApp.ListItemView
+    listItemTemplateView: MyApp.myTemplateView
 })
 
 // ...
 
 // Here we define our list view's list item template view
-ListApp.ListItemView= M.ListItemView.design({
+MyApp.myTemplateView = M.ListItemView.design({
     childViews: 'label1',
 
     label1: M.LabelView.design({
@@ -187,5 +187,6 @@ ListApp.ListItemView= M.ListItemView.design({
 </pre>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+    
 </div>
 <!-- HOWTO3 -->
