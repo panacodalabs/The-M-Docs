@@ -243,3 +243,7 @@ a.navlink, a.navlink:hover, a.navlink:visited {
     float:left;
     padding:2px;
 }
+
+#searchBar {
+    float:right;
+}
