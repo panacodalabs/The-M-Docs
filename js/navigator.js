@@ -72,7 +72,15 @@ function generateIndex() {
     $.ajax({
         url: 'index_builder/generator.php',
         success: function(data) {
-            alert(data);
+            $.ajax({
+                url: 'index_builder/index.json',
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(xhr, error) {
+                    alert(error);
+                }
+            });
         },
         error: function(xhr, error) {
             alert(error);
