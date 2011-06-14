@@ -92,12 +92,11 @@ function generateIndex() {
 function find(searchString) {
     var results = [];
     for(var i in index) {
-        if(index[i].indexOf(searchString) >= 0) {
+        if(index[i].toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
             results.push(i);
         }
     }
-    console.log(searchString + ' found in :');
-    console.log(results);
+    alert(searchString + ' found in :\n' + results);
 }
 
 $('document').ready(function() {
