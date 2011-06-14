@@ -246,4 +246,13 @@ a.navlink, a.navlink:hover, a.navlink:visited {
 
 #searchBar {
     float:right;
+    margin-right: 25px;
+    margin-top: 15px;
+    height: 20px;
+}
+
+#searchBar input {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
