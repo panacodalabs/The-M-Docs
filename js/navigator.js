@@ -101,14 +101,13 @@ function generateIndex() {
                 $.ajax({
                     url: 'content/' + path + '.html',
                     success: function(data) {
-                        /*index[text] = data.replace(/(<.*?>)/ig, '');
-                        index[text] = index[text].replace(/(<!--.*?-->)/ig, '');*/
                         var regex = /<[\s]*p[\s]+class[\s]*={1}[\s]*"{1}[\s]*[^"]*text{1}[^"]*"{1}[\s]*>{1}[A-Za-z0-9\s,;_\.:\?\/\(\)'\-"<>=]*<\/p>/g;
                         var regexResult = data.match(regex);
                         var content = '';
                         if(regexResult) {
                             for (var i = 0; i < regexResult.length; ++i) {
                                 content += regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
+                                console.log(content);
                             }
                         }
                         index[text] = content;
@@ -162,9 +161,6 @@ function showSearchResults(searchString, results) {
 }
 
 function filterResult(searchString, result) {
-    result = result.replace(/\n/g, '');
-    result = result.replace(/\t/g, '');
-    console.log(result);
     return searchString;
 }
 
