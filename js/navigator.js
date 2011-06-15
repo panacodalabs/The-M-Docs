@@ -164,7 +164,13 @@ function filterResult(searchString, result, position) {
     var end = position + searchString.length + (start === 0 ? 400 : 200) >= result.length ? result.length : position + searchString.length + (start === 0 ? 400 : 200);
     start = end === result.length ? (position - 400 >= 0 ? position - 400 : 0) : start;
     result = (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
-    result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + RegExp.$1 + '</span>');
+    //result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + RegExp.$1 + '</span>');
+    var str = result;
+    result = '';
+    while(str.indexOf(searchString) >= 0) {
+        result += str.substring(str.indexOf(searchString)) + '<span class="highlight">' + str.substring(str.indexOf(searchString), str.indexOf(searchString) + searchString.length) + '</span>';
+        str = str.substring(str.indexOf(searchString) + searchString.length);
+    }
     return result;
 }
 
