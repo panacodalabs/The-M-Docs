@@ -276,6 +276,7 @@ a.navlink, a.navlink:hover, a.navlink:visited {
 #searchBar #searchButton:active {
     background: -moz-linear-gradient(top, #0f0d0d 0%, #6b6b6b);
     background: -webkit-gradient(linear, left top, left bottom, from(#0f0d0d), to(#6b6b6b));
+    color: #2bbefa;
 }
 
 #searchBar #search {
