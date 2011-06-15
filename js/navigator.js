@@ -128,6 +128,10 @@ function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
         html += '<h3>' + results[i].name + '</h3>';
+        html += '<p class="text">';
+        html += '... ' + index[results[i].name].substring((results[i].position - 15 >= 0 ? results[i].position : 0), (results[i].position + 15 > index[results[i].name].length ? index[results[i].name].length - results[i].position : results[i].position + 15));
+        html += '</p>';
+        html += '<span class="navlink" onclick="scroll(\'top\')">&rarr; goto</span>';
     }
     $('#searchResults').html(html);
 
