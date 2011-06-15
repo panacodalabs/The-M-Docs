@@ -93,9 +93,20 @@ function generateIndex() {
             fireSearch();
         }
     });
-    /* register keyup event to search bar */
+
+    /* register keyup event to search button */
     $('#searchButton').bind('click', function(evt) {
         fireSearch();
+    });
+
+    /* register mouseenter event to search button */
+    $('#searchButton').bind('mouseenter', function(evt) {
+        $(this).val('chraes');
+    });
+
+    /* register mouseenter event to search button */
+    $('#searchButton').bind('mouseleave', function(evt) {
+        $(this).val('search');
     });
 
     /* register focus event to search bar */
