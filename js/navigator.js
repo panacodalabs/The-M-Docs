@@ -83,7 +83,7 @@ function generateIndex() {
         if(evt.keyCode === 13) {
             var searchString = $('#search').val();
             searchString = searchString.replace(/\/\(\)\[\]\.\?\*/g, '');
-            if(!(!searchString || searchString.val() === '')) {
+            if(!(!searchString || searchString === '')) {
                 loadArticle('search', false, false,searchString);
             } else {
                 $('#search').focus();
