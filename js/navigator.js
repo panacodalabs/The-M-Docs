@@ -70,13 +70,11 @@ function filter(predicate) {
 
 function generateIndex() {
     /* register keyup event to search bar */
-    $('#search').bind('keyup', function() {
-        find($('#search').val());
-    });
-
-    /* register focus event to search bar */
-    $('#search').bind('focus', function() {
-        loadArticle('search');
+    $('#search').bind('keyup', function(evt) {
+        if(evt.keyCode === 13) {
+            loadArticle('search');
+            find($('#search').val());
+        }
     });
 
     /* build index */
