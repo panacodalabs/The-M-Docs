@@ -177,7 +177,7 @@ function filterResult(searchString, result, position) {
         str = str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length);
     }
     console.log(str);
-    result += str;
+    //result += str;
     return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
 }
 
