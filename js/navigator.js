@@ -104,6 +104,7 @@ function generateIndex() {
                         var regex = /<[\s]*p[\s]+class[\s]*={1}[\s]*"{1}[\s]*[^"]*text{1}[^"]*"{1}[\s]*>{1}[A-Za-z0-9\s,;_\.:\?\/\(\)'\-"<>=]*<\/p>/g;
                         var regexResult = data.match(regex);
                         var content = '';
+                        var path = category + '/' + $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
                         if(regexResult) {
                             for (var i = 0; i < regexResult.length; ++i) {
                                 var tmp = regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
@@ -115,7 +116,10 @@ function generateIndex() {
                                 content += tmp;
                             }
                         }
-                        index[text] = content;
+                        index[text] = {
+                            content: content,
+                            path: path
+                        };
                     }
                 });
             });
@@ -126,7 +130,7 @@ function generateIndex() {
 function find(searchString) {
     var results = [];
     for(var i in index) {
-        var position = index[i].toLowerCase().indexOf(searchString.toLowerCase());
+        var position = index[i].content.toLowerCase().indexOf(searchString.toLowerCase());
         if(position >= 0) {
             results.push({
                 name: i,
@@ -140,12 +144,12 @@ function find(searchString) {
 function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
-        var text = filterResult(searchString, index[results[i].name], results[i].position);
+        var text = filterResult(searchString, index[results[i].name].content, results[i].position);
         html += '<h3>' + results[i].name + '</h3>';
         html += '<p class="text">';
         html += text;
         html += '</p>';
-        html += '<span class="navlink" onclick="scroll(\'top\')">&rarr; goto</span>';
+        html += '<span class="navlink" onclick="loadArticle(\'' + index[results[i].name].content + '\');">&rarr; goto</span>';
     }
     $('#searchResults').html(html);
 }
