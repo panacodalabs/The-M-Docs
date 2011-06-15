@@ -82,7 +82,7 @@ function generateIndex() {
     $('#search').bind('keyup', function(evt) {
         if(evt.keyCode === 13) {
             var searchString = $('#search').val();
-            searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
+            //searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
             if(!(!searchString || searchString === '')) {
                 loadArticle('search', false, false,searchString);
             } else {
@@ -171,7 +171,7 @@ function filterResult(searchString, result, position) {
         result += str.substring(0, str.indexOf(searchString)) + '<span class="highlight">' + str.substring(str.indexOf(searchString), str.indexOf(searchString) + searchString.length) + '</span>';
         str = str.substring(str.indexOf(searchString) + searchString.length);
     }
-    return result;
+    return result + str;
 }
 
 $('document').ready(function() {
