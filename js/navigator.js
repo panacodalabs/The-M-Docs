@@ -180,7 +180,7 @@ function filterResult(searchString, result, position) {
     result = replaceAll(result, searchString, '<span class="highlight">' + searchString + '</span>');
     //console.log(str);
     //result += str;
-    return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
+    return result;//(start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
 }
 
 function replaceAll(oldStr, findStr, repStr) {
