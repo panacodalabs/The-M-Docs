@@ -43,7 +43,9 @@ function loadArticle(path, firstTry, isBack, searchString) {
             }
 
             /* now update the dom and enter the search results */
-            showSearchResults(searchString, results);
+            if(searchString && searchString != '') {
+                showSearchResults(searchString, results);
+            }
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
@@ -80,11 +82,7 @@ function filter(predicate) {
 function fireSearch() {
     var searchString = $('#search').val();
     //searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
-    if(!(!searchString || searchString === '')) {
-        loadArticle('search', false, false,searchString);
-    } else {
-        $('#searchResults').html('');
-    }
+    loadArticle('search', false, false, searchString ? searchString : '');
     //$('#search').focus();
 }
 
