@@ -148,9 +148,9 @@ function showSearchResults(searchString, results) {
 }
 
 function filterResult(searchString, result, position) {
-    var start = position - 120 >= 0 ? position - 120 : 0;
-    var end = position + searchString.length + (start === 0 ? 240 : 120) >= result.length ? result.length : position + searchString.length + (start === 0 ? 150 : 75);
-    start = end === result.length ? (position - 240 >= 0 ? position - 240 : 0) : start;
+    var start = position - 200 >= 0 ? position - 200 : 0;
+    var end = position + searchString.length + (start === 0 ? 400 : 200) >= result.length ? result.length : position + searchString.length + (start === 0 ? 150 : 75);
+    start = end === result.length ? (position - 400 >= 0 ? position - 400 : 0) : start;
     result = (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
     result = result.replace(new RegExp(searchString, 'g'), '<span class="highlight">' + searchString + '</span>');
     return result;
