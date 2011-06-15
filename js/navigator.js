@@ -106,7 +106,7 @@ function generateIndex() {
                         var content = '';
                         if(regexResult) {
                             for (var i = 0; i < regexResult.length; ++i) {
-                                content += regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
+                                content += regexResult[i].replace(/[^<]*<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
                                 console.log(content);
                             }
                         }
