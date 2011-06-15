@@ -101,7 +101,7 @@ function generateIndex() {
 
     /* register mouseenter event to search button */
     $('#searchButton').bind('mouseenter', function(evt) {
-        $(this).val('chraes');
+        $(this).val('PUSH');
     });
 
     /* register mouseenter event to search button */
