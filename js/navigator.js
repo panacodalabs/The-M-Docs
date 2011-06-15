@@ -83,7 +83,7 @@ function fireSearch() {
     if(!(!searchString || searchString === '')) {
         loadArticle('search', false, false,searchString);
     }
-    $('#search').focus();
+    //$('#search').focus();
 }
 
 function generateIndex() {
