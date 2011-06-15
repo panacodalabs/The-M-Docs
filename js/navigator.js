@@ -17,7 +17,7 @@ function registerArticles() {
     });
 }
 
-function loadArticle(path, firstTry, isBack, searchSring) {
+function loadArticle(path, firstTry, isBack, searchString) {
     if (path === '404' && !firstTry) {
         return;
     }
@@ -25,8 +25,10 @@ function loadArticle(path, firstTry, isBack, searchSring) {
     $.ajax({
         url: 'content/' + path + '.html',
         success: function(data) {
-            if(searchSring) {
-                data = data.replace(/<%= searchString %>/g, searchSring);
+            if(searchString) {
+                var results = find(searchString);
+                data = data.replace(/<%= searchString %>/g, searchString);
+                data = data.replace(/<%= numResults %>/g, results.length);
             }
             
             $('#container').html(data);
@@ -112,6 +114,7 @@ function find(searchString) {
             results.push(i);
         }
     }
+    return results;
 }
 
 $('document').ready(function() {
