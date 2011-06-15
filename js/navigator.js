@@ -85,9 +85,8 @@ function generateIndex() {
             //searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
             if(!(!searchString || searchString === '')) {
                 loadArticle('search', false, false,searchString);
-            } else {
-                $('#search').focus();
             }
+            $('#search').focus();
         }
     });
 
