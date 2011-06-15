@@ -175,7 +175,6 @@ function filterResult(searchString, result, position) {
     while(str.toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
         result += str.substring(0, str.toLowerCase().indexOf(searchString.toLowerCase())) + '<span class="highlight">' + str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()), str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length) + '</span>';
         str = str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length);
-        console.log(str);
     }
     //console.log(str);
     //result += str;
