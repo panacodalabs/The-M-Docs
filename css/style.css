@@ -283,10 +283,6 @@ a.navlink, a.navlink:hover, a.navlink:visited {
     color: #000000;
 }
 
-#searchBar #search:focus {
-    border: 1px solid #2bbefa;
-}
-
 #searchBar #searchButton {
     cursor: pointer;
 }
