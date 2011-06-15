@@ -154,6 +154,7 @@ function showSearchResults(searchString, results) {
 
 function filterResult(searchString, result) {
     result = result.replace(/\n/g, '');
+    result = result.replace(/\t+/g, ' ');
     console.log(result);
     return searchString;
 }
