@@ -153,7 +153,7 @@ function showSearchResults(searchString, results) {
 }
 
 function filterResult(searchString, result) {
-    console.log(result);
+    console.log(index[result]);
     return searchString;
 }
 
