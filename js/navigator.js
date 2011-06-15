@@ -27,8 +27,8 @@ function loadArticle(path, firstTry, isBack, searchString) {
         success: function(data) {
             if(searchString) {
                 var results = find(searchString);
-                data = data.replace(/<%= searchString %>/g, searchString);
-                data = data.replace(/<%= numResults %>/g, results.length);
+                /*data = data.replace(/<%= searchString %>/g, searchString);
+                data = data.replace(/<%= numResults %>/g, results.length);*/
             }
             
             $('#container').html(data);
@@ -81,7 +81,9 @@ function generateIndex() {
     /* register keyup event to search bar */
     $('#search').bind('keyup', function(evt) {
         if(evt.keyCode === 13) {
-            loadArticle('search', false, false, $('#search').val());
+            if((!$('#search').val() || $('#search').val() === '')) {
+                loadArticle('search', false, false, $('#search').val());
+            }
         }
     });
 
