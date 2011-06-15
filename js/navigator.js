@@ -162,7 +162,7 @@ function showSearchResults(searchString, results) {
 function filterResult(searchString, result, position) {
     var start = position - 50 >= 0 ? position - 50 : 0;
     var end = position + 50 >= result.length ? result.length : position + 50;
-    return result.substring(start, end);
+    return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
 }
 
 $('document').ready(function() {
