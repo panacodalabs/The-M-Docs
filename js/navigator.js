@@ -172,14 +172,27 @@ function filterResult(searchString, result, position) {
     //result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + RegExp.$1 + '</span>');
     var str = result;
     result = '';
-    while(str.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 && str.toLowerCase().indexOf(searchString.toLowerCase()) < result.length) {
+    /*while(str.toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
         result += str.substring(0, str.toLowerCase().indexOf(searchString.toLowerCase())) + '<span class="highlight">' + str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()), str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length) + '</span>';
         str = str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length);
         console.log(str);
-    }
+    }*/
+    result = replaceAll(result, searchString, '<span class="highlight">' + searchString + '</span>');
     //console.log(str);
     //result += str;
     return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
+}
+
+function replaceAll(oldStr, findStr, repStr) {
+    var srchNdx = 0;
+    var newStr = '';
+    while (oldStr.indexOf(findStr, srchNdx) != -1) {
+        newStr += oldStr.substring(srchNdx, oldStr.indexOf(findStr, srchNdx));
+        newStr += repStr;
+        srchNdx = (oldStr.indexOf(findStr, srchNdx) + findStr.length);
+    }
+    newStr += oldStr.substring(srchNdx, oldStr.length);
+    return newStr;
 }
 
 $('document').ready(function() {
