@@ -117,7 +117,7 @@ function generateIndex() {
                                 tmp = tmp.replace(/<\/span>/g, '');
                                 tmp = tmp.replace(/<\/p>/g, '');
                                 tmp = tmp.replace(/<\/pre>/g, '');
-                                alert(tmp);
+                                console.log(tmp);
                                 content += tmp;
                             }
                         }
