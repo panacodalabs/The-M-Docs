@@ -162,6 +162,9 @@ function showSearchResults(searchString, results) {
 function filterResult(searchString, result, position) {
     var start = position - 25 >= 0 ? 0 : position;
     var end = position + 25 >= result.length ? result.length : position + 25;
+    console.log(position);
+    console.log(start);
+    console.log(end);
     return result.substring(start, end);
 }
 
