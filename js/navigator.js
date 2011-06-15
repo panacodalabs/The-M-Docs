@@ -127,9 +127,10 @@ function find(searchString) {
 function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
+        var text = filterResult(searchString, results[i].name);
         html += '<h3>' + results[i].name + '</h3>';
         html += '<p class="text">';
-        html += '... ' + index[results[i].name].substring((results[i].position - 15 >= 0 ? results[i].position : 0), (results[i].position + 15 > index[results[i].name].length ? index[results[i].name].length - results[i].position : results[i].position + 15));
+        html += text;
         html += '</p>';
         html += '<span class="navlink" onclick="scroll(\'top\')">&rarr; goto</span>';
     }
@@ -149,6 +150,11 @@ function showSearchResults(searchString, results) {
     </p>
     <span class="navlink" onclick="scroll('top')">&rarr; goto</span>
      */
+}
+
+function filterResult(searchString, result) {
+    console.log(result);
+    return searchString;
 }
 
 $('document').ready(function() {
