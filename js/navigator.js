@@ -29,10 +29,6 @@ function loadArticle(path, firstTry, isBack, searchString) {
                 var results = find(searchString);
                 data = data.replace(/<%= searchString %>/g, searchString);
                 data = data.replace(/<%= numResults %>/g, results.length);
-
-                for(var i in results) {
-                    var html = '';
-                }
             }
             
             $('#container').html(data);
@@ -45,6 +41,9 @@ function loadArticle(path, firstTry, isBack, searchString) {
                 window.location.hash = path;
                 forcedHashChange = true;
             }
+
+            /* now update the dom and enter the search results */
+            showSearchResults(searchString, results);
         },
         error: function(xhr, error) {
             loadArticle('404', firstTry ? false : true);
@@ -114,11 +113,37 @@ function generateIndex() {
 function find(searchString) {
     var results = [];
     for(var i in index) {
-        if(index[i].toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
-            results.push(i);
+        var position = index[i].toLowerCase().indexOf(searchString.toLowerCase());
+        if(position >= 0) {
+            results.push({
+                name: i,
+                position: position
+            });
         }
     }
     return results;
+}
+
+function showSearchResults(searchString, results) {
+    for(var i in results) {
+        var html = '<h3>' + results[i].name + '</h3>';
+    }
+    $('#searchResults').html(html);
+
+
+    /*
+        <h3>M.LabelView</h3>
+    <p class="text">
+        ... of the basic views of the UI library of The-M-Project. Though it is not rendered ...
+    </p>
+    <span class="navlink" onclick="scroll('top')">&rarr; goto</span>
+
+    <h3>M.ButtonView</h3>
+    <p class="text">
+        ... clickable area, that <span class="highlight">displays</span> a text value and mostly ...
+    </p>
+    <span class="navlink" onclick="scroll('top')">&rarr; goto</span>
+     */
 }
 
 $('document').ready(function() {
