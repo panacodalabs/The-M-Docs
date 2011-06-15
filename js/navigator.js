@@ -120,8 +120,8 @@ function generateIndex() {
                                 tmp = tmp.replace(/[\n]*/g, '');
                                 tmp = tmp.replace(/[\t]*/g, '');
                                 if(tmp && tmp != '') {
-                                    content += tmp;
                                     console.log(tmp);
+                                    content += tmp;
                                 }
                             }
                         }
