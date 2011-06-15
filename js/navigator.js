@@ -172,7 +172,7 @@ function filterResult(searchString, result, position) {
     //result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + RegExp.$1 + '</span>');
     var str = result;
     result = '';
-    while(str.toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
+    while(str.toLowerCase().indexOf(searchString.toLowerCase()) >= 0 && str.toLowerCase().indexOf(searchString.toLowerCase()) < result.length) {
         result += str.substring(0, str.toLowerCase().indexOf(searchString.toLowerCase())) + '<span class="highlight">' + str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()), str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length) + '</span>';
         str = str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length);
         console.log(str);
