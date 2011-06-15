@@ -148,7 +148,7 @@ function showSearchResults(searchString, results) {
         html += '<p class="text">';
         html += text;
         html += '</p>';
-        html += '<span class="navlink" onclick="loadArticle(\'' + index[results[i].name].content + '\');">&rarr; goto</span>';
+        html += '<span class="navlink" onclick="loadArticle(\'' + index[results[i].name].path + '\');">&rarr; goto</span>';
     }
     $('#searchResults').html(html);
 }
