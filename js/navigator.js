@@ -168,7 +168,7 @@ function filterResult(searchString, result, position) {
     var str = result;
     result = '';
     while(str.indexOf(searchString) >= 0) {
-        result += str.substring(str.indexOf(searchString)) + '<span class="highlight">' + str.substring(str.indexOf(searchString), str.indexOf(searchString) + searchString.length) + '</span>';
+        result += str.substring(0, str.indexOf(searchString)) + '<span class="highlight">' + str.substring(str.indexOf(searchString), str.indexOf(searchString) + searchString.length) + '</span>';
         str = str.substring(str.indexOf(searchString) + searchString.length);
     }
     return result;
