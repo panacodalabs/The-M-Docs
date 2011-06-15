@@ -267,6 +267,9 @@ a.navlink, a.navlink:hover, a.navlink:visited {
     text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
+#searchBar #search {
+}
+
 #searchBar #search:focus {
     height: 18px;
     background: -moz-linear-gradient(top, #DDDDDD 0%, #FFFFFF);
