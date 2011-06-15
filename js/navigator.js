@@ -106,7 +106,10 @@ function generateIndex() {
                         var content = '';
                         if(regexResult) {
                             for (var i = 0; i < regexResult.length; ++i) {
-                                content += regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
+                                var tmp = regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
+                                tmp = tmp.replace(/<span[A-Za-z\s0-9="']*>/g, '');
+                                tmp = tmp.replace(/<\/span>/g, '');
+                                content += tmp;
                             }
                         }
                         index[text] = content;
