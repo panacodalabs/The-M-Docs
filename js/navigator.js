@@ -29,6 +29,10 @@ function loadArticle(path, firstTry, isBack, searchString) {
                 var results = find(searchString);
                 data = data.replace(/<%= searchString %>/g, searchString);
                 data = data.replace(/<%= numResults %>/g, results.length);
+
+                for(var i in results) {
+                    var html = '';
+                }
             }
             
             $('#container').html(data);
@@ -108,10 +112,10 @@ function generateIndex() {
 }
 
 function find(searchString) {
-    var results = {};
+    var results = [];
     for(var i in index) {
         if(index[i].toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
-            results[i] = index[i];
+            results.push(i);
         }
     }
     return results;
