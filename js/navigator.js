@@ -145,28 +145,13 @@ function showSearchResults(searchString, results) {
         html += '<span class="navlink" onclick="scroll(\'top\')">&rarr; goto</span>';
     }
     $('#searchResults').html(html);
-
-
-    /*
-        <h3>M.LabelView</h3>
-    <p class="text">
-        ... of the basic views of the UI library of The-M-Project. Though it is not rendered ...
-    </p>
-    <span class="navlink" onclick="scroll('top')">&rarr; goto</span>
-
-    <h3>M.ButtonView</h3>
-    <p class="text">
-        ... clickable area, that <span class="highlight">displays</span> a text value and mostly ...
-    </p>
-    <span class="navlink" onclick="scroll('top')">&rarr; goto</span>
-     */
 }
 
 function filterResult(searchString, result, position) {
     var start = position - 75 >= 0 ? position - 75 : 0;
-    var end = position + (start === 0 ? 150 : 75) >= result.length ? result.length : position + (start === 0 ? 150 : 75);
+    var end = position + position.length + (start === 0 ? 150 : 75) >= result.length ? result.length : position + position.length + (start === 0 ? 150 : 75);
     result = (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
-    console.log(result);
+    result = result.replaceAll(searchString, '<span class="highlight">' + searchString + '</span>');
     return result;
 }
 
