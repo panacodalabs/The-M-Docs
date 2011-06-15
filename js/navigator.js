@@ -146,7 +146,6 @@ function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
         var text = filterResult(searchString, index[results[i].name].content, results[i].position);
-        console.log(text);
         html += '<h3>' + results[i].name + '</h3>';
         html += '<p class="text">';
         html += text;
@@ -161,7 +160,7 @@ function filterResult(searchString, result, position) {
     var end = position + searchString.length + (start === 0 ? 400 : 200) >= result.length ? result.length : position + searchString.length + (start === 0 ? 400 : 200);
     start = end === result.length ? (position - 400 >= 0 ? position - 400 : 0) : start;
     result = (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
-    result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + searchString + '</span>');
+    //result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + searchString + '</span>');
     return result;
 }
 
