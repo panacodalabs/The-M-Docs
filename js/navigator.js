@@ -151,9 +151,7 @@ function filterResult(searchString, result, position) {
     var start = position - 75 >= 0 ? position - 75 : 0;
     var end = position + searchString.length + (start === 0 ? 150 : 75) >= result.length ? result.length : position + searchString.length + (start === 0 ? 150 : 75);
     result = (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
-    console.log(start);
-    console.log(end);
-    //result = result.replace(new RegExp(searchString, 'g'), '<span class="highlight">' + searchString + '</span>');
+    result = result.replace(new RegExp(searchString, 'g'), '<span class="highlight">' + searchString + '</span>');
     return result;
 }
 
