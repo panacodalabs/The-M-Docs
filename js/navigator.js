@@ -160,8 +160,8 @@ function showSearchResults(searchString, results) {
 }
 
 function filterResult(searchString, result, position) {
-    var start = position - 50 >= 0 ? position - 50 : 0;
-    var end = position + 50 >= result.length ? result.length : position + 50;
+    var start = position - 75 >= 0 ? position - 75 : 0;
+    var end = position + 75 >= result.length ? result.length : position + 75;
     return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
 }
 
