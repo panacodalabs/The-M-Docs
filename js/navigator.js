@@ -176,7 +176,8 @@ function filterResult(searchString, result, position) {
         result += str.substring(0, str.toLowerCase().indexOf(searchString.toLowerCase())) + '<span class="highlight">' + str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()), str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length) + '</span>';
         str = str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length);
     }
-    //result = result + str;
+    console.log(str);
+    result += str;
     return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
 }
 
