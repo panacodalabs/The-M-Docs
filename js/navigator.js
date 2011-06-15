@@ -94,9 +94,9 @@ function generateIndex() {
         }
     });
 
-    /* register mouseenter event to search button */
-    $('#searchButton').bind('mouseleave', function(evt) {
-        $(this).val('search');
+    /* register keyup event to search button */
+    $('#searchButton').bind('click', function(evt) {
+        fireSearch();
     });
 
     /* register focus event to search bar */
