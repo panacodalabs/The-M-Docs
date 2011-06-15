@@ -89,9 +89,9 @@ function fireSearch() {
 function generateIndex() {
     /* register keyup event to search bar */
     $('#search').bind('keyup', function(evt) {
-        if(evt.keyCode === 13) {
+        //if(evt.keyCode === 13) {
             fireSearch();
-        }
+        //}
     });
 
     /* register keyup event to search button */
