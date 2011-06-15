@@ -125,8 +125,9 @@ function find(searchString) {
 }
 
 function showSearchResults(searchString, results) {
+    var html = '';
     for(var i in results) {
-        var html = '<h3>' + results[i].name + '</h3>';
+        var html += '<h3>' + results[i].name + '</h3>';
     }
     $('#searchResults').html(html);
 
