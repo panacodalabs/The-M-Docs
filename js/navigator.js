@@ -25,10 +25,13 @@ function loadArticle(path, firstTry, isBack, searchString) {
     $.ajax({
         url: 'content/' + path + '.html',
         success: function(data) {
-            if(searchString) {
+            if(searchString && searchString != '') {
                 var results = find(searchString);
                 data = data.replace(/<%= searchString %>/g, searchString);
                 data = data.replace(/<%= numResults %>/g, results.length);
+            } else {
+                data = data.replace(/<%= searchString %>/g, '');
+                data = data.replace(/<%= numResults %>/g, 0);
             }
             
             $('#container').html(data);
