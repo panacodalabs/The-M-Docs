@@ -146,6 +146,7 @@ function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
         var text = filterResult(searchString, index[results[i].name].content, results[i].position);
+        console.log(text);
         html += '<h3>' + results[i].name + '</h3>';
         html += '<p class="text">';
         html += text;
