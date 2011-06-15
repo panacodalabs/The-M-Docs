@@ -82,7 +82,7 @@ function generateIndex() {
     $('#search').bind('keyup', function(evt) {
         if(evt.keyCode === 13) {
             var searchString = $('#search').val();
-            searchString = searchString.replace(/\/\(\)\[\]\.\?\*/g, '');
+            searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
             if(!(!searchString || searchString === '')) {
                 loadArticle('search', false, false,searchString);
             } else {
