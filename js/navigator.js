@@ -74,6 +74,11 @@ function generateIndex() {
         find($('#search').val());
     });
 
+    /* register focus event to search bar */
+    $('#search').bind('focus', function() {
+        loadArticle('search');
+    });
+
     /* build index */
     index = {};
     $('.nav li h3').each(function() {
@@ -101,7 +106,6 @@ function find(searchString) {
             results.push(i);
         }
     }
-    console.log(searchString + ' found in :\n' + results);
 }
 
 $('document').ready(function() {
