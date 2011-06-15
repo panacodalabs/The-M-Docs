@@ -27,8 +27,8 @@ function loadArticle(path, firstTry, isBack, searchString) {
         success: function(data) {
             if(searchString) {
                 var results = find(searchString);
-                data = data.replace(/<%= searchString %>/g, searchString);
-                data = data.replace(/<%= numResults %>/g, results.length);
+                /*data = data.replace(/<%= searchString %>/g, searchString);
+                data = data.replace(/<%= numResults %>/g, results.length);*/
             }
             
             $('#container').html(data);
