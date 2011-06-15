@@ -134,7 +134,7 @@ function find(searchString) {
 function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
-        var text = filterResult(searchString, index[results[i].name]);
+        var text = filterResult(searchString, index[results[i].name], results[i].position);
         html += '<h3>' + results[i].name + '</h3>';
         html += '<p class="text">';
         html += text;
@@ -159,8 +159,10 @@ function showSearchResults(searchString, results) {
      */
 }
 
-function filterResult(searchString, result) {
-    return searchString;
+function filterResult(searchString, result, position) {
+    var start = position - 25 >= 0 ? 0 : position;
+    var end = position + 25 >= result.length ? result.length : position + 25;
+    return result.substring(start, end);
 }
 
 $('document').ready(function() {
