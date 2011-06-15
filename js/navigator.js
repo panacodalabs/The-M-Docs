@@ -108,10 +108,10 @@ function generateIndex() {
 }
 
 function find(searchString) {
-    var results = [];
+    var results = {};
     for(var i in index) {
         if(index[i].toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
-            results.push(i);
+            results[i] = index[i];
         }
     }
     return results;
