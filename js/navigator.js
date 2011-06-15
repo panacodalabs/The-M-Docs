@@ -170,7 +170,7 @@ function filterResult(searchString, result, position) {
         str = str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length);
     }
     result = result + str;
-    return (start > 0 ? '[...] ' : '') + result.substring(start, end) + (end < result.length ? ' [...]' : '');
+    return (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
 }
 
 $('document').ready(function() {
