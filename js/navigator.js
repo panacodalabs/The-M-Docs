@@ -37,7 +37,7 @@ function loadArticle(path, firstTry, isBack, searchString) {
                 blockLayout: "plain"
             });
 
-            if(!isBack) {
+            if(!isBack && !searchString) {
                 window.location.hash = path;
                 forcedHashChange = true;
             }
