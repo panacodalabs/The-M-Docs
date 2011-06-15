@@ -118,7 +118,7 @@ function generateIndex() {
                                 tmp = tmp.replace(/<\/p>/g, '');
                                 tmp = tmp.replace(/<\/pre>/g, '');
                                 tmp = tmp.replace(/\n/g, '');
-                                while(tmp.indexOf(' ') >= 0) {
+                                while(tmp.indexOf('  ') >= 0) {
                                     tmp = tmp.replace('  ', '');
                                 }
                                 if(tmp && tmp != '') {
