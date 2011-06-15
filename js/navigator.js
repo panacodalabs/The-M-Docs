@@ -77,17 +77,25 @@ function filter(predicate) {
     });
 }
 
+function fireSearch() {
+    var searchString = $('#search').val();
+    //searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
+    if(!(!searchString || searchString === '')) {
+        loadArticle('search', false, false,searchString);
+    }
+    $('#search').focus();
+}
+
 function generateIndex() {
     /* register keyup event to search bar */
     $('#search').bind('keyup', function(evt) {
         if(evt.keyCode === 13) {
-            var searchString = $('#search').val();
-            //searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
-            if(!(!searchString || searchString === '')) {
-                loadArticle('search', false, false,searchString);
-            }
-            $('#search').focus();
+            fireSearch();
         }
+    });
+    /* register keyup event to search bar */
+    $('#searchButton').bind('click', function(evt) {
+        fireSearch();
     });
 
     /* register focus event to search bar */
