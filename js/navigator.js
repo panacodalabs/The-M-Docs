@@ -80,6 +80,11 @@ function generateIndex() {
         }
     });
 
+    /* register focus event to search bar */
+    $('#search').bind('focus', function(evt) {
+        $('#search').val('');
+    });
+
     /* build index */
     index = {};
     $('.nav li h3').each(function() {
