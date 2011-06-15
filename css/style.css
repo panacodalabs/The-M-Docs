@@ -246,8 +246,8 @@ a.navlink, a.navlink:hover, a.navlink:visited {
 
 #searchBar {
     float:right;
-    margin-right: 13px;
-    margin-top: 13px;
+    margin-right: 20px;
+    margin-top: 10px;
     height: 20px;
 }
 
