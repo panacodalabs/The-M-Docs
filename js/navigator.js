@@ -104,7 +104,6 @@ function generateIndex() {
                         var regex = /<[\s]*p[\s]+class[\s]*={1}[\s]*"{1}[\s]*[^"]*text{1}[^"]*"{1}[\s]*>{1}[A-Za-z0-9\s,;_\.:\?\/\(\)'\-"<>=]*<\/p>/g;
                         var regexResult = data.match(regex);
                         var content = '';
-                        var path = category + '/' + $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
                         if(regexResult) {
                             for (var i = 0; i < regexResult.length; ++i) {
                                 var tmp = regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
