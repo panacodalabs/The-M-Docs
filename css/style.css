@@ -269,6 +269,8 @@ a.navlink, a.navlink:hover, a.navlink:visited {
 
 #searchBar #search {
     height: 18px;
+    background: -moz-linear-gradient(top, #B2B2B2 0%, #CDCDCD);
+    background: -webkit-gradient(linear, left top, left bottom, from(#B2B2B2), to(#CDCDCD));
 }
 
 #searchBar #searchButton {
