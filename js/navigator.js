@@ -17,7 +17,7 @@ function registerArticles() {
     });
 }
 
-function loadArticle(path, firstTry, isBack) {
+function loadArticle(path, firstTry, isBack, searchSring) {
     if (path === '404' && !firstTry) {
         return;
     }
@@ -25,6 +25,10 @@ function loadArticle(path, firstTry, isBack) {
     $.ajax({
         url: 'content/' + path + '.html',
         success: function(data) {
+            if(searchSring) {
+                data = data.replace('<%= searchString %>', searchSring);
+            }
+            
             $('#container').html(data);
             scroll('top', true);
             $.syntax({
@@ -72,8 +76,7 @@ function generateIndex() {
     /* register keyup event to search bar */
     $('#search').bind('keyup', function(evt) {
         if(evt.keyCode === 13) {
-            loadArticle('search');
-            find($('#search').val());
+            loadArticle('search', false, false, $('#search').val());
         }
     });
 
