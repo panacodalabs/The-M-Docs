@@ -81,8 +81,12 @@ function generateIndex() {
     /* register keyup event to search bar */
     $('#search').bind('keyup', function(evt) {
         if(evt.keyCode === 13) {
-            if(!(!$('#search').val() || $('#search').val() === '')) {
-                loadArticle('search', false, false, $('#search').val());
+            var searchString = $('#search').val();
+            searchString = searchString.replace(/\/\(\)\[\]\.\?\*/g, '');
+            if(!(!searchString || searchString.val() === '')) {
+                loadArticle('search', false, false,searchString);
+            } else {
+                $('#search').focus();
             }
         }
     });
@@ -160,7 +164,7 @@ function filterResult(searchString, result, position) {
     var end = position + searchString.length + (start === 0 ? 400 : 200) >= result.length ? result.length : position + searchString.length + (start === 0 ? 400 : 200);
     start = end === result.length ? (position - 400 >= 0 ? position - 400 : 0) : start;
     result = (start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
-    //result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + searchString + '</span>');
+    result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + searchString + '</span>');
     return result;
 }
 
