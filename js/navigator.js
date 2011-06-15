@@ -82,6 +82,8 @@ function fireSearch() {
     //searchString = searchString.replace(/[\/\(\)\[\]\.\?\*]*/g, '');
     if(!(!searchString || searchString === '')) {
         loadArticle('search', false, false,searchString);
+    } else {
+        $('#searchResults').html('');
     }
     //$('#search').focus();
 }
