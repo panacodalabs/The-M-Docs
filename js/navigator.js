@@ -170,7 +170,7 @@ function filterResult(searchString, result, position) {
     var end = position + searchString.length + (start === 0 ? 400 : 200) >= result.length ? result.length : position + searchString.length + (start === 0 ? 400 : 200);
     start = end === result.length ? (position - 400 >= 0 ? position - 400 : 0) : start;
     //result = result.replace(new RegExp('(' + searchString +')', 'gi'), '<span class="highlight">' + RegExp.$1 + '</span>');
-    var str = result;
+    var str = result.substring(start, end);
     result = '';
     while(str.toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
         result += str.substring(0, str.toLowerCase().indexOf(searchString.toLowerCase())) + '<span class="highlight">' + str.substring(str.toLowerCase().indexOf(searchString.toLowerCase()), str.toLowerCase().indexOf(searchString.toLowerCase()) + searchString.length) + '</span>';
@@ -178,7 +178,7 @@ function filterResult(searchString, result, position) {
     }
     //console.log(str);
     result += str;
-    return result;//(start > 0 ? '... ' : '') + result.substring(start, end) + (end < result.length ? ' ...' : '');
+    return (start > 0 ? '... ' : '') + result + (end < result.length ? ' ...' : '');
 }
 
 $('document').ready(function() {
