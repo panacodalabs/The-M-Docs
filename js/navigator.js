@@ -26,7 +26,7 @@ function loadArticle(path, firstTry, isBack, searchSring) {
         url: 'content/' + path + '.html',
         success: function(data) {
             if(searchSring) {
-                data = data.replace('<%= searchString %>', searchSring);
+                data = data.replace(/<%= searchString %>/g, searchSring);
             }
             
             $('#container').html(data);
