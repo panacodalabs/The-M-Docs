@@ -257,6 +257,10 @@ a.navlink, a.navlink:hover, a.navlink:visited {
     padding: 0px;
 }
 
+#searchBar #searchButton {
+    height: 30px;
+}
+
 #searchResults .highlight {
     background-color: #2bbefa;
     padding: 3px 5px 3px 5px;
