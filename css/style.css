@@ -256,3 +256,7 @@ a.navlink, a.navlink:hover, a.navlink:visited {
     margin: 0px;
     padding: 0px;
 }
+
+#searchResults .highlight {
+    background-color: #2bbefa;
+}
