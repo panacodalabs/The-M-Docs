@@ -127,7 +127,7 @@ function find(searchString) {
 function showSearchResults(searchString, results) {
     var html = '';
     for(var i in results) {
-        var text = filterResult(searchString, results[i].name);
+        var text = filterResult(searchString, index[results[i].name]);
         html += '<h3>' + results[i].name + '</h3>';
         html += '<p class="text">';
         html += text;
@@ -153,7 +153,8 @@ function showSearchResults(searchString, results) {
 }
 
 function filterResult(searchString, result) {
-    console.log(index[result]);
+    result = result.replace(/\n/g, '');
+    console.log(result);
     return searchString;
 }
 
