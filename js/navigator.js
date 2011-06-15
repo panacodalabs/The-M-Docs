@@ -117,6 +117,8 @@ function generateIndex() {
                                 tmp = tmp.replace(/<\/span>/g, '');
                                 tmp = tmp.replace(/<\/p>/g, '');
                                 tmp = tmp.replace(/<\/pre>/g, '');
+                                tmp = tmp.replace(/[\n]*/g, '');
+                                tmp = tmp.replace(/[\t]*/g, '');
                                 if(tmp && tmp != '') {
                                     content += tmp;
                                     console.log(tmp);
