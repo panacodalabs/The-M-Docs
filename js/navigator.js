@@ -119,6 +119,7 @@ function generateIndex() {
                                 tmp = tmp.replace(/<\/pre>/g, '');
                                 if(tmp && tmp != '') {
                                     content += tmp;
+                                    console.log(tmp);
                                 }
                             }
                         }
