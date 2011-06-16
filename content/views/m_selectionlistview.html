@@ -203,6 +203,17 @@ childViews: 'item1 item2 item3'</pre>
             </td>
         </tr>
         <tr>
+            <td><span class="code">resetSelection</span></td>
+            <td></td>
+            <td></td>
+            <td>
+                This method can be used to reset the selection of a selection list regardless of the selection mode. If the selection list is filled
+                using content binding, this method will simply re-apply this bound content to its body. Otherwise, if no content binding is used, the
+                selection list automatically stores the initial state specified by its child views in an internal property. On calling this method, this
+                stored state will be applied to the selection list's content.
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">setSelection</span></td>
             <td>
                 <span class="code">selection</span> (String or Array): The item/entry (its value) that should be selected.</td>
