@@ -10,7 +10,6 @@
 
     <!-- remove unused links -->
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
@@ -24,26 +23,19 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+         M.FormViews is the prototype of a form view, a container-like view for grouping
+         input views, e.g. M.TextFieldView. It covers a lot of the jobs concerning the
+         validation of input views. There is no visible representation of a M.FormView,
+         it is only used to ease the validation process and its access from a
+         controller.
+    </p>
+    <p class="text">
+        A M.FormView can be seen similar to the &lt;form&gt; tag in HTML. It is a container for other views that together build
+        a formular.
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
-
-<!-- SCREENSHOTS -->
-<div class="contentScreenshots">
-    <a name="screens"><h2 class="line">Screenshots</h2></a>
-
-    <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
-    </div>
-    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
-</div>
-<!-- END OF SCREENSHOTS -->
-
 
 <!-- PROPERTIES -->
 <div class="contentProperties">
@@ -57,11 +49,25 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">showAlertDialogOnError</span></td>
+            <td>recommended</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                A flag that determines whether to automatically show an alert dialog view out of the showError method
+                if the validation failed or not. So if set to YES, all error messages are shown in an alert
+                dialog view once the showError method is called.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">alertTitle</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Validation Error(s)</td>
+            <td>
+                The title of the alert view that comes up automatically if the validation fails, depending
+                one the <span class="code">showAlertOnError</span> property.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -71,12 +77,6 @@
 <!-- PUBLIC METHODS -->
 <div class="contentMethods">
     <a name="methods"><h2 class="line">Methods</h2></a>
-    <!--
-        IF NO PUBLIC METHODS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
-        <p class="text">There are no public methods available. <br />
-
-        ELSE LEAVE THIS TABLE:
-    -->
     <table class="reference" cellpadding="0" cellspacing="0">
         <tr style="height:50px;">
             <th style="width:20%;">Name</th>
@@ -85,10 +85,52 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">validate</span></td>
+            <td>-</td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Boolean: The result of the validation process: valid or not.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This method triggers the validate() on all child views, respectively
+                on their validators. This method is used to determine whether all views have valid values according
+                to their defined validators.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getFormValues</span></td>
+            <td>-</td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Object: An object as an associative array containing all values of the views inside the form. Collects also
+                        values throughout further nesting in child views. The values are saved as key/value-pairs. The key is the name
+                        of the respective view. 
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This method is a wrapper of M.View's getValues() method.<br />
+                This method creates and returns an associative array of all child views and
+                their values.
+                <br />
+                The key of an array item is the name of the view specified in the view
+                definition. The value of an array item is the value of the corresponding
+                view.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">clearForm</span></td>
+            <td>-</td>
+            <td>
+            </td>
+            <td>
+                This method is a wrapper of M.View's clearValues() method. <br />
+                It clears the value of the respective view and also walks through nested child views.
+            </td>
         </tr>
     </table>
     
@@ -101,18 +143,80 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        A simple form for two text fields. Their values are validated based by the validators defined in their view definition.
+        The validate methode has to be called manually inside a controller action as shown below. It returns a boolean value indicating
+        if the form is valid or not. An alert dialog is shown that contains the error messages.
     </p>
 <pre>
 <code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
-<pre class="syntax javascript">
-test function() {
-    alert('blabla');
+
+M.FormView.design({
+    childViews: 'email date',
+    showAlertDialogOnError: YES,
+
+    email: M.TextFieldView.design({
+        label: 'E-Mail',
+        validators: [M.PresenceValidator, M.EmailValidator],
+        cssClassOnError: 'err'
+    }),
+
+    date: M.TextFieldView.design({
+        label: 'Date',
+        validators: [M.PresenceValidator, M.DateValidator],
+        /* The applying of this class is automatically triggered if the validation of the view goes wrong. */
+        cssClassOnError: 'err'
+    })
+});
+
+/* Form validation in a controller action */
+    ...
+    var isValid = form.validate(); /* we assume that form is our form view */
+    if(isValid) {
+        /* get values */
+        var values = form.getFormValues();
+        /* do something with values */
+        ...
+    }
+    ...
 }
+...
+</code>
 </pre>
-    -->
+
+<p class="text">
+A slightly more complex example with nested views.
+</p>
+<pre>
+<code class="javascript">
+M.FormView.design({
+    childViews: 'grid ',
+
+    showAlertDialogOnError: YES,
+
+    grid: M.GridView.design({
+        childViews: 'firstname container',
+
+        layout: M.TWO_COLUMNS,
+
+        firstname: M.TextFieldView.design({
+            label: 'Firstname',
+            initialText: 'Firstname',
+            validators: [M.PresenceValidator],
+            cssClassOnInit: 'initialText'
+        }),
+
+        container: M.ContainerView.design({
+            childViews: 'lastname',
+
+            lastname: M.TextFieldView.design({
+                label: 'Lastname',
+                initialText: 'Lastname',
+                validators: [M.PresenceValidator],
+            cssClassOnInit: 'initialText'
+            })
+        })
+    })
+})
 </code>
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -124,7 +228,8 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
+        No CSS Styles are applied by default. You can pass css classes to the form view by setting its
+        <span class="code">cssClass</span> property.
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
