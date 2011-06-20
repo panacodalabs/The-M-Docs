@@ -277,37 +277,47 @@ textfield: M.TextFieldView.design({
     cssClassOnInit: 'initialText'
 })
 
-/* link two text fields by using content binding / content binding reverse */
-MyApp.MyView = M.PageView.design({
-    childViews: 'content',
+/* link two text fields by using content binding / content binding reverse (fully working example) */
+// The View (main.js)
+MyApp.app = M.Application.design({
+	entryPage: 'page',
 
-    content: M.ScrollView.design({
-        childViews: 'textfield1 textfield2',
+    page: M.PageView.design({
+        childViews: 'content',
 
-        textfield1: M.TextFieldView.design({
-            contentBinding: {
-                target: MyApp.MyController,
-                property: 'textfieldvalue'
-            },
+        content: M.ScrollView.design({
+            childViews: 'textfield1 textfield2',
 
-            contentBindingReverse: {
-                target: MyApp.MyController,
-                property: 'textfieldvalue'
-            }
-        }),
+            textfield1: M.TextFieldView.design({
+                contentBinding: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                },
 
-        textfield2: M.TextFieldView.design({
-            contentBinding: {
-                target: MyApp.MyController,
-                property: 'textfieldvalue'
-            },
+                contentBindingReverse: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                }
+            }),
 
-            contentBindingReverse: {
-                target: MyApp.MyController,
-                property: 'textfieldvalue'
-            }
+            textfield2: M.TextFieldView.design({
+                contentBinding: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                },
+
+                contentBindingReverse: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                }
+            })
         })
     })
+});
+
+// The controller
+MyApp.MyController = M.Controller.extend({
+    textfieldvalue: ''
 });
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
