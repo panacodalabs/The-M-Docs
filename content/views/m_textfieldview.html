@@ -5,7 +5,7 @@
     <h1>M.TextFieldView</h1>
 
     <div class="directoryPath">
-        modules/ui/text_field.js
+        modules/ui/text_field_view.js
     </div>
 
     <!-- remove unused links -->
@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -24,8 +25,12 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        M.TextFieldView is the prototype of any text field input view. It can be rendered as both a single
+        line text field and a multiple line text field (a textbox). If it is styled as a multiple line text field,
+        is has a built-in autogrow mechanism so the textfield is getting larger depending on the number of lines of
+        text a user enters.
     </p>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -35,10 +40,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <img src="images/views/screen_textfieldview.png" alt="M.TextFieldView" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +59,20 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">inputType</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M.INPUT_TEXT</td>
+            <td>This property can be used to specify the input type of a text field view. Possible values are:
+                <ol>
+                    <li><span class="code">M.INPUT_TEXT</span> --> text input (default)</li>
+                    <li><span class="code">M.INPUT_PASSWORD</span> --> password</li>
+                    <li><span class="code">M.INPUT_NUMBER</span> --> number</li>
+                    <li><span class="code">M.INPUT_TELEPHONE</span> --> tel</li>
+                    <li><span class="code">M.INPUT_URL</span> --> url</li>
+                    <li><span class="code">M.INPUT_EMAIL</span> --> email</li>
+                </ol>
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -86,7 +97,17 @@
         </tr>
         <tr>
             <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <!--<ul class="isFirstLine">
+                    <li>
+                        <span class="code">propertyName</span> (propertyType): A short description.
+                    </li>
+                    <li>
+                        <span class="code">propertyName</span> (propertyType): A short description.
+                    </li>
+                </ul>-->
+            </td>
             <td><!-- RETURN TYPE --></td>
             <td><!-- METHOD DESCRIPTION --></td>
         </tr>
@@ -96,6 +117,32 @@
 </div>
 <!-- END OF METHODS -->
 
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <!--
+        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no events available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code"><!-- EVENT NAME --></span></td>
+            <td><!-- EVENT DESCRIPTION --></td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
@@ -103,17 +150,13 @@
     <p class="text">
         <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
-<pre>
-<code class="javascript">
+<pre class="syntax javascript">
     <!-- THE EXAMPLE CODE  -->
     <!--
-<pre class="syntax javascript">
 test function() {
     alert('blabla');
 }
-</pre>
     -->
-</code>
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
