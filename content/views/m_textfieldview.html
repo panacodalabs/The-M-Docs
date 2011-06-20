@@ -59,19 +59,54 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
+            <td><span class="code">cssClassOnInit</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">''</td>
+            <td>
+                This property can be used to assign a special css class to the text field while the initial text is visible
+                (c.p. <span class="code">initialText</span>).
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">hasMultipleLines</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property specifies whether the text field view is a simple, single-line text field or
+                a text box with multiple lines.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">initialText</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">''</td>
+            <td>
+                By setting this property, one can specify a initial text for a text field view. So whenever
+                the text field view's value is empty (e.g. on startup or when resetting a form view), the string
+                specified with this property will be shown.
+                <div class="note text">Note: To give this initial text a special styling, use the <span class="code">cssClassOnInit</span>
+                    property.
+                </div>
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">inputType</span></td>
             <td>optional</td>
             <td>String</td>
             <td style="font-family:monospace">M.INPUT_TEXT</td>
-            <td>This property can be used to specify the input type of a text field view. Possible values are:
-                <ol>
+            <td>
+                This property can be used to specify the input type of a text field view. Possible values are:
+                <ul>
                     <li><span class="code">M.INPUT_TEXT</span> --> text input (default)</li>
                     <li><span class="code">M.INPUT_PASSWORD</span> --> password</li>
                     <li><span class="code">M.INPUT_NUMBER</span> --> number</li>
                     <li><span class="code">M.INPUT_TELEPHONE</span> --> tel</li>
                     <li><span class="code">M.INPUT_URL</span> --> url</li>
                     <li><span class="code">M.INPUT_EMAIL</span> --> email</li>
-                </ol>
+                </ul>
             </td>
         </tr>
     </table>
