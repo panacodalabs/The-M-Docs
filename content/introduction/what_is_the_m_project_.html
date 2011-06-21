@@ -4,6 +4,12 @@
 
     <h1>What is The-M-Project?</h1>
 
+    <!--<div class="directoryPath">
+        modules/core/foundation/event_dispatcher.js
+    </div>-->
+
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -11,25 +17,48 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <p class="text">
-        The action sheet dialog is mostly known from iOS, where it is used in a variety of applications.
-        It presents a dialog that offers multiple options to the user.
-        One of these options often is a destructive action, e.g. for removing something from a collection. This button
-        is rendered red.
-        Another option is a 'Cancel'-Option that is used to not make a choice, but cancel it. It's rendered black in
-        default.
-        In addition to these two buttons, a variable number of other buttons can be defined by passing in an array to
-        the property
-        <span class="code">otherButtonValues</span>.
-        In difference to the other two dialogs, the action sheet does not show a message, it only shows a title and the
-        choices
-        represented by buttons. The action sheet's behaviour and look is defined by its properties.
+    <!--<p class="text">
+        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
+        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
+        we implemented the observer pattern as shown in simplified the UML diagram below.
     </p>
 
-    <div class="note text">Note: It is also possible to pass a function as action instead of a string (this is possible
-        throughout every callback passing). It is executed in the scope of the target.
-    </div>
+    <div class="screens">
+        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
+    </div>-->
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
+<!-- START-->
+<div class="contentBasics">
+    <a name="start"><h2 class="line">Let's get started!</h2></a>
+
+    <!--<p class="text">
+        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
+        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
+        and want the second one - the slave - to display exactly the same text. The figure below shows how this
+        could look like.
+    </p>
+
+    <div class="screens">
+        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
+    </div>
+
+    <p class="text">
+        How does this work? How does the first textfield tell the second one that it's content changed? Do they
+        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
+        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
+        a property that is again set by the first textfield. This "central instance" is realised as a property of the
+        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
+        value inside the first textfield and delegating these changes right to the second textfield.
+    </p>
+
+    <div class="screens">
+        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
+    </div>-->
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
