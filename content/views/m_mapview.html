@@ -358,11 +358,11 @@ callbacks: {
             <th style="width:50%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">blur</span></td>
+            <td><span class="code">click</span></td>
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">id</span> (String): The text field's id.
+                        <span class="code">id</span> (String): The map marker's id.
                     </li>
                     <li>
                         <span class="code">event</span> (Object): The fired event.
@@ -370,15 +370,16 @@ callbacks: {
                 </ul>
             </td>
             <td>
-                This event is fired whenever the text field view loses the focus.
+                This event is fired whenever a map marker is clicked and there is no special
+                click event defined for this marker.
             </td>
         </tr>
         <tr>
-            <td><span class="code">enter</span></td>
+            <td><span class="code">tap</span></td>
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">id</span> (String): The text field's id.
+                        <span class="code">id</span> (String): The map marker's id.
                     </li>
                     <li>
                         <span class="code">event</span> (Object): The fired event.
@@ -386,42 +387,8 @@ callbacks: {
                 </ul>
             </td>
             <td>
-                This event is fired when a user hits the enter button while the text field view has got the focus.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">focus</span></td>
-            <td>
-                <ul class="isFirstLine">
-                    <li>
-                        <span class="code">id</span> (String): The text field's id.
-                    </li>
-                    <li>
-                        <span class="code">event</span> (Object): The fired event.
-                    </li>
-                </ul>
-            </td>
-            <td>
-                This event is fired whenever the text field view gets the focus.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">keyup</span></td>
-            <td>
-                <ul class="isFirstLine">
-                    <li>
-                        <span class="code">id</span> (String): The text field's id.
-                    </li>
-                    <li>
-                        <span class="code">event</span> (Object): The fired event.
-                    </li>
-                </ul>
-            </td>
-            <td>
-                This event is fired when a user hits any button while the text field view has got the focus.
-                <div class="note text">Note: By accessing the <span class="code">keyCode</span> property of the passed
-                    <span class="code">event</span> object, you can get the information which key was pressed.
-                </div>
+                This event is fired whenever a map marker is tapped and there is no special
+                tap event defined for this marker.
             </td>
         </tr>
     </table>
