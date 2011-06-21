@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -24,8 +25,16 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        M.MapView defines a set of methods for displaying a map, setting markers on that map and displaying the user's
+        current location. It is based on the Google Maps Javascript API V3 and basically wraps all important features
+        available in this great API.
     </p>
+
+    <div class="note text">
+        Note: Since the map data is loaded dynamically using the Google Maps Javascript API V3 and is not part of
+        the application itself, M.MapView only works if there is a network connection available.
+    </div>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -35,10 +44,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <img src="images/views/screen_mapview.png" alt="M.MapView" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +63,65 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">cssClassOnInit</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to assign a special css class to the text field while the initial text is visible
+                (c.p. <span class="code">initialText</span>).
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">hasMultipleLines</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property specifies whether the text field view is a simple, single-line text field or
+                a text box with multiple lines.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">initialText</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">''</td>
+            <td>
+                By setting this property, one can specify a initial text for a text field view. So whenever
+                the text field view's value is empty (e.g. on startup or when resetting a form view), the string
+                specified with this property will be shown.
+                <div class="note text">Note: To give this initial text a special styling, use the <span class="code">cssClassOnInit</span>
+                    property.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">inputType</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M.INPUT_TEXT</td>
+            <td>
+                This property can be used to specify the input type of a text field view. Possible values are:
+                <ul>
+                    <li><span class="code">M.INPUT_TEXT</span> --> text input (default)</li>
+                    <li><span class="code">M.INPUT_PASSWORD</span> --> password</li>
+                    <li><span class="code">M.INPUT_NUMBER</span> --> number</li>
+                    <li><span class="code">M.INPUT_TELEPHONE</span> --> tel</li>
+                    <li><span class="code">M.INPUT_URL</span> --> url</li>
+                    <li><span class="code">M.INPUT_EMAIL</span> --> email</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">label</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                The label proeprty defines a text that is shown above or next to the textfield as a 'title'
+                for the textfield. e.g. "Name:". If no label is specified, no label will be displayed.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -85,10 +145,27 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">clearValue</span></td>
+            <td></td>
+            <td></td>
+            <td>
+                This method clears the text field's value, both in the DOM and within the corresponding JS object.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">setValue</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">value</span> (String): The value to be applied to the text field view..
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method sets the text field's value and initiates its re-rendering.
+            </td>
         </tr>
     </table>
     
@@ -96,24 +173,157 @@
 </div>
 <!-- END OF METHODS -->
 
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <!--
+        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no events available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">blur</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The text field's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired whenever the text field view loses the focus.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">enter</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The text field's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user hits the enter button while the text field view has got the focus.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">focus</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The text field's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired whenever the text field view gets the focus.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">keyup</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The text field's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user hits any button while the text field view has got the focus.
+                <div class="note text">Note: By accessing the <span class="code">keyCode</span> property of the passed
+                    <span class="code">event</span> object, you can get the information which key was pressed.
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        The following samples show how to use <span class="code">M.ButtonGroupView</span>.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}
-</pre>
-    -->
-</code>
+/* set up a default text field view */
+textfield: M.TextFieldView.design({
+
+})
+
+/* assign an inital text and a corresponding css class */
+textfield: M.TextFieldView.design({
+    initialText: 'Type something...',
+    cssClassOnInit: 'initialText'
+})
+
+/* link two text fields by using content binding / content binding reverse (fully working example) */
+
+// The view
+MyApp.app = M.Application.design({
+	entryPage: 'page',
+
+    page: M.PageView.design({
+        childViews: 'content',
+
+        content: M.ScrollView.design({
+            childViews: 'textfield1 textfield2',
+
+            textfield1: M.TextFieldView.design({
+                contentBinding: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                },
+
+                contentBindingReverse: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                }
+            }),
+
+            textfield2: M.TextFieldView.design({
+                contentBinding: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                },
+
+                contentBindingReverse: {
+                    target: MyApp.MyController,
+                    property: 'textfieldvalue'
+                }
+            })
+        })
+    })
+});
+
+// The controller
+MyApp.MyController = M.Controller.extend({
+    textfieldvalue: ''
+});
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -124,8 +334,13 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
-    </p>
+        The styling of the loader view is done by jQuery Mobile. There are three css classes responsible for the layout:</p>
+    <ul class="text">
+        <li><span class="code">ui-shadow-inset</span>: This defines an inner shadow for the text field view.</li>
+        <li><span class="code">ui-input-text </span>: This class defines the size, padding, line-height, font-size for the text field view.</li>
+        <li><span class="code">ui-corner-all</span>: This adds round corners to the text field view.</li>
+        <li><span class="code">ui-body-c</span>: This class defines some styling stuff like border, text color, text-shadow or the background.</li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
