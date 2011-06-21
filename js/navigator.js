@@ -2,13 +2,15 @@ var forcedHashChange = false;
 
 function registerArticles() {
     $('.nav li h3').each(function() {
-        var category = $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
+        var category = $(this).text().toLocaleLowerCase().replace(/[\.\s-]+/g, '_');
+        category = category.replace(/[\?]+/g, '');
         $(this).bind('click', function(evt) {
             collapseCategory($(this).siblings('ul .subnav'));
         });
         $(this).siblings('ul .subnav').each(function() {
             $(this).find('li').each(function() {
-                var path = category + '/' + $(this).text().toLocaleLowerCase().replace(/[\.\s\?-]+/g, '_');
+                var path = category + '/' + $(this).text().toLocaleLowerCase().replace(/[\.\s-]+/g, '_');
+                path = path.replace(/[\?]+/g, '');
                 $(this).bind('click', function() {
                     loadArticle(path);
                 });
