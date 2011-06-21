@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -24,8 +25,18 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        A map marker view defines a set of methods for adding, removing and managing the
+        markers of a <span class="code">M.MapView</span>. Such a marker can be used to
+        show the user of an application a certain location on a map view or the location
+        of the user himself. The map marker view within The-M-Project is based on google
+        maps markers.
     </p>
+
+    <div class="note text">
+        Note: Map markers can't be used stand-alone. You'll always need a map to place them
+        on.
+    </div>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -35,10 +46,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <img src="images/views/screen_mapmarkerview.png" alt="M.MapMarkerView" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +65,180 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">callbacks</span></td>
+            <td>recommended</td>
+            <td>Object</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property, if set, contains the map view's callback in sub a object named 'error',
+                which will be called if no connection is available and the map service (google maps api)
+                can not be loaded. E.g. you can specify something like:
+<pre class="syntax javascript">
+callbacks: {
+    error: {
+        target: MyApp.MyController,
+        action: 'noConnectionAvailable'
+    }
+}
+</pre>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">cssClass</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to assign a certain css class to the map view's container. This allows
+                you to specify styling stuff like the width and height of your map view. So we recommend to always
+                assign a css class ... just in case.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">initialLocation</span></td>
+            <td>recommended</td>
+            <td>M.Location</td>
+            <td style="font-family:monospace">
+                M.Location.extend({<br/>
+                latitude: 48.813338,<br/>
+                longitude: 9.178463<br/>
+                })
+            </td>
+            <td>
+                This property specifies the initial location for this map view, as an <span class="code">M.Location</span> object.
+                Its latitude and longitude properties are directly mapped to the center property of a google map view. By
+                default this is set to the headquarter of developer team of The-M-Project in Stuttgart, Germany.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">isDraggable</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                This property specifies whether the map is draggable or not. If set to NO, a user won't be able
+                to move the map, respectively the visible sector. For further information see the google maps API
+                specification: http://code.google.com/intl/en-US/apis/maps/documentation/javascript/reference.html#MapOptions
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">isInset</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                This property determines whether to display the map view 'inset' or at full width.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">mapType</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M.MAP_ROADMAP</td>
+            <td>
+                This property specifies the map type for this map view. It is directly mapped to the 'mapTypeId' property of a google map view. Possible values for this property are:
+                <ul>
+                    <li>
+                        <span class="code">M.MAP_ROADMAP</span> --> This map type displays a normal street map.
+                    </li>
+                    <li>
+                        <span class="code">M.MAP_HYBRID</span> --> This map type displays a transparent layer of major streets on satellite images.
+                    </li>
+                    <li>
+                        <span class="code">M.MAP_SATELLITE</span> --> This map type displays satellite images.
+                    </li>
+                    <li>
+                        <span class="code">M.MAP_TERRAIN</span> --> This map type displays maps with physical features such as terrain and vegetation.
+                    </li>
+                </ul>
+                For further information see the google maps API specification: http://code.google.com/intl/en-US/apis/maps/documentation/javascript/reference.html#MapOptions
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">markerAnimationType</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M.MAP_MARKER_ANIMATION_NONE</td>
+            <td>
+                This property can be used to specify the animation type for this map view's markers. The following three
+                values are possible:
+                <ul>
+                    <li>
+                        <span class="code">M.MAP_MARKER_ANIMATION_NONE</span> --> no animation
+                    </li>
+                    <li>
+                        <span class="code">M.MAP_MARKER_ANIMATION_DROP</span> --> the marker drops onto the map
+                    </li>
+                    <li>
+                        <span class="code">M.MAP_MARKER_ANIMATION_BOUNCE</span> --> the marker constantly bounces
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeMarkersOnUpdate</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                This property specifies whether or not to remove all existing markers on a map update. A map
+                update can either be an automatic update due to content binding or a implicit call of the map
+                view's <span class="code">updateMap()</span> method.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">setMarkerAtInitialLocation</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property determines whether or not to show a marker at the map view's initial location.
+                This location can be specified by the <span class="code">initialLocation</span> property of this map view.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showMapTypeControl</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property specifies whether or not to display the map type controls inside
+                of this map view. For further information see the google maps API
+                specification: http://code.google.com/intl/en-US/apis/maps/documentation/javascript/reference.html#MapOptions
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showNavigationControl</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property specifies whether or not to display the navigation controls inside
+                of this map view. For further information see the google maps API
+                specification: http://code.google.com/intl/en-US/apis/maps/documentation/javascript/reference.html#MapOptions
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showStreetViewControl</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property specifies whether or not to display the street view controls inside
+                of this map view. For further information see the google maps API
+                specification: http://code.google.com/intl/en-US/apis/maps/documentation/javascript/reference.html#MapOptions
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">zoomLevel</span></td>
+            <td>optional</td>
+            <td>Number</td>
+            <td style="font-family:monospace">15</td>
+            <td>
+                This property specifies the zoom level for this map view. It is directly mapped to the
+                zoom property of a google map view. For further information see the google maps API
+                specification: http://code.google.com/intl/de-DE/apis/maps/documentation/javascript/reference.html#MapOptions
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -85,10 +262,91 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">addMarker</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">marker</span> (M.MapMarkerView): The marker to be added.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method can be used to add a marker to the map view. Simply pass a valid
+                <span class="code">M.MapMarkerView</span> object and a map marker is created automatically,
+                displayed on the map and added to this map view's markers property.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">initMap</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">options</span> (Object): The options for the map view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method is used to initialize a map view, typically out of a controller. With its options parameter
+                you can set or update almost every parameter of a map view. This allows you to define a map view within
+                your view, but then update its parameters later when you want this view to display a map.<br/>
+                The options parameter must be passed as a simple object, containing all of the <span class="code">M.MapView</span>'s
+                properties you want to be updated. Such an options object could look like the following:<br/>
+<pre class="syntax javascript">
+{
+    zoomLevel: 12,
+    mapType: M.MAP_HYBRID,
+    initialLocation: location
+}
+</pre>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeAllMarkers</span></td>
+            <td></td>
+            <td></td>
+            <td>
+                This method removes all markers from this map view. It both cleans up the markers array and deletes
+                the marker's visual representation from the map view.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeMarker</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">marker</span> (M.MapMarkerView): The marker to be removed.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method can be used to remove a certain marker from the map view. In order to do this, you need
+                to pass the <span class="code">M.MapMarkerView</span> object that you want to be removed from the
+                map view.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">updateMap</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">options</span> (Object): The options for the map view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method is used to update a map view, that has already been initialized. You would typically call
+                this method out of a controller. Besides some internal stuff, this method pretty much does the same as
+                <span class="code">initMap()</span>. So simply pass an object containing valid options for the already
+                existing map view.
+            </td>
         </tr>
     </table>
     
@@ -96,25 +354,131 @@
 </div>
 <!-- END OF METHODS -->
 
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <!--
+        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no events available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">click</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The map marker's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired whenever a map marker is clicked and there is no special
+                click event defined for this marker.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The map marker's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired whenever a map marker is tapped and there is no special
+                tap event defined for this marker.
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        There are a lot of things one can do with a map view. But first of all let's take a look
+        at how to basically set it up.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}
+map: M.MapView.design({
+    cssClass: 'myMap',
+    zoomLevel: 10,
+    mapType: M.MAP_SATELLITE
+})
 </pre>
-    -->
-</code>
+    <p class="text">
+        The code sample above will result in a basic map view, without any markers. Ok, that's not bad, but now
+        let's see what else we can do.
+    </p>
+<pre class="syntax javascript">
+map: M.MapView.design({
+    cssClass: 'myMap',
+    zoomLevel: 10,
+    mapType: M.MAP_SATELLITE,
+    M.Location.extend({
+        latitude: 48.813338,
+        longitude: 9.178463
+    }),
+    callbacks: {
+        error: {
+            target: MapSample.MapController,
+            action: 'connectionError'
+        }
+    }
+})
 </pre>
+    <p class="text">
+        Now we added a specific initial location to our map view, which is of the type <span class="code">M.Location</span>,
+        and we specified what shall happen if there is no network connection available. If you try to load this map without
+        a network connection no map will be displayed. Instead, the <span class="code">connectionError</span> method of
+        the application's <span class="code">MapController</span> gets called. Ok, cool. But what else can I do?
+    </p>
+<pre class="syntax javascript">
+map: M.MapView.design({
+    cssClass: 'myMap',
+    zoomLevel: 10,
+    mapType: M.MAP_SATELLITE,
+    M.Location.extend({
+        latitude: 48.813338,
+        longitude: 9.178463
+    }),
+    callbacks: {
+        error: {
+            target: MapSample.MapController,
+            action: 'connectionError'
+        }
+    },
+    contentBinding: {
+        target: MapSample.MapController,
+        property: 'markers'
+    }
+})
+</pre>
+    <p class="text">
+        At last we added some markers to the map by using the <span class="code">contentBinding</span> property. This binds
+        the map view to these markers and everytime they are updated (c.p.
+        <span class="navlink" onclick="loadArticle('core_concepts/content_binding');">Content Binding</span>), the map view
+        will apply these changes to its displayed markers.
+    </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -124,7 +488,13 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
+        As mentoined above, we recommend to assign a css class to the map view by using the <span class="code">cssClass</span>
+        property. This allows you to fully control the styling and desing of the map view's container.
+    </p>
+
+    <p class="text">
+        The styling of the map view itself is out of The-M-Project's control, since we use the Google Maps Javascript API V3
+        as it is.
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
