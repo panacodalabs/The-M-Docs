@@ -249,15 +249,29 @@ callbacks: {
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
+            <td><span class="code">addMarker</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">marker</span> (M.MapMarkerView): The marker to be added.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method can be used to add a marker to the map view. Simply pass a valid M.MapMarkerView object and
+                a map marker is created automatically, displayed on the map and added to this map view's markers
+                property.
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">initMap</span></td>
             <td>
                 <!-- METHOD PARAMETERS -->
                 <ul class="isFirstLine">
                     <li>
                         <span class="code">options</span> (Object): The options for the map view.
-                    </li>
-                    <li>
-                        <span class="code">isUpdate</span> (Boolean): Indicates whether this is an update call or not.
                     </li>
                 </ul>
             </td>
@@ -266,8 +280,8 @@ callbacks: {
                 This method is used to initialize a map view, typically out of a controller. With its options parameter
                 you can set or update almost every parameter of a map view. This allows you to define a map view within
                 your view, but then update its parameters later when you want this view to display a map.<br/>
-                The options parameter must be passed as a simple object, containing all of the M.MapView's properties
-                you want to be updated. Such an options object could look like the following:<br/>
+                The options parameter must be passed as a simple object, containing all of the <span class="code">M.MapView</span>'s
+                properties you want to be updated. Such an options object could look like the following:<br/>
 <pre class="syntax javascript">
 {
     zoomLevel: 12,
@@ -278,18 +292,46 @@ callbacks: {
             </td>
         </tr>
         <tr>
-            <td><span class="code">setValue</span></td>
+            <td><span class="code">removeAllMarkers</span></td>
+            <td></td>
+            <td></td>
+            <td>
+                This method removes all markers from this map view. It both cleans up the markers array and deletes
+                the marker's visual representation from the map view.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeMarker</span></td>
             <td>
                 <!-- METHOD PARAMETERS -->
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">value</span> (String): The value to be applied to the text field view..
+                        <span class="code">marker</span> (M.MapMarkerView): The marker to be removed.
                     </li>
                 </ul>
             </td>
             <td></td>
             <td>
-                This method sets the text field's value and initiates its re-rendering.
+                This method can be used to remove a certain marker from the map view. In order to do this, you need
+                to pass the M.MapMarkerView object that you want to be removed from the map view.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">updateMap</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">options</span> (Object): The options for the map view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method is used to update a map view, that has already been initialized. You would typically call
+                this method out of a controller. Besides some internal stuff, this method pretty much does the same as
+                <span class="code">initMap()</span>. So simply pass an object containing valid options for the already
+                existing map view.
             </td>
         </tr>
     </table>
