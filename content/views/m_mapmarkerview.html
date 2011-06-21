@@ -285,24 +285,24 @@ map: M.MapView.design({
     mapType: M.MAP_SATELLITE
 })
 
-/* refer to the map view inside a controller */
+/* refer to the map view inside your controller */
 var map = M.ViewManager.getView('myPage', 'map');
 
-/* initialize a map marker */
-M.MapMarkerView.init({
+/* initialize a map marker out of your controller */
+var marker = M.MapMarkerView.init({
     location: M.Location.init(48.778495, 9.180951),
     map: map,
     title: 'Marker #1',
     message: 'I am marker #1. Welcome to my annotation!'
 })
 
-/* add the map marker to the map to make it visible */
+/* add the map marker to the map to make it visible (out of your controller) */
 map.addMarker(marker);
 
-/* show the map markers annotation */
+/* show the map markers annotatio (out of your controller) */
 marker.showAnnotation();
 
-/* remove the marker again */
+/* remove the marker again (out of your controller) */
 marker.remove();
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
