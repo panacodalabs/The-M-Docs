@@ -5,7 +5,7 @@
     <h1>M.PageView</h1>
 
     <div class="directoryPath">
-        modules/ui/page.js
+        modules/ui/dialogs/page.js
     </div>
 
     <!-- remove unused links -->
@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -22,9 +23,12 @@
 <!-- BASICS-->
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
-
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        The M.PageView is used in every application built with The-M-Project. It is the container view for every view on
+        one screen. This means, every page defines a screen in your application. No methods of the PageView are available for
+        public use. Beside the <span class="code">childViews</span> property, there are also no properties to be used by the
+        application developer. But there are several important <span class="navlink" onclick="scroll('events')">events</span>
+        that are fired in the context of the page.
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -35,10 +39,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <img src="images/views/screen_pageview.png" alt="M.PageView" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +58,17 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">childViews</span></td>
+            <td>optional (not necessary when using content binding)</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                A string naming the child views of the page. E.g.
+                <pre class="syntax javascript">
+childViews: 'header content footer'</pre>
+                Those childViews have to be defined inside the definition of the page, see the
+                <span class="navlink" onclick="scroll('example')">examples</span>.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -71,49 +78,137 @@
 <!-- PUBLIC METHODS -->
 <div class="contentMethods">
     <a name="methods"><h2 class="line">Methods</h2></a>
-    <!--
-        IF NO PUBLIC METHODS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
-        <p class="text">There are no public methods available. <br />
 
-        ELSE LEAVE THIS TABLE:
-    -->
-    <table class="reference" cellpadding="0" cellspacing="0">
-        <tr style="height:50px;">
-            <th style="width:20%;">Name</th>
-            <th style="width:30%;">Parameters</th>
-            <th style="width:15%;">Return Type</th>
-            <th style="width:35%;">Description</th>
-        </tr>
-        <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
-        </tr>
-    </table>
-    
+    <p class="text">There are no public methods available.</p>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
+
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">pagebeforeshow</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">isFirstLoad</span> (Boolean): A flag indicating whether this page
+                        is loaded for the very first time.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is triggered on the page being shown, before its transition begins.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">pageshow</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">isFirstLoad</span> (Boolean): A flag indicating whether this page
+                        is loaded for the very first time.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is triggered on the page being shown, after its transition completes.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">pagebeforehide</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">isFirstLoad</span> (Boolean): A flag indicating whether this page
+                        is loaded for the very first time.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is triggered on the page being hidden, before its transition begins.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">pagehide</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">isFirstLoad</span> (Boolean): A flag indicating whether this page
+                        is loaded for the very first time.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is triggered on the page being hidden, after its transition completes.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">orientationchange</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">orientation</span> (Number): Triggers when a device orientation changes (by turning it vertically or horizontally).
+                        ul>
+                            <li><span class="code">destruction</span> must be defined when having a destructive button.</li>
+                            <li><span class="code">cancel</span> must be defined when having a cancel button.</li>
+                            <li><span class="code">other</span> must be defined when having other buttons.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is triggered on the page being shown, before its transition begins..
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
 
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        This is as simple example of a page consisting of a header bar, a content area and a footer bar. Those three container
+        views will then again contain views.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}
-</pre>
-    -->
-</code>
+    M.PageView.design({
+        events: {
+            pageshow: {
+                target: MyApp.MyController,
+                action: 'init'
+            }
+        }
+
+        /* CSS class(es) assigned to the page */
+        cssClass: 'page',
+
+        childViews: 'header content footer',
+
+        header: M.ToolbarView.design({
+            ...
+        }),
+
+        content: M.ScrollView.design({
+            ...
+        }),
+
+        footer: M.ToolbarView.design({
+            ...
+        })
+    });
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -124,7 +219,8 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
+        No CSS styles are automatically applied.<br />
+        CSS styles can be applied to the page via the <span class="code">cssClass</span> property.
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
