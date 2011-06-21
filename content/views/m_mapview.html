@@ -82,6 +82,17 @@ callbacks: {
             </td>
         </tr>
         <tr>
+            <td><span class="code">cssClass</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to assign a certain css class to the map view's container. This allows
+                you to specify styling stuff like the width and height of your map view. So we recommend to always
+                assign a css class ... just in case.
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">initialLocation</span></td>
             <td>recommended</td>
             <td>M.Location</td>
@@ -402,64 +413,17 @@ callbacks: {
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        The following samples show how to use <span class="code">M.ButtonGroupView</span>.
+        There are a lot of things one can do with a map view. But first of all let's take a look
+        at how to basically set it up.
     </p>
 <pre class="syntax javascript">
-/* set up a default text field view */
-textfield: M.TextFieldView.design({
-
+/* set up a map view and define some options */
+map: M.MapView.design({
+    zoomLevel: 10,
+    mapType: M.MAP_SATELLITE
 })
-
-/* assign an inital text and a corresponding css class */
-textfield: M.TextFieldView.design({
-    initialText: 'Type something...',
-    cssClassOnInit: 'initialText'
-})
-
-/* link two text fields by using content binding / content binding reverse (fully working example) */
-
-// The view
-MyApp.app = M.Application.design({
-	entryPage: 'page',
-
-    page: M.PageView.design({
-        childViews: 'content',
-
-        content: M.ScrollView.design({
-            childViews: 'textfield1 textfield2',
-
-            textfield1: M.TextFieldView.design({
-                contentBinding: {
-                    target: MyApp.MyController,
-                    property: 'textfieldvalue'
-                },
-
-                contentBindingReverse: {
-                    target: MyApp.MyController,
-                    property: 'textfieldvalue'
-                }
-            }),
-
-            textfield2: M.TextFieldView.design({
-                contentBinding: {
-                    target: MyApp.MyController,
-                    property: 'textfieldvalue'
-                },
-
-                contentBindingReverse: {
-                    target: MyApp.MyController,
-                    property: 'textfieldvalue'
-                }
-            })
-        })
-    })
-});
-
-// The controller
-MyApp.MyController = M.Controller.extend({
-    textfieldvalue: ''
-});
 </pre>
+    Ok, this will lead to a
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
