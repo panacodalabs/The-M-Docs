@@ -249,11 +249,32 @@ callbacks: {
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">clearValue</span></td>
-            <td></td>
+            <td><span class="code">initMap</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">options</span> (Object): The options for the map view.
+                    </li>
+                    <li>
+                        <span class="code">isUpdate</span> (Boolean): Indicates whether this is an update call or not.
+                    </li>
+                </ul>
+            </td>
             <td></td>
             <td>
-                This method clears the text field's value, both in the DOM and within the corresponding JS object.
+                This method is used to initialize a map view, typically out of a controller. With its options parameter
+                you can set or update almost every parameter of a map view. This allows you to define a map view within
+                your view, but then update its parameters later when you want this view to display a map.<br/>
+                The options parameter must be passed as a simple object, containing all of the M.MapView's properties
+                you want to be updated. Such an options object could look like the following:<br/>
+<pre class="syntax javascript">
+{
+    zoomLevel: 12,
+    mapType: M.MAP_HYBRID,
+    initialLocation: location
+}
+</pre>
             </td>
         </tr>
         <tr>
