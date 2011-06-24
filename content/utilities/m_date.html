@@ -350,7 +350,7 @@
             </td>
             <td>Number</td>
             <td>
-                This method returns the time between two dates, based on the given returnType. Possible returnTypes are:
+                This method returns the time between two dates, based on the given returnType. Possible return types are:
                 <ul>
                     <li><span class="code">M.MILLISECONDS</span>: milliseconds</li>
                     <li><span class="code">M.SECONDS</span>: seconds</li>
@@ -358,6 +358,75 @@
                     <li><span class="code">M.HOURS</span>: hours</li>
                     <li><span class="code">M.DAYS</span>: days</li>
                 </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getCalendarWeek</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">year</span> (Number): The year part of the date, e.g. 2011. Must be four digits.
+                    </li>
+                    <li>
+                        <span class="code">month</span> (Number): The month part of the date: 0-11. Must be one/two digit.
+                    </li>
+                    <li>
+                        <span class="code">day</span> (Number): The day part of the date: 1-31. Must be one/two digits.
+                    </li>
+                </ul>
+            </td>
+            <td>Number</td>
+            <td>
+                This method computes the calendar week of a date. It can either be executed on a M.Date object, to get
+                the calendar week of that date, or you can pass parameters to get the calendar week for the specified
+                date.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getDatesOfCalendarWeek</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">startWeekOnMonday</span> (Boolean): Determines whether a week starts on monday
+                        or sunday. Optional, default is <span class="code">NO</span>.
+                    </li>
+                    <li>
+                        <span class="code">calendarWeek</span> (Number): The calendar week.
+                    </li>
+                    <li>
+                        <span class="code">year</span> (Number): The year. Optional, default is current year.
+                    </li>
+                </ul>
+            </td>
+            <td>Array</td>
+            <td>
+                This method returns an array containing all dates within one calendar week as an
+                <span class="code">M.Date</span> object.. If no parameters are given, the calendar
+                week of the current date is taken.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getDateByWeekdayAndCalendarWeek</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">calendarWeek</span> (Number): The calendar week.
+                        or sunday. Optional, default is <span class="code">NO</span>.
+                    </li>
+                    <li>
+                        <span class="code">dayOfWeek</span> (Number): The day of the week (0 = sunday, ..., 7 = saturday).
+                    </li>
+                    <li>
+                        <span class="code">year</span> (Number): The year. Optional, default is current year.
+                    </li>
+                </ul>
+            </td>
+            <td>M.Date</td>
+            <td>
+                This method returns a date (<span class="code">M.Date</span>) for a given calendar week and day of this week.
             </td>
         </tr>
     </table>
