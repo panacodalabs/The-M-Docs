@@ -10,7 +10,7 @@
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
-    <span class="navlink" onclick="scroll('example')">Example</span>
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -439,8 +439,11 @@
 
 <!-- EXAMPLE -->
 <div class="contentExample">
-    <a name="example"><h2 class="line">Example</h2></a>
+    <a name="examples"><h2 class="line">Example</h2></a>
 
+    <h3>
+        Creating and displaying dates
+    </h3>
     <p class="text">
         Take a look at the number of methods, you can see that this object is capable of quite a few things. But let's
         start by setting up a date and displaying it on the screen.
@@ -454,13 +457,105 @@
 var date = M.Date.now();
 
 /* print the current date in a certain format on the console, e.g. '06/24/2011 13:28' */
-console.log(date.format('mm/dd/yyyy HH:MM'));
+var dateString = date.format('mm/dd/yyyy HH:MM');
+console.log(dateString);
 
 /* create a date out of a string */
 var date = M.Date.create('06/24/2011 13:28');
 
 /* print the timestamp of that date on the console, e.g. '1308914880000' */
-console.log(date.getTimestamp());
+var dateString = date.getTimestamp();
+console.log(dateString);
+</pre>
+
+    <h3>
+        Computing dates in the future/past
+    </h3>
+    <p class="text">
+        Ok, so now we know how to create a date out of a given string and how to simply receive the current date. But
+        what about calculating dates in the future/past? We included some helpers for that, too. So let's say your
+        application needs to know when a period of 20 days ends, based on a given date. The following examples show
+        you how to do this and other, similar, stuff.
+    </p>
+<pre class="syntax javascript">
+/* get the current date and display it, e.g. '06/24/2011 13:28' */
+var date = M.Date.now();
+var dateString = date.format('mm/dd/yyyy HH:MM');
+console.log(dateString);
+
+/* add 20 days to that date and display it, e.g. '07/14/2011 13:28' */
+date = date.daysFromDate(20);
+dateString = date.format('mm/dd/yyyy HH:MM');
+console.log(dateString);
+
+/* now subtract 8 hours from that date and display it, e.g. '07/14/2011 05:28' */
+date = date.hoursFromDate(-8);
+dateString = date.format('mm/dd/yyyy HH:MM');
+console.log(dateString);
+
+/* finally add 53 minutes to that date and display it, e.g. '07/14/2011 06:21' */
+date = date.minutesFromDate(53);
+dateString = date.format('mm/dd/yyyy HH:MM');
+console.log(dateString);
+</pre>
+    <h3>
+        Computing the time between dates
+    </h3>
+    <p class="text">
+        Another typical use case is that you need to compare two dates and to compute the difference between them.
+        Therefore we provide a method called <span class="code">timeBetween</span>.
+    </p>
+<pre class="syntax javascript">
+/* get the current date */
+var date1 = M.Date.now();
+console.log(date1.format('mm/dd/yyyy HH:MM:ss:l'));
+
+/* get a seconds date based on the first + 12 days, 4 hours and 23 minutes */
+var date2 = date1.daysFromDate(12).hoursFromDate(4).minutesFromDate(23);
+console.log(date2.format('mm/dd/yyyy HH:MM:ss:l'));
+
+/* get the difference between these dates (in minutes) and display it: 17543 (minutes) */
+var difference = date1.timeBetween(date2, M.MINUTES);
+console.log(difference);
+
+/* check: 12 days + 4 hours + 23 minutes = (((12 * 24) + 4) * 60) + 23 = 17543 */
+console.log((((12 * 24) + 4) * 60) + 23);
+</pre>
+    <h3>
+        Working with calendar weeks
+    </h3>
+    <p class="text">
+        Finally let's take a look at how to work with calendar weeks. There are methods available for getting a
+        calendar week and retrieving its containing dates. These methods can be called either on a existing
+        <span class="code">M.Date</span> object or on the prototype.
+    </p>
+<pre class="syntax javascript">
+/* get the current date */
+var date = M.Date.now();
+
+/* get its calendar week and display it, e.g.: 25 */
+var calendarWeek = date.getCalendarWeek();
+console.log(calendarWeek);
+
+/* get the calendar week by using the prototype and a certain date (24/6/2011) and display it, e.g.: 25 */
+var calendarWeek = M.Date.getCalendarWeek(2011, 5, 24);
+console.log(calendarWeek);
+
+/* get the dates of a calendar week (starting with sunday) */
+var dates = date.getDatesOfCalendarWeek();
+console.log(dates);
+
+/* get the dates of a calendar week (starting with monday) */
+var dates = date.getDatesOfCalendarWeek(null, YES);
+console.log(dates);
+
+/* get the dates of a calendar week (starting with sunday) by using the prototype */
+var dates = M.Date.getDatesOfCalendarWeek(25);
+console.log(dates);
+
+/* get a date by a calendar week (25) and a day of that week (0 = sunday, ..., 7 = saturday)  */
+var date = M.Date.getDateByWeekdayAndCalendarWeek(25, 5);
+console.log(date.format('mm/dd/yyyy HH:MM'));
 </pre>
     
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
