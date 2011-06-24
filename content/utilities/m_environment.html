@@ -9,7 +9,7 @@
     </div>
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -17,13 +17,19 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
-    </p>
+    <p class="text">
+        The <span class="code">M.Environment</span> object provides information about the environment that your app is running in.
+        It provides methods that return the respective state of the environment:</p>
+        <ul class="text">
+            <li>user agent</li>
+            <li>platform</li>
+            <li>viewport size</li>
+            <li>device orientation</li>
+            <li>connection status (online/offline)</li>
+        </ul>
+    <p class="text">In several methods, it accesses the global <span class="code">navigator</span> object.</p>
 
-    <div class="screens">
+    <!--<div class="screens">
         <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
     </div>-->
 
@@ -31,34 +37,229 @@
 </div>
 <!-- END OF BASICS -->
 
-<!-- START-->
-<div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">getConnectionStatus</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        callback: The callback object defining <span class="code">target</span> and <span class="code">action</span>. It is also possible
+                        to just pass a function to action instead of a string naming the method in a controller.
+                        A constant string (<span class="code">M.ONLINE</span> or <span class="code">M.OFFLINE</span>) is passed to the callback as parameter
+                        defining whether the device is online or offline. 
+                    </li>
+                    <li>
+                        url (optional): A URL defining a location of an image that is tried to include.
+                        If nothing is passed, a default url is used.
+                    </li>
+                </ul>
+            </td>
+            <td>-
+            </td>
+            <td>
+                The method returns the connection status of the device by invoking a callback function with the status passed. The status
+                is retrieved by trying to insert an image (tag) into the DOM whose reference URL is a remote stored image (by default the google logo
+                of google.de is used - we assume that if google is down, you're not connected. If this is not reliable enough, simply pass your URL as second
+                parameter to the method call).
+            </td>
+        </tr>
 
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
+        <tr>
+            <td><span class="code">getUserAgent</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        String: The user agent string.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method maps to <span class="code">navigator.userAgent</span> and returns the user agent string defined
+                by the browser. The string defines several useful information.
+            </td>
+        </tr>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
 
-    <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
-    </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
+        <tr>
+            <td><span class="code">getPlatform</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        String: A platform string, e.g. 'MacIntel'.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method maps to <span class="code">navigator.platform</span> and returns a platform string.
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="code">getSize</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Array: Width and height as numbers in an array: <br />
+                        [0]: width <br />
+                        [1]: height
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method returns the currently available width and height of the browser window as an array.
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="code">getWidth</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Number: The width of the user's browser window.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method returns the width of the user's browser window (and therefor uses <span class="code">getSize</span>).
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="code">getHeight</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Number: The height of the user's browser window.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method returns the height of the user's browser window (and therefor uses <span class="code">getSize</span>).
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="code">getOrientation</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Number or Boolean: The orientation type as a constant value. If the orientation can not be detected: NO.
+                        <br />Possible orientation values:
+                        <ul>
+                            <li><span class="code">M.PORTRAIT_TOP</span></li>
+                            <li><span class="code">M.PORTRAIT_BOTTOM</span></li>
+                            <li><span class="code">M.LANDSCAPE_LEFT</span></li>
+                            <li><span class="code">M.LANDSCAPE_RIGHT</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This method returns the device's current orientation, depending on whether
+                or not the device is capable of detecting the current orientation. If the
+                device is unable to detect the current orientation, this method will return
+                NO.
+            </td>
+        </tr>
+
+    </table>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF START -->
+<!-- END OF METHODS -->
+
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="examples"><h2 class="line">Examples</h2></a>
+
+    <h3>
+        Retrieving the connection status
+    </h3>
+    <p class="text">
+        With a callback to a controller action:
+    </p>
+
+    <pre class="syntax javascript">
+M.Environment.getConnectionStatus({
+    target: MyApp.MyController,
+    action: 'setConnectionStatus'
+});</pre>
+
+    <p class="text">Just passing a function works, too.</p>
+               <pre class="syntax javascript">
+M.Environment.getConnectionStatus({
+    action: function(status) { console.log('Your device is ' + status); }
+});
+/* output if device is online */
+=> Your device is online</pre>
+
+
+    <h3>
+        Getting the user agent
+    </h3>
+    <p class="text">
+        User agent for Chrome 12 on Mac OS X 10.6.7:
+    </p>
+               <pre class="syntax javascript">
+M.Environment.getUserAgent();
+"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_7) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.100 Safari/534.30"</pre>
+
+
+    <h3>Getting the platform</h3>
+    <p class="text">
+        Mac OS X on an Intel CPU.
+    </p>
+                <pre class="syntax javascript">
+M.Environment.getPlatform();
+"MacIntel"</pre>
+
+    <h3>
+        Getting the size of the viewport:
+    </h3>
+    <pre class="syntax javascript">
+M.Environment.getSize();
+[1241, 706]</pre>
+
+
+    <h3>
+        Getting the device oriantation
+    </h3>
+    <p class="text">
+        iPhone when holding it "normal":
+    </p>
+    <pre class="syntax javascript">
+M.Environment.getOrientation();
+0 /* M.PORTRAIT_TOP */</pre>
+
+<span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
