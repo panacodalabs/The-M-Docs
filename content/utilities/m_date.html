@@ -9,7 +9,8 @@
     </div>
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('methods')">Methods</span>
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -435,3 +436,33 @@
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        Take a look at the number of methods, you can see that this object is capable of quite a few things. But let's
+        start by setting up a date and displaying it on the screen.
+        <div class="note">
+            Note: All of the following examples are executable right in the console of your browser. Within a real application
+            you would typically use this stuff inside of a controller.
+        </div>
+    </p>
+<pre class="syntax javascript">
+/* get the current date */
+var date = M.Date.now();
+
+/* print the current date in a certain format on the console, e.g. '06/24/2011 13:28' */
+console.log(date.format('mm/dd/yyyy HH:MM'));
+
+/* create a date out of a string */
+var date = M.Date.create('06/24/2011 13:28');
+
+/* print the timestamp of that date on the console, e.g. '1308914880000' */
+console.log(date.getTimestamp());
+</pre>
+    
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
