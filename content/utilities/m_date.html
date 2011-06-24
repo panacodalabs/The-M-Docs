@@ -335,6 +335,31 @@
                 includes these into the calculation of the future or past date.
             </td>
         </tr>
+        <tr>
+            <td><span class="code">timeBetween</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">date</span> (M.Date): The date.
+                    </li>
+                    <li>
+                        <span class="code">returnType</span> (String): The return type for the call.
+                    </li>
+                </ul>
+            </td>
+            <td>Number</td>
+            <td>
+                This method returns the time between two dates, based on the given returnType. Possible returnTypes are:
+                <ul>
+                    <li><span class="code">M.MILLISECONDS</span>: milliseconds</li>
+                    <li><span class="code">M.SECONDS</span>: seconds</li>
+                    <li><span class="code">M.MINUTES</span>: minutes</li>
+                    <li><span class="code">M.HOURS</span>: hours</li>
+                    <li><span class="code">M.DAYS</span>: days</li>
+                </ul>
+            </td>
+        </tr>
     </table>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
