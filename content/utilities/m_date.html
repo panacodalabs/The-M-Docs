@@ -10,7 +10,7 @@
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
-    <span class="navlink" onclick="scroll('example')">Example</span>
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -441,6 +441,9 @@
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
+    <h3>
+        Creating and displaying dates
+    </h3>
     <p class="text">
         Take a look at the number of methods, you can see that this object is capable of quite a few things. But let's
         start by setting up a date and displaying it on the screen.
@@ -464,7 +467,10 @@ var date = M.Date.create('06/24/2011 13:28');
 var dateString = date.getTimestamp();
 console.log(dateString);
 </pre>
-    
+
+    <h3>
+        Computing dates in the future/past
+    </h3>
     <p class="text">
         Ok, so now we know how to create a date out of a given string and how to simply receive the current date. But
         what about calculating dates in the future/past? We included some helpers for that, too. So let's say your
@@ -492,7 +498,9 @@ date = date.minutesFromDate(53);
 dateString = date.format('mm/dd/yyyy HH:MM');
 console.log(dateString);
 </pre>
-
+    <h3>
+        Computing the time between dates
+    </h3>
     <p class="text">
         Another typical use case is that you need to compare two dates and to compute the difference between them.
         Therefore we provide a method called <span class="code">timeBetween</span>.
@@ -513,7 +521,9 @@ console.log(difference);
 /* check: 12 days + 4 hours + 23 minutes = (((12 * 24) + 4) * 60) + 23 = 17543 */
 console.log((((12 * 24) + 4) * 60) + 23);
 </pre>
-
+    <h3>
+        Working with calendar weeks
+    </h3>
     <p class="text">
         Finally let's take a look at how to work with calendar weeks. There are methods available for getting a
         calendar week and retrieving its containing dates. These methods can be called either on a existing
