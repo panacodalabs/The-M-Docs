@@ -9,7 +9,8 @@
     </div>-->
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('start')">Where can I get it?</span> &#183;
+    <span class="navlink" onclick="scroll('not_tmp')">What Espresso is not!</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -17,15 +18,40 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+    <p class="text">
+        Espresso can be seen as The-M-Project's little friend. Basically you would call it a build tool, but it is more. Espresso
+        is aware of both The-M-Project and your application. It provides tools for initializing an application and for creating certain
+        components.
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
-    </div>-->
+    <p class="text">
+        One of the most important features of Espresso is the built-in server. It is Node-based and, once started, builds your application
+        on-the-fly whenever you request a specific url with any browser inside your local network. This allows you to test an application
+        on any relevant mobile device without having to deploy it to a remote server.
+    </p>
+
+    <p class="text">
+        Some more facts about Espresso:
+
+        <ul>
+            <li>
+                Espresso is a Node-based build tool.
+            </li>
+            <li>
+                Espresso is The-M-Project's little friend.
+            </li>
+            <li>
+                Espresso is a server for the development process.
+            </li>
+            <li>
+                Espresso is packing up application.
+            </li>
+            <li>
+                Espresso is minimizing the amount of data of your application.
+            </li>
+        </ul>
+    </p>
+
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -33,31 +59,40 @@
 
 <!-- START-->
 <div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
-
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
+    <a name="start"><h2 class="line">Where can I get it?</h2></a>
 
     <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
+        Actually it's pretty much the same as with The-M-Project. So we just copied the text of that and changed the
+        name: <br/>
+        Espresso is hosted on GitHub in a public repository. You can find the latest stable version in the
+        <span class="code">master</span> branch. If you are in a more experimental mood, check out the latest stuff
+        (<span class="code">detox</span> branch). <a class="navlink" href="https://github.com/mwaylabs/Espresso/" target="_blank">Right to GitHub</a>.
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
+
+<!-- START-->
+<div class="contentBasics">
+    <a name="not_tmp"><h2 class="line">What Espresso is not!</h2></a>
+
+    <p class="text">
+        Especially when it comes to Node, there are a lot of rumours and misunderstanding concerning Espresso. So
+        here are a few thing, that Espresso is not:
+
+        <ul>
+            <li>
+                Espresso is no requirement for running The-M-Project apps.
+            </li>
+            <li>
+                Node is no requirement for running The-M-Project apps.
+            </li>
+            <li>
+                Espresso is no application server for productual use.
+            </li>
+        </ul>
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
