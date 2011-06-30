@@ -126,42 +126,48 @@
         command of Espresso to do this.
     </p>
 <pre class="syntax bash">
-# go to your application's directory
-cd ~/the/directory/of/my/application
-
-# use Espresso to generate a controller
+cd ~/the/directory/of/my/applicatio
 espresso generate -c MyController
 </pre>
 
     <h3>
-        Computing dates in the future/past
+        Basic structure of a controller
     </h3>
     <p class="text">
-        Ok, so now we know how to create a date out of a given string and how to simply receive the current date. But
-        what about calculating dates in the future/past? We included some helpers for that, too. So let's say your
-        application needs to know when a period of 20 days ends, based on a given date. The following examples show
-        you how to do this and other, similar, stuff.
+        As every JavaScript object, a controller can consist of both properties and methods. Properties are typically used for either
+        some internal stuff of you application or in combination with content binding. A view will refer to a controller property using
+        their <span class="code">contentBinding</span> property. The same classification goes for methods. Some of a controller's
+        methods will be used for your internal calculations while others will be triggered by the UI, e.g. by a tap event.
     </p>
 <pre class="syntax javascript">
-/* get the current date and display it, e.g. '06/24/2011 13:28' */
-var date = M.Date.now();
-var dateString = date.format('mm/dd/yyyy HH:MM');
-console.log(dateString);
+MyApp.MyController = M.Controller.extend({
 
-/* add 20 days to that date and display it, e.g. '07/14/2011 13:28' */
-date = date.daysFromDate(20);
-dateString = date.format('mm/dd/yyyy HH:MM');
-console.log(dateString);
+    myProperty1: null,
 
-/* now subtract 8 hours from that date and display it, e.g. '07/14/2011 05:28' */
-date = date.hoursFromDate(-8);
-dateString = date.format('mm/dd/yyyy HH:MM');
-console.log(dateString);
+    myProperty2: YES,
 
-/* finally add 53 minutes to that date and display it, e.g. '07/14/2011 06:21' */
-date = date.minutesFromDate(53);
-dateString = date.format('mm/dd/yyyy HH:MM');
-console.log(dateString);
+    myProperty3: {
+        isThisAwesome: YES,
+        didIGetIt: YES,
+        favoriteJSFramework: 'The-M-Project'
+    },
+
+    myMethod1: function() {
+        /* e.g. triggered by a tap/click: now switch the page */
+        this.switchToPage('page2');
+    },
+
+    myMethod2: function() {
+        /* calculate something */
+        var i = 2 + 4;
+    },
+
+    myMethod3: function() {
+        /* oh, content changed: now initialize the render update */
+        this.set('myProperty1', 'I! Love! This! Company! YEAH!');
+    }
+
+});
 </pre>
     
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
