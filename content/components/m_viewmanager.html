@@ -6,10 +6,11 @@
 
     <div class="directoryPath">
         Keeping track of all your view components in your app
-	</div>
+    </div>
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -17,48 +18,214 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+    <p class="text">
+        The view manager manages and knows all views that are used within an application. It is one of the
+        core components and participates in many internal operations. Everytime there is a communication between
+        the UI, respectively the DOM, and the actual application, the JS objects, the view manager is used to
+        dispatch notifications between these two layers.
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
-    </div>-->
+    <p class="text">
+        Inside your application, you would typically use the view manager for accessing views in general. It
+        provides methods for finding a certain view within a page and it helps, retrieving pages by their
+        name.
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
-<!-- START-->
-<div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <!--
+        IF NO PUBLIC METHODS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no public methods available. <br />
 
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
-
-    <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">getCurrentPage</span></td>
+            <td></td>
+            <td>M.Page</td>
+            <td>
+                If you want to access the corresponding JS object of the currently displayed page, simply call
+                this method. It returns excactly what you are looking for.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getIdByView</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">view</span> (Object): The view for which the id value is wanted.
+                    </li>
+                </ul>
+            </td>
+            <td>String</td>
+            <td>
+                This will return the DOM id of the passed view object.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getPage</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">pageName</span> (String): The name of the page to be returned.
+                    </li>
+                </ul>
+            </td>
+            <td>M.Page</td>
+            <td>
+                This method returns the page object from the view list array identified by its name. If there are
+                multiple pages with the same name, the first result is returned.
+                <div class="note">
+                    Note: Use unique names for your pages!
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getView</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">parentView</span> (String|Object): The name of the parent view (if it is a
+                        page) or the parent view itself.
+                    </li>
+                    <li>
+                        <span class="code">targetView</span> (String): The name of the view to be returned.
+                    </li>
+                </ul>
+            </td>
+            <td>Object</td>
+            <td>
+                This method returns the view object from the view list array identified by the view's name
+                (<span class="code">targetView</span>) and its surrounding view <span class="code">parentView</span>.
+                If there are multiple views with the same name on the same surrounding view, the first result is
+                returned.
+                <div class="note">
+                    Note: Use unique names for your views within the same surrounding view!
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">getViewById</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The DOM id of the corresponding view object.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method will return the view object from an internal the view list array, identified by
+                the value of its <span class="code">id</span> property. Internally we use this method a lot.
+                During the development process this can be very useful for debugging your application. Just
+                take a look at the DOM, find a view that maybe causes trouble, get its <span class="code">id</span>
+                property and finally use this method to retrieve the corresponding JS object.
+            </td>
+        </tr>
+    </table>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF START -->
+<!-- END OF METHODS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="examples"><h2 class="line">Example</h2></a>
+
+    <h3>
+        Accessing a view by its id
+    </h3>
+    <p class="text">
+        As mentioned before, during debugging it can be necessary to access a view based on its
+        <span class="code">id</span>. Let's say you are having trouble with a button, look it up in the DOM and
+        retrieve the id <span class="code">m_34</span>. Then you can access the corresponding JS object with
+        the following code snippet.
+    </p>
+<pre class="syntax javascript">
+var button = M.ViewManager.getViewById('m_34');
+</pre>
+
+    <h3>
+        Finding a view
+    </h3>
+    <p class="text">
+        Imagine your application is using a button group view and you want to retrieve the currently activated
+        button. Well, there is an appropriate method available for any button group. But before you can execute
+        that method, you need to access the JS object of that button group. The following code snippets will
+        show you how to do that.
+    </p>
+    
+<pre class="syntax javascript">
+/* sample for main.js */
+MyApp.app = M.Application.design({
+
+    entryPage: 'page1',
+
+    page1: MyApp.Page1,
+
+    page2: MyApp.Page2
+
+    /* ... */
+
+});
+
+/* sample for page1 */
+MyApp.Page1 = M.PageView.design({
+    childViews: 'buttonGroup',
+    buttonGroup: M.ButtonGroup.design({
+        /* ... */
+    })
+});
+
+/* now let's access the button group (from inside a controller) */
+MyApp.MyController = M.Controller.extend({
+    myFunction: function() {
+        var buttonGroup = M.ViewManager.getView('page1', 'buttonGroup');
+    }
+});
+</pre>
+    <p class="text">
+        Even though it's a lot of code above, the actual call for accessing the button group's JS object is simple.
+        Just call the view manager's <span class="code">getView</span> method and pass along the name of the page
+        that view is in (<span class="code">page1</span>) and the name of the view you are looking for
+        (<span class="code">buttonGroup</span>). That's it.
+    </p>
+
+    <h3>
+        Retrieving a page
+    </h3>
+    <p class="text">
+        In some cases it might be necessary to access a page, respectively the corresponding JS object. Since a page is
+        at the top of hierarchy of an application's view object, you can not use the <span class="code">getView</span>
+        method to do this. But fortunately we implemented something even better, the <span class="code">getPage</span>
+        method. The following code snippet uses this method and accesses a page, specified as
+        <span class="code">page1</span>.
+    </p>
+<pre class="syntax javascript">
+/* access a page from inside a controller */
+MyApp.MyController = M.Controller.extend({
+    myFunction: function() {
+        var page1 = M.ViewManager.getPage('page1');
+    }
+});
+</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
