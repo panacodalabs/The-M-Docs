@@ -9,56 +9,107 @@
 	</div>
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('tmp_mvc')">MVC and TMP</span> &#183;
+    <span class="navlink" onclick="scroll('incluence')">How does MVC influence app development with The-M-Project?</span> &#183;
 </div>
 <!-- END OF HEADER -->
 
 <!-- BASICS-->
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
-
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+	<p class="text">
+    Model-View-Controller (MVC) is an architectural pattern that isolates the data and business logic from its representation. 
+    As the name indicates, it consists of three components:
+    <ul class="text">
+    	<li><span class="boldText">Model</span>: Application data and logic</li>
+	   	<li><span class="boldText">View</span>: Screen representation of the data (user interface)</li>
+    	<li><span class="boldText">Controller</span>: acts between Model and Views, controls the application on the basis of user inputs, communicates with the model component and triggers the view, to render a representation</li>
+    </ul>
     </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
-    </div>-->
-
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+<!-- MVC TMP-->
+<div class="contentBasics">
+    <a name="tmp_mvc"><h2 class="line">MVC and TMP</h2></a>    
+	<p class="text">
+		The-M-Project apps rely heavy on MVC, it is the basic architecture of every application. To achieve this, the framework has three basic objects that map to the components of MVC:
+		<ul class="text">
+			<li><span class="code">M.Model</span>: The basis of every model in a The-M-Project app</li>
+			<li><span class="code">M.View</span>: The basis of all views provided by The-M-Project</li>
+			<li><span class="code">M.Controller</span>: The basis of every controller in a The-M-Project application</li>
+		</ul>
+	</p>
+	<img src="images/core_concepts/tmp_mvc.png" alt="MVC in TMP" />
+	<p class="text">
+		The image shows the relation between the basic object and parts of the application. The grey coloured boxes indicate objects that are created by the application developer: All models and controllers are created by the developer. Views (like the named <span class="code">M.ButtonView</span>) are provided by The-M-Project even though it is possible and often done to create your own custom views that also have <span class="code">M.View</span> as a basis. <br />
+		
+		The relation between the mvc basis objects and your code gets clearer when looking at some piece of code. Here's a definition of a controller, <span class="code">MyController</span>:
+	</p>
+	<pre class="syntax javascript">
+		MyApp.MyController = M.Controller.extend({
+			/* controller's properties and methods here */
+		});</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
-<!-- START-->
+<!-- INFLUENCE OF MVC ON APP DEV -->
 <div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
-
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
+    <a name="incluence"><h2 class="line">How does MVC influence app development with The-M-Project?</h2></a>
 
     <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
+        When planning your app and designing the architecture of your app, you always have to keep MVC in mind. Have a look at the following illustration. It shows the parts of a ToDo application (similar to our <a href="http://www.the-m-project.org/apps/todos2" target="_blank">ToDo</a> app).
     </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
-
+	<img src="images/core_concepts/mvc_tmp_todo_app.png" alt="MVC in ToDo app" />
+    <p class="text">
+    	We see the app's semantical structure being applied on MVC. Here's a detailed explanation of it:
+    	<ul class="text">
+    		<li>The <span class="code">OverviewPage</span> for example represents all data (tasks) that is available in the application: It shows all tasks. It is built with a <span class="code">M.PageView</span> and contains various other views, like a <span class="code">M.ListView</span> for listing the tasks.</li>
+    		<li>The <span class="code">TodoController</span> for example contains all functionality that is needed to make the app fulfill its task. It contains the functionality to show, add, edit and delete a Task from the Todo list. The functions inside the controller are bound to events triggered on view components. This is defined in the view's definition</li>
+    		<li>The model <span class="code">Task</span> defines the entity Task. This entity is responsible task details, like a title and a description of the task. It's the data model of the application that represents the application's data. Data in MVC is situated in the model component.
+    	</ul>
+   	</p>
+   	
+ <p class="text">Here's some code examples for this example. <br />
+   		
+   	Defining a Task model:	</p>
+	<pre class="syntax javascript">
+	Todos.Task = M.Model.create({
+		/* Define model properties and methods here */
+		...
+	});</pre>
+   	
+   	<p class="text">Defining a TodosController, that has a method to create new records. The controller not just interacts with a model to create, store or read data, it also communicates with views.</p>
+   	<pre class="syntax javascript">
+   		ToDos.TodosController = M.Controller.extend({
+   			...
+   			add: function() {
+   				var t = Todos.Task.createRecord({
+   					/* define the properties of the task */
+   				});
+   				...
+   				this.switchToPage('OverviewPage'); /* after adding a task, show the overview again */
+   			}
+   			...
+   		});</pre>
+	
+	<div class="note text">
+	Note: The shown breakdown is one way to do it. You're free to do it in any other way. You can put all controller stuff into one single controller if you like to. But we've experienced that a well-thought seperation keeps your code clean and maintainable and makes it readable and understandable.
+	</div>
+    	
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF START -->
+<!-- END OF INFLUENCE -->
+
+
+
+
+
+
+
+
+
+
+
+
