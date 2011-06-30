@@ -145,7 +145,7 @@ gotoPage2: function() {
                 <span class="code">isBack</span>: YES will cause a reverse-direction transition. Default: NO.
             </li>
             <li>
-                <span class="code">changeLoc</span>: Update the browser history. Default: YES.
+                <span class="code">updateHistory</span>: Update the browser history. Default: YES.
             </li>
         </ol>
     </p>
@@ -219,7 +219,7 @@ this.switchToPage('page2', M.TRANSITION.POP, YES);
 </pre>
 
     <p class="text">
-        Ok, why do I use the third parameter <span class="code">changeLoc</span>? To be honest: If you are not a hundert percent
+        Ok, why do I use the third parameter <span class="code">updateHistory</span>? To be honest: If you are not a hundert percent
         sure that you want to use this parameter, simply don't! By default this is set to <span class="code">YES</span>. This
         means, that any page switch will add an entry to the browser's history. We strongly recommend to use this feature,
         so your users can navigate the application by using buttons on their smartphone, as on many Android devices, or by
