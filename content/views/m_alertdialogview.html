@@ -127,10 +127,23 @@ M.DialogView.alert({
     confirmButtonValue: 'Sad.',
     callbacks: {
         confirm: {
-            target: myApp.myController,
             action: function() {
                 console.log('Sad.');
             }
+        }
+    }
+});
+
+/* or with target and action */
+
+M.DialogView.alert({
+    title: 'No Connection',
+    message: 'No Connection available. Request failed.'
+    confirmButtonValue: 'Sad.',
+    callbacks: {
+        confirm: {
+        	target: MyApp.MyController,
+            action: 'disconnect'
         }
     }
 });
