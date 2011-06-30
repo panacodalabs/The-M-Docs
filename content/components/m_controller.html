@@ -1,0 +1,175 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.Controller</h1>
+
+    <div class="directoryPath">
+        The control center of your application
+    </div>
+
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        <span class="code">M.Controller</span> is the prototype of any controller within your application. It
+        basically provides two very important methods you will use in most of your applications. The first one
+        is responsible for switching pages, the second one is the key to the whole content binding feature and
+        triggers rendering updates if content did change.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <!--
+        IF NO PUBLIC METHODS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no public methods available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">set</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">key</span> (String): The key of the property to be changed.
+                    </li>
+                    <li>
+                        <span class="code">value</span> (Object|String): The value to be set.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method initializes the notification of all observers, that observe the property behind 'key'. So you
+                will use this method out of a controller to inform the application that a property, respectively some content,
+                did change. See <span class="navlink" onclick="loadArticle('core_concepts/content_binding')">Content Binding</span>
+                for more information about that.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">switchToPage</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">page</span> (Object|String): The page to be displayed or its name.
+                    </li>
+                    <li>
+                        <span class="code">transition</span> (String): The transition that should be used. Default: horizontal slide.
+                    </li>
+                    <li>
+                        <span class="code">isBack</span> (Boolean): YES will cause a reverse-direction transition. Default: NO.
+                    </li>
+                    <li>
+                        <span class="code">updateHistory</span> (Boolean): Update the browser history. Default: YES.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method will perform a page switch based on the passed parameters or the default values. To learn more about
+                how to use this method, take a look at our tutorial
+                <span class="navlink" onclick="loadArticle('tutorial/how_to_switch_a_page')">How to switch a page</span>.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">switchToTab</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">tab</span> (M.TabBarView): The tab to be activated.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method will perform a page switch to the passed tab. Internally this is used whenever a user taps/clicks
+                on a tab. But you can also trigger such a switch programmatically out of your application if necessary.
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="examples"><h2 class="line">Example</h2></a>
+
+    <h3>
+        Create a controller with Espresso
+    </h3>
+    <p class="text">
+        In order to work with a controller, you will need to create one. We recommend to use the <span class="code">generate</span>
+        command of Espresso to do this.
+    </p>
+<pre class="syntax bash">
+cd ~/the/directory/of/my/applicatio
+espresso generate -c MyController
+</pre>
+
+    <h3>
+        Basic structure of a controller
+    </h3>
+    <p class="text">
+        As every JavaScript object, a controller can consist of both properties and methods. Properties are typically used for either
+        some internal stuff of you application or in combination with content binding. A view will refer to a controller property using
+        their <span class="code">contentBinding</span> property. The same classification goes for methods. Some of a controller's
+        methods will be used for your internal calculations while others will be triggered by the UI, e.g. by a tap event.
+    </p>
+<pre class="syntax javascript">
+MyApp.MyController = M.Controller.extend({
+
+    myProperty1: null,
+
+    myProperty2: YES,
+
+    myProperty3: {
+        isThisAwesome: YES,
+        didIGetIt: YES,
+        favoriteJSFramework: 'The-M-Project'
+    },
+
+    myMethod1: function() {
+        /* e.g. triggered by a tap/click: now switch the page */
+        this.switchToPage('page2');
+    },
+
+    myMethod2: function() {
+        /* calculate something */
+        var i = 2 + 4;
+    },
+
+    myMethod3: function() {
+        /* oh, content changed: now initialize the render update */
+        this.set('myProperty1', 'I! Love! This! Company! YEAH!');
+    }
+
+});
+</pre>
+    
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->

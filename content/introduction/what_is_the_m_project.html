@@ -9,7 +9,8 @@
     </div>-->
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('start')">Where can I get it?</span> &#183;
+    <span class="navlink" onclick="scroll('not_tmp')">What The-M-Project is not!</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -17,15 +18,34 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+    <p class="text">
+        The-M-Project is an open source HTML5 JavaScript framework for creating modern, cross-platform mobile web apps.
+        It provides developers with an MVC-based architecture for structured and convenient application development. The shiny
+        UI is based on jQuery Mobile and the work of the Filament Group.
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
-    </div>-->
+    <p class="text">
+        The main principle behind The-M-Project can be described in one sentence: Develop a mobile application with
+        well-established web technologies – supported by an extensive, intuitive framework – and use the result on any modern
+        mobile platform.
+    </p>
+
+    <p class="text">
+        Some more facts about The-M-Project:
+
+        <ul class="text">
+            <li>
+                The-M-Project is for free and always will be.
+            </li>
+            <li>
+                The-M-Project only requires knowledge of JavaScript.
+            </li>
+            <li>
+                The-M-Project uses jQuery Mobile, but is far more than a shiny UI framework.
+            </li>
+        </ul>
+    </p>
+
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -33,31 +53,41 @@
 
 <!-- START-->
 <div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
-
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
+    <a name="start"><h2 class="line">Where can I get it?</h2></a>
 
     <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
+        The M-Project is hosted on GitHub in a public repository. You can find the latest stable version in the
+        <span class="code">master</span> branch. If you are in a more experimental mood, check out the latest stuff
+        (<span class="code">detox</span> branch). <a class="navlink" href="https://github.com/mwaylabs/The-M-Project/" target="_blank">Right to GitHub</a>.
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
+
+<!-- START-->
+<div class="contentBasics">
+    <a name="not_tmp"><h2 class="line">What The-M-Project is not!</h2></a>
+
+    <p class="text">
+        Since you now should have a basic knowledge about what The-M-Project is and what the basic idea behind this
+        framework is, you should consider a few things that The-M-Project is not:
+
+        <ul class="text">
+            <li>
+                The-M-Project is no add-on or plugin to jQuery Mobile.
+            </li>
+            <li>
+                The-M-Project is no server-side framework.
+            </li>
+            <li>
+                The-M-Project does not require any knowledge of HTML.
+            </li>
+            <li>
+                The-M-Project apps do not require a Node server to be run - a simple Apache does the job.
+            </li>
+        </ul>
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>

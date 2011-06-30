@@ -47,6 +47,12 @@ a {
     font-weight: lighter;
 }
 
+a:hover {
+    text-decoration: none;
+    color: #2bbefa;
+    font-weight: lighter;
+}
+
 .text, ol li {
     font-size:0.9em;
     line-height:22px;
