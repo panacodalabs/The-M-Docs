@@ -81,8 +81,7 @@ PageSwitchDemo.Page2 = M.PageView.design({
         value: 'Page 2',
         showBackButton: YES
     })
-});
-</pre>
+});</pre>
 
     <p class="text">
         As you can see in the source code, we already prepared our application for a page switch. Within <span class="code">page1</span>
@@ -112,8 +111,7 @@ PageSwitchDemo.Page2 = M.PageView.design({
 <pre class="syntax javascript">
 gotoPage2: function() {
     this.switchToPage('page2');
-}
-</pre>
+}</pre>
 
     <p class="text">
         Using the <span class="code">switchToPage</span> method is pretty simple. The only required parameter is a reference to the
@@ -193,8 +191,7 @@ this.switchToPage('page2', M.TRANSITION.FLIP);
 this.switchToPage('page2', M.TRANSITION.SLIDEUP);
 
 /* use a fade */
-this.switchToPage('page2', M.TRANSITION.FADE);
-</pre>
+this.switchToPage('page2', M.TRANSITION.FADE);</pre>
 
     <p class="text">
         Ok, now what about the third parameter? What does <span class="code">isBack</span> mean? Well, actually it's pretty
@@ -215,8 +212,7 @@ this.switchToPage('page2', M.TRANSITION.FADE);
 this.switchToPage('page2', M.TRANSITION.POP);
 
 /* go back to page1 */
-this.switchToPage('page2', M.TRANSITION.POP, YES);
-</pre>
+this.switchToPage('page2', M.TRANSITION.POP, YES);</pre>
 
     <p class="text">
         Ok, why do I use the third parameter <span class="code">updateHistory</span>? To be honest: If you are not a hundert percent

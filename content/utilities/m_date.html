@@ -465,8 +465,7 @@ var date = M.Date.create('06/24/2011 13:28');
 
 /* print the timestamp of that date on the console, e.g. '1308914880000' */
 var dateString = date.getTimestamp();
-console.log(dateString);
-</pre>
+console.log(dateString);</pre>
 
     <h3>
         Computing dates in the future/past
@@ -496,8 +495,7 @@ console.log(dateString);
 /* finally add 53 minutes to that date and display it, e.g. '07/14/2011 06:21' */
 date = date.minutesFromDate(53);
 dateString = date.format('mm/dd/yyyy HH:MM');
-console.log(dateString);
-</pre>
+console.log(dateString);</pre>
     <h3>
         Computing the time between dates
     </h3>
@@ -519,8 +517,7 @@ var difference = date1.timeBetween(date2, M.MINUTES);
 console.log(difference);
 
 /* check: 12 days + 4 hours + 23 minutes = (((12 * 24) + 4) * 60) + 23 = 17543 */
-console.log((((12 * 24) + 4) * 60) + 23);
-</pre>
+console.log((((12 * 24) + 4) * 60) + 23);</pre>
     <h3>
         Working with calendar weeks
     </h3>
@@ -555,8 +552,7 @@ console.log(dates);
 
 /* get a date by a calendar week (25) and a day of that week (0 = sunday, ..., 7 = saturday)  */
 var date = M.Date.getDateByWeekdayAndCalendarWeek(25, 5);
-console.log(date.format('mm/dd/yyyy HH:MM'));
-</pre>
+console.log(date.format('mm/dd/yyyy HH:MM'));</pre>
     
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
