@@ -1,0 +1,210 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.Request</h1>
+
+    <div class="directoryPath">
+        Making Ajax requests to remote services
+    </div>
+
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        Making Ajax requests and accessing remote services is fundamental to every modern web application. The-M-Project provides an
+        object, <span class="code">M.Request</span>, to make requests. Basically, it uses jQuery to fulfill this task.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">init</span></td>
+            <td>
+                <span class="code">obj</span> (Object): The parameter object. The object has the following properties:
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">url</span> (String): the request url, e.g. 'search.twitter.com/search.json' (needs a proxy to be set because of Same-Origin-Policy)
+                    </li>
+                    <li>
+                        <span class="code">method</span> (String): the http method to use, e.g. 'POST', defaults to 'GET'.
+                    </li>
+                    <li>
+                        <span class="code">isAsync</span> (Boolean): defines whether request should be made async or not. defaults to YES. Should be YES.
+                    </li>
+                    <li>
+                        <span class="code">isJSON</span> (Boolean): defines whether to process request and response as JSON, defaults to NO.
+                    </li>
+                    <li>
+                        <span class="code">timout</span> (Number): defines timeout in milliseconds (optional)
+                    </li>
+                    <li>
+                        <span class="code">data</span> (String|Object): the data to be transmitted (optional)
+                    </li>
+                    <li>
+                        <span class="code">beforeSend</span> (function): callback that is called before request is sent (optional)
+                    </li>
+                    <li>
+                        <span class="code">onError</span> (function): callback that is called when an error occured (optional)
+                    </li>
+                    <li>
+                        <span class="code">onSuccess</span> (function): callback that is called when request was successful (optional)
+                    </li>
+                </ul>
+
+            </td>
+            <td><span class="code">M.Request</span>: The initialized request object.</td>
+            <td>
+                Any request must be initialized with this method before it is possible to send. 
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">send</span></td>
+            <td>
+            </td>
+            <td></td>
+            <td>
+                This methods sends a request, defined by its parameters.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">abort</span></td>
+            <td>
+            </td>
+            <td><span class="code">Boolean</span>: A boolean value indicating whether the .</td>
+            <td>
+                This methods aborts a request.
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="examples"><h2 class="line">Example</h2></a>
+
+    <h3>
+        Sending a simple GET request.
+    </h3>
+    <p class="text">
+        
+    </p>
+
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://search.twitter.com/search.json',
+            method: 'GET',
+            isJSON: YES,
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            } 
+        }).send();  /* 'cause init returns the request object, we can chain the send call */
+    </pre>
+
+    <h3>
+        Sending a POST request.
+    </h3>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://mypostservice.com/',
+            method: 'POST',
+            isJSON: YES,
+            data: { foo:'bar', bla: 'blub' },
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();  
+    </pre>
+
+    <h3>
+        Sending a PUT request.
+    </h3>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://mypostservice.com/',
+            method: 'PUT',
+            isJSON: YES,
+            data: { foo:'bar', bla: 'blub' },
+            /* we have to manually set the request header information to let it be a 'PUT' request */
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-Http-Method-Override", 'PUT');
+            },
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+    <h3>
+        Sending request with a set espresso proxy
+    </h3>
+    <p class="text">
+        Making requests to other domains is usually not working in browsers, due to the <span class="boldText">Same-Origin-Policy</span>. It's possible fulfill the task
+        of accessing remote services, located on other domains, by using a proxy. Our Espresso server supports this feature. Hooray! See the following example to learn how
+        to use a proxy and name it in the request call.
+    </p>
+    <p class="text">
+        Assume, we have the following proxy entry in the project's config.json:
+    </p>
+    <pre class="syntax javascript">
+        ...
+        "proxies":[
+                  {
+                    "proxyAlias": "foo",
+                    "baseUrl": "https://foobaz:23"
+                  }
+          ],
+        ...
+    </pre>
+    <p class="text">
+        Now assume, we want to request a script, bar.php, located at https://foobaz:23/bar.php . This is what we have to write:
+    </p>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: '/foo/bar.php',    /* writing the proxyAlias instead of the "real" url */
+            method: 'GET',
+            isJSON: YES,
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
