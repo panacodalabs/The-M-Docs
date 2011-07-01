@@ -4,61 +4,242 @@
 
     <h1>JavaScript</h1>
 
-    <!--<div class="directoryPath">
-        modules/core/foundation/event_dispatcher.js
-    </div>-->
+    <div class="directoryPath">
+        We love it. 
+    </div>
 
-    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('basics')">Some words</span> &#183;
+    <span class="navlink" onclick="scroll('prototype')">Prototype</span> &#183;
+    <span class="navlink" onclick="scroll('arrays')">Arrays</span> &#183;
+    <span class="navlink" onclick="scroll('objects')">Objects</span> &#183;
+    <span class="navlink" onclick="scroll('hof')">High-order functions and anonymous functions</span> &#183;
+    <span class="navlink" onclick="scroll('hints')">Hints</span> &#183;
+    <span class="navlink" onclick="scroll('more')">Further readings</span> &#183;
+    <span class="navlink" onclick="scroll('thegoodparts')">JavaScript: The Good Parts</span>   
 </div>
 <!-- END OF HEADER -->
 
 <!-- BASICS-->
 <div class="contentBasics">
-    <a name="basics"><h2 class="line">Basics</h2></a>
+    <a name="basics"><h2 class="line">Some words</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+    <div class="note text">
+	Note: The following introduction is (as the name states) an introduction and far, far away from being a complete guide to JavaScript.
+        It's here to give you a very short introduction for some of JavaScript's features, especially those used in The-M-Project.
+        For more and detailed information about JavaScript, you'll find lots of information around the web. See the  <span class="navlink" onclick="scroll('more')">links at the bottom</span>.
+	</div>
+
+    <p class="text">
+    	JavaScript is propably the most used programming language in the world. It's <span class="boldText">the</span> programming language of the web and with the rise of technologies like <a href="http://nodejs.org/" target="_blank">Node.JS</a>, it also gains popularity on the server side.
+    </p>
+    <p class="text">
+    	JavaScript has a C-based syntax. Developers with backgrounds in languages like C or Java should feel familiar with the <span class="boldText">basic</span> syntax very soon. When digging deeper, concepts vary more. This is partly due to fact that although JavaScript is object oriented, it doesn't use class based object orientation like Java but <span class="boldText">prototype based OO</span>.
+        Also, JavaScript is a functional programming language. 
+    </p>
+<span class="navlink" onclick="scroll('top')">&uarr; top</span>
+    </div>
+    <div class="contentBasics">
+    <a name="prototype"><h2 class="line">Prototype</h2></a>
+    <p class="text">
+    	Classes don't exist. Instead, every object is linked to a prototype of which it can derive properties and methods. It is possible to change the prototype of an object at runtime. Any object can be the prototype of another object. The following example shows the relation between an object and its prototype.
+   	</p>
+   	
+   	<pre class="syntax javascript">
+		var obj1 = { foo: 'foo', bar: 'foo' };
+   		
+   		var obj2 = function() {
+   			this.foo = 'bar';	
+   		} 
+   		obj2.prototype = obj1;
+   		
+   		myObj = new obj2();
+   		
+   		console.log(myObj.foo);
+   		=> bar
+   		
+   		console.log(myObj.bar); /* myObj doesn't have this property but has the */
+   		=> foo
+   		
+   		delete myObj.foo;
+   		
+   		console.log(myObj.foo);
+   		=> foo</pre>
+        
+        <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+        </div>
+    
+    <div class="contentBasics">
+    <a name="arrays"><h2 class="line">Arrays</h2></a>
+    <p class="text">
+    	As in other languages, arrays are a basic structure for saving data by a continous numeric index.
+    </p>
+    <pre class="syntax javascript">
+    	var arr = [];
+    	arr.push('Hello'); /* using push to add a value to the end of the array, here at index 0 */
+    	arr[1] = (' World'); /* using the index operator */
+    	
+    	console.log(arr.join(','));
+    	=> Hello, World</pre>
+    
+    <p class="text">
+    	Associative arrays, as known in other languages, eg. a HashMap in Java, don't exist as "stand-alone" structures in JavaScript. But basically an Object is an associative array. It consists of key-value pairs and thus is defacto what we need here.
+        The key can be any string, also an empty one. The value can be any value usable in JavaScript, except <span style="font-style: italic">undefined</span>.
+    </p>
+    <pre class="syntax javascript">
+		var assArr = {}; /* assArr is an object now */
+		assArr['foo'] = 'bar';
+		
+		console.log(assArr['foo']);
+		=> bar
+
+        console.log(assArr.foo);
+        => bar
+	</pre>
+
+        <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+    </div>
+	
+    <div class="contentBasics">
+    <a name="objects"><h2 class="line">Objects</h2></a>
+    <p class="text">
+        Basically, objects are mutable collections of key-value pairs. Besides objects, JavaScript has several primitive data types:
+    </p>
+    <ul class="text">
+    	<li>Number</li>
+    	<li>String</li>
+        <li>Boolean</li>
+        <li>null</li>
+        <li>undefined</li>
+    </ul>
+
+    <p class="text">
+        All other values are objects. Values of type Number, String or Boolean are similar to objects because they have methods, but they are immutable.
+        In difference to other languages, like Java, functions are also objects (so called function objects). Also, arrays and regular expressions are objects.
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
-    </div>-->
+    <h3>Defining objects with object literals</h3>
+    <p class="text">
+        The easiest way to define an object is to use a literal, basically just defining key-value pairs between curly brackets:
+    </p>
 
+    <pre class="syntax javascript">
+        var obj = {
+            id: 1,
+            getId: function() {
+                return this.id; /* this references to the defined object literal */
+            }
+        };
+        console.log(obj.getId());
+        => 1</pre>
+
+    <p class="text"> With object literals, it is easily possible to pass parameter objects to functions. Code can get a lot more readable by doing so. In The-M-Project this is used very often, e.g.
+    when defining views</p>:
+    <pre class="syntax javascript">
+        label: M.LabelView.design({
+            value: 'Welcome to The-M-Project',
+            cssClass: 'boldLabel'
+        });</pre>
+<span class="navlink" onclick="scroll('top')">&uarr; top</span>
+    </div>
+
+    <div class="contentBasics">
+    <a name="hof"><h2 class="line">High-order functions and anonymous functions</h2></a>
+    JavaScript is a functional language.  It supports higher-order functions. These are defined as function that
+    <ul class="text">
+        <li>accept one or more functions as input/parameter and/or</li>
+        <li>output a function.</li>
+    </ul>
+
+    Ok, this means we can pass a function as a parameter to another function:
+
+    <pre class="syntax javascript">
+        function f(x, fn) {
+            return fn(x); /* calling the passed function on x */
+        }
+
+        function square(x) {
+            return x*x;
+        }
+
+        console.log( f(2, square) ); /* calling f with 2 and the square function as parameters */
+        => 4
+    </pre>
+
+    <p class="text">
+        This is useful for passing callbacks, which are functions that are passed to other functions as parameters and called by them.
+        <br />
+        It is also possible to pass a so called <span class="boldText">anonymous function</span> to <span class="code">f</span>. See this:
+    </p>
+
+    <pre class="syntax javascript">
+        function f(x, fn) {
+            return fn(x);
+        }
+
+        console.log( f(2, function(x) { return x*x }) ); /* passing an anonymous function to f */
+        => 4
+    </pre>
+
+    The anonymous function is not assigned to an identifier.
+<span class="navlink" onclick="scroll('top')">&uarr; top</span>
+        </div>
+
+    <div class="contentBasics">
+    <a name="hints"><h2 class="line">Hints</h2></a>
+    <p class="text">
+        <span class="boldText">False values:</span><br />
+        In JavaScript checking for false values, e.g. in an <span class="code">if</span> can be tricky, because besides <span class="code">false</span>, there are several
+    other values that act like false when checking them:</p>
+    <table class="text" style="border: 1px solid #ccc;">
+        <tr style="">
+            <th style="width:150px;text-align: left;border-bottom: 1px solid #ccc;">value</th>
+            <th style="text-align: left;border-bottom: 1px solid #ccc;">type</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>Number</td>
+        </tr>
+        <tr>
+            <td>'' (empty string)</td>
+            <td>String</td>
+        </tr>
+        <tr>
+            <td>false</td>
+            <td>Boolean</td>
+        </tr>
+        <tr>
+            <td>null</td>
+            <td>Object</td>
+        </tr>
+        <tr>
+            <td>undefined</td>
+            <td>Undefined</td>
+        </tr>
+    </table>
+
+    </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
-<!-- START-->
+<!-- FURTHER READINGS -->
 <div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
+    <a name="more"><h2 class="line">Further readings...</h2></a>
+    <ul class="text">
+        <li><a href="https://developer.mozilla.org/en/JavaScript">JavaScript @ Mozilla Developer Network</a></li>
+        <li><a href="https://developer.mozilla.org/en/a_re-introduction_to_javascript">A re-introduction to JavaScript (MDN)</a></li>
+        <li><a href="http://www.crockford.com/javascript/">Douglas Crockford's link list</a></li>
+        <li>search google... :)</li>
+    </ul>
+</div>
 
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
-
-    <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
-
+<!-- THE GOOD PARTS -->
+<div class="contentBasics">
+    <a name="thegoodparts"><h2 class="line">JavaScript: The Good Parts</h2></a>
+	<p class="text">Douglas Crockford (the inventor of the JSON format) has written a book about the good (and bad) parts of JavaScript. It's some kind of standard reference for coding "good" JavaScript:</p>
+	<br />
+    <iframe frameborder="0" scrolling="no" style="border:0px" src="http://books.google.com/books?id=PXa2bby0oQ0C&lpg=PP1&dq=crockford&hl=de&pg=PP1&output=embed" width=800 height=500></iframe>
+    <br />
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF START -->
