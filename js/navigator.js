@@ -217,4 +217,107 @@ $('document').ready(function() {
     $("input[id='filterField']").keyup(function() {
         filter($(this).val());
     });
+    
+    /**
+    * init for rating system
+    */
+    $('.star').hover(
+		/* mouse in */
+		function () {
+			clearAll();
+			var starNumber = getStarNumber($(this));
+			for(var i = 0; i <= starNumber; i++) {
+				$('#star' + i).removeClass('star-off');	
+				$('#star' + i).addClass('star-on');	
+			}
+		},
+		/* mouse out */
+		function () {
+			var starNumber = getStarNumber($(this));
+			for(var i = 0; i <= starNumber; i++) {
+				$('#star' + i).removeClass('star-on');	
+				$('#star' + i).addClass('star-off');	
+			}
+		}
+	);
+	
+	$('.star').click(function() {
+		var starNumber = getStarNumber($(this));
+		for(var i = 0; i <= starNumber; i++) {
+			$('#star' + i).removeClass('star-off');	
+			$('#star' + i).addClass('star-on');	
+		}
+		$('#starsClicked').attr('value', starNumber);
+	});
+	
+	$('#stars').mouseleave(function() {
+		for(var i = 0; i <= parseInt($('#starsClicked').attr('value')); i++) {
+			$('#star' + i).removeClass('star-off');	
+			$('#star' + i).addClass('star-on');	
+		}
+	});
+	
+	$('#btn').click(function() {
+		var numberStars = $('.star-on').length;
+		alert(guid() + ': ' + numberStars);	
+	});
+	
+	$('#sp').click(function() {
+		$('#feedback').toggle();
+	});
 });
+
+
+/**
+* JS for rating system
+*/
+function buildRating() {
+	var ratingStr = '<div id="rating">'
+		+ '<div id="stars">'
+		+ '<input type="hidden" value="0" id="starsClicked" />'
+		+ '<input type="hidden" value="" id="pageRated" />'
+		+ '<div class="star star-off" id="star1"></div>'
+		+ '<div class="star star-off" id="star2"></div>'
+		+ '<div class="star star-off" id="star3"></div>'
+		+ '<div class="star star-off" id="star4"></div>'
+		+ '<div class="star star-off" id="star5"></div>'
+		+ '</div>'
+		+ '<input type="button" value="send" id="btn" />'
+		+ '<img src="css/ajax-loader.gif" style="display:none;" />'
+		+ '</div>';
+	
+	$('#container').append(ratingStr);
+}
+
+function getStarNumber(el) {
+	return parseInt(el.attr('id').charAt(4));
+}
+
+function clearAll() {
+	$('.star').removeClass('star-on');	
+	$('.star').addClass('star-off');							
+}
+
+function S4() {
+   return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+}
+function guid() {
+   return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
+function sendRequest(obj) {
+	$.ajax({
+		url: 'http://fiddle.jshell.net/favicon.png',
+		beforeSend: function( xhr ) {
+			xhr.overrideMimeType( 'text/plain; charset=x-user-defined' );
+		},
+		success: function( data ) {
+	    	if (console && console.log){
+				console.log( 'Sample of data:', data.slice(0,100) );
+			}
+	  	}
+	});	
+}
+
+
+
