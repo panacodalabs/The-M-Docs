@@ -9,7 +9,7 @@
     </div>
 
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('start')">Let's get started!</span>
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -17,48 +17,118 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+    <p class="text">
+        Making Ajax requests and accessing remote services is fundamental to every modern web application. The-M-Project provides an
+        object, <span class="code">M.Request</span>, to make requests. Basically, it uses jQuery to fulfill this task.
     </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
-    </div>-->
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
-<!-- START-->
-<div class="contentBasics">
-    <a name="start"><h2 class="line">Let's get started!</h2></a>
+<div class="contentExample">
+    <a name="examples"><h2 class="line">Examples</h2></a>
 
-    <!--<p class="text">
-        To begin understanding the concept behind the Data Binding, let's take a look at a simple example app.
-        Imagine you've got two textfield on your screen. You click into the first one - the master, begin to type
-        and want the second one - the slave - to display exactly the same text. The figure below shows how this
-        could look like.
-    </p>
-
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding2.png" alt="Content Binding" />
-    </div>
-
+    <h3>
+        Sending a simple GET request.
+    </h3>
     <p class="text">
-        How does this work? How does the first textfield tell the second one that it's content changed? Do they
-        communicate directly at all? If you take a look at the observer pattern UML diagram above, you will see that
-        they don't. Instead there is a "central instance", an M.Observable, that knows that the second textfield observes
-        a property that is again set by the first textfield. This "central instance" is realised as a property of the
-        corresponding controller to our views. The following sequence diagram illustrates this process of changing the
-        value inside the first textfield and delegating these changes right to the second textfield.
+
     </p>
 
-    <div class="screens">
-        <img src="images/core_concepts/screen_content_binding3.png" alt="Content Binding" />
-    </div>-->
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://search.twitter.com/search.json',
+            method: 'GET',
+            isJSON: YES,
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();  /* 'cause init returns the request object, we can chain the send call */
+    </pre>
+
+    <h3>
+        Sending a POST request.
+    </h3>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://mypostservice.com/',
+            method: 'POST',
+            isJSON: YES,
+            data: { foo:'bar', bla: 'blub' },
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+    <h3>
+        Sending a PUT request.
+    </h3>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://mypostservice.com/',
+            method: 'PUT',
+            isJSON: YES,
+            data: { foo:'bar', bla: 'blub' },
+            /* we have to manually set the request header information to let it be a 'PUT' request */
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-Http-Method-Override", 'PUT');
+            },
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+    <h3>
+        Sending request with a set espresso proxy
+    </h3>
+    <p class="text">
+        Making requests to other domains is usually not working in browsers, due to the <span class="boldText">Same-Origin-Policy</span>. It's possible fulfill the task
+        of accessing remote services, located on other domains, by using a proxy. Our Espresso server supports this feature. Hooray! See the following example to learn how
+        to use a proxy and name it in the request call.
+    </p>
+    <p class="text">
+        Assume, we have the following proxy entry in the project's config.json:
+    </p>
+    <pre class="syntax javascript">
+        ...
+        "proxies":[
+                  {
+                    "proxyAlias": "foo",
+                    "baseUrl": "https://foobaz:23"
+                  }
+          ],
+        ...
+    </pre>
+    <p class="text">
+        Now assume, we want to request a script, bar.php, located at https://foobaz:23/bar.php . This is what we have to write:
+    </p>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: '/foo/bar.php',    /* writing the proxyAlias instead of the "real" url */
+            method: 'GET',
+            isJSON: YES,
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
-<!-- END OF START -->
+<!-- END OF EXAMPLE -->
