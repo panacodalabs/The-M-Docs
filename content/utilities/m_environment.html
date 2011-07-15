@@ -165,6 +165,59 @@
         </tr>
 
         <tr>
+            <td><span class="code">getSize</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Array: Width and height as numbers in an array: <br />
+                        [0]: width <br />
+                        [1]: height
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method returns the total width and height of the document. Uses <span class="code">getTotalWidth</span> and <span class="code">getTotalHeight</span>.
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="code">getTotalWidth</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Number: The total width of the document.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method returns the total width of the document.
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="code">getHeight</span></td>
+            <td>
+                -
+            </td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        Number: The total width of the document.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The method returns the total height of the document.
+            </td>
+        </tr>
+
+        <tr>
             <td><span class="code">getOrientation</span></td>
             <td>
                 -
@@ -249,6 +302,13 @@ M.Environment.getPlatform();
     <pre class="syntax javascript">
 M.Environment.getSize();
 [1241, 706]</pre>
+
+    <h3>
+        Getting the total size of the document:
+    </h3>
+    <pre class="syntax javascript">
+M.Environment.getTotalSize();
+[2101, 1403]</pre>
 
 
     <h3>
