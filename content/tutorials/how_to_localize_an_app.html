@@ -1,0 +1,229 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>How to localize an app</h1>
+
+    <div class="directoryPath">
+        Making an application ready for international use
+	</div>
+
+    <span class="navlink" onclick="scroll('basics')">Introduction</span> &#183;
+    <span class="navlink" onclick="scroll('step1')">Setting up a sample</span> &#183;
+    <span class="navlink" onclick="scroll('step2')">Doing the page switch</span> &#183;
+    <span class="navlink" onclick="scroll('step3')">Customize it!</span>
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Introduction</h2></a>
+
+    <p class="text">
+        In order to address a maximum number of people, an application often needs to be available in several languages. So
+        internationalization (i18n), is a key requirement for most mobile apps. Within The-M-Project, we provide something
+        called M.I18N, that takes care of this job. It will help you to localize your application and to make it available
+        in many different languages.
+    </p>
+
+    <p class="text">
+        To get an idea of what localization and internationalization may look like, check out our
+        <a class="navlink" href="http://www.the-m-project.org/apps/todos2">todos application</a> and play around with the
+        language switcher.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- START-->
+<div class="contentBasics">
+    <a name="step1"><h2 class="line">Setting up a sample app</h2></a>
+
+    <p class="text">
+        In order to perform a page switch, we need to set up a sample application that consists of at least two pages
+        and a controller. For example, your application could look something like:
+    </p>
+    
+<pre class="syntax javascript">
+/* main.js */
+PageSwitchDemo.app = M.Application.design({
+    entryPage : 'page1',
+    page1: PageSwitchDemo.Page1,
+    page2: PageSwitchDemo.Page2
+
+});
+
+/* Page 1 */
+PageSwitchDemo.Page1 = M.PageView.design({
+    childViews: 'header content',
+    header: M.ToolbarView.design({
+        value: 'Page 1'
+    }),
+    content: M.ScrollView.design({
+        childViews: 'button',
+        button: M.ButtonView.design({
+            value: 'Goto Page 2',
+            events: {
+                tap: {
+                    target: PageSwitchDemo.ApplicationController,
+                    action: 'gotoPage2'
+                }
+            }
+        })
+    })
+
+});
+
+/* Page 2 */
+PageSwitchDemo.Page2 = M.PageView.design({
+    childViews: 'header',
+    header: M.ToolbarView.design({
+        value: 'Page 2',
+        showBackButton: YES
+    })
+});</pre>
+
+    <p class="text">
+        As you can see in the source code, we already prepared our application for a page switch. Within <span class="code">page1</span>
+        we specified a button that triggers a method called <span class="code">gotoPage2</span> once it is tapped/clicked. We will use
+        this method to perform the actual page switch.
+    </p>
+
+    <div class="note text">
+        Note: You can trigger a page switch on any event you want to! You only need "something" to call a method inside
+        a controller. The button and the <span class="code">gotoPage2</span> method only provide one possibility for doing this.
+    </div>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
+
+<!-- START-->
+<div class="contentBasics">
+    <a name="step2"><h2 class="line">Doing the page switch</h2></a>
+
+    <p class="text">
+        Once your application is set up, performing the actual page switch is pretty easy: Simply use the <span class="code">switchToPage</span>
+        method, that every controller provides thanks to the prototype <span class="code">M.Controller</span>. The following sample
+        shows one possible implementation of the previously mentioned <span class="code">gotoPage2</span> method.
+    </p>
+
+<pre class="syntax javascript">
+gotoPage2: function() {
+    this.switchToPage('page2');
+}</pre>
+
+    <p class="text">
+        Using the <span class="code">switchToPage</span> method is pretty simple. The only required parameter is a reference to the
+        page you want to switch to. This can either be the name, used in <span class="code">main.js</span> (as in this sample) or the
+        actual <span class="code">M.PageView</span> object of that page.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
+
+<!-- START-->
+<div class="contentBasics">
+    <a name="step3"><h2 class="line">Customize it!</h2></a>
+
+    <p class="text">
+        Ok, we covered the basics. But now let's take a look at how a page switch can be customized and what configuration options
+        are available. The <span class="code">switchToPage</span> method offers four possible parameters, that configure the page
+        switch:
+
+        <ol>
+            <li>
+                <span class="code">page</span>: The page to be displayed or its name.
+            </li>
+            <li>
+                <span class="code">transition</span>: The transition that should be used. Default: horizontal slide.
+            </li>
+            <li>
+                <span class="code">isBack</span>: YES will cause a reverse-direction transition. Default: NO.
+            </li>
+            <li>
+                <span class="code">updateHistory</span>: Update the browser history. Default: YES.
+            </li>
+        </ol>
+    </p>
+
+    <p class="text">
+        Since we've been talking about the first, required, parameter already, let's get on with the second one: <span class="code">transition</span>.
+        This parameter is responsible for the type of transition your page switch will perform. By default we use a simple horizontal
+        slide. But there are other possibilities, too:
+
+        <ul>
+            <li>
+                <span class="code">M.TRANSITION.NONE</span>: Do not show a transition, just switch the page.
+            </li>
+            <li>
+                <span class="code">M.TRANSITION.SLIDE</span>: Perform a horizontal slide.
+            </li>
+            <li>
+                <span class="code">M.TRANSITION.SLIDEUP</span>: Perform a vertical slide (from bottom to top).
+            </li>
+            <li>
+                <span class="code">M.TRANSITION.SLIDEDOWN</span>: Perform a vertical slide (from top to bottom).
+            </li>
+            <li>
+                <span class="code">M.TRANSITION.POP</span>: Perform a pop-up like transition (zooming in from the center of the screen).
+            </li>
+            <li>
+                <span class="code">M.TRANSITION.FADE</span>: Perform a soft page switch by fading in the new page.
+            </li>
+            <li>
+                <span class="code">M.TRANSITION.FLIP</span>: Perform a flip.
+            </li>
+        </ul>
+    </p>
+
+    <p class="text">
+        The following code samples show you how to use some of these transitions. Feel free to play around with it.
+    </p>
+
+
+<pre class="syntax javascript">
+/* use a flip */
+this.switchToPage('page2', M.TRANSITION.FLIP);
+
+/* use a slide-up */
+this.switchToPage('page2', M.TRANSITION.SLIDEUP);
+
+/* use a fade */
+this.switchToPage('page2', M.TRANSITION.FADE);</pre>
+
+    <p class="text">
+        Ok, now what about the third parameter? What does <span class="code">isBack</span> mean? Well, actually it's pretty
+        easy. With this parameter you can invert the given transition. So if you pass <span class="code">M.TRANSITION.SLIDEDOWN</span>
+        as the desired transition and set <span class="code">isBack</span> to <span class="code">YES</span>, a slide-up
+        transition will be performed.
+    </p>
+
+    <p class="text">
+        Why do I need this? You will need this, if your application implements some kind of hierarchy! The main use case is
+        the classic back button. Let's say you switch to a sub-page using the pop transition. Now you offer your users a back
+        button. If you click/tap it, you want the previous page to be displayed and as transition you typically would prefer the
+        inverse of the actual transition. Therefore you would do a call like the following.
+    </p>
+
+<pre class="syntax javascript">
+/* open page2 by using pop transition */
+this.switchToPage('page2', M.TRANSITION.POP);
+
+/* go back to page1 */
+this.switchToPage('page2', M.TRANSITION.POP, YES);</pre>
+
+    <p class="text">
+        Ok, why do I use the third parameter <span class="code">updateHistory</span>? To be honest: If you are not a hundert percent
+        sure that you want to use this parameter, simply don't! By default this is set to <span class="code">YES</span>. This
+        means, that any page switch will add an entry to the browser's history. We strongly recommend to use this feature,
+        so your users can navigate the application by using buttons on their smartphone, as on many Android devices, or by
+        clicking the back button inside their browser. If you shut this feature off by passing <span class="code">NO</span>,
+        there won't be any entry in the browser history.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF START -->
