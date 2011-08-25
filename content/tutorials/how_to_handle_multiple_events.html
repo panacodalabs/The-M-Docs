@@ -17,13 +17,13 @@
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
 
-    <!--<p class="text">
-        Data Binding is a core concept within every MVC based framework, so for sure it is also part of The M-Project.
-        We use Data Binding to automatically update views, whenever a property they observe changes. To achieve that,
-        we implemented the observer pattern as shown in simplified the UML diagram below.
+    <p class="txt">
+    	You can bind for every event one function. So if you want to call multiple functions for one event you have to call a proxy function, that handles all the other functions.
+	For example: When a user clicks on a download button, you probably want to track this download for your statistics, get a email notification and actually to send the file to the user.
+	So you bind a downloadFile() function to your button. This function calls all the others.
     </p>
 
-    <div class="screens">
+    <!--<div class="screens">
         <img src="images/core_concepts/screen_content_binding.png" alt="Content Binding" />
     </div>-->
 
