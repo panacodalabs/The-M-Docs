@@ -45,13 +45,7 @@
     </p>
     
 <pre class="syntax javascript">
-/* main.js */
-PageSwitchDemo.app = M.Application.design({
-    entryPage : 'page1',
-    page1: PageSwitchDemo.Page1,
-    page2: PageSwitchDemo.Page2
 
-});
 
 /* Page 1 */
 PageSwitchDemo.Page1 = M.PageView.design({
@@ -81,7 +75,19 @@ PageSwitchDemo.Page2 = M.PageView.design({
         value: 'Page 2',
         showBackButton: YES
     })
-});</pre>
+});
+
+/* main.js */
+PageSwitchDemo.app = M.Application.design({
+    entryPage : 'page1',
+    page1: PageSwitchDemo.Page1,
+    page2: PageSwitchDemo.Page2
+
+});
+	
+	
+	
+</pre>
 
     <p class="text">
         As you can see in the source code, we already prepared our application for a page switch. Within <span class="code">page1</span>
