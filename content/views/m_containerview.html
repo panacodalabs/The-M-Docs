@@ -117,32 +117,24 @@ childViews: 'teaser main footer'</pre>
         <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
 <pre class="syntax javascript">
-    <!-- THE EXAMPLE CODE  -->
-    
-
 M.ContainerView.design({
-                cssClass: 'greyBox'
-        })
-    
+        cssClass: 'greyBox'
+})
 </pre>
 <pre class="syntax javascript">
-    <!-- THE EXAMPLE CODE  -->
-    
 M.ContainerView.design({
-                cssClass: 'greyBox',
-                childViews: 'teaser main footer',
-                teaser: M.ContainerView.design({
-                        cssClass: 'teaser'
-                }),
-                main: M.ContainerView.design({
-                        cssClass: 'main'
-                }),
-                footer: M.ContainerView.design({
-                        cssClass: 'footer'
-                })
+        cssClass: 'greyBox',
+        childViews: 'teaser main footer',
+        teaser: M.ContainerView.design({
+                cssClass: 'teaser'
+        }),
+        main: M.ContainerView.design({
+                cssClass: 'main'
+        }),
+        footer: M.ContainerView.design({
+                cssClass: 'footer'
         })
-
-    
+})
 </pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
