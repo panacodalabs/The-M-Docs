@@ -8,9 +8,10 @@
         Creating a simple app to store your tasks, persistent.
 	</div>
 
-    <span class="navlink" onclick="scroll('overview')">Overview</span>
-    <span class="navlink" onclick="scroll('screens')">Screenshots</span>
-    <span class="navlink" onclick="scroll('howToBuild')">How To Build It</span>
+    <span class="navlink" onclick="scroll('overview')">Overview</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183; 
+    <span class="navlink" onclick="scroll('projectCreation')">1) Project initialization</span>
+    <span class="navlink" onclick="scroll('createView')">2) The view part</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -29,6 +30,15 @@
         </a>
     </p>
 
+    <p class="text">
+        You will learn the following:
+        <ul class="text">
+            <li>Generally, developing native-looking, feature-rich and offline-capable apps with The-M-Project</li>
+            <li>Using Espresso - The-M-Project's little friend - to build, optimize and deploy your app</li>
+            <li>The interaction of Models, Views and Controllers</li>
+        </ul>
+    </p>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -43,19 +53,180 @@
         This guide is also a short little introduction for developers to build apps with The-M-Project.
     </p>
 
+    <table>
+        <tr>
+            <td><img width="150px" src="images/tutorials/screen_todos_1.png" alt="Screen 1 - Adding an item" /></td>
+            <td><img width="150px" src="images/tutorials/screen_todos_2.png" alt="Screen 2 - Adding an item" /></td>
+            <td><img width="150px" src="images/tutorials/screen_todos_3.png" alt="Screen 3 - List of persisted items" /></td>
+        </tr>
+        <tr>
+            <td class="text">Adding a new item is easy. Just enter text into the field.</td>
+            <td class="text">You can add one item after the other without having to click the field again.</td>
+            <td class="text">Items are shown in the list and persisted.</td>
+        </tr>
+        <tr>
+            <td><img width="150px" src="images/tutorials/screen_todos_4.png" alt="Screen 4 - the edit mode" /></td>
+            <td><img width="150px" src="images/tutorials/screen_todos_5.png" alt="Screen 5 - confirmation of delete operation" /></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="text">By clicking the 'Edit' button on the upper right, <br /> you enter the 'Edit' mode, where you can delete <br /> items from the list.
+    Look at the label at the top <br /> showing the number of items in the list: thanks to *data binding*, it is updated also!</td>
+            <td class="text">Before definite deletion, you're asked to confirm the delete operation.</td>
+            <td></td>
+        </tr>
+    </table>
+
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
 
-    <!-- BASICS-->
-<div class="contentHowToBuildIt">
-    <a name="howToBuild"><h2 class="line">How To Build It: voilà, the coding part.</h2></a>
+
+<div class="contentCreateAProject">
+    <a name="projectCreation"><h2 class="line">The coding part: 1) Project initialization</h2></a>
 
     <p class="text">
-        The ToDo App is a simple mobile web application to manage your daily tasks.
-        It uses HTML5 LocalStorage to persist the task items.
-        This guide is also a short little introduction for developers to build apps with The-M-Project.
+        Thanks to our little helper <span class="navlink" onclick="loadArticle('introduction/what_is_espresso');">Espresso </span> it's easy to create a new The-M-Project-App.
+        We just have to use the command line tool <span class="code">espresso init</span> to initialize a new project. It has the following syntax:
     </p>
+        <pre class="syntax shell">
+espresso init [&lt;options&gt;]
+</pre>
+
+    <p class="text">
+        It has the following options (that are displayed when you just enter <span class="code">espresso init</span>):
+    </p>
+        <table class="text">
+            <tr>
+                <td><span class="code">-p, --project==PROJECT</span></td>
+                <td>Project name</td>
+            </tr>
+            <tr>
+                <td><span class="code">-d, --directory==DIRECTORY</span></td>
+                <td>Specify a custom projects directory, Default: $PWD</td>
+            </tr>
+            <tr>
+                <td><span class="code">-e, --example</span></td>
+                <td>Generate an example "Hello World" application, Default: $PWD</td>
+            </tr>
+            <tr>
+                <td><span class="help">-h, --help</span></td>
+                <td>Show this help for command init, Default: $PWD</td>
+            </tr>
+        </table>
+
+    <p class="text">We want to have an empty project, not the samle project and we are in the right directory. So, we just enter the following command on the command line:</p>
+        <pre class="syntax shell">
+espresso init -p Todos
+</pre>
+
+    <p class="text">
+        We're then receiving the messages that all needed files to start have been created. Also, a directory with our project name as name has been created. So we can just head into
+        this directory:
+    </p>
+    <pre class="syntax shell">
+cd Todos/
+</pre>
+</div>
+<span class="navlink" onclick="scroll('top')">&uarr; top</span>
+
+
+
+
+
+
+<div class="contentCreateTheView">
+    <a name="createView"><h2 class="line">The coding part: 2) The View Part</h2></a>
+
+    <p class="text">
+        When we look at the screens, we can determine several view components that we need for this application:
+    </p>
+
+    <ul class="isFirstLine text">
+        <li>a header bar</li>
+        <li>a label showing the current number of items in the list</li>
+        <li>a label completing the 'number of items' label with a sentence (here: item(s) left.)</li>
+        <li>an input field to insert text for a todo item</li>
+        <li>a list showing all todo items</li>
+        <li>an edit button to delete items from the list, placed in the header bar</li>
+    </ul>
+
+    <img src="images/tutorials/screen_todos_views.png" alt="The view components of our app." />
+
+    <p class="text">
+        Optionally (and normally you would do this) there could be a button for adding the item to the list.
+        In our case, we skipped this element, we add todo items by simply pressing the 'return' key on our (virtual) keyboard after inserting text.
+        Remember this, 'cause we will come back to this behaviour when we show the event handling.
+    </p>
+    <p class="text">
+        We only have one page. We can place all view elements on this page. But first, we have to create the view file. As with project initialization, Espresso helps here, a lot:
+        Just type into your shell
+    </p>
+    <pre class="syntax shell">
+espresso generate
+</pre>
+    <p class="text">and you will get all the options for it. We're now needing the <span class="code">-v</span> option to create a new page.</p>
+    <pre class="syntax shell">
+espresso generate -v TodosPage
+</pre>
+    <div class="note text">
+	Please note, that you should be in the directory of your app to correctly execute the command.
+	</div>
+    <p class="text">
+        On success, a message is shown in the command line, indicating the successful generation of your file. We will look into the file later. We first should "register" the page
+        to have it accessible under a unique name throughout the app.
+    </p>
+
+    <h3>Registering a page</h3>
+    <p class="text">To register our recently created page, we just have to assign it in the <span class="code">main.js</span> file in <span class="code">app/main.js</span>. This file
+    also assigns our app's namespace. This is what it looks like:</p>
+    <pre class="syntax javascript">
+var Todos  = Todos || {};
+
+Todos.app = M.Application.design({
+
+    /* Define the entry/start page of your app. This property must be provided! */
+    entryPage : 'page1',
+
+    page1: M.PageView.design({
+
+        //Add your code here!
+
+    })
+
+});</pre>
+
+    <p class="text">
+        The interesting part begins with the <span class="code">entryPage</span> property. With it, we define the entry page of our app, that means, the page that is shown first.
+        Right now, the code declares <span class="code">page1</span> as the entry page. But it's an empty page. We want our recently created <span class="code">TodosPage</span> to be
+        registered here. So we delete the inline definition of the page (the part beginning with <span class="code">M.PageView.design({...</span>) and just replace it with the correct and complete
+        object path instead: <span class="code">Todos.TodosPage</span>. We also rename the property name from <span class="code">page1</span> to <span class="code">todos</span> (it can
+        have every name as long as the name complies with the rules for variable naming in JavaScript). But we also have to change the value of the <span class="code">entryPage</span> now.
+        In total, it should like this then:
+    </p>
+    <pre class="syntax javascript">
+var Todos  = Todos || {};
+
+Todos.app = M.Application.design({
+
+    /* Define the entry/start page of your app. This property must be provided! */
+    entryPage : 'todos',
+
+    todos: Todos.TodosPage
+
+});</pre>
+
+    <div class="note text">
+        Note: The name that we're giving the property is also the name we're passing as first parameter to the <span class="code">getView</span> call of the
+        <span class="navlink" onclick="loadArticle('components/m_viewmanager');">M.ViewManager </span> object.
+    </div>
+</div>
+
+
+   <h3>The page in detail</h3>
+   
+
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
