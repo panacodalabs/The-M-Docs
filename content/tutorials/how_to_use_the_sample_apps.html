@@ -1,0 +1,112 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>How to use the sample apps</h1>
+
+    <div class="directoryPath">
+        Let's have fun with the <a href="http://the-m-project.org/showcase.html">example apps</a>
+	</div>
+
+    <span class="navlink" onclick="scroll('basics')">Requirements</span> &#183;
+    <span class="navlink" onclick="scroll('step1')">Create Directory</span> &#183;
+    <span class="navlink" onclick="scroll('step2')">Get Espresso</span> &#183;
+    <span class="navlink" onclick="scroll('step3')">Get the sample apps</span> &#183;
+    <span class="navlink" onclick="scroll('step4')">Run the app</span> &#183;
+    <span class="navlink" onclick="scroll('step5')">Handle the app</span>
+</div>
+<!-- END OF HEADER -->
+
+<!-- Requirements-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Requirements</h2></a>
+
+    <p class="txt">
+    	You need to have git and nodeJS installed on your machine.<br><br>
+                    
+    	Installing git: <a href="http://help.github.com/git-installation-redirect/" target="_blank">http://help.github.com/git-installation-redirect/</a><br>
+		Installing nodeJS: <a href="http://nodejs.org/#download" target="_blank">http://nodejs.org/#download</a> (<a href="https://github.com/ry/node/wiki/Building-node.js-on-Cygwin-%28Windows%29" target="_blank">for windows users</a>)
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF Requirements -->
+
+<!-- STEP1-->
+<div class="contentBasics">
+    <a name="step1"><h2 class="line">Make a directory</h2></a>
+	<p class="txt">
+		Make your own The-M-Project director named themproject and go there
+	</p>
+	<pre class="syntax shell">
+mkdir themproject
+cd themproject</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF STEP1 -->
+
+<!-- STEP2-->
+<div class="contentBasics">
+    <a name="step2"><h2 class="line">Get Espresso</h2></a>
+	<p class="txt">
+		Get Espresso from GitHub or download the <a href="http://www.the-m-project.org/latest_stable.zip">prepacked version</a>.<br />
+		Place Espresso inside of the 'themproject' folder you just created.<br />
+		The prepacked version additionally contains all sample apps of The-M-Project. So, you don't have to checkout anything from our git repository. To start right away, go on to step 4.) <br /> <br />
+		Getting Espresso from github:
+	</p>
+	<pre class="syntax shell">
+git clone git://github.com/mwaylabs/Espresso.git 
+cd Espresso/ 
+git submodule update --init</pre>
+	<p class="txt">Getting Espresso via npm:</p>
+	<pre class="syntax shell">npm install espresso -g</pre>
+	<p class="txt">Create an alias to have the espresso command available (insert the path to Espresso on your machine! We recommend to use ~/.bash_profile file):</p>
+	<pre class="syntax shell">
+vim ~/.bash_profile
+alias espresso='/path/to/Espresso/bin/espresso.js'</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF STEP2 -->
+
+<!-- STEP3-->
+<div class="contentBasics">
+    <a name="step3"><h2 class="line">Get the sample apps</h2></a>
+	<p class="txt">
+		Get The-M-Project Sample Apps from GitHub.<br />
+		Make sure, that the folder with the sample apps is placed in the same directory as Espresso.<br />
+		The 'themproject' folder should contain a Espresso folder and the sample apps folder.<br />
+		<br /><br />
+		Getting the sample apps from github:</p>
+	<pre class="syntax shell">git clone git://github.com/mwaylabs/The-M-Project-Sample-Apps.git</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF STEP3 -->
+
+<!-- STEP4-->
+<div class="contentBasics">
+    <a name="step4"><h2 class="line">Run the app</h2></a>
+	<p class="txt">
+		To run a sample app - for example the KitchenSink App - browse to the KitchenSink subfolder in the sample apps directory ...
+	<pre class="syntax shell">cd The-M-Project-Sample-Apps/KitchenSink/</pre>
+	<p class="txt">
+		... and run:
+	<pre class="syntax shell">espresso server</pre>
+	<p class="txt">
+		This will call Espresso to build the app and start the built-in web server.
+	<pre class="syntax shell">Server running at http://127.0.0.1:8000/KitchenSink</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF STEP4 -->
+
+<!-- STEP5-->
+<div class="contentBasics">
+    <a name="step5"><h2 class="line">Handle the app</h2></a>
+	<p class="txt">
+		Open your web browser (Google Chrome or Safari are recommended) with the URL above and enjoy the KitchenSink App. 
+	</p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF STEP5 -->
