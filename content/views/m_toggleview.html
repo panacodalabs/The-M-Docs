@@ -5,7 +5,7 @@
     <h1>M.ToggleView</h1>
 
     <div class="directoryPath">
-        modules/ui/toggle.js
+        An easy way to toggle between two views
     </div>
 
     <!-- remove unused links -->
@@ -25,6 +25,7 @@
 
     <p class="text">
         <!-- TEXT DESCRIBING THE BASICS -->
+        M.ToggleView defines the prototype of any toggle view. A toggle view accepts exactly two child views and provides an easy mechanism to toggle between these two views. An easy example would be to define two different button views that can be toggled, a more complex scenario would be to define two content views (M.ScrollView) with own child views and toggle between them.
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -35,10 +36,10 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
+        <p class="text">The view defined first in the 'childViews' is displayed. The second view is hidden via css.</p>
+        <img src="images/views/screen_toggleview_state1.png" alt=""/>
+        <p class="text">After toggling the hidden view changes it's css value and the vice versa.</p>
+        <img src="images/views/screen_toggleview_state2.png" alt=""/>
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,11 +58,32 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
+            <td><span class="code">type</span></td>
             <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
+            <td>String</td>
+            <td style="font-family:monospace">M.ToggleView</td>
+            <td>The type of this object.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isInFirstState</span></td>
+            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>States whether the toggle view currently displays its first child view or its second child view.</td>
+        </tr>
+        <tr>
+            <td><span class="code">toggleOnClick</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>Determines whether to toggle the view on click. This might be useful if the child views are e.g. buttons.</td>
+        </tr>
+        <tr>
+            <td><span class="code">currentView</span></td>
+            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
+            <td>M.View</td>
             <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td>Contains a reference to the currently displayed view.</td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -85,10 +107,22 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
+            <td><span class="code">toggleView</span></td>
             <td><!-- METHOD PARAMETERS --></td>
             <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td>This method toggles the child views by first emptying the toggle view's content and then rendering the next child view by calling renderUpdateChildViews().</td>
+        </tr>
+        <tr>
+            <td><span class="code">setView</span></td>
+            <td>
+	            <ul class="isFirstLine">
+	                <li>
+	                    <span class="code">view</span> (Object|String): The corresponding view.
+	                </li>
+	            </ul>
+            </td>
+            <td><!-- RETURN TYPE --></td>
+            <td>This method can be used to set on of the toggle view's child views as the active one. Simply pass the view, its id or its name. If a view or id is passed, that does not match on of the toggle view's child views, nothing will be done.</td>
         </tr>
     </table>
     
@@ -100,19 +134,73 @@
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
-    <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
-    </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
+    <p class="text">As described, there are two possibilities to use M.ToggleView.</p>
+    
+    <ol>
+    	<li>
+    	A simple example using the toggleOnClick property.
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
+toggle: M.ToggleView.design({
+    childViews: 'button1 button2',
+    toggleOnClick: YES,
+    button1: M.ButtonView.design({
+        value: 'Button 1'
+    }),
+    button2: M.ButtonView.design({
+        value: 'Button 2'
+    })
+})</pre>
+		</li>
+		<li>
+    	A more complex example. The toggle function is handled by a controller. 
+<pre class="syntax javascript">
+childViews: 'toggle button'
+toggle: M.ToggleView.design({
+	childViews: 'content1 content2',
+	content1: M.ScrollView.design({
+	    childViews: 'label textfield grid',
+	    label: M.LabelView.design({
+	        value: 'I am the label of the first view.'
+	    }),
+	    textfield: M.TextFieldView.design({
+	        isGrouped: NO,
+	        value: 'I am the textfield of the first view.'
+	    }),
+	    grid: M.GridView.design({
+	        layout: M.TWO_COLUMNS,
+	        childViews: 'button1 button2',
+	        button1: M.ButtonView.design({
+	            value: 'Button 1'
+	        }),
+	        button2: M.ButtonView.design({
+	            value: 'Button 2'
+	        })
+	    })
+	}),
+	content2: M.ScrollView.design({
+	    childViews: 'label',
+	    label: M.LabelView.design({
+	        value: 'Now it is all gone. I am all alone on the second view.'
+	    })	
+	})
+}),
+
+button: M.ButtonView.design({
+    value: 'Toggle views',
+    events: {
+        tap:{
+            target: exampleApp.Controller,
+            action: 'toggleViews'
+        }
+    }
+})</pre>
+<p class="text">The controller function could look like:</p>
+<pre class="syntax javascript">
+toggleViews: function() {
+	M.ViewManager.getView('pageView', 'toggle').toggleView();
 }</pre>
-    -->
-</code></pre>
+		</li>
+	</ol>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -122,7 +210,7 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
+        The hidden view is disabled via inline style "display:none;".
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
