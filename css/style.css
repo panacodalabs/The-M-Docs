@@ -80,9 +80,13 @@ a:hover {
 div.note {
     border:1px solid #ddd;
     background-color:#efefef;
-    padding:10px;
     border-radius:10px;
     font-style:italic;
+    padding: 10px 10px 10px 50px;
+    border-radius: 10px;
+    font-style: italic;
+    background: url('../images/tutorials/tip.png') no-repeat left center;
+    background-size: 30px;
 }
 
 table.reference {

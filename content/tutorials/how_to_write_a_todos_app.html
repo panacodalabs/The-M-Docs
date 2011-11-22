@@ -223,9 +223,85 @@ Todos.app = M.Application.design({
     </div>
 </div>
 
-
    <h3>The page in detail</h3>
-   
+   <p class="text">
+       We already defined the view components that shall be part of our page to let users create and manage their todos. We need to define these components in our recently created
+       <span class="code">TodosPage</span>. Let's have a look into its content. Besides the comment on top, it includes the following code:
+   </p>
+
+<pre class="syntax javascript">
+    Todos.TodosPage = M.PageView.design({
+
+        /* Use the 'events' property to bind events like 'pageshow' */
+        events: {
+            pageshow: {
+                target: Todos.MyController,
+                action: 'init'
+            }
+        },
+
+        childViews: 'header content footer',
+
+        header: M.ToolbarView.design({
+            value: 'HEADER',
+            anchorLocation: M.TOP
+        }),
+
+        content: M.ScrollView.design({
+            childViews: 'label',
+            label: M.LabelView.design({
+                value: 'Todos2Page'
+            })
+        }),
+
+        footer: M.ToolbarView.design({
+            value: 'FOOTER',
+            anchorLocation: M.BOTTOM
+        })
+});</pre>
+
+        <p class="text">
+            The page consists of three parts:
+        </p>
+            <table class="reference" cellpadding="0" cellspacing="0">
+                <tr style="height:50px;">
+                    <td>
+                        <span class="code">header</span>
+                    </td>
+                    <td>
+                        <p class="text">The toolbar on top. It's possible to put child views into it, like a button on the right side. At default, it already
+                        includes a child view: a label having the value "HEADER". The above shown definition format is the short form of manually adding
+                        a LabelView to it.</p>
+                    </td>
+                </tr>
+                <tr style="height:50px;">
+                    <td>
+                        <span class="code">content</span>
+                    </td>
+                    <td>
+                        <p class="text">The typical content area below the header toolbar. Includes all views components that are not part of the header or footer.
+                            If no child views are added here, nothing is shown.
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height:50px;">
+                    <td>
+                        <span class="code">footer</span>
+                    </td>
+                    <td>
+                        <p class="text">
+                            The toolbar at the bottom. The same definition as the header bar, but it is positioned on the bottom of each page. If
+                            <span class="code">isFixed: YES</span> is provided, it always fades out when content is scrolled and fades in when the scrolling stopped.
+                            If <span class="code">isFixed: NO</span> is passed it is positioned on the "real" bottom of the view. That means if the content's height is double
+                            the screen size, the toolbar is not shown when the screen is scrolled to top.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div class="note text">
+            Note: The names of the three components are exchangeable of course. You can name them as you like, your only limitation is the variable name format definition of JavaScript.
+                You can also add more components as those three shown in the code above. You just have to name them in the <span class="code">childViews</span> property of the page.
+            </div>
 
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
