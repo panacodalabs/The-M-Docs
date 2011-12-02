@@ -117,10 +117,8 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        Setting up a default two column grid.
     </p>
-<pre>
-<code class="javascript">
 <pre class="syntax javascript">
 M.GridView.design({
     childViews: 'label1 label2',
@@ -132,7 +130,77 @@ M.GridView.design({
         value: 'Column 2'
     })
 })</pre>
-</code></pre>
+
+    <p class="text">
+        Setting up a default four column grid.
+    </p>
+
+<pre class="syntax javascript">
+M.GridView.design({
+    childViews: 'label1 label2 label3 label4',
+    layout: M.FOUR_COLUMNS,
+    label1: M.LabelView.design({
+        value: 'Column 1'
+    }),
+    label2: M.LabelView.design({
+        value: 'Column 2'
+    }),
+    label3: M.LabelView.design({
+        value: 'Column 3'
+    }),
+    label4: M.LabelView.design({
+        value: 'Column 4'
+    })
+})</pre>
+
+    <p class="text">
+        Setting up a custom three column grid.
+    </p>
+
+<pre class="syntax javascript">
+M.GridView.design({
+    childViews: 'label1 label2 label3',
+    layout: {
+        cssClass: 'container',
+        columns: {
+            0: 'column1',
+            1: 'column2',
+            2: 'column3'
+        }
+    },
+    label1: M.LabelView.design({
+        value: 'Red'
+    }),
+    label2: M.LabelView.design({
+        value: 'Green'
+    }),
+    label3: M.LabelView.design({
+        value: 'Blue'
+    })
+})
+
+/* CSS */
+div.container div {
+    text-shadow:none;
+    color: #FFFFFF;
+    font-weight:bold;
+}
+div.container .column1, div.container .column2, div.container .column3 {
+    float: left;
+    width:25%;
+    text-align:center;
+}
+div.container .column1 {
+    background-color: #FF0000;
+    width:50%;
+}
+div.container .column2 {
+    background-color: #00FF00;
+}
+div.container .column3 {
+    background-color: #0000FF;
+}</pre>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
