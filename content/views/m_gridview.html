@@ -121,13 +121,17 @@
     </p>
 <pre>
 <code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}</pre>
-    -->
+M.GridView.design({
+    childViews: 'label1 label2',
+    layout: M.TWO_COLUMNS,
+    label1: M.LabelView.design({
+        value: 'Column 1'
+    }),
+    label2: M.LabelView.design({
+        value: 'Column 2'
+    })
+})</pre>
 </code></pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
