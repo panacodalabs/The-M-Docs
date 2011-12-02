@@ -58,11 +58,28 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">layout</span></td>
+            <td>mandatory</td>
+            <td>Object</td>
+            <td style="font-family:monospace">null</td>
+            <td>
+                The layout for the grid view. There are two predefined layouts available:
+                <br/>- M.TWO_COLUMNS<br/>&nbsp;&nbsp;&nbsp;a two column layout, width: 50% / 50%
+                <br/>- M.THREE_COLUMNS<br/>&nbsp;&nbsp;&nbsp;a three column layout, width: 33% / 33% / 33%
+                <br/>- M.FOUR_COLUMNS<br/>&nbsp;&nbsp;&nbsp;a four column layout, width: 25% / 25% / 25%
+                <br/><br/>To specify your own layout, you will have to implement some css classes and
+                then define your layout like:
+                <br/><br/><span class="code">
+                    cssClass: 'cssClassForWholeGrid',
+                    <br/>columns: {
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;0: 'cssClassForColumn1',
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;1: 'cssClassForColumn2',
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;2: 'cssClassForColumn3',
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;3: 'cssClassForColumn4',
+                        <br/>&nbsp;&nbsp;&nbsp;&nbsp;//........
+                    <br/>}
+                </span>
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
