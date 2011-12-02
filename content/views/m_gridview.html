@@ -137,19 +137,19 @@ M.GridView.design({
 
 <pre class="syntax javascript">
 M.GridView.design({
-    childViews: 'label1 label2 label3 label4',
+    childViews: 'label1 button label2 image',
     layout: M.FOUR_COLUMNS,
     label1: M.LabelView.design({
         value: 'Column 1'
     }),
+    button: M.ButtonView.design({
+        value: 'Column 2'
+    }),
     label2: M.LabelView.design({
         value: 'Column 2'
     }),
-    label3: M.LabelView.design({
-        value: 'Column 3'
-    }),
-    label4: M.LabelView.design({
-        value: 'Column 4'
+    image: M.ImageView.design({
+        value: 'theme/images/column4.png'
     })
 })</pre>
 
@@ -177,9 +177,13 @@ M.GridView.design({
     label3: M.LabelView.design({
         value: 'Blue'
     })
-})
+})</pre>
 
-/* CSS */
+    <p class="text">
+        When you are using a custom layout, is shown in the code sample above, you will need to add the css classes defined with the layout property as follows.
+    </p>
+
+<pre class="syntax javascript">
 div.container div {
     text-shadow:none;
     color: #FFFFFF;
@@ -201,6 +205,8 @@ div.container .column3 {
     background-color: #0000FF;
 }</pre>
 
+
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -210,9 +216,17 @@ div.container .column3 {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
-    </p>
-
+        When you are using the grid view with one of the default layouts, the following CSS classes (applied on <span class="code">div</span> elements) are relevant for you:</p>
+    <ul class="text">
+        <li><span class="code">ui-grid-a</span>: This defines the outer box of the two column grid.</li>
+        <li><span class="code">ui-grid-b</span>: This defines the outer box of the three column grid.</li>
+        <li><span class="code">ui-grid-c</span>: This defines the outer box of the four column grid.</li>
+        <li><span class="code">ui-block-a</span>: This defines the first column of the grid.</li>
+        <li><span class="code">ui-block-b</span>: This defines the second column of the grid.</li>
+        <li><span class="code">ui-block-c</span>: This defines the third column of the grid.</li>
+        <li><span class="code">ui-block-d</span>: This defines the fourth column of the grid.</li>
+    </ul>
+    
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF CSS -->
