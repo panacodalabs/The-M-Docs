@@ -1,0 +1,243 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.TableView</h1>
+
+    <div class="directoryPath">
+        This view renders a HTML table element based on a bound content.
+    </div>
+
+    <!-- remove unused links -->
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+</div>
+<!-- END OF HEADER -->
+
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        The <span class="code">M.TableView</span> simply renders a HTML table element with an optional
+        table header and based on a bound content. Whenever the content changes, the table re-paints
+        itself.
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- SCREENSHOTS -->
+<div class="contentScreenshots">
+    <a name="screens"><h2 class="line">Screenshots</h2></a>
+
+    <div class="screens">
+            <img src="images/views/screen_table.png" alt="M.TableView" />
+    </div>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF SCREENSHOTS -->
+
+
+<!-- PROPERTIES -->
+<div class="contentProperties">
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:15%;">Relevance</th>
+            <th style="width:10%;">Type</th>
+            <th style="width:20%;">Default value</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">cssClass</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to set CSS classes for the table.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">header</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to specify the table's header and cols, independent
+                from dynamically loaded table content. It can be provided with the table's
+                definition within a page component. The table's content, in contrast, can only
+                be applied via content binding.
+
+                <div class="note text"> Note: If the removeHeaderRowOnUpdate property is set to YES, the header will
+                be removed whenever a content binding is applied. So if the header shall be
+                statically specified by the view component, do not set that property to YES!
+                </div>
+
+                This property should look something like the following:
+<pre class="syntax javascript">{
+    data: ['col1', 'col2', 'col3'],
+    cols: ['20%', '10%', '70%']
+}</pre>
+
+                <div class="note text">Note: the cols property of this object is optional. You can also let CSS take
+                care of the columns arrangement or simply let the browser do all the work
+                automatically.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeContentRowsOnUpdate</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                This property determines whether to remove all content rows if the table is updated or not.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">removeHeaderRowOnUpdate</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property determines whether to remove the header rows if the table is updated or not.
+            </td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF PROPERTIES -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <!--
+        IF NO PUBLIC METHODS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no public methods available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">addRow</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">row</span> (String): The html representation of a table row to be added.
+                    </li>
+                    <li>
+                        <span class="code">addToTableHeader</span> (Boolean): Determines whether or not to add the row to the table's header.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>This method adds a new row to the table view by simply appending its html representation to the table
+                view inside the DOM. This method is based on jQuery's append().</td>
+        </tr>
+        <tr>
+            <td><span class="code">removeAllRows</span></td>
+            <td></td>
+            <td></td>
+            <td>This method removes all of the table view's rows by removing all of its content in the DOM. This method is based on jQuery's empty().</td>
+        </tr>
+        <tr>
+            <td><span class="code">removeContentRows</span></td>
+            <td></td>
+            <td></td>
+            <td>This method removes all content rows of the table view by removing the corresponding html in the DOM. This method is based on jQuery's remove().</td>
+        </tr>
+    </table>
+    
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+        
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+    </p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    value: 'Hello, World',
+    cssClass: 'bigLabel'
+});</pre>
+<p class="text">
+A label with a content binding:
+</p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    value: '',
+    cssClass: 'bigLabel',
+    contentBinding: {
+        target: myApp.myController,
+        property: 'labelText'
+    }
+});
+
+/* activating content binding in a controller action */
+...
+this.set('labelText', 'Hello, World');</pre>
+<p class="text">
+A label using computed value:
+</p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    cssClass: 'dateLabel',
+    computedValue: {
+        contentBinding: {
+            target: myApp.myController,
+            property: 'timestamp'
+        },
+        value: '',
+        operation: function(v) { /* format timestamp to a readable date string */
+            return M.Date.create(v).format('dd.mm.yyyy HH:MM:ss');
+        }
+    }
+});
+
+/* activating content binding in a controller action */
+...
+this.set('timestamp', 1307720438815);</pre>
+<p class="text">
+A label representing a hyperlink to a website:
+</p>
+<pre class="syntax javascript">
+M.LabelView.design({
+    cssClass: 'urlLabel',
+    value: 'Go to www.the-m-project.org',
+    hyperlinkTarget: 'http://www.the-m-project.org',
+    hyperlinkType: M.HYPERLINK_WEBSITE
+});</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        No CSS classes are added to the LabelView by default.
+        Style it by passing classes to it via the <span class="code">cssClass</span>
+        property.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS -->
