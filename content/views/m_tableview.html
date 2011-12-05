@@ -169,60 +169,20 @@
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
-    <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
-    </p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    value: 'Hello, World',
-    cssClass: 'bigLabel'
-});</pre>
 <p class="text">
-A label with a content binding:
+Default usage of a table view.
 </p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    value: '',
-    cssClass: 'bigLabel',
+<pre class="syntax javascript">/* VIEW */
+table: M.TableView.design({
+    cssClass: 'myTable',
+    header: {
+        data:['Date', 'User', 'Tweet'],
+        cols: ['25%', '35%', '40%']
+    },
     contentBinding: {
-        target: myApp.myController,
-        property: 'labelText'
+        target: MyApp.MyController,
+        property: 'content'
     }
-});
-
-/* activating content binding in a controller action */
-...
-this.set('labelText', 'Hello, World');</pre>
-<p class="text">
-A label using computed value:
-</p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    cssClass: 'dateLabel',
-    computedValue: {
-        contentBinding: {
-            target: myApp.myController,
-            property: 'timestamp'
-        },
-        value: '',
-        operation: function(v) { /* format timestamp to a readable date string */
-            return M.Date.create(v).format('dd.mm.yyyy HH:MM:ss');
-        }
-    }
-});
-
-/* activating content binding in a controller action */
-...
-this.set('timestamp', 1307720438815);</pre>
-<p class="text">
-A label representing a hyperlink to a website:
-</p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    cssClass: 'urlLabel',
-    value: 'Go to www.the-m-project.org',
-    hyperlinkTarget: 'http://www.the-m-project.org',
-    hyperlinkType: M.HYPERLINK_WEBSITE
 });</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -233,10 +193,17 @@ M.LabelView.design({
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        No CSS classes are added to the LabelView by default.
-        Style it by passing classes to it via the <span class="code">cssClass</span>
-        property.
+        The following CSS classes are relevant when using a table view:
     </p>
+
+    <ul class="text">
+        <li><span class="code">tmp-table-container</span>: This is applied the outer box of the table view.</li>
+        <li><span class="code">tmp-table</span>: This is applied to the table element.</li>
+        <li><span class="code">tmp-table-th</span>: This is applied to the th element.</li>
+        <li><span class="code">tmp-table-td</span>: This is applied to the td element.</li>
+        <li><span class="code">tmp-table-tr-a</span>: This is applied to every odd td element.</li>
+        <li><span class="code">tmp-table-tr-b</span>: This is applied to every even td element.</li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
