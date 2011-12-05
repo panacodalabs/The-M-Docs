@@ -106,7 +106,17 @@
                     <li><span class="code">M.INPUT_TELEPHONE</span> --> tel</li>
                     <li><span class="code">M.INPUT_URL</span> --> url</li>
                     <li><span class="code">M.INPUT_EMAIL</span> --> email</li>
+                    <li><span class="code">M.INPUT_TIME</span> --> time</li>
+                    <li><span class="code">M.INPUT_DATE</span> --> date</li>
+                    <li><span class="code">M.INPUT_MONTH</span> --> month</li>
+                    <li><span class="code">M.INPUT_WEEK</span> --> week</li>
+                    <li><span class="code">M.INPUT_DATETIME</span> --> datetime</li>
+                    <li><span class="code">M.INPUT_DATETIME_LOCAL</span> --> datetime-local</li>
                 </ul>
+                <div class="note text">Note: These special input types are specified with HTML5 and not yet supported by all
+                    the browsers out there. So it could happen, that a plain text input field will be rendered instead of e.g.
+                    a email input.
+                </div>
             </td>
         </tr>
         <tr>
@@ -117,6 +127,18 @@
             <td>
                 The label proeprty defines a text that is shown above or next to the textfield as a 'title'
                 for the textfield. e.g. "Name:". If no label is specified, no label will be displayed.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">useNativeImplementationIfAvailable</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                This property can be used to specify whether to use the native implementation of one
+                of the HTML5 input types if it is available. If set to YES, e.g. iOS5 will render its
+                own date/time picker controls to the corresponding input type. If set to NO, the native
+                implementation will be disabled.
             </td>
         </tr>
     </table>
@@ -263,7 +285,7 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        The following samples show how to use <span class="code">M.ButtonGroupView</span>.
+        The following samples show how to use <span class="code">M.TextFieldView</span>.
     </p>
 <pre class="syntax javascript">
 /* set up a default text field view */
@@ -275,6 +297,11 @@ textfield: M.TextFieldView.design({
 textfield: M.TextFieldView.design({
     initialText: 'Type something...',
     cssClassOnInit: 'initialText'
+})
+
+/* use a text field for picking a date */
+textfield: M.TextFieldView.design({
+    inputType: M.INPUT_DATE
 })
 
 /* link two text fields by using content binding / content binding reverse (fully working example) */
