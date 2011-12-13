@@ -128,9 +128,18 @@ function generateIndex() {
                                 var tmp = regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
                                 tmp = tmp.replace(/<span[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
                                 tmp = tmp.replace(/<p[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
+                                tmp = tmp.replace(/<img[A-Za-z\s0-9="\/\(\)'_;\.]*>/g, '');
+                                tmp = tmp.replace(/<pre[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
+                                tmp = tmp.replace(/<div[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
+                                tmp = tmp.replace(/<ul[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
+                                tmp = tmp.replace(/<li[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
                                 tmp = tmp.replace(/<\/span>/g, '');
                                 tmp = tmp.replace(/<\/p>/g, '');
+                                tmp = tmp.replace(/<\/img>/g, '');
                                 tmp = tmp.replace(/<\/pre>/g, '');
+                                tmp = tmp.replace(/<\/li>/g, '');
+                                tmp = tmp.replace(/<\/ul>/g, '');
+                                tmp = tmp.replace(/<\/div>/g, '');
                                 tmp = tmp.replace(/\n/g, '');
                                 tmp = tmp.replace(/<br[\s]*\/>/g, '');
                                 while(tmp.indexOf('  ') >= 0) {
@@ -139,8 +148,6 @@ function generateIndex() {
                                 if(tmp && tmp != '') {
                                     content += tmp;
                                 }
-                                console.log(path, tmp);
-                                console.log('');
                             }
                         }
                         index[text] = {
