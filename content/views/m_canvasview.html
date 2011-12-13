@@ -141,28 +141,26 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        Setting up a canvas view.
     </p>
-<pre class="syntax javascript">
-M.ContainerView.design({
-        cssClass: 'greyBox'
-})
-</pre>
-<pre class="syntax javascript">
-M.ContainerView.design({
-        cssClass: 'greyBox',
-        childViews: 'teaser main footer',
-        teaser: M.ContainerView.design({
-                cssClass: 'teaser'
-        }),
-        main: M.ContainerView.design({
-                cssClass: 'main'
-        }),
-        footer: M.ContainerView.design({
-                cssClass: 'footer'
-        })
-})
-</pre>
+<pre class="syntax javascript">canvas: M.CanvasView.design({
+
+})</pre>
+
+    <p class="text">
+        Setting the width and height of a canvas within a controller.
+    </p>
+<pre class="syntax javascript">var canvas = M.ViewManager.getView('myPage', 'canvas');
+canvas.setSize(400, 300);</pre>
+
+    <p class="text">
+        Working on a canvas with plain JavaScript.
+    </p>
+<pre class="syntax javascript">var canvas = M.ViewManager.getView('myPage', 'canvas').getCanvas();
+var context = M.ViewManager.getView('myPage', 'canvas').getContext();
+
+context.fillStyle = "red";
+context.fillRect(25, 25, 100, 100);</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
