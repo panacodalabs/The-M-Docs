@@ -59,11 +59,34 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">anchorLocation</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M.TOP</td>
+            <td>Defines the position of the TabBar. Possible values are:
+                <ul>
+                    <li>
+                        <span class="code">M.BOTTOM</span> => is a footer bar
+                    </li>
+                    <li>
+                        <span class="code">M.TOP</span> => is a header bar
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">isFixed</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property determines whether to fix the toolbar to the top / bottom of a page. By default this is set to YES.</td>
+        </tr>
+        <tr>
+            <td><span class="code">showBackButton</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>Determines whether to display an auto-generated back-button on the left side of the toolbar view or not.</td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
