@@ -150,26 +150,26 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        Setting up a canvas view.
+        Setting up a slider view.
     </p>
-<pre class="syntax javascript">canvas: M.CanvasView.design({
+<pre class="syntax javascript">slider: M.SliderView.design({
 
 })</pre>
 
     <p class="text">
-        Setting the width and height of a canvas within a controller.
+        Setting up a slider view with custom min/max value.
     </p>
-<pre class="syntax javascript">var canvas = M.ViewManager.getView('myPage', 'canvas');
-canvas.setSize(400, 300);</pre>
+<pre class="syntax javascript">slider: M.SliderView.design({
+    min: -5,
+    max: 5,
+    value: 2
+})</pre>
 
     <p class="text">
-        Working on a canvas with plain JavaScript.
+        Disabling the slider within a controller.
     </p>
-<pre class="syntax javascript">var canvas = M.ViewManager.getView('myPage', 'canvas').getCanvas();
-var context = M.ViewManager.getView('myPage', 'canvas').getContext();
-
-context.fillStyle = "red";
-context.fillRect(25, 25, 100, 100);</pre>
+<pre class="syntax javascript">slider = M.ViewManager.getView('myPage', 'slider');
+slider.disable();</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
