@@ -107,18 +107,56 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        Setting up a default toolbar at the top of an application.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
-<pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}</pre>
-    -->
-</code></pre>
+<pre class="syntax javascript">M.ToolbarView.design({
+    value: 'Toolbar'
+})</pre>
+
+    <p class="text">
+        Setting up a default toolbar at the bottom of an application.
+    </p>
+<pre class="syntax javascript">M.ToolbarView.design({
+    value: 'Toolbar',
+    anchorLocation: M.BOTTOM
+})</pre>
+
+    <p class="text">
+        Adding a button to the toolbar.
+    </p>
+<pre class="syntax javascript">M.ToolbarView.design({
+    childViews: 'myButton label',
+    myButton: M.ButtonView.design({
+        anchorLocation: M.LEFT,
+        value: 'Button'
+    }),
+    label: M.LabelView.design({
+        anchorLocation: M.CENTER,
+        value: 'Toolbar'
+    })
+})</pre>
+
+    <p class="text">
+        Adding two buttons to the toolbar (left and right).
+    </p>
+<pre class="syntax javascript">M.ToolbarView.design({
+    childViews: 'btnLeft label btnRight',
+    btnLeft: M.ButtonView.design({
+        anchorLocation: M.LEFT,
+        value: 'left'
+    }),
+    label: M.LabelView.design({
+        anchorLocation: M.CENTER,
+        value: 'Toolbar'
+    }),
+    btnRight: M.ButtonView.design({
+        anchorLocation: M.RIGHT,
+        value: 'right'
+    })
+})</pre>
+
+
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
