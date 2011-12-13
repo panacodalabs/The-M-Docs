@@ -139,7 +139,8 @@ function generateIndex() {
                                 if(tmp && tmp != '') {
                                     content += tmp;
                                 }
-                                console.log(path, tmp, '/n');
+                                console.log(path, tmp);
+                                console.log('');
                             }
                         }
                         index[text] = {
