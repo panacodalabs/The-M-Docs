@@ -71,27 +71,19 @@
             <td>
                 This property, if set, contains the map view's callback in sub a object named 'error',
                 which will be called if no connection is available and the map service (google maps api)
-                can not be loaded. E.g. you can specify something like:
+                can not be loaded and a 'success' object, defining a callback once the api was loaded.
+                E.g. you can specify something like:
 <pre class="syntax javascript">
 callbacks: {
+    success: {
+        target: MyApp.MyController,
+        action: 'mapsAPILoaded'
+    },
     error: {
         target: MyApp.MyController,
         action: 'noConnectionAvailable'
     }
 }</pre>
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">callbacks</span></td>
-            <td>optional</td>
-            <td>Object</td>
-            <td style="font-family:monospace"></td>
-            <td>
-                This object can be used to define success / error callbacks for loading the google maps api.
-                <ul>
-                    <li><span class="code">success</span>: called, once the google maps api is loaded.</li>
-                    <li><span class="code">error</span>: called, if google maps api could not be loaded.</li>
-                </ul>
             </td>
         </tr>
         <tr>
