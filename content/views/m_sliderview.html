@@ -1,0 +1,179 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.SliderView</h1>
+
+    <div class="directoryPath">
+        A touch-optimized slider view.
+    </div>
+
+    <!-- remove unused links -->
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+</div>
+<!-- END OF HEADER -->
+
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+		The slider view renders a touch-optimized slider that can be used to set a
+        number within a specified range.
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- SCREENSHOTS -->
+
+<div class="contentScreenshots">
+    <a name="screens"><h2 class="line">Screenshots</h2></a>
+    <div class="screens">
+        <img src="images/views/screen_sliderview_1.png" alt="M.SliderView"/>
+    </div>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF SCREENSHOTS -->
+
+
+<!-- PROPERTIES -->
+<div class="contentProperties">
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <p class="text">There are no public properties available. <br />
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF PROPERTIES -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">getCanvas</span></td>
+            <td></td>
+            <td>Object</td>
+            <td>This method returns the canvas' context.</td>
+        </tr>
+        <tr>
+            <td><span class="code">getContext</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">type</span> (String): The context type to return.
+                    </li>
+                </ul>
+            </td>
+            <td>Object</td>
+            <td>This method returns the canvas' DOM representation.</td>
+        </tr>
+        <tr>
+            <td><span class="code">getHeight</span></td>
+            <td></td>
+            <td>Number</td>
+            <td>This method returns the canvas' height.</td>
+        </tr>
+        <tr>
+            <td><span class="code">getWidth</span></td>
+            <td></td>
+            <td>Number</td>
+            <td>This method returns the canvas' width.</td>
+        </tr>
+        <tr>
+            <td><span class="code">setHeight</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">height</span> (Number): The height to be applied to the canvas view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>This method sets the canvas' height.</td>
+        </tr>
+        <tr>
+            <td><span class="code">setSize</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">width</span> (Number): The width to be applied to the canvas view.
+                    </li>
+                    <li>
+                        <span class="code">height</span> (Number): The height to be applied to the canvas view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>This method sets the canvas' size.</td>
+        </tr>
+        <tr>
+            <td><span class="code">setWidth</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">width</span> (Number): The width to be applied to the canvas view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>This method sets the canvas' width.</td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        Setting up a canvas view.
+    </p>
+<pre class="syntax javascript">canvas: M.CanvasView.design({
+
+})</pre>
+
+    <p class="text">
+        Setting the width and height of a canvas within a controller.
+    </p>
+<pre class="syntax javascript">var canvas = M.ViewManager.getView('myPage', 'canvas');
+canvas.setSize(400, 300);</pre>
+
+    <p class="text">
+        Working on a canvas with plain JavaScript.
+    </p>
+<pre class="syntax javascript">var canvas = M.ViewManager.getView('myPage', 'canvas').getCanvas();
+var context = M.ViewManager.getView('myPage', 'canvas').getContext();
+
+context.fillStyle = "red";
+context.fillRect(25, 25, 100, 100);</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        No CSS classes are added to the CanvasView by default.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS -->
