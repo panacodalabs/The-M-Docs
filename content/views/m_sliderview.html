@@ -68,7 +68,7 @@
         </tr>
         <tr>
             <td><span class="code">max</span></td>
-            <td>optional</td>
+            <td>recommended</td>
             <td>Number</td>
             <td style="font-family:monospace">100</td>
             <td>
@@ -78,7 +78,7 @@
         </tr>
         <tr>
             <td><span class="code">min</span></td>
-            <td>optional</td>
+            <td>recommended</td>
             <td>Number</td>
             <td style="font-family:monospace">0</td>
             <td>
@@ -98,7 +98,7 @@
         </tr>
         <tr>
             <td><span class="code">value</span></td>
-            <td>optional</td>
+            <td>recommended</td>
             <td>Number</td>
             <td style="font-family:monospace">0</td>
             <td>
@@ -179,8 +179,12 @@ slider.disable();</pre>
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        No CSS classes are added to the CanvasView by default.
-    </p>
+        The styling of the slider view is done by jQuery Mobile but refined by some TMP stuff. The following classes are relevant:</p>
+    <ul class="text">
+        <li><span class="code">tmp-slider-container</span>: This defines the container for the slider view.</li>
+        <li><span class="code">tmp-slider-is-slider-only</span>: If the <span class="code">isSliderOnly</span> property is set to YES, this class is added to the slider.</li>
+        <li><span class="code">ui-slider</span>: This defines the jQuery Mobiel default styling for slider view.</li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
