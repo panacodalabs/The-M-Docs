@@ -186,8 +186,15 @@ TabBarSample.FirstPageView = M.PageView.design({
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
-    </p>
+        The styling of the tab bar is done by jQuery Mobile. It is pretty much the same as with the
+        <span class="navlink" onclick="loadArticle('views/m_toolbarview');">M.ToolbarView</span>.
+        Depending on the <span class="code">anchorLocation</span> property, some of the following css classes are
+        responsible for the layout:</p>
+    <ul class="text">
+        <li><span class="code">ui-header / ui-footer</span>: This defines some basic layout and positioning setup for the tab bar.</li>
+        <li><span class="code">ui-bar-a</span>: This class defines the color and visual style of the tab bar.</li>
+        <li><span class="code">ui-header-fixed / ui-footer-fixed</span>: This indicates that the tab bar is fixed.</li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
