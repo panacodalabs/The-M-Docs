@@ -66,75 +66,46 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">cssClass</span></td>
+            <td><span class="code">callbacks</span></td>
             <td>optional</td>
-            <td>String</td>
+            <td>Object</td>
             <td style="font-family:monospace"></td>
             <td>
-                This property can be used to set CSS classes for a label.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">hyperlinkTarget</span></td>
-            <td>optional</td>
-            <td>String</td>
-            <td style="font-family:monospace"></td>
-            <td>
-               This property can be used to specify a hyperlink target for this label. It only
-               works in combination with the <span class="code">hyperlinkType</span> property.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">hyperlinkType</span></td>
-            <td>optional</td>
-            <td>String</td>
-            <td style="font-family:monospace"></td>
-            <td>
-                This property can be used to specify a certain hyperlink type for this label. It only
-                works in combination with the <span class="code">hyperlinkTarget</span> property. Three types are available:
+                This property can be used to specify several callbacks for the date picker view. There are three types of callbacks available:
                 <ul>
-                    <li><span class="code">M.HYPERLINK_EMAIL</span>, for linking to an e-mail adress.</li>
-                    <li><span class="code">M.HYPERLINK_WEBSITE</span>, for linking to a URL.</li>
-                    <li><span class="code">M.HYPERLINK_PHONE</span>, for linking to a phone number.</li>
+                    <li>
+                        <span class="code">before</span><br/>
+                        This callback gets called, right before the date picker is shown. It passes along two parameters:
+                        <ul>
+                            <li><span class="code">value</span>: The initial date of the date picker, formatted as a string</li>
+                            <li><span class="code">date</span>: The initial date of the date picker as d8 object</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="code">confirm</span><br/>
+                        This callback gets called, when a selected date was confirmed. It passes along two two parameters:
+                        <ul>
+                            <li><span class="code">value</span>: The initial date of the date picker, formatted as a string</li>
+                            <li><span class="code">date</span>: The initial date of the date picker as d8 object</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="code">cancel</span><br/>
+                        This callback gets called, when the cancel button is hit. It doesn't pass any parameters.
+                    </li>
                 </ul>
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">isInline</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>
-                Can be used to let a label float with another following label. Both labels need to have it set to YES.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">newLineToBreak</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>
-                Determines whether a new line '\n' within the label's value should be transformed
-                into a line break '<br/>' before it is rendered.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">tabToSpaces</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>
-                Determines whether a tabulator '\t' within the label's value should be transformed
-                into four spaces '&#160;' before it is rendered.
-            </td>
-        </tr>
-        <tr>
-            <td><span class="code">value</span></td>
-            <td>mandatory (if computedValue is not used)</td>
-            <td>String</td>
-            <td style="font-family:monospace"></td>
-            <td>
-                This property defines the value of the label, which means the text that is displayed.
+                Setting up one of those callbacks works the same as with other controls of The-M-Project. You simply have to specify an object containing a target function, e.g.:
+<pre class="syntax javascript">callbacks: {
+    confirm: {
+        target: this,
+        action: 'dateSelected'
+    },
+    cancel: {
+        action: function() {
+            // do something
+        }
+    }
+}</pre>
             </td>
         </tr>
     </table>
