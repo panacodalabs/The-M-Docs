@@ -121,6 +121,67 @@
             </td>
         </tr>
         <tr>
+            <td><span class="code">dateFormat</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">M dd, yy</td>
+            <td>
+                <p class="test">
+                    This property can be used to customize the date format of the date picker. This is important
+                    if you use the date picker on a valid source since the date picker will then automatically
+                    push the selected date/datetime to the 'value' property of the source - based on this format.
+                    <br/><br/>
+                    The possible keys:
+                </p>
+                    <ul>
+                        <li>m: month (without leading zero)</li>
+                        <li>mm: month (two-digit)</li>
+                        <li>M: month name (short)</li>
+                        <li>MM: month name (long)</li>
+                        <li>d: day (without leading zero)</li>
+                        <li>d: day (two digit)</li>
+                        <li>D: day name (short)</li>
+                        <li>DD: day name (long)</li>
+                        <li>y: year (two digit)</li>
+                        <li>yy: year (four digit)</li>
+                    </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">dateFormatMonthOnly</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">MM yy</td>
+            <td>
+                <p class="test">
+                    This property can be used to customize the date format of the date picker if it is associated
+                    with a text input with the type 'month'. It works the same as the dateFormat property.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">dateOrder</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Mddyy</td>
+            <td>
+                <p class="test">
+                    This property determines the order and formating of the date scrollers. The following keys
+                    are possible:
+                </p>
+                    <ul>
+                        <li>m : month (without leading zero</li>
+                        <li>mm: month (two-digit</li>
+                        <li>M : month name (short</li>
+                        <li>MM: month name (long</li>
+                        <li>d : day (without leading zero</li>
+                        <li>d : day (two digit</li>
+                        <li>y : year (two digit</li>
+                        <li>yy: year (four digit</li>
+                    </ul>
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">dayLabel</span></td>
             <td>optional</td>
             <td>String</td>
@@ -289,6 +350,30 @@
                     This property can be used to specify the first year of the 'year' scroller. By default, this
                     will be set to 20 years before the current year.
                 </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">timeFormat</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">h:ii A</td>
+            <td>
+                <p class="test">
+                    This property can be used to customize the time format of the date picker. This is important if
+                    you use the date picker on a valid source since the date picker will then automatically push
+                    the selected time/datetime to the 'value' property of the source - based on this format.
+                    <br/><br/>
+                    The possible keys:
+                </p>
+                    <ul>
+                        <li>h: hours (without leading zero, 12h format</li>
+                        <li>hh: hours (two-digit, 12h format</li>
+                        <li>H: hours (without leading zero, 24h format</li>
+                        <li>HH: hours (two-digit, 24h format</li>
+                        <li>i: minutes (without leading zero</li>
+                        <li>ii: minutes (two-digit</li>
+                        <li>A: AM/PM</li>
+                    </ul>
             </td>
         </tr>
         <tr>
