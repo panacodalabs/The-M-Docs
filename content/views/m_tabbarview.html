@@ -58,11 +58,27 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">anchorLocation</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>Defines the position of the TabBar. Possible values are:
+                <ul>
+                    <li><span class="code">M.BOTTOM</span> => is a footer tab bar</li>
+                    <li><span class="code">M.TOP</span> => is a header tab bar</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">name</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">tab_bar</td>
+            <td>
+                This property defines the tab bar's name. This is used internally to identify the tab bar
+                inside the DOM. If your application only uses one tab bar (the typical way), there is no need
+                to specify a custom name.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -86,10 +102,19 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">setActiveTab</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">tab</span> (M.TabBarItemView): The tab to set active.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method visually activates / highlights a tab bar item. Of course the previously activated tab
+                will automatically be deactivated before.
+            </td>
         </tr>
     </table>
     
@@ -101,19 +126,57 @@
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
+        <p class="text">
+            For setting up a 3 item tab bar, add a new file to your project's view directory called e.g. 'tabs.js' and
+            paste the following code. For further information about the tab bar items, see the <span class="navlink" onclick="loadArticle('views/m_tabbaritemview');">M.TabBarItemView</span>.
+        </p>
+<pre class="syntax javascript">TabBarSample.TabBar = M.TabBarView.design({
+    childViews: 'tab1 tab2 tab3',
+    anchorLocation: M.BOTTOM,
+    tab1: M.TabBarItemView.design({
+        value: 'Tab 1',
+        page: 'page1'
+    }),
+    tab2: M.TabBarItemView.design({
+        value: 'Tab 2',
+        page: 'page2'
+    }),
+    tab3: M.TabBarItemView.design({
+        value: 'Tab 3',
+        page: 'page3'
+    })
+});</pre>
+
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        Once the tab bar is set up, it needs to be added to any page you want it to be visible. But note that you will
+        have to 'require' the tabs file first. So the following lines show a sample page using the above created tab
+        bar.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
-<pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}</pre>
-    -->
-</code></pre>
+<pre class="syntax javascript">m_require('app/views/tabs.js');
+
+TabBarSample.FirstPageView = M.PageView.design({
+    childViews: 'header content tabBar',
+    header: M.ToolbarView.design({
+        value: 'Page 1'
+    }),
+    content: M.ScrollView.design({
+
+    }),
+    tabBar: TabBarSample.TabBar
+});</pre>
+
+    <p class="text">
+        As you can see in the sample above, there are two things to do:
+    </p>
+    <ol>
+        <li>Use the <span class="code">m_require</span> command to make sure the tab bar is loaded by JavaScript before your page's source is interpreted.</li>
+    </ol>
+    <ol>
+        <li>Refer to the tab bar object (<span class="code">TabBarSample.TabBar</span>) for adding it as the page's tab bar.</li>
+    </ol>
+    <p class="text">
+        All the tab activating/deactivating and switching the page/tab stuff will happen automatically, covered by the framework.
+    </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
