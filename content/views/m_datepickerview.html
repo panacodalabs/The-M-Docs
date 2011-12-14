@@ -623,11 +623,42 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        A sample call:
+        The following sample shows how to display a date picker with a text field view as its source. The call
+        should be done out of a controller of your application.
     </p>
 <pre class="syntax javascript">M.DatePickerView.show({
     source: M.ViewManager.getView('mainPage', 'myTextField')
+    initialDate: D8.create('30.04.1985 10:30')
+});</pre>
+
+    <p class="text">
+        This sample shows how to use the date picker view without a source. As you can see, we handle
+        the picked date within the <span class="code">confirm</span> callback instead of having it
+        automatically linked with a view as shown in the sample above.
+    </p>
+<pre class="syntax javascript">M.DatePickerView.show({
     initialDate: D8.create('30.04.1985 10:30'),
+    callbacks: {
+        confirm: {
+            target: this,
+            action: function(value, date) {
+                // do something...
+            }
+        }
+    }
+});</pre>
+
+    <p class="text">
+        The last sample shows how to make extensive use of the various properties of
+        the date picker view.
+    </p>
+<pre class="syntax javascript">M.DatePickerView.show({
+    initialDate: D8.create('30.04.1985 10:30'),
+    confirmButtonValue: 'Save',
+    dayNamesShort: ['S', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
+    showDatePicker: NO,
+    startYear: 1950,
+    endYear: 2020,
     callbacks: {
         confirm: {
             target: this,
