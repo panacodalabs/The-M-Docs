@@ -109,6 +109,25 @@
             </td>
         </tr>
         <tr>
+            <td><span class="code">initialDate</span></td>
+            <td>optional</td>
+            <td>String|Object</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                <p class="test">
+                    This property can be used to specify the initial date for the date picker. If you use
+                    the date picker without a source, this date is always picked as the initial date. If
+                    nothing is specified, the current date will be displayed.
+                </p>
+
+                <p class="test">
+                    If you use the date picker with a valid source, the initial date is picked as long as
+                    there is no valid date available by the source. Once a date was selected and assigned
+                    to the source, this is taken as initial date the next time the date picker is opened.
+                </p>
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">source</span></td>
             <td>optional</td>
             <td>String|Object</td>
@@ -129,6 +148,23 @@
                     selected value/date to given callbacks. So you can call the date picker out of a controller
                     and handle the selected date all by yourself.
                 </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">useSourceDateAsInitialDate</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                <p class="test">
+                    This property can be used to determine whether to use the data source's value as initial date
+                    or not. If there is no source specified, this property is irrelevant.
+                </p>
+
+                <div class="note">
+                    Note: If there is a source specified and this property is set to NO, the 'initialDate' property
+                    will be used anyway if there is no date value available for the source!
+                </div>
             </td>
         </tr>
     </table>
