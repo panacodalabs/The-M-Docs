@@ -108,6 +108,29 @@
 }</pre>
             </td>
         </tr>
+        <tr>
+            <td><span class="code">source</span></td>
+            <td>optional</td>
+            <td>String|Object</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                <p class="test">
+                    This property is used to link the date picker to a source. You can either pass the DOM id of
+                    the corresponding source or the javascript object itself. Linking the date picker directly
+                    to a source results in automatic value updates of this source.
+                </p>
+
+                <div class="note">
+                    Note: Valid sources need to provide a setValue() method.
+                </div>
+
+                <p class="test">
+                    If you do not pass a source, the date picker isn't linked to any view. It simply returns the
+                    selected value/date to given callbacks. So you can call the date picker out of a controller
+                    and handle the selected date all by yourself.
+                </p>
+            </td>
+        </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
