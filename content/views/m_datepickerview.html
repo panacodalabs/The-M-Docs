@@ -109,6 +109,48 @@
             </td>
         </tr>
         <tr>
+            <td><span class="code">endYear</span></td>
+            <td>recommended</td>
+            <td>Number</td>
+            <td style="font-family:monospace">current + 20</td>
+            <td>
+                <p class="test">
+                    This property can be used to specify the last year of the 'year' scroller. By default, this
+                    will be set to 20 years after the current year.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">dayLabel</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Day</td>
+            <td>
+                <p class="test">
+                    This property specified the label shown above of the 'day' scroller.
+                </p>
+
+                <div class="note">
+                    Note: This label is only shown if the 'showLabels' property is set to YES.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">hoursLabel</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Hours</td>
+            <td>
+                <p class="test">
+                    This property specified the label shown above of the 'hours' scroller.
+                </p>
+
+                <div class="note">
+                    Note: This label is only shown if the 'showLabels' property is set to YES.
+                </div>
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">initialDate</span></td>
             <td>optional</td>
             <td>String|Object</td>
@@ -125,6 +167,93 @@
                     there is no valid date available by the source. Once a date was selected and assigned
                     to the source, this is taken as initial date the next time the date picker is opened.
                 </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">minutesLabel</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Minutes</td>
+            <td>
+                <p class="test">
+                    This property specified the label shown above of the 'minutes' scroller.
+                </p>
+
+                <div class="note">
+                    Note: This label is only shown if the 'showLabels' property is set to YES.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">monthLabel</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Month</td>
+            <td>
+                <p class="test">
+                    This property specified the label shown above of the 'month' scroller.
+                </p>
+
+                <div class="note">
+                    Note: This label is only shown if the 'showLabels' property is set to YES.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showAmPm</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                <p class="test">
+                    You can use this property to enable or disable the AM/PM scroller. If set to NO,
+                    the date picker will use the 24h format.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showDatePicker</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                <p class="test">
+                    This property can be used to specify whether to show scrollers for picking a date or not.
+                </p>
+
+                <div class="note">
+                    Note: If both this and the 'showTimePicker' property are set to NO, no date picker will
+                    be shown.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showLabels</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                <p class="test">
+                    This property can be used to specify whether or not to show labels above of the scrollers.
+                    If set to YES, the labels specified with the '...Label' properties are displayed above of
+                    the corresponding scroller.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">showTimePicker</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                <p class="test">
+                    This property can be used to specify whether to show scrollers for picking a time or not.
+                </p>
+
+                <div class="note">
+                    Note: If both this and the 'showDatePicker' property are set to NO, no date picker will
+                    be shown.
+                </div>
             </td>
         </tr>
         <tr>
@@ -151,6 +280,18 @@
             </td>
         </tr>
         <tr>
+            <td><span class="code">startYear</span></td>
+            <td>recommended</td>
+            <td>Number</td>
+            <td style="font-family:monospace">current - 20</td>
+            <td>
+                <p class="test">
+                    This property can be used to specify the first year of the 'year' scroller. By default, this
+                    will be set to 20 years before the current year.
+                </p>
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">useSourceDateAsInitialDate</span></td>
             <td>optional</td>
             <td>Boolean</td>
@@ -164,6 +305,21 @@
                 <div class="note">
                     Note: If there is a source specified and this property is set to NO, the 'initialDate' property
                     will be used anyway if there is no date value available for the source!
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">yearLabel</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace">Year</td>
+            <td>
+                <p class="test">
+                    This property specified the label shown above of the 'year' scroller.
+                </p>
+
+                <div class="note">
+                    Note: This label is only shown if the 'showLabels' property is set to YES.
                 </div>
             </td>
         </tr>
