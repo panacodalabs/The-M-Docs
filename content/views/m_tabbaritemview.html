@@ -38,7 +38,7 @@
 
     <div class="screens">
         <p class="text">
-            See the <span class="navlink" onclick="loadArticle('views/m_selectionlistview');">M.TabBarView</span> for screenshots.
+            See the <span class="navlink" onclick="loadArticle('views/m_tabbarview');">M.TabBarView</span> for screenshots.
             The visible items of such a tab bar are <span class="code">M.TabBarItemView</span> components.
         </p>
     </div>
@@ -59,6 +59,18 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
+            <td><span class="code">icon</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property can be used to specify an icon for a tab bar item. Regarding the markup, this will result in a
+                <span class="code">data-icon</span> attribute of the tab bar item. If you want to use some of the default
+                jQuery Mobile icons, it'll all work just fine out of the box. If you want to use your own icons, there will
+                be some more work to do. Check the examples for further information.
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">isActive</span></td>
             <td>optional</td>
             <td>Boolean</td>
@@ -71,6 +83,25 @@
                     Note 2: If you are setting this property to NO for all tab items, the application's <span class="code">entryPage</span> property
                     will decide which on to activate on startup.
                 </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">page</span></td>
+            <td>mandatory</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property specifies the corresponding page for this tab bar item so the framework knows which page to show
+                once a user taps on a tab bar item.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">value</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property specifies the tab bar item's visible value.
             </td>
         </tr>
     </table>
@@ -92,18 +123,34 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        The tab bar items are defined inside the definition of a <span class="code">M.TabBarView</span> as follows:
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
-<pre class="syntax javascript">
-test function() {
-    alert('blabla');
+<pre class="syntax javascript">M.TabBarItemView.design({
+    value: 'Tab 1',
+    page: 'page1',
+    isActive: NO
+})</pre>
+
+    <p class="text">
+        Now let's take a look at how to use custom icons with a tab bar item. The code below shows how to use the
+        <span class="code">icon</span> property. As mentioned above, this will result in a <span class="code">data-icon="settings"</span> tag.
+        We can than use this as a selector within the application's css.
+    </p>
+<pre class="syntax javascript">/* VIEW */
+M.TabBarItemView.design({
+    value: 'Tab 1',
+    page: 'page1',
+    icon: 'settings'
+})
+
+/* CSS */
+[data-icon=settings] .ui-icon {
+    background: url("images/settings.png") no-repeat 50% 50% transparent;
 }</pre>
-    -->
-</code></pre>
+
+    <p class="text">
+        For further information, see the <span class="navlink" onclick="loadArticle('views/m_tabbarview');">M.TabBarView</span>.
+    </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -113,9 +160,11 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
-    </p>
-
+        The styling of the tab bar is mainly done by jQuery Mobile. For styling a tab bar item you way, you might want
+        to take a look at the following css class:</p>
+    <ul class="text">
+        <li><span class="code">ui-icon</span>: This defines the styling and layout of the tab bar item's icon. If you are using custom icons, you likely will have to make some adjustments there.</li>
+    </ul>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF CSS -->
