@@ -542,16 +542,20 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">setValue</span></td>
+            <td><span class="code">show</span></td>
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">value</span> (String): The value to be applied on the label view..
+                        <span class="code">obj</span> (Object): An object containing all the configuration parameters for the date picker, based on its available properties.
                     </li>
                 </ul>
             </td>
             <td></td>
-            <td>Sets the label's value and initiates its re-rendering.</td>
+            <td>
+                This method is the only important method of a date picker view for 'the outside world'. From within
+                an application, simply call this method and pass along an object, containing all the properties
+                you want to set, different from default.
+            </td>
         </tr>
     </table>
     
@@ -619,59 +623,19 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        A sample call:
     </p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    value: 'Hello, World',
-    cssClass: 'bigLabel'
-});</pre>
-<p class="text">
-A label with a content binding:
-</p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    value: '',
-    cssClass: 'bigLabel',
-    contentBinding: {
-        target: myApp.myController,
-        property: 'labelText'
-    }
-});
-
-/* activating content binding in a controller action */
-...
-this.set('labelText', 'Hello, World');</pre>
-<p class="text">
-A label using computed value:
-</p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    cssClass: 'dateLabel',
-    computedValue: {
-        contentBinding: {
-            target: myApp.myController,
-            property: 'timestamp'
-        },
-        value: '',
-        operation: function(v) { /* format timestamp to a readable date string */
-            return M.Date.create(v).format('dd.mm.yyyy HH:MM:ss');
+<pre class="syntax javascript">M.DatePickerView.show({
+    source: M.ViewManager.getView('mainPage', 'myTextField')
+    initialDate: D8.create('30.04.1985 10:30'),
+    callbacks: {
+        confirm: {
+            target: this,
+            action: function(value, date) {
+                // do something...
+            }
         }
     }
-});
-
-/* activating content binding in a controller action */
-...
-this.set('timestamp', 1307720438815);</pre>
-<p class="text">
-A label representing a hyperlink to a website:
-</p>
-<pre class="syntax javascript">
-M.LabelView.design({
-    cssClass: 'urlLabel',
-    value: 'Go to www.the-m-project.org',
-    hyperlinkTarget: 'http://www.the-m-project.org',
-    hyperlinkType: M.HYPERLINK_WEBSITE
 });</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
