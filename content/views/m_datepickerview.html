@@ -570,19 +570,42 @@
             <th style="width:50%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">tap</span></td>
+            <td><span class="code">before</span></td>
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">viewId</span> (String): The Id of the label, e.g. 'm_502';
+                        <span class="code">value</span> (String): The initial date of the date picker, formatted as a string.
                     </li>
                     <li>
-                        <span class="code">event</span> (Object): The event object.
+                        <span class="code">date</span> (Object): The initial date of the date picker as d8 object.
                     </li>
                 </ul>
             </td>
             <td>
-                The event is fired when a user taps on the label.
+                This callback gets called, right before the date picker is shown.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">cancel</span></td>
+            <td></td>
+            <td>
+                This callback gets called, when the cancel button is hit. It doesn't pass any parameters.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">confirm</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">value</span> (String): The initial date of the date picker, formatted as a string.
+                    </li>
+                    <li>
+                        <span class="code">date</span> (Object): The initial date of the date picker as d8 object.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This callback gets called, when a selected date was confirmed.
             </td>
         </tr>
     </table>
