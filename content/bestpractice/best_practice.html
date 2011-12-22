@@ -1,0 +1,99 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>Best practice</h1>
+
+    <div class="directoryPath">
+        Our recomendations to use The-M-Project.
+    </div>
+
+    <span class="navlink" onclick="scroll('basics')">Collection of best practices (working draft - living document)</span> &#183;
+    <!--<span class="navlink" onclick="scroll('howto1')">How to bind events?</span>
+    <!--<span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>-->
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">setValue</h2></a>
+
+    <p class="text">
+        As you might noticed not every View has a setValue method. For example if you want to set a new value to the M.SelectionListView you have to use setSelection.
+		Other Views like the M.ToolbarView dont have a value. So theres no need to implement the setValue method in every View.
+		So we decided to use meaningful method names. Beginners have to read and understand a little more documentation but we want to have method names that descripe the work that they do.
+    </p>
+
+    <!--<p class="text">
+        Within the The-M-Project framework, we provide a component called <span class="code">M.EventDispatcher</span>.
+        This object is used to register DOM events for all UI components. This includes events that are typically
+        fired by a certain user action, like tapping on a button (tap), and events that are fired by the framework itself,
+        like indicating that a page will be shown now (pagewillshow). The available events depend on the particular view. A button,
+        <span class="code">M.ButtonView</span>, provides the tap event, a page provides the pageshow event. A list of all events that
+        are provided by a cerain view can be found within the documentation of the view itself.
+    </p>-->
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- HOWTO PART 1 
+<div class="contentScreenshots">
+    <a name="howto1"><h2 class="line">How to bind events?</h2></a>
+
+    <p class="text">
+        Binding events, no matter what type of events, is pretty easy and follows the same syntax all across the framework.
+        <span class="code">M.View</span>, which is the base object for all views, provides a propety called <span class="code">events</span>.
+        This is used to register a view's events out of an application. While the base structure of such an event registration
+        is always the same, there are three different ways of assigning an action to a certain event:
+    </p>
+
+        <ol>
+            <li>
+                Specify a scope and a name of a method, that is available within this scope.
+<pre class="syntax javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            target: myApp.myController,
+            action: 'myMethod'
+        }
+    }
+});</pre>
+            </li>
+            <li>
+                Specify a scope and a method (as an object), that will be executed within this scope.
+<pre class="syntax javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            target: myApp.myController,
+            action: function() {
+                alert('Hello World');
+        }
+    }
+});</pre>
+            </li>
+            <li>
+                Specify a method (as an object), that will be executed within the <span class="code">window</span> scope.
+<pre class="syntax javascript">
+M.ButtonView.design({
+    value: 'myButton',
+    events: {
+        tap: {
+            action: function() {
+                alert('Hello World');
+        }
+    }
+});</pre>
+            </li>
+        </ol>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>-->
+<!-- END OF HOWTO PART 1 -->
