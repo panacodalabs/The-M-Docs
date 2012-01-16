@@ -9,7 +9,13 @@
     <script language="JavaScript" src="js/jquery-1.6.1.min.js"></script>
     <script language="JavaScript" src="syntax_highlighting/jquery.syntax.min.js"></script>
     <script language="JavaScript" src="js/navigator.js"></script>
-    <script language="JavaScript" src="js/bookmarks.js"></script>
+    <script language="JavaScript">
+        $(document).ready(function() {
+            if(document.location.hash && document.location.hash.substr(1) && document.location.hash.substr(1).split('/').length === 2) {
+                loadArticle(document.location.hash.substr(1));
+            }
+        });
+    </script>
 </head>
 
 <body>
