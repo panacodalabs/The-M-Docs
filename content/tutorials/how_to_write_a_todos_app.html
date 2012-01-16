@@ -11,7 +11,9 @@
     <span class="navlink" onclick="scroll('overview')">Overview</span> &#183;
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183; 
     <span class="navlink" onclick="scroll('projectCreation')">1) Project initialization</span>
-    <span class="navlink" onclick="scroll('createView')">2) The view part</span>
+    <span class="navlink" onclick="scroll('createView')">2) The View part</span>
+    <span class="navlink" onclick="scroll('createModel')">3) The Model part</span>
+    <span class="navlink" onclick="scroll('createController')">4) The Controller Part</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -39,6 +41,15 @@
         </ul>
     </p>
 
+    <p class="text">
+        You will need the following:
+        <ul class="text">
+            <li>Knowledge of HTML, CSS and especially <span class="navlink" onclick="loadArticle('introduction/javascript');">JavaScript</span></li>
+            <li>An IDE or at least a text editor for editing</li>
+            <li>A ready to start-installation of Espresso</li>
+            <li>An open terminal to execute the Espresso commands</li>
+        </ul>
+    </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
@@ -122,7 +133,12 @@ espresso init -p Todos
 </pre>
 
     <p class="text">
-        We're then receiving the messages that all needed files to start have been created. Also, a directory with our project name as name has been created. So we can just head into
+        We're then receiving the messages that all needed files to start have been created. Also, a directory with our project name as name has been created. 
+        Your Todos app directory should now look like the following:
+    </p>
+    <img src="images/tutorials/screen_directory_structure.png" alt="Todos App directory structure" />
+    <p class="text">
+        So we can just head into
         this directory:
     </p>
     <pre class="syntax shell">
@@ -203,7 +219,7 @@ Todos.app = M.Application.design({
         registered here. So we delete the inline definition of the page (the part beginning with <span class="code">M.PageView.design({...</span>) and just replace it with the correct and complete
         object path instead: <span class="code">Todos.TodosPage</span>. We also rename the property name from <span class="code">page1</span> to <span class="code">todos</span> (it can
         have every name as long as the name complies with the rules for variable naming in JavaScript). But we also have to change the value of the <span class="code">entryPage</span> now.
-        In total, it should like this then:
+        In total, it should look like this then:
     </p>
     <pre class="syntax javascript">
 var Todos  = Todos || {};
@@ -221,11 +237,12 @@ Todos.app = M.Application.design({
         Note: The name that we're giving the property is also the name we're passing as first parameter to the <span class="code">getView</span> call of the
         <span class="navlink" onclick="loadArticle('components/m_viewmanager');">M.ViewManager </span> object.
     </div>
-</div>
+
 
    <h3>The page in detail</h3>
    <p class="text">
-       We already defined the view components that shall be part of our page to let users create and manage their todos. We need to define these components in our recently created
+       We already exposed the view components that shall be part of our page to let users create and manage their todos.
+       We need to define these components in our recently created
        <span class="code">TodosPage</span>. Let's have a look into its content. Besides the comment on top, it includes the following code:
    </p>
 
@@ -303,7 +320,539 @@ Todos.app = M.Application.design({
                 You can also add more components as those three shown in the code above. You just have to name them in the <span class="code">childViews</span> property of the page.
             </div>
 
-
+    <p class="text">
+        We will not use the footer in this app. You can delete it from this page definition.
+    </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+
+
+
+
+
+
+    <h3>The header</h3>
+    <p class="text">As we see from the screenshots above, our header will contain a label (the app title) and a button that activates the edit mode on our tasks. We also need a button to end the
+    edit mode. That makes two buttons. We want to place them on the same position and use a ToggleView to toggle between both buttons.</p>
+    <p class="text">
+        This is how we replace our header definition:
+    </p>
+
+<pre class="syntax javascript">
+header: M.ToolbarView.design({
+  anchorLocation: M.TOP
+  childViews: 'centerLabel toggleView',
+
+  toggleView: M.ToggleView.design({
+    childViews: 'button1 button2',
+
+    anchorLocation: M.RIGHT,
+
+    toggleOnClick: YES,
+
+    button1: M.ButtonView.design({
+      value: 'Edit',
+      target: Todos.TodoController,
+      action: 'edit',
+      icon: 'gear'
+    }),
+
+    button2: M.ButtonView.design({
+      value: 'Save',
+      target: Todos.TodoController,
+      action: 'edit',
+      icon: 'check'
+    })
+  }),
+
+  centerLabel: M.LabelView.design({
+    value: 'Todos',
+    anchorLocation: M.CENTER
+  })
+})
+</pre>
+    <p class="text">Now in detail: </p>
+    <p class="text">The header is a <span class="navlink" onclick="loadArticle('views/m_toolbarview');">ToolbarView</span>. Its property <span class="code">anchorLocation</span> defines the position of the Toolbar. There are two possibilities:</p>
+    <ul class="text">
+        <li><span class="code">M.TOP</span>: Toolbar at the top of the page.</li>
+        <li><span class="code">M.BOTTOM</span>: Toolbar at the bottom of the page.</li>
+    </ul>
+    <p class="text">A ToolbarView is also a container for other views. In our case, it contains a label and a toggle, which itself again contains two buttons.
+    To have the nested views rendered, they need to be included in the <span class="code">childViews</span> string. Therefor we simply append the property name
+    to the string, here "toggleView" and "centerLabel".
+    </p>
+
+    <div class="note text">
+    Note: It's not the definition order in the object literal that defines the rendering order of the views. It's the order they are named in the <span class="code">childViews</span> string.
+    </div>
+
+
+    <p class="text">
+        Next, we define the <span class="navlink" onclick="loadArticle('views/m_toggleview');">ToggleView</span>. When defined in a ToolbarView, it must have the <span class="code">anchorLocation</span>
+        property set. We want to have the buttons on the right side of the toolbar, that's why we set it to <span class="code">M.RIGHT</span>. The ToggleView takes two child views, one for each
+        state it is in. In our app, we have two buttons that we're defining here as <span class="navlink" onclick="loadArticle('views/m_buttonview');">M.ButtonView</span>.
+    </p>
+
+    <p class="text">
+        The last thing we're defining in the header is the label. It shows a static text, 'Todos' and is placed in the center (see the <span class="code">anchorLocation</span> property).
+        That's it for the header. Next: the content area.
+    </p>
+
+
+
+    <h3>The content area</h3>
+    <p class="text">
+        As a convention, the standard container element for the content area is a M.ScrollView. The following snippet is the replacement for the generated content object in our page.
+    </p>
+
+<pre class="syntax javascript">
+    content: M.ScrollView.design({
+
+      /* order in childViews string defines render order*/
+      childViews: 'counter text inputField todoList',
+
+      counter: M.LabelView.design({
+        value: '0',
+        contentBinding: {
+            target: Todos.TodoController,
+            property: 'counter'
+        }
+        isInline: YES
+      }),
+
+      text: M.LabelView.design({
+        value: ' item(s) left.',
+        isInline: YES
+      }),
+
+      inputField: M.TextFieldView.design({
+        initialText: 'Enter ToDo Item...',
+
+        events: {
+            enter: {
+                target: Todos.TodoController,
+                action: 'addTodo'
+            }
+        }
+      }),
+
+      todoList: M.ListView.design({
+        listItemTemplateView: Todos.TodoItemView
+        contentBinding: {
+            target: Todos.TodoController,
+            property: 'todos'
+        }
+      })
+    })
+</pre>
+
+<p class="text">
+    As the first child, we have a label (counter) showing the current number of todo items in the list.
+</p>
+
+<pre class="syntax javascript">
+counter: M.LabelView.design({
+    value: 0,
+    contentBinding: {
+        target: Todos.TodoController,
+        property: 'counter'
+    }
+    isInline: YES
+  }),
+</pre>
+
+<p class="text">
+    Its initial value is 0, because at the very first application start, no item is in the list. For the current number state of the list,
+    we define a content binding on the controller value, that represents the number of items.
+    When this value changes, the label view is notified and renders the update (see <span class="navlink" onclick="loadArticle('core_concepts/content_binding');">content Binding</span>).
+</p>
+<p class="text">
+    Because we want to have a text placed next to the counter label, we set its isInline property to YES.
+</p>
+
+<div class="note text">
+    Note: <span class="code">YES</span> is an alias for <span class="code">true</span> and vice versa, <span class="code">NO</span> is an alias for <span class="code">false</span>.
 </div>
-<!-- END OF BASICS -->
+<p class="text">
+    The text next to the counter is represented by a label:
+</p>
+
+<pre class="syntax javascript">
+text: M.LabelView.design({
+    value: ' item(s) left.',
+    isInline: YES
+  }
+</pre>
+
+<p class="text">
+    It has no content binding, its content/value is somehow static, though its content could be changed in code. <br />
+</p>
+
+<span style="font-weight:bold;">An alternative label solution with dynamic value computing</span>
+<p class="text">
+    To be honest, the above shown solution with two labels is not the sexiest way to fulfill this task. First, we have to design two labels and second, showing
+    "item(s)" is not the coolest way to set the plural form of the word "item". Why did I do it like this, then? I just wanted to show you a reasonable way of
+    handling this task and I wanted to show you the <span class="code">isInline</span> property. But here's an alternative with just one label defined.
+</p>
+
+<pre class="syntax javascript">
+counter: M.LabelView.design({
+    computedValue: {
+        contentBinding: {
+            target: Todos.TodoController,
+            property: 'counter'
+        },
+        value: 0,
+        operation: function(v) {
+            if(v > 1) {
+                return v + ' items left.';
+            } else {
+                return v + ' item left.';
+            }
+        }
+    }
+  })
+</pre>
+<p class="text">
+    We also have a content binding on the counter property. But we define it in an object named <span class="code">computedValue</span>. With that object we're using
+    <span class="navlink" onclick="loadArticle('core_concepts/dynamic_value_computing')">Dynamic Value Computing</span> and need to define a function named <span class="code">
+    operation</span> in it. It is called on rendering and on update rendering. The actual value is passed to it. We distinguish the value and return either the singular form or
+    the plural form of "item(s)". It's cooler than the solution before, isn't it?
+</p>
+
+<p class="text">
+    Ok, let's get back to business... Our next view element is a text field where the user can enter new todo tasks.
+</p>    
+    
+<pre class="syntax javascript">
+inputField: M.TextFieldView.design({
+    initialText: 'Enter ToDo Item...',
+
+    events: {
+        enter: {
+            target: Todos.TodoController,
+            action: 'addTodo'
+        }
+    }
+}),
+</pre>
+
+<p class="text">
+    The <span class="code">initialText</span> property defines a text that is shown inside the text field while not having the focus.
+    The next property is the event object. Here we're defining all event bindings for this input field. You can read about the recommended events in the
+    <span class="navlink" onclick="loadArticle('views/m_textfieldview');"> TextFieldView doc</span>. In this case, we will just create a binding for the
+    "enter" event, which is a custom created event being triggered when the user presses the "enter" or "return" key. The object defines two properties:
+</p>
+    <ul class="text">
+        <li>
+            <span class="code">target: </span>
+            Defines the scope for the action defined below. If the name of a controller method is passed to <span class="code">action</span> the controller
+            is set here (as seen in this snippet).
+        </li>
+        <li>
+            <span class="code">action: </span>
+            Here, we name <span class="code">addTodo</span> of the <span class="code">TodoController</span> as the action to be executed when "enter" is pressed.
+            We could also define an anonymous function here that is executed, once the event is triggered.
+        </li>
+    </ul>
+
+<p class="text">
+    Our last element on the page is the list. Because a <span class="navlink" onclick="loadArticle('views/m_listview');">ListView</span> is slighty more complex than for example
+    a ButtonView, we spend it an own section.
+</p>
+
+<h3>The list</h3>
+<p class="text">
+    Defining a list is not that complex. The ListView itself only has two important properties to be set: its content binding and the template view defining the structure of each list item:
+</p>
+
+<pre class="syntax javascript">
+todoList: M.ListView.design({
+    listItemTemplateView: Todos.TodoItemView
+    contentBinding: {
+        target: Todos.TodoController,
+        property: 'todos'
+    }
+  })
+</pre>
+
+<p>
+    We bind the list to an array of todo items in the controller, named <span class="code">todos</span>. The property <span class="code">listItemTemplateView</span>
+    references the template view object. Template views extend <span class="navlink" onclick="loadArticle('views/m_listitemview')">M.ListItemView</span>,
+    are located in the applications "view/" directory and are defined by the developer.
+    Here's our template:
+</p>
+
+<pre class="syntax javascript">
+Todos.TodoItemView = M.ListItemView.design({
+  childViews: 'label1',
+
+  label1 : M.LabelView.design({
+    valuePattern: '<%= text %>'
+  })
+});
+</pre>
+    
+<p class="text">
+    The childViews string indicates that a ListItemView is a container for any number of other elements.
+    We want the text of a todo item be shown. Therefor we define one LabelView:
+</p>
+
+<pre class="syntax javascript">
+label1 : M.LabelView.design({
+  valuePattern: '<%= text %>'
+})
+</pre>
+    
+<p class="text">
+    The label's value property looks somehow strange to us until now. What do these angle brackets, the procent symbols and the equal sign mean? This is a special syntax that tells the framework to use a property named text of the binded object as the label's value. As mentioned above, we bind the list to an array of todo items in the controller. As we will see when discussing the model part of the app, each items has a text property and this kind of expression tells the list item to use it as its content. Because we defined the content binding in the ListView we are not binding anything here. In conclusion:
+    the list is binded to an array of todo tasks.
+    For each todo tasks a new list item is created with the text property of the particular todo task used as its value.
+</p>
+    
+<p class="text">
+    That's it for the view. All necessary view elements are set up and configured. What we need to know next, is the model.
+</p>
+
+<div class="note text">
+    Note: Some parts of the view definition, e. g. the content binding properties, might be defined not until the controller is set up. But to have all parts of the view explained in one place, we already defined them.
+    Note: Some parts of the view definition, e. g. the content binding properties, might be defined not until the controller is set up. But to have all parts of the view explained in one place, we already defined them.
+    In practice this might be a more iterative process between view definition and controller set up.
+</div>
+
+<h2>What we've learned so far</h2>
+
+<ul class="text">
+    <li>A page represents one screen and contains different views that define the look of the screen.</li>
+    <li>Pages often contain a header and/or footer and a content area.</li>
+    <li>Dynamic values are done with the concept of <span class="navlink" onclick="loadArticle('core_concepts/dynamic_value_computing')">Dynamic Value Computing</span>.</li>
+    <li>With <span class="navlink" onclick="loadArticle('core_concepts/content_binding')">content binding</span>, view elements can be bind to controller properties. Value changes are then automatically applied on the view.</li>
+    <li>Some views are containers for other views. For example, a ToolbarView can take a button and a label as child views.</li>
+    <li>The names of the child views have to be added to the <span class="code">childViews</span> property.</li>
+    <li>The look of a list is defined by its template view: an object that extends <span class="navlink" onclick="loadArticle('views/m_listitemview')">M.ListItemView</span></li>
+</ul>
+
+</div>
+
+
+<div class="contentCreateTheModel">
+    <a name="createModel"><h2 class="line">The coding part: 3) The Model Part</h2></a>
+
+    <p class="text">
+        The best way to define and work with business data is to use the Model component of The-M-Project.
+        In MVC Models represent entities of the application's domain for example: Person, Invoice, Order, Task, etc.
+        In doing so, they represent also the application's data. They encapsulate the business logic and they know how to validate themselves.
+        Usually models are persisted in a storage system like a database.
+        In our Todos application we only have one model: a task. A task represents one todo item that needs to be done.
+    </p>
+
+    <p class="text">
+        The model Task must be created in the applications models/ directory. Espresso does this for you automatically if you're using
+    </p>
+
+    <pre class="syntax shell">
+    espresso generate -m Task</pre>
+    <p class="text">
+        to generate it. Power lies in simplicity: the only attribute of a todo task in our app is its text.
+        Ok, now we just have to define it in the model:
+    </p>
+
+    <pre class="syntax javascript">
+        Todos.Task = M.Model.create({
+
+            __name__: 'Task',
+
+            text: M.Model.attr('String', {
+              isRequired:YES
+            }
+
+        }, M.DataProviderLocalStorage);
+    </pre>
+    
+    <p class="text">
+        Here the circle completes: Do you remember the list item template?
+        We set the value of the only label in it to the strange looking string '<%= text %>'.
+        <span class="code">text</span> refers to this model property!
+    </p>
+
+    <p class="text">
+        The <span class="code">__name__</span> property is a meta property of the model. It doesn't belong to the model's data properties.
+        It is used by the framework to identify its heritage.
+    </p>
+    
+    <p class="text">
+        The text property is define by calling <span class="code">M.Model.attr</span> with a parameter object.
+        Here the content of the parameter object is just a flag defining whether this property
+        is required for persisting or not. If the <span class="code">isRequired</span> flag is set to <span class="code">YES</span>,
+        a <span class="code">M.PresenceValidator</span> is automatically added to the property to ensure that
+        this property has been set with a value before persisting the model record.
+    </p>
+    
+    <p class="text">
+        That's all for the model itself. We will look into persistence later. Now let's have a look at the controller.
+    </p>
+
+    <h2>What we've learned so far</h2>
+
+    <ul class="text">
+        <li>Models represent the business data/entities of an application.</li>
+        <li>To create a model, <span class="code">create</span> of <span class="code">M.Model</span> is called.</li>
+        <li>A model is a blueprint, of which (model) records can be created</li>
+        <li>Records are saved to a storage via a data provider, e.g. <span class="code">M.DataProviderLocalStorage</span></li>
+    </ul>
+
+</div>
+
+<div class="contentCreateTheController">
+    <a name="createController"><h2 class="line">The coding part: 4) The Controller Part</h2></a>
+    
+    
+    <p class="text">
+        A controller acts as the middle part or connector between the views and the models.
+        Events from the view are dispatched to controller methods.
+        These methods might interact with models and after completion invoke a view to render the results of this process.
+        In our todo app we have one controller that is simply named TodoController.
+        <br />
+        Here's the full code:
+    </p>
+
+    <pre class="syntax javascript">
+        Todos.TodoController = M.Controller.extend({
+
+          todos: null,
+
+          counter: 0,
+
+          init: function() {
+            Todos.Task.find();
+            this.set('todos', Todos.Task.records());
+            this.calculateCounter();
+          },
+
+          addTodo: function() {
+            var text = M.ViewManager.getView('page', 'inputField').value;
+            if(!text) {
+              return;
+            }
+
+            Todos.Task.createRecord({
+                text: text
+            }).save();
+
+            this.set('todos', Todos.Task.records());
+
+            this.calculateCounter();
+
+            M.ViewManager.getView('page', 'inputField').setValue('');
+          },
+
+          removeTodo: function(domId, modelId) {
+            var doDelete = confirm('Do you really want to delete this item?');
+            if(doDelete) {
+              var record = Todos.Task.recordManager.getRecordById(modelId);
+              record.del();
+              this.set('todos', Todos.Task.records());
+              this.calculateCounter();
+            }
+          },
+
+          calculateCounter: function() {
+            this.set('counter', this.todos.length);
+          },
+
+          edit: function() {
+            M.ViewManager.getView('page', 'todoList').toggleRemove({
+              target: this,
+              action: 'removeTodo'
+            });
+          }
+        });
+    </pre>
+    
+    <p class="text">
+        Let's have a look at the propably most important method, <span class="code">addTodo</span>:
+    </p>
+
+    <pre class="syntax javascript">
+    addTodo: function() {
+        var text = M.ViewManager.getView('page', 'inputField').value;
+        if(!text) {
+          return;
+        }
+
+        Todos.Task.createRecord({
+            text: text
+        }).save();
+
+        this.set('todos', Todos.Task.records());
+
+        this.calculateCounter();
+
+        M.ViewManager.getView('page', 'inputField').setValue('');
+    }
+    </pre>
+    
+    <p class="text">
+        As the name indicates, we use this method to add a new todo task.
+        At first we have to get the user's input from the text field.
+        The application global object <span class="navlink" onclick="loadArticle('components/m_viewmanager')">M.ViewManager</span> is the perfect one to ask for the
+        <span class="code">ìnputField</span> object and its value.
+        If no text was entered before pressing the return key we do nothing and return.
+        We don't want empty tasks in our list. If a text has been entered we create a new Task with it and save it:
+    </p>
+
+    <pre class="syntax javascript">
+        Todos.Task.createRecord({
+            text: text
+        }).save();
+    </pre>
+    
+    <p class="text">
+        We create a new model blueprint with create (see above in the model definition).
+        But when creating new objects of this blueprint (we call them records) ,
+        we use <span class="code">createRecord</span> and pass it all property values it needs.
+        By using this method, we ensure that all properties passed as parameters are put at the
+        correct place inside the model object where they are taken for persistence.
+        If we would use <span class="code">create</span> here, we would not have this behaviour.
+        Here, we simply pass the text that we've received from the text field before. Now that we've created a new task. To persist it, we call
+        <span class="code">save</span> on the model object.
+    </p>
+    
+    <p class="text">
+        Now that the model was added and saved to storage we set the <span class="code">todos</span> property and re-calculate the counter.
+    </p>
+
+    <pre class="syntax javascript">
+        calculateCounter: function() {
+            this.set('counter', this.todos.length);
+        }
+    </pre>
+
+    <p class="text">
+        This invokes two updates in the view: one for the label showing the number of items and the other one in the list with a new item.
+    </p>
+
+    <p class="text">
+        As a last step, we empty the text field to let the user easily add one todo task after the other.
+        <br />
+        Now let's have a look at <span class="code">removeTodo</span>:
+    </p>
+
+    <pre class="syntax javascript">
+        removeTodo: function(viewId, recordId) {
+            var doDelete = confirm('Do you really want to delete this item?');
+            if(doDelete) {
+              var record = Todos.Task.recordManager.getRecordForId(recordId);
+              record.del();
+              this.set('todos', Todos.Task.records());
+              this.calculateCounter();
+            }
+        }
+    </pre>
+
+    The <span class="code">viewId</span> parameter (meaning the value of the tag's ID attribute) is passed to every method that's being invoked by a view
+    through an event. For 'click' events also the recordId is passed, if available.
+    We need it here. But before removing anything, we want the user to be able to cancel the operation.
+    Therefor we first popup a confirm box by using javascript's <span class="code">confirm</span> method.
+    Only if the user pressed confirmed to the question by pressing OK in the box, the operation is taking place.
+
+</div>
