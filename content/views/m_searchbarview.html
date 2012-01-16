@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -58,11 +59,14 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">initialText</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                The initial text shown inside the search bar field describing the input or making a suggestion for
+                input e.g. "Please enter your Name."
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -86,10 +90,27 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code">clearValue</span></td>
+            <td></td>
+            <td></td>
+            <td>
+                This method clears the text field's value, both in the DOM and within the corresponding JS object.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">setValue</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">value</span> (String): The value to be applied to the search bar view.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method sets the search bar's value and initiates its re-rendering.
+            </td>
         </tr>
     </table>
     
@@ -97,23 +118,140 @@
 </div>
 <!-- END OF METHODS -->
 
+<!-- PUBLIC EVENTS -->
+<div class="contentMethods">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <!--
+        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no events available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">blur</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The search bar's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired whenever the search bar view loses the focus.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">enter</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The search bar's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user hits the enter button while the search bar view has got the focus.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">focus</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The search bar's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired whenever the search bar view gets the focus.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">keyup</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">id</span> (String): The search bar's id.
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The fired event.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user hits any button while the search bar view has got the focus.
+                <div class="note text">Note: By accessing the <span class="code">keyCode</span> property of the passed
+                    <span class="code">event</span> object, you can get the information which key was pressed.
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        Setup a basic search bar view.
     </p>
-<pre>
-<code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
-<pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}</pre>
-    -->
-</code></pre>
+<pre class="syntax javascript">M.SearchBarView.design({
+})</pre>
+
+    <p class="text">
+        Setup a basic search bar view with an initial text with special styling.
+    </p>
+<pre class="syntax javascript">M.SearchBarView.design({
+    initialText: 'Keyword...',
+    cssClassOnInit: 'initialText'
+})</pre>
+
+    <p class="text">
+        Get the search bar's value out of a controller.
+    </p>
+<pre class="syntax javascript">var value = M.ViewManager.getView('myPage', 'mySearchbar').value;</pre>
+
+    <p class="text">
+        Use content binding reverse to automatically pass value updates to a controller property. Whenever the user
+        hits a key on the keyboard and updated the value of the search bar view, the controller property is updated, too.
+        So you could e.g. set the content binding of a label to this property to let it be auto updated.
+    </p>
+<pre class="syntax javascript">M.SearchBarView.design({
+    contentBindingReverse: {
+        target: MyApp.MyController,
+        property: 'searchString'
+    }
+})</pre>
+
+    <p class="text">
+        Listen to the keyup event to do something whenever the search bar's value is updated.
+    </p>
+<pre class="syntax javascript">M.SearchBarView.design({
+    events: {
+        keyup: {
+            target: MyApp.MyController,
+            action: 'updateSearch'
+        }
+    }
+})</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -123,8 +261,14 @@ test function() {
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        
-    </p>
+        There are a few CSS classes responsible for the look and feel of the search bar view:</p>
+    <ul class="text">
+        <li><span class="code">ui-shadow-inset</span>: This defines an inner shadow for the text field view.</li>
+        <li><span class="code">ui-input-search</span>: This class defines the basic size and dimension of the search bar view.</li>
+        <li><span class="code">ui-icon-searchfield</span>: This class is responsible for positioning the goggles/clear icon inside the search bar view.</li>
+        <li><span class="code">ui-corner-all</span>: This adds round corners to the search bar view.</li>
+        <li><span class="code">ui-body-c</span>: This class defines some styling stuff like border, text color, text-shadow or the background.</li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
