@@ -11,10 +11,10 @@
     <!-- remove unused links -->
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
-    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span><!--  &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
-    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>-->
 </div>
 <!-- END OF HEADER -->
 
@@ -22,9 +22,9 @@
 <!-- BASICS-->
 <div class="contentBasics">
     <a name="basics"><h2 class="line">Basics</h2></a>
-
+	
     <p class="text">
-        <!-- TEXT DESCRIBING THE BASICS -->
+        This is the prototype for any list item view. It can only be used as child view of a list view (M.ListView).
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -39,6 +39,10 @@
             IMAGE FILES HERE
             <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
         -->
+        <img src="images/views/screen_list_default.png" alt="M.ListView Default" />
+        <p class="text">M.ListView with isCountedList set to YES</p><img src="images/views/screen_list_counted.png" alt="M.ListView with isCountedList set to YES" />
+        <p class="text">M.ListView with isDividedList set to YES</p><img src="images/views/screen_list_segmented.png" alt="M.ListView with isDividedList set to YES" />
+        <p class="text">M.ListItemView with isSelectable set to NO</p><img src="images/views/screen_list_nonselectable.png" alt="M.ListItemView with isSelectable set to NO" />
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -57,18 +61,53 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- PROPERTY NAME --></span></td>
-            <td><!-- PROPERTY RELEVANCE: optional, recommended or mandatory --></td>
-            <td><!-- TYPE OF THE PROPERTY --></td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td><!-- PROPERTY DESCRIPTION --></td>
+            <td><span class="code">type</span></td>
+            <td></td>
+            <td>String</td>
+            <td style="font-family:monospace">M.ListItemView</td>
+            <td>Returns the type. Use only as getter!</td>
+        </tr>
+        <tr>
+            <td><span class="code">hasSingleAction</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property determines whether a list item has one single action that is triggered once there is a click anywhere inside the list item or if there are specific actions defined for single ui elements within one list item.</td>
+        </tr>
+        <tr>
+            <td><span class="code">deleteButton</span></td>
+            <td>optional</td>
+            <td>M.ButtonView</td>
+            <td style="font-family:monospace">M.ButtonView.design({ icon: 'delete',value: '' })</td>
+            <td>This property contains the list item's delete button that is automatically shown if the list view's built-in toggleRemove() functionality is used.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isDivider</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>This property determines whether the list item is a divider or not.</td>
+        </tr>
+        <tr>
+            <td><span class="code">recommendedEvents</span></td>
+            <td>recommended</td>
+            <td>Array</td>
+            <td style="font-family:monospace">['tap']</td>
+            <td>This property specifies the recommended events for this type of view.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isSelectable</span></td>
+            <td>optional</td>
+            <td>YES</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property can be used to specify whether a selection list item can be selected or not. Note, that this only affects styling stuff. If set to NO, you still can apply e.g. tap events.</td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF PROPERTIES -->
 
-<!-- PUBLIC METHODS -->
+<!-- PUBLIC METHODS
 <div class="contentMethods">
     <a name="methods"><h2 class="line">Methods</h2></a>
     <!--
@@ -76,7 +115,7 @@
         <p class="text">There are no public methods available.</p>
 
         ELSE LEAVE THIS TABLE:
-    -->
+    
     <table class="reference" cellpadding="0" cellspacing="0">
         <tr style="height:50px;">
             <th style="width:20%;">Name</th>
@@ -85,39 +124,33 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code"><!-- METHOD NAME --></span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td><!-- METHOD DESCRIPTION --></td>
+            <td><span class="code"></span></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
-    
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
-</div>
+</div> -->
 <!-- END OF METHODS -->
 
-<!-- EXAMPLE -->
+<!-- EXAMPLE
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
 <pre>
 <code class="javascript">
-    <!-- THE EXAMPLE CODE  -->
-    <!--
+
 <pre class="syntax javascript">
-test function() {
-    alert('blabla');
-}</pre>
-    -->
-</code></pre>
+</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
+ -->
 <!-- END OF EXAMPLE -->
 
-<!-- CSS STYLES -->
+<!-- CSS STYLES 
 <div class="contentCss">
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
@@ -127,4 +160,5 @@ test function() {
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
+-->
 <!-- END OF CSS -->
