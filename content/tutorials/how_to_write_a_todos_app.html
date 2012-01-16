@@ -575,10 +575,13 @@ todoList: M.ListView.design({
   })
 </pre>
 
-<p>
+<p class="text">
     We bind the list to an array of todo items in the controller, named <span class="code">todos</span>. The property <span class="code">listItemTemplateView</span>
     references the template view object. Template views extend <span class="navlink" onclick="loadArticle('views/m_listitemview')">M.ListItemView</span>,
     are located in the applications "view/" directory and are defined by the developer.
+</p>
+    
+<p class="text">
     Here's our template:
 </p>
 
@@ -841,7 +844,7 @@ label1 : M.LabelView.design({
         removeTodo: function(viewId, recordId) {
             var doDelete = confirm('Do you really want to delete this item?');
             if(doDelete) {
-              var record = Todos.Task.recordManager.getRecordForId(recordId);
+              var record = Todos.Task.recordManager.getRecordById(recordId);
               record.del();
               this.set('todos', Todos.Task.records());
               this.calculateCounter();
@@ -849,10 +852,68 @@ label1 : M.LabelView.design({
         }
     </pre>
 
-    The <span class="code">viewId</span> parameter (meaning the value of the tag's ID attribute) is passed to every method that's being invoked by a view
+    <p class="text">
+        The <span class="code">viewId</span> parameter (meaning the value of the tag's ID attribute) is passed to every method that's being invoked by a view
     through an event. For 'click' events also the recordId is passed, if available.
     We need it here. But before removing anything, we want the user to be able to cancel the operation.
     Therefor we first popup a confirm box by using javascript's <span class="code">confirm</span> method.
-    Only if the user pressed confirmed to the question by pressing OK in the box, the operation is taking place.
+    Only if the user confirmed to the question by pressing OK in the box, the operation is taking place.
+    </p>
+    
+    <p class="text">
+        First we get the model from the models <span class="code">M.RecordManager</span> with <span class="code">getRecordById</span>.
+        Every model has a record manager. We used it before with the <span class="code">records method</span>,
+        which simply delegates a call to the model's record manager to simply return all
+        currently saved models in memory. Next, we delete it. It is automatically deleted
+        from the record manager's record list also. Then we set our controller property
+        <span class="code">todos</span> with the now updated record manager record list by calling
+        <span class="code">Todos.Task.records()</span>. As a last step we re-calculate the counter. That's all.
+    </p>
+    
+    <p class="text">
+        But how can we remove the todo items? This is a really good question. If we look at the list we can nowhere find a delete button or something similar.
+        But we remember having added a <span class="code">ToggleView</span>.
+        The buttons inside this view are bind on click to our <span class="code">TodoController</span>
+        as target and <span class="text">edit</span> as action. Here is the latter:
+    </p>
+
+    <pre class="syntax javascript">
+        edit: function() {
+            M.ViewManager.getView('page', 'todoList').toggleRemove({
+              target: this,
+              action: 'removeTodo'
+            });
+        }
+    </pre>
+    
+    <p class="text">
+        It simply makes one call to the toggleRemove method of the <span class="navlink" onclick="loadArticle('views/m_listview')">ListView</span>.
+        We pass it two properties: a <span class="code">target</span> and an <span class="code">action</span> inside the target.
+        <span class="code">toggleRemove</span> activates the edit mode of a list and forces it to re-render
+        itself and to display a remove button for every list view item. Every
+        remove button receives the previously passed <span class="code">target</span> and <span class="code">action</span> property.
+        In our case, every click event will trigger <span class="code">removeTodo</span>
+        of the <span class="code">TodoController</span> for the item where the button was clicked.
+        When the <span class="code">ToggleView</span> is clicked again, the edit mode ends.
+    </p>
+    
+    <p class="text">
+        That's it. We just completed our Todos app. It's not rich in functionality but it covers many parts a more complex app also targets.
+    </p>
+
+    <h2>What we've learned so far</h2>
+
+        <ul class="text">
+            <li>Controller contain the application logic and act as an interface between models and views.</li>
+            <li>
+                Each app normally has multiple controllers, for different logical parts in an app, e.g. a <span class="code">UserController</span>,
+                a <span class="code">LoginController</span>, a <span class="code">RequestController</span>, etc.
+            </li>
+            <li>Controller are usually the targets of events triggered in the view.</li>
+            <li>With the controller method <span class="code">set</span>, executed on a controller property, content binding is triggered. Just assigning
+            a value to a controller property doesn't trigger it.</li>
+        </ul>
 
 </div>
+
+
