@@ -57,111 +57,61 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
+            <td><span class="code">childViews</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
+            <td>
+                This property can be used to statically assign dashboard items to the dashboard. For a more
+                dynamic way use content binding.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">contentBinding</span></td>
+            <td>optional</td>
+            <td>Array</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                With this property a dynamic content (dashboard items) can be bound to the dashboard view. Everytime the
+                bound property changes, the dashboard view will automatically update its items and re-render itself.
+            </td>
+        </tr>
+        <tr>
             <td><span class="code">cssClass</span></td>
             <td>optional</td>
             <td>String</td>
             <td style="font-family:monospace"></td>
             <td>
-                This property can be used to set CSS classes for the List.
+                This property can be used to set CSS classes for the dashboard.
             </td>
         </tr>
         <tr>
-            <td><span class="code">cssClassForCounter</span></td>
+            <td><span class="code">itemsPerLine</span></td>
+            <td>optional</td>
+            <td>Number</td>
+            <td style="font-family:monospace">3</td>
+            <td>
+                This property can be used to customize the number of items a dashboard shows per line. By default this is set to three.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">isEditable</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This property can be used to specify whether or not the dashboard can be re-arranged by a user.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">name</span></td>
             <td>optional</td>
             <td>String</td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td>If the list view is a counted list, this property can be used to customize the style of the list item's counter.</td>
-        </tr>
-        <tr>
-            <td><span class="code">cssClassForDivider</span></td>
-            <td>optional</td>
-            <td>String</td>
-            <td style="font-family:monospace"></td>
-            <td>If the list view is a divided list, this property can be used to customize the style of the list's dividers.</td>
-        </tr>
-        <tr>
-            <td><span class="code">hasSearchBar</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>Determines whether or not to display a search bar at the top of the list view.</td>
-        </tr>
-        <tr>
-            <td><span class="code">idName</span></td>
-            <td>recommended</td>
-            <td>String</td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td>An optional String defining the id property that is passed in view as record id</td>
-        </tr>
-        <tr>
-            <td><span class="code">isCountedList</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>Determines whether to display the the number of child items for each list item view.</td>
-        </tr>
-        <tr>
-            <td><span class="code">isDividedList</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>Determines whether to display the list as a divided list or not.</td>
-        </tr>
-        <tr>
-            <td><span class="code">isInset</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>Determines whether to display the list view 'inset' or at full width.</td>
-        </tr>
-        <tr>
-            <td><span class="code">isNumberedList</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>Defines if the ListView is rendered with prefixed numbering for each item.</td>
-        </tr>
-        <tr>
-            <td><span class="code">listItemTemplateView</span></td>
-            <td>mandatory</td>
-            <td>M.ListItemView</td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td>This property contains the list view's template view, the blueprint for every child view.</td>
-        </tr>
-        <tr>
-            <td><span class="code">onSearchStringDidChange</span></td>
-            <td>optional</td>
-            <td>Object</td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td>An object containing target and action to be triggered if the search string changes.</td>
-        </tr>
-        <tr>
-            <td><span class="code">removeItemsOnUpdate</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>Determines whether to remove all item if the list is updated or not.</td>
-        </tr>
-        <tr>
-            <td><span class="code">searchBar</span></td>
-            <td>optional</td>
-            <td>Object</td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td>The list view's search bar.</td>
-        </tr>
-        <tr>
-            <td><span class="code">searchBarInitialText</span></td>
-            <td>optional</td>
-            <td>String</td>
-            <td style="font-family:monospace">'Search...'</td>
-            <td>If the hasSearchBar property is set to YES and the usesDefaultSearchBehaviour is set to YES, this property can be used to specify the inital text for the search bar. This text will be shown as long as nothing else is entered into the search bar text field.</td>
-        </tr>
-        <tr>
-            <td><span class="code">usesDefaultSearchBehaviour</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace"><!-- DEFAULT VALUE OF THE PROPERTY (if there's one) --></td>
-            <td>If the hasSearchBar property is set to YES, this property determines whether to use the built-in simple search filters or not. If set to YES, the list is simply filtered on the fly according to the entered search string. Only list items matching the entered search string will be visible.<br /><br />If a custom search behaviour is needed, this property must be set to NO.</td>
+            <td style="font-family:monospace">dashboard</td>
+            <td>
+                This property defines the dashboard's name. This is used internally to identify the dashboard inside the DOM.
+                <div class="note">Note: If you are using more than one dashboard inside your application, make sure you provide different names.</div>
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
