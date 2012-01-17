@@ -9,7 +9,7 @@
     </div>
 
     <span class="navlink" onclick="scroll('setup')">Setup</span> &#183;
-    <span class="navlink" onclick="scroll('server')">Server</span> &#183;
+    <span class="navlink" onclick="scroll('launch')">Launch</span> &#183;
     <span class="navlink" onclick="scroll('editing')">Editing</span> &#183;
     <span class="navlink" onclick="scroll('generator')">Generator</span> &#183;
     <span class="navlink" onclick="scroll('build')">Build</span>
@@ -72,6 +72,32 @@ LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/images/Icon-72.p
 LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/images/Icon.png generated!
 LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/style.css generated!
 Project successfully generated!</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="launch"><h2 class="line">Launch the application</h2></a>
+
+    <p class="text">
+        Ok, before we take a look at the source code, let's see how the app looks in the browser. As we've
+        seen before, there is a command called <span class="code">server</span>. Let's try this:
+    </p>
+<pre class="syntax shell">cd /HelloWorldSample
+espresso server</pre>
+    <p class="text">
+        Now Espresso should start a development server (based on Node.js) and print the local URL:
+    </p>
+<pre class="syntax shell">LOG: Server running at http://127.0.0.1:8000/HelloWorldSample</pre>
+    <p class="text">
+        Open your web browser (Google Chrome or Safari are recommended) with the URL above and enjoy your first
+        app. You can also test it with e.g. the iOS simulator or Android emulator. This is what it should look like:
+    </p>
+    <div class="screens">
+        <img src="images/tutorials/screen_helloworld_1.png" alt="HelloWorldSample #1"/>
+    </div>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
