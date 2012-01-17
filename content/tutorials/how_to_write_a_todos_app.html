@@ -81,7 +81,7 @@
             <td></td>
         </tr>
         <tr>
-            <td class="text">By clicking the 'Edit' button on the upper right, <br /> you enter the 'Edit' mode, where you can delete <br /> items from the list.
+            <td class="text">By tapping the 'Edit' button on the upper right, <br /> you enter the 'Edit' mode, where you can delete <br /> items from the list.
     Look at the label at the top <br /> showing the number of items in the list: thanks to *data binding*, it is updated also!</td>
             <td class="text">Before definite deletion, you're asked to confirm the delete operation.</td>
             <td></td>
@@ -351,16 +351,23 @@ header: M.ToolbarView.design({
 
     button1: M.ButtonView.design({
       value: 'Edit',
-      target: Todos.TodoController,
-      action: 'edit',
       icon: 'gear'
+      events: {
+        tap: {
+          target: Todos.TodosController,
+          action: 'edit'
+        }
     }),
 
     button2: M.ButtonView.design({
       value: 'Save',
-      target: Todos.TodoController,
-      action: 'edit',
-      icon: 'check'
+      icon: 'check',
+      events: {
+        tap: {
+          target: Todos.TodosController,
+          action: 'edit'
+        }
+      }
     })
   }),
 
@@ -726,13 +733,12 @@ label1 : M.LabelView.design({
           counter: 0,
 
           init: function() {
-            Todos.Task.find();
-            this.set('todos', Todos.Task.records());
+            this.set('todos', Todos.Task.find(););
             this.calculateCounter();
           },
 
           addTodo: function() {
-            var text = M.ViewManager.getView('page', 'inputField').value;
+            var text = M.ViewManager.getView('todosPage', 'inputField').value;
             if(!text) {
               return;
             }
@@ -745,7 +751,7 @@ label1 : M.LabelView.design({
 
             this.calculateCounter();
 
-            M.ViewManager.getView('page', 'inputField').setValue('');
+            M.ViewManager.getView('todosPage', 'inputField').setValue('');
           },
 
           removeTodo: function(domId, modelId) {
@@ -763,7 +769,7 @@ label1 : M.LabelView.design({
           },
 
           edit: function() {
-            M.ViewManager.getView('page', 'todoList').toggleRemove({
+            M.ViewManager.getView('todosPage', 'todoList').toggleRemove({
               target: this,
               action: 'removeTodo'
             });
@@ -777,7 +783,7 @@ label1 : M.LabelView.design({
 
     <pre class="syntax javascript">
     addTodo: function() {
-        var text = M.ViewManager.getView('page', 'inputField').value;
+        var text = M.ViewManager.getView('todosPage', 'inputField').value;
         if(!text) {
           return;
         }
@@ -790,7 +796,7 @@ label1 : M.LabelView.design({
 
         this.calculateCounter();
 
-        M.ViewManager.getView('page', 'inputField').setValue('');
+        M.ViewManager.getView('todosPage', 'inputField').setValue('');
     }
     </pre>
     
@@ -854,7 +860,7 @@ label1 : M.LabelView.design({
 
     <p class="text">
         The <span class="code">viewId</span> parameter (meaning the value of the tag's ID attribute) is passed to every method that's being invoked by a view
-    through an event. For 'click' events also the recordId is passed, if available.
+    through an event. For 'tap' events also the recordId is passed, if available.
     We need it here. But before removing anything, we want the user to be able to cancel the operation.
     Therefor we first popup a confirm box by using javascript's <span class="code">confirm</span> method.
     Only if the user confirmed to the question by pressing OK in the box, the operation is taking place.
@@ -879,7 +885,7 @@ label1 : M.LabelView.design({
 
     <pre class="syntax javascript">
         edit: function() {
-            M.ViewManager.getView('page', 'todoList').toggleRemove({
+            M.ViewManager.getView('todosPage', 'todoList').toggleRemove({
               target: this,
               action: 'removeTodo'
             });
@@ -892,16 +898,60 @@ label1 : M.LabelView.design({
         <span class="code">toggleRemove</span> activates the edit mode of a list and forces it to re-render
         itself and to display a remove button for every list view item. Every
         remove button receives the previously passed <span class="code">target</span> and <span class="code">action</span> property.
-        In our case, every click event will trigger <span class="code">removeTodo</span>
-        of the <span class="code">TodoController</span> for the item where the button was clicked.
+        In our case, every tap event will trigger <span class="code">removeTodo</span>
+        of the <span class="code">TodoController</span> for the item where the button was tap.
         When the <span class="code">ToggleView</span> is clicked again, the edit mode ends.
     </p>
     
+    <h3>Loading all todos on application startup</h3>
+
     <p class="text">
-        That's it. We just completed our Todos app. It's not rich in functionality but it covers many parts a more complex app also targets.
+        Up to now, no tasks are shown on application startup. In the controller code above, you're seeing a snippet we haven't discussed yet:
     </p>
 
-    <h2>What we've learned so far</h2>
+    <pre class="syntax javascript">
+        init: function(isFirstLoad) {
+            this.set('todos', Todos.Task.find(););
+            this.calculateCounter();
+          }
+    </pre>
+
+    <p class="text">
+        The code is straightforward. First, we set the controller property <span class="code">todos</span>
+    with the result of the <span class="code">find</span> call on Task. With LocalStorage, find immediately returns the result
+    of the call as an array of matching model records. Because we didn't specify anything, a "find all" is executed.
+    </p>
+
+    <div class="note text">
+        Info: <span class="code">Todos.Task.find()</span> corresponds to <span class="code">SELECT * FROM Task</span> in SQL.
+    </div>
+    
+    <p class="text">
+        Second, we calculate the counter to have the correct number of Tasks displayed.<br />
+
+        Ok, but when is it called? We never call <span class="code">init</span> in our controller code. It has to happen automatically
+        on application startup. We accomplish this by binding to an event that occurs before the page is shown.
+        A <span class="navlink" onclick="loadArticle('views/m_pageview')">PageView</span> has several events we can bind to. We'll use
+        <span class="code">pagebeforeshow</span>. We define it inside the page:
+    </p>
+
+    <pre class="syntax javascript">
+    Todos.TodosPage = M.PageView.design({
+
+        events: {
+            pageshow: {
+                target: Todos.TodosController,
+                action: 'init'
+            }
+        },
+    </pre>
+    
+    <p class="text">
+        Now <span class="code">init</span> is called, before the page is shown. The parameter that is passed to the binded method is a Boolean value
+        defining whether the page is loaded for the first time (in this app lifecycle) or not.
+    </p>
+
+    <h2>What we've learned on controllers</h2>
 
         <ul class="text">
             <li>Controller contain the application logic and act as an interface between models and views.</li>
@@ -915,5 +965,10 @@ label1 : M.LabelView.design({
         </ul>
 
 </div>
+
+<p class="text">
+    <strong>That's it. We just completed our Todos app. It's not rich in functionality but it covers many parts a more
+        complex app also targets.</strong>
+</p>
 
 
