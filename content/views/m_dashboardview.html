@@ -86,21 +86,21 @@
             </td>
         </tr>
         <tr>
-            <td><span class="code">itemsPerLine</span></td>
-            <td>optional</td>
-            <td>Number</td>
-            <td style="font-family:monospace">3</td>
-            <td>
-                This property can be used to customize the number of items a dashboard shows per line. By default this is set to three.
-            </td>
-        </tr>
-        <tr>
             <td><span class="code">isEditable</span></td>
             <td>optional</td>
             <td>Boolean</td>
             <td style="font-family:monospace">NO</td>
             <td>
                 This property can be used to specify whether or not the dashboard can be re-arranged by a user.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">itemsPerLine</span></td>
+            <td>optional</td>
+            <td>Number</td>
+            <td style="font-family:monospace">3</td>
+            <td>
+                This property can be used to customize the number of items a dashboard shows per line. By default this is set to three.
             </td>
         </tr>
         <tr>
@@ -135,34 +135,13 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">addItem</span></td>
-            <td>{String} item The html representation of a list item to be added.</td>
-            <td><!-- RETURN TYPE --></td>
-            <td>This method adds a new list item to the list view by simply appending its html representation to the list view inside the DOM. This method is based on jQuery's append().</td>
-        </tr>
-        <tr>
             <td><span class="code">removeAllItems</span></td>
-            <td><!-- METHOD PARAMETERS --></td>
-            <td><!-- RETURN TYPE --></td>
-            <td>This method removes all of the list view's items by removing all of its content in the DOM. This method is based on jQuery's empty().</td>
-        </tr>
-        <tr>
-            <td><span class="code">resetActiveListItem</span></td>
             <td></td>
             <td><!-- RETURN TYPE --></td>
-            <td>This method resets the list by applying the default css style to its currently activated list item.</td>
-        </tr>
-        <tr>
-            <td><span class="code">setActiveListItem</span></td>
-            <td>{String} listItemId The id of the list item to be set active.</td>
-            <td><!-- RETURN TYPE --></td>
-            <td>This method activates a list item by applying the default 'isActive' css style to its 	DOM representation.</td>
-        </tr>
-        <tr>
-            <td><span class="code">toggleRemove</span></td>
-            <td>{Object} options The options for the remove button.</td>
-            <td><!-- RETURN TYPE --></td>
-            <td>This method activates the edit mode and forces the list view to re-render itself and to display a remove button for every list view item.</td>
+            <td>
+                This method removes all of the dashboard view's items by removing all of its content
+                in the DOM. This method is based on jQuery's empty().
+            </td>
         </tr>
     </table>
     
