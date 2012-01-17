@@ -1,0 +1,134 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>How to build a HelloWorld app</h1>
+
+    <div class="directoryPath">
+        Accessing remote services with Ajax
+    </div>
+
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('examples')">Examples</span>
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        Making Ajax requests and accessing remote services is fundamental to every modern web application. The-M-Project provides an
+        object, <span class="code">M.Request</span>, to make requests. Basically, it uses jQuery to fulfill this task.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<div class="contentExample">
+    <a name="examples"><h2 class="line">Examples</h2></a>
+
+    <h3>
+        Sending a simple GET request.
+    </h3>
+    <p class="text">
+
+    </p>
+
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://search.twitter.com/search.json',
+            method: 'GET',
+            isJSON: YES,
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();  /* 'cause init returns the request object, we can chain the send call */
+    </pre>
+
+    <h3>
+        Sending a POST request.
+    </h3>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://mypostservice.com/',
+            method: 'POST',
+            isJSON: YES,
+            data: { foo:'bar', bla: 'blub' },
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+    <h3>
+        Sending a PUT request.
+    </h3>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: 'http://mypostservice.com/',
+            method: 'PUT',
+            isJSON: YES,
+            data: { foo:'bar', bla: 'blub' },
+            /* we have to manually set the request header information to let it be a 'PUT' request */
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-Http-Method-Override", 'PUT');
+            },
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+    <h3>
+        Sending request with a set espresso proxy
+    </h3>
+    <p class="text">
+        Making requests to other domains is usually not working in browsers, due to the <span class="boldText">Same-Origin-Policy</span>. It's possible fulfill the task
+        of accessing remote services, located on other domains, by using a proxy. Our Espresso server supports this feature. Hooray! See the following example to learn how
+        to use a proxy and name it in the request call.
+    </p>
+    <p class="text">
+        Assume, we have the following proxy entry in the project's config.json:
+    </p>
+    <pre class="syntax javascript">
+        ...
+        "proxies":[
+                  {
+                    "proxyAlias": "foo",
+                    "baseUrl": "https://foobaz:23"
+                  }
+          ],
+        ...
+    </pre>
+    <p class="text">
+        Now assume, we want to request a script, bar.php, located at https://foobaz:23/bar.php . This is what we have to write:
+    </p>
+    <pre class="syntax javascript">
+        M.Request.init({
+            url: '/foo/bar.php',    /* writing the proxyAlias instead of the "real" url */
+            method: 'GET',
+            isJSON: YES,
+            onSuccess: function(data, msg, xhr) {
+                console.log('Request succesful');
+            },
+            onError: function(xhr, msg) {
+                console.log('Error: ' + msg);
+            }
+        }).send();
+    </pre>
+
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
