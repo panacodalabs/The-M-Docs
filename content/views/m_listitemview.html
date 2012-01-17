@@ -68,20 +68,6 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">type</span></td>
-            <td></td>
-            <td>String</td>
-            <td style="font-family:monospace">M.ListItemView</td>
-            <td>Returns the type. Use only as getter!</td>
-        </tr>
-        <tr>
-            <td><span class="code">hasSingleAction</span></td>
-            <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>This property determines whether a list item has one single action that is triggered once there is a click anywhere inside the list item or if there are specific actions defined for single ui elements within one list item.</td>
-        </tr>
-        <tr>
             <td><span class="code">deleteButton</span></td>
             <td>optional</td>
             <td>M.ButtonView</td>
@@ -89,18 +75,11 @@
             <td>This property contains the list item's delete button that is automatically shown if the list view's built-in toggleRemove() functionality is used.</td>
         </tr>
         <tr>
-            <td><span class="code">isDivider</span></td>
+            <td><span class="code">hasSingleAction</span></td>
             <td>optional</td>
             <td>Boolean</td>
-            <td style="font-family:monospace">NO</td>
-            <td>This property determines whether the list item is a divider or not.</td>
-        </tr>
-        <tr>
-            <td><span class="code">recommendedEvents</span></td>
-            <td>recommended</td>
-            <td>Array</td>
-            <td style="font-family:monospace">['tap']</td>
-            <td>This property specifies the recommended events for this type of view.</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property determines whether a list item has one single action that is triggered once there is a click anywhere inside the list item or if there are specific actions defined for single ui elements within one list item.</td>
         </tr>
         <tr>
             <td><span class="code">isSelectable</span></td>
