@@ -22,66 +22,86 @@
             <div class="note text">Do you have installed node.js already? navigate in your favorite command line tool to
             path/to/Espresso/bin/espresso.js and press enter &#8211; Horray you just started Espresso. If you often use
             espresso, and I think you will, I recommend to set an alias to the espresso.js file.</div></blockquote>
-        <p class="text">If you start Espresso without a parameter by default all available commands (<a href="#build">build</a>, <a
-                href="#deploy">deploy</a>, <a href="#generate">generate</a>, <a href="#init">init</a>, <a
-                href="#package">package</a>, <a href="#server">server</a>, <a href="#version">version</a>, <a
-                href="#help">help</a>) will be prompt. The following overview is based on version 0.8 and lists all
-            espresso commands and their options.</p>
 
-        <p class="text"><strong><a name="build">build</a></strong><br/>
+
+        <p class="text">If you start Espresso without a parameter by default all available commands
+            (<span class="navlink" onclick="scroll('build')">build</span>, <span class="navlink" onclick="scroll('deploy')">deploy</span>,
+            <span class="navlink" onclick="scroll('generate')">generate</span>, <span class="navlink" onclick="scroll('init')">init</span>,
+            <span class="navlink" onclick="scroll('package')">package</span>, <span class="navlink" onclick="scroll('server')">server</span>,
+            <span class="navlink" onclick="scroll('version')">version</span>, <span class="navlink" onclick="scroll('help')">help</span>) will be prompt.
+            The following overview is based on version 1.0 and lists all
+            espresso commands and their options.
+        </p>
+
+        <a name="build" />
+        <p><pre class="syntax shell">espresso build</pre><br/>
             Command to build a project</p>
         <ul>
-            <li>-d, –directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
+            <li class="text">-d, –directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
         </ul>
-        <p class="text"><strong><a name="deploy">deploy</a></strong><br/>
+        <a name="deploy" />
+        <p><pre class="syntax shell">espresso deploy</pre><br/>
             Command deploy projects</p>
         <ul>
-            <li>-d, –directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
+            <li class="text">-d, –directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
         </ul>
-        <p class="text"><strong><a name="generate">generate</a></strong><br/>
+
+
+        <a name="generate" />
+        <p><pre class="syntax shell">espresso generate</pre><br/>
             Command to generate new or additional files for a project</p>
         <ul>
-            <li>-d, –directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
-            <li>-m, –model=MODEL Create a new model</li>
-            <li>-c, –controller=CONTROLLER Create a new controller</li>
-            <li>-v, –view=VIEW Create a new page</li>
-            <li>-x, –validator=VALIDATOR Create a new validator</li>
-            <li>-i, –i18n Create a new i18n files</li>
-            <li>-t, –target Create a new “targets.json” sample file</li>
+            <li class="text">-d, –directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
+            <li class="text">-m, –model=MODEL Create a new model</li>
+            <li class="text">-c, –controller=CONTROLLER Create a new controller</li>
+            <li class="text">-v, –view=VIEW Create a new page</li>
+            <li class="text">-x, –validator=VALIDATOR Create a new validator</li>
+            <li class="text">-i, –i18n Create a new i18n files</li>
+            <li class="text">-t, –target Create a new “targets.json” sample file</li>
         </ul>
-        <p class="text"><strong><a name="init">init</a></strong><br/>
+
+        <a name="init" />
+        <p><pre class="syntax shell">espresso init</pre><br/>
             Command line tool to generate a new project</p>
         <ul>
-            <li>-p, &#8211;project=PROJECT Project name</li>
-            <li>-d, &#8211;directory=DIRECTORY Specify a custom projects directory Default: $PWD</li>
-            <li>-e, &#8211;example Generate an example &#8220;Hello World&#8221; application Default: false</li>
+            <li class="text">-p, &#8211;project=PROJECT Project name</li>
+            <li class="text">-d, &#8211;directory=DIRECTORY Specify a custom projects directory Default: $PWD</li>
+            <li class="text">-e, &#8211;example Generate an example &#8220;Hello World&#8221; application Default: false</li>
         </ul>
-        <p class="text"><strong><a name="package">package</a></strong><br/>
+
+        <a name="package" />
+        <p><pre class="syntax shell">espresso package</pre><br/>
             Command to build native applications</p>
         <ul>
-            <li>-d, &#8211;directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
+            <li class="text">-d, &#8211;directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
         </ul>
-        <p class="text"><strong><a name="server">server</a></strong><br/>
+
+        <a name="server" />
+        <p><pre class="syntax shell">espresso server</pre><br/>
             Command to run the Development server</p>
         <ul>
-            <li>-m, &#8211;manifest Start the server in manifest mode. Enable generation of cache.manifest Default:
+            <li class="text">-m, &#8211;manifest Start the server in manifest mode. Enable generation of cache.manifest Default:
                 false
             </li>
-            <li>-c, &#8211;config=CONFIG Specify a custom config</li>
-            <li>-d, &#8211;directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
-            <li>-p, &#8211;port=PORT Specify a custom port Default: 8000</li>
+            <li class="text">-c, &#8211;config=CONFIG Specify a custom config</li>
+            <li class="text">-d, &#8211;directory=DIRECTORY Specify a custom project directory Default: $PWD</li>
+            <li class="text">-p, &#8211;port=PORT Specify a custom port Default: 8000</li>
         </ul>
-        <p class="text"><strong><a name="version">version</a></strong><br/>
+
+        <a name="version" />
+        <p><pre class="syntax shell">espresso version</pre><br/>
             Command to print the Espresso version</p>
 
-        <p class="text"><strong><a name="help">help</a></strong><br/>
+
+        <a name="help" />
+        <p><pre class="syntax shell">espresso help</pre><br/>
             Command to show help for a subcommand</p>
 
         <p class="text">Every command has it&#8217;s own help option using -h with it.</p>
 
         <p class="text"><strong>How Espresso fulfils your needs</strong><br/>
-            Now that you have a Espresso spec id like to show you a few examples how to use it. If you&#8217;d like you
-            can call it an best practice on how to use Espresso.</p>
+            Now that you have a Espresso spec we would like to show you a few examples how to use it. It's like
+            a best practice on how to use Espresso.</p>
 
         <p class="text">Assuming you&#8217;d like to build a The-M-Project App called EspressoShowcase. So you have to initialize the
             Application by calling Espresso init with the name for your project. Espresso makes a new folder named after
@@ -90,29 +110,29 @@
             folder with all required files for The-M-Project and the app folder. The app folder is the root directory
             for all app required stuff like controllers, views, models, images, stylesheets and stuff like that. In
             short: frameworks is for The-M-Project and the app folder is for you.</p>
-<pre class="brush: jscript; title: ; notranslate" title="">espresso init -p EspressoShowcase
+<pre class="syntax shell">espresso init -p EspressoShowcase
 cd EspressoShowcase
 </pre>
         <p class="text">You just setup an The-M-Project App. This means you can run it. Try it with:</p>
-        <pre class="brush: jscript; title: ; notranslate" title="">espresso server</pre>
+        <pre class="syntax shell">espresso server</pre>
         <p class="text">We designed Espresso to give you a feedback with stuff you could do with it or what Espresso is just doing.
             So Espresso should now say to you:</p>
-        <pre class="brush: plain; title: ; notranslate" title="">LOG: Server running at http://127.0.0.1:8000/EspressoShowcase</pre>
+        <pre class="syntax shell">LOG: Server running at http://127.0.0.1:8000/EspressoShowcase</pre>
         <p class="text">If you open the URL in your Browser, you will see your running app and Espresso prints a lot of information
             to your command line. If Espresso runs into Errors, Espresso will tell you. Sometime you get this error when
             you&#8217;ve a lot of different apps running:</p>
-        <pre class="brush: plain; title: ; notranslate" title="">Error: listen EADDRINUSE</pre>
+        <pre class="syntax shell">Error: listen EADDRINUSE</pre>
         <p class="text">this only means that the current port (default 8000) is already in use. Just use another one with the -p
             option</p>
-        <pre class="brush: jscript; title: ; notranslate" title="">espresso server -p 8800</pre>
+        <pre class="syntax shell">espresso server -p 8800</pre>
         <p class="text">Back to business. Your current running app is a little bit boring? No views, no interaction, no anything. Don&#8217;t
             panic! Just generate them! (by the way: to stop espresso you can press ctrl+c)<br/>
             To generate a View named &#8216;StartView&#8217; run this command:</p>
-        <pre class="brush: jscript; title: ; notranslate" title="">espresso generate -v StartView</pre>
+        <pre class="syntax shell">espresso generate -v StartView</pre>
         <p class="text">If you&#8217;ve forgotten how the command looks like in particular just run Espresso with a incomplete
             command and Espresso will tell you how the command should look like.<br/>
             In our opinion every view should have their own controller.</p>
-        <pre class="brush: jscript; title: ; notranslate" title="">espresso generate -c StartController</pre>
+        <pre class="syntax shell">espresso generate -c StartController</pre>
         <p class="text">Espresso generated a View and a Controller. You should now have a similar app folder structure:</p>
         <ul>
             <li>app
@@ -151,7 +171,7 @@ cd EspressoShowcase
             well under construction mode (espresso server). Eventually you want to show it to a friend of yours. Now you
             have a view options doing that. (1) Build you application and upload it to an server or (2) use Espressos
             build-in tool.</p>
-        <pre class="brush: plain; title: ; notranslate" title="">espresso build</pre>
+        <pre class="syntax shell">espresso build</pre>
         <p class="text">In you&#8217;re project root folder should now be a &#8216;build&#8217; folder with all builds you&#8217;ve
             made. Every build is named after the timestamp it was created on.</p>
 
@@ -162,13 +182,13 @@ cd EspressoShowcase
         <p class="text">Because your builded The-M-Project App is only HTML, CSS and JavaScript it runs on every standard web server.
             So upload it via curl or ftp to your server, rename it (because of the 1236136472348 timestamp name) and
             enjoy. OR just use</p>
-        <pre class="brush: plain; title: ; notranslate" title="">espresso deploy</pre>
+        <pre class="syntax shell">espresso deploy</pre>
         <p class="text">With no further configuration it&#8217;ll do the same as the build process. So again, have a look at the <a
                 href="https://github.com/mwaylabs/Espresso/wiki/Config.json">config.json file</a>. Especially at the
             &#8220;defaultDeployTarget&#8221; and &#8220;deploy&#8221; settings. These two are necassary to get your
             deploy up and running. Also the deploy options are described very well at the config.json documentation
             page. To go on I used an FTP server to deploy my app to. And my config looked like this:</p>
-<pre class="brush: plain; title: ; notranslate" title="">&quot;defaultDeployTarget&quot;: &quot;tmp-server&quot;,
+        <pre class="syntax shell">&quot;defaultDeployTarget&quot;: &quot;tmp-server&quot;,
 &quot;deploy&quot;: {
     &quot;tmp-server&quot;: {
         &quot;method&quot;: &quot;ftp&quot;,
@@ -192,13 +212,13 @@ cd EspressoShowcase
 
         <p class="text">Consider this: One of your friends likes your app very much and wants to have a native version for his
             Android/iPhone. Awesome! And no problem with Espresso. Just use</p>
-        <pre class="brush: plain; title: ; notranslate" title="">espresso package</pre>
+        <pre class="syntax shell">espresso package</pre>
         <p class="text">and everything will be fine.<br/>
-            As with every command, Espresso could not guess what you like to do. So back to the <a
-                    href="https://github.com/mwaylabs/Espresso/wiki/Config.json">config.json file</a>.</p>
 
-        <p class="text">TODO EXPLAIN:<br/>
-            - PHONEGAP PACKAGE CONFIGURATION<br/>
-            - PHONEGAP/ANDROID CONFIGURATION<br/>
-            - PHONEGAP/IOS CONFIGURATION</p>
+        Read more about this command in the chapter <span class="navlink" onclick="loadArticle('espresso/native_packaging');">Native Packaging </span>.</p>
 
+
+
+    </div>
+
+    </div>
