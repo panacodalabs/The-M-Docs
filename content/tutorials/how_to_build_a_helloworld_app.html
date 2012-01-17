@@ -11,7 +11,6 @@
     <span class="navlink" onclick="scroll('setup')">Setup</span> &#183;
     <span class="navlink" onclick="scroll('launch')">Launch</span> &#183;
     <span class="navlink" onclick="scroll('editing')">Editing</span> &#183;
-    <span class="navlink" onclick="scroll('generator')">Generator</span> &#183;
     <span class="navlink" onclick="scroll('build')">Build</span>
 </div>
 <!-- END OF HEADER -->
@@ -162,6 +161,35 @@ label: M.LabelView.design({
     <div class="screens">
         <img src="images/tutorials/screen_helloworld_2.png" alt="HelloWorldSample #2"/>
     </div>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="build"><h2 class="line">Build the app</h2></a>
+
+    <p class="text">
+        It's time for the final step of this tutorial. Let's assume the app was deploy-ready now. Want you
+        would want to do is to build the application to be able to deploy it on a web server. And guess who
+        can help you with this? Espresso!
+    </p>
+<pre class="syntax shell">espresso build</pre>
+    <p class="text">
+        This will call Espresso to finally pack all the stuff together and save it in the build directory
+        of your application. Every build gets its own build number, based on the current timestamp. So let's
+        take a look at what just was created.
+    </p>
+<pre class="syntax shell">cd build/</pre>
+    <p class="text">
+        Inside of that directory you will find a folder containing the latest build. To publish this app,
+        you now simply would have to put this folder on a web server and link it to some url. That's it.
+        <div class="note">
+            Note: There is no special requirement to the web server. Especially Node.js is no requirement
+            (since people sometimes get this wrong).
+        </div>
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
