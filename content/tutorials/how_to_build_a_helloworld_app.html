@@ -102,3 +102,67 @@ espresso server</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="editing"><h2 class="line">Edit the code</h2></a>
+
+    <p class="text">
+        So far, so good. Now let's edit the app. Open the project folder with an IDE of your choice. We recommend to
+        use the amazing <a href="http://www.jetbrains.com/webstorm/" target="_blank">WebStorm IDE</a>, but you're free
+        to use whatever you want to.
+    </p>
+    <p class="text">
+        For now, the only important thing inside your project folder is the <span class="code">app</span> directory. This
+        is where your application's source code is located. As you can see, there's a resources folder and a file called
+        <span class="code">main.js</span>. Inside that folder, you will find some CSS and images. Speaking for itself,
+        this is where you will put the resources of you app. For now we will focus on the <span class="code">main.js</span>:
+    </p>
+<pre class="syntax javascript">HelloWorldSample.app = M.Application.design({
+
+    /* Define the entry/start page of your app. This property must be provided! */
+    entryPage : 'page1',
+
+    page1: M.PageView.design({
+
+        childViews: 'header content footer',
+
+        header: M.ToolbarView.design({
+            value: 'HEADER',
+            anchorLocation: M.TOP
+        }),
+
+        content: M.ScrollView.design({
+            childViews: 'label',
+            label: M.LabelView.design({
+                value: 'Welcome to The M-Project'
+            })
+        }),
+
+        footer: M.ToolbarView.design({
+            value: 'FOOTER',
+            anchorLocation: M.BOTTOM
+        })
+
+    })
+
+});</pre>
+    <p class="text">
+        This is the basic structure of an application consting of a header toolbar, content area
+        (<span class="code">M.ScrollView</span>) and a footer. Let's try to edit some values as follows:
+    </p>
+<pre class="syntax javascript">
+label: M.LabelView.design({
+    value: 'What an awesome demo application'
+})</pre>
+    <p class="text">
+        Now switch to your browser and hit the refresh button. This will force Espresso to gather the app's
+        source again and deliver the update version. So your app should look something like:
+    </p>
+    <div class="screens">
+        <img src="images/tutorials/screen_helloworld_2.png" alt="HelloWorldSample #2"/>
+    </div>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
