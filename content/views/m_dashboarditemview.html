@@ -1,0 +1,197 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.ListItemView</h1>
+
+    <div class="directoryPath">
+        The template for every list entry as a container for different other views.
+    </div>
+
+    <!-- remove unused links -->
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+</div>
+<!-- END OF HEADER -->
+
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+	
+    <p class="text">
+        A list item view serves as a template for each list item within a list view. Therefore it
+        can only be used as a child view (resp. a <span class="code">listItemTemplateView</span>) of a list view
+        (M.ListView).
+    </p>
+    <p class="text">
+        Within your application you will use define a list item view for each list, that determines the
+        layout of any list item within this list. So the component serves as a container and can be filled
+        with all basic views, e.g. a label, a button or an image. Learn more about this in the examples.
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- SCREENSHOTS -->
+<div class="contentScreenshots">
+    <a name="screens"><h2 class="line">Screenshots</h2></a>
+
+    <div class="screens">
+        <!--
+            IMAGE FILES HERE
+            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
+        -->
+        <img src="images/views/screen_list_default.png" alt="M.ListView Default" />
+        <p class="text">M.ListView with isCountedList set to YES</p><img src="images/views/screen_list_counted.png" alt="M.ListView with isCountedList set to YES" />
+        <p class="text">M.ListView with isDividedList set to YES</p><img src="images/views/screen_list_segmented.png" alt="M.ListView with isDividedList set to YES" />
+        <p class="text">M.ListItemView with isSelectable set to NO</p><img src="images/views/screen_list_nonselectable.png" alt="M.ListItemView with isSelectable set to NO" />
+    </div>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF SCREENSHOTS -->
+
+
+<!-- PROPERTIES -->
+<div class="contentProperties">
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:15%;">Relevance</th>
+            <th style="width:10%;">Type</th>
+            <th style="width:20%;">Default value</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">deleteButton</span></td>
+            <td>optional</td>
+            <td>M.ButtonView</td>
+            <td style="font-family:monospace">M.ButtonView.design({ icon: 'delete',value: '' })</td>
+            <td>This property contains the list item's delete button that is automatically shown if the list view's built-in toggleRemove() functionality is used.</td>
+        </tr>
+        <tr>
+            <td><span class="code">hasSingleAction</span></td>
+            <td>optional</td>
+            <td>Boolean</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property determines whether a list item has one single action that is triggered once there is a click anywhere inside the list item or if there are specific actions defined for single ui elements within one list item.</td>
+        </tr>
+        <tr>
+            <td><span class="code">isSelectable</span></td>
+            <td>optional</td>
+            <td>YES</td>
+            <td style="font-family:monospace">YES</td>
+            <td>This property can be used to specify whether a selection list item can be selected or not. Note, that this only affects styling stuff. If set to NO, you still can apply e.g. tap events.</td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF PROPERTIES -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <p class="text">There are no public methods available.</p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+<!-- PUBLIC EVENTS -->
+<div class="contentMethods">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <!--
+        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no events available. <br />
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">click</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">domID</span> (String): The list item view's DOM id.
+                    </li>
+                    <li>
+                        <span class="code">itemID</span> (String): The list item's id based on the <span class="code">idName</span> property of its list view.
+                    </li>
+                </ul>
+            </td>
+            <td>This event is fired when a user clicks/selects a list item view.</td>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">domID</span> (String): The list item view's DOM id.
+                    </li>
+                    <li>
+                        <span class="code">itemID</span> (String): The list item's id based on the <span class="code">idName</span> property of its list view.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user taps/selects a list item view. We recommend to use this event instead of click!
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">The following sample shows how to setup a list item view as template for a list view:</p>
+<pre class="syntax javascript">MyApp.MyListTemplate = M.ListItemView.design({
+    childViews: 'name',
+    events: {
+        tap: {
+            target: MyApp.MyController,
+            action:'listObjectClicked'
+        }
+    },
+    name: M.LabelView.design({
+        valuePattern: '<%= name %>'
+    })
+});</pre>
+
+    <p class="text">Use the <span class="code">listItemTemplateView</span> property of the list view to connect the template to the list:</p>
+<pre class="syntax javascript">M.ListView.design({
+    listItemTemplateView: MyApp.MyListTemplate
+});</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        There are a few CSS classes that define the layout and the look and feel of a list item view:</p>
+    <ul class="text">
+        <li><span class="code">ui-li</span>: This class defines the general positioning and layout of the list view item.</li>
+        <li><span class="code">ui-btn-up-c</span>: This class defines the basic styling of each list item.</li>
+        <li><span class="code">ui-btn-hover-c</span>: This class defines the styling of each list item on hover.</li>
+        <li><span class="code">ui-btn-down-c</span>: This class defines the styling of each list item when it's tapped.</li>
+        <li><span class="code">ui-btn-icon-right</span>: This class is responsible for the positioning of the arrow icon at the right (if <span class="code">isSelectable</span> is set to <span class="code">YES</span>).</li>
+    </ul>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS -->
