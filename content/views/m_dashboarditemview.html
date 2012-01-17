@@ -99,12 +99,7 @@
 <!-- PUBLIC EVENTS -->
 <div class="contentMethods">
     <a name="events"><h2 class="line">Events</h2></a>
-    <!--
-        IF NO PUBLIC EVENTS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
-        <p class="text">There are no events available. <br />
 
-        ELSE LEAVE THIS TABLE:
-    -->
     <table class="reference" cellpadding="0" cellspacing="0">
         <tr style="height:50px;">
             <th style="width:20%;">Name</th>
@@ -116,29 +111,23 @@
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">domID</span> (String): The list item view's DOM id.
-                    </li>
-                    <li>
-                        <span class="code">itemID</span> (String): The list item's id based on the <span class="code">idName</span> property of its list view.
+                        <span class="code">domID</span> (String): The DOM id of the tapped dashboard item.
                     </li>
                 </ul>
             </td>
-            <td>This event is fired when a user clicks/selects a list item view.</td>
+            <td>This event is fired when a user clicks/selects a dashboard item.</td>
         </tr>
         <tr>
             <td><span class="code">tap</span></td>
             <td>
                 <ul class="isFirstLine">
                     <li>
-                        <span class="code">domID</span> (String): The list item view's DOM id.
-                    </li>
-                    <li>
-                        <span class="code">itemID</span> (String): The list item's id based on the <span class="code">idName</span> property of its list view.
+                        <span class="code">domID</span> (String): The DOM id of the tapped dashboard item.
                     </li>
                 </ul>
             </td>
             <td>
-                This event is fired when a user taps/selects a list item view. We recommend to use this event instead of click!
+                This event is fired when a user taps/selects a dashboard item. We recommend to use this event instead of click!
             </td>
         </tr>
     </table>
@@ -151,24 +140,64 @@
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
-    <p class="text">The following sample shows how to setup a list item view as template for a list view:</p>
-<pre class="syntax javascript">MyApp.MyListTemplate = M.ListItemView.design({
-    childViews: 'name',
+    <p class="text">
+        Setting up dashboard items via content binding:
+    </p>
+<pre class="syntax javascript">// define the dashboard view and configure the content binding
+M.DashboardView.design({
+    contentBinding: {
+        target: MyApp.MyController,
+        property: 'items'
+    }
+})
+
+// set the content within a controller (e.g. triggered by a pageshow event)
+var items = [{
+    icon: 'theme/images/icon_settings.png',
+    label: 'Settings',
+    value: 'settings'
+},
+{
+    icon: 'theme/images/icon_edit.png',
+    label: 'Edit',
+    value: 'edit'
+},
+{
+    icon: 'theme/images/icon_wifi.png',
+    label: 'WiFi',
+    value: 'wifi'
+}];
+this.set('items', items);</pre>
+
+    <p class="text">
+        Use tap events with dashboard items:
+    </p>
+<pre class="syntax javascript">var items = [{
+    icon: 'theme/images/icon_settings.png',
+    label: 'Settings',
+    value: 'settings'
+},
+{
+    icon: 'theme/images/icon_edit.png',
+    label: 'Edit',
+    value: 'edit',
     events: {
         tap: {
-            target: MyApp.MyController,
-            action:'listObjectClicked'
+            target: this,
+            action: function(id) {
+                var item = M.ViewManager.getViewById(id);
+                var value = item.value;
+                var label = item.label;
+                // now do something with it...
+            }
         }
-    },
-    name: M.LabelView.design({
-        valuePattern: '<%= name %>'
-    })
-});</pre>
-
-    <p class="text">Use the <span class="code">listItemTemplateView</span> property of the list view to connect the template to the list:</p>
-<pre class="syntax javascript">M.ListView.design({
-    listItemTemplateView: MyApp.MyListTemplate
-});</pre>
+    }
+},
+{
+    icon: 'theme/images/icon_wifi.png',
+    label: 'WiFi',
+    value: 'wifi'
+}]</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -180,11 +209,8 @@
     <p class="text">
         There are a few CSS classes that define the layout and the look and feel of a list item view:</p>
     <ul class="text">
-        <li><span class="code">ui-li</span>: This class defines the general positioning and layout of the list view item.</li>
-        <li><span class="code">ui-btn-up-c</span>: This class defines the basic styling of each list item.</li>
-        <li><span class="code">ui-btn-hover-c</span>: This class defines the styling of each list item on hover.</li>
-        <li><span class="code">ui-btn-down-c</span>: This class defines the styling of each list item when it's tapped.</li>
-        <li><span class="code">ui-btn-icon-right</span>: This class is responsible for the positioning of the arrow icon at the right (if <span class="code">isSelectable</span> is set to <span class="code">YES</span>).</li>
+        <li><span class="code">tmp-dashboard-item</span>: This class is responsible for the arrangement of the items on the dashboard.</li>
+        <li><span class="code">tmp-dashboard-item-label</span>: This class defines the layout and styling a list item's label.</li>
     </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
