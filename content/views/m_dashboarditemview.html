@@ -2,7 +2,7 @@
 <div class="contentHeader">
     <a name="top"></a>
 
-    <h1>M.ListItemView</h1>
+    <h1>M.DashboardItemView</h1>
 
     <div class="directoryPath">
         The template for every list entry as a container for different other views.
@@ -24,14 +24,11 @@
     <a name="basics"><h2 class="line">Basics</h2></a>
 	
     <p class="text">
-        A list item view serves as a template for each list item within a list view. Therefore it
-        can only be used as a child view (resp. a <span class="code">listItemTemplateView</span>) of a list view
-        (M.ListView).
-    </p>
-    <p class="text">
-        Within your application you will use define a list item view for each list, that determines the
-        layout of any list item within this list. So the component serves as a container and can be filled
-        with all basic views, e.g. a label, a button or an image. Learn more about this in the examples.
+        A dashboard itm view contains an icon and a label and can be used as the only
+        kind of child views for a dashboard view. While a dashboard view specifies the
+        container of a dashboard, the dashboard item view is used to specify the actual
+        visible items on that dashboard. They can be attached to a dashboard as either
+        static child views or dynamically via content binding.
     </p>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -42,14 +39,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <!--
-            IMAGE FILES HERE
-            <img src="images/views/screen_alertdialogview.png" alt="M.AlertDialogView" />
-        -->
-        <img src="images/views/screen_list_default.png" alt="M.ListView Default" />
-        <p class="text">M.ListView with isCountedList set to YES</p><img src="images/views/screen_list_counted.png" alt="M.ListView with isCountedList set to YES" />
-        <p class="text">M.ListView with isDividedList set to YES</p><img src="images/views/screen_list_segmented.png" alt="M.ListView with isDividedList set to YES" />
-        <p class="text">M.ListItemView with isSelectable set to NO</p><img src="images/views/screen_list_nonselectable.png" alt="M.ListItemView with isSelectable set to NO" />
+        <img src="images/views/screen_dashboardview_1.png" alt="M.DashboardView"/>
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -68,25 +58,30 @@
             <th style="width:35%;">Description</th>
         </tr>
         <tr>
-            <td><span class="code">deleteButton</span></td>
-            <td>optional</td>
-            <td>M.ButtonView</td>
-            <td style="font-family:monospace">M.ButtonView.design({ icon: 'delete',value: '' })</td>
-            <td>This property contains the list item's delete button that is automatically shown if the list view's built-in toggleRemove() functionality is used.</td>
+            <td><span class="code">icon</span></td>
+            <td>recommended</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>The path/url to the dashboard item's icon.</td>
         </tr>
         <tr>
-            <td><span class="code">hasSingleAction</span></td>
+            <td><span class="code">label</span></td>
             <td>optional</td>
-            <td>Boolean</td>
-            <td style="font-family:monospace">YES</td>
-            <td>This property determines whether a list item has one single action that is triggered once there is a click anywhere inside the list item or if there are specific actions defined for single ui elements within one list item.</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                The label for the dashboard item. If no label is specified, the value will be displayed instead.
+            </td>
         </tr>
         <tr>
-            <td><span class="code">isSelectable</span></td>
-            <td>optional</td>
-            <td>YES</td>
-            <td style="font-family:monospace">YES</td>
-            <td>This property can be used to specify whether a selection list item can be selected or not. Note, that this only affects styling stuff. If set to NO, you still can apply e.g. tap events.</td>
+            <td><span class="code">value</span></td>
+            <td>mandatory</td>
+            <td>String</td>
+            <td style="font-family:monospace"></td>
+            <td>
+                This property specifies the dashboard item's value. If there is no label set, this value is used as
+                a visual text.
+            </td>
         </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
