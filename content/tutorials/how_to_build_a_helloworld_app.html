@@ -5,130 +5,74 @@
     <h1>How to build a HelloWorld app</h1>
 
     <div class="directoryPath">
-        Accessing remote services with Ajax
+        Get started with The-M-Project within a few minutes
     </div>
 
-    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('examples')">Examples</span>
+    <span class="navlink" onclick="scroll('setup')">Setup</span> &#183;
+    <span class="navlink" onclick="scroll('server')">Server</span> &#183;
+    <span class="navlink" onclick="scroll('editing')">Editing</span> &#183;
+    <span class="navlink" onclick="scroll('generator')">Generator</span> &#183;
+    <span class="navlink" onclick="scroll('build')">Build</span>
 </div>
 <!-- END OF HEADER -->
 
 <!-- BASICS-->
 <div class="contentBasics">
-    <a name="basics"><h2 class="line">Basics</h2></a>
+    <a name="setup"><h2 class="line">Setup a new project</h2></a>
 
     <p class="text">
-        Making Ajax requests and accessing remote services is fundamental to every modern web application. The-M-Project provides an
-        object, <span class="code">M.Request</span>, to make requests. Basically, it uses jQuery to fulfill this task.
+        First of all, make sure you downloaded Espresso&The-M-Project and did all the initial stuff described in the
+        <a href="http://www.the-m-project.org/get-started" target="_blank">Get Started</a> section on our website.
     </p>
+
+    <p class="text">
+        Now lets create a new project with Espresso. Therefore type the following into your command line ...
+    </p>
+<pre class="syntax shell">espresso help</pre>
+    <p class="text">
+        ... to see all possible commands:
+    </p>
+<pre class="syntax shell">Available commands:
+build          Command to build a project
+deploy         Command deploy projects
+generate       Command to generate new or additional files for a project
+init           Command line tool to generate a new project
+package        Command to build native applications
+server         Command to run the Development server
+version        Command to print the Espresso version
+help           Command to show help for a subcommand</pre>
+    <p class="text">
+        The <span class="code">init</span> command looks promising, don't you think? So lets see what it can do.
+    </p>
+    <pre class="syntax shell">espresso init help</pre>
+    <p class="text">
+        We've got the following options:
+    </p>
+<pre class="syntax shell">Available options:
+-p, --project=PROJECT       Project name
+-d, --directory=DIRECTORY   Specify a custom projects directory Default: $PWD
+-e, --example               Generate an example "Hello World" application Default: false
+-h, --help                  Show this help for command init Default: false</pre>
+    <p class="text">
+        So we will need the <span class="code">-p</span> option for specifying a project name and the
+        <span class="code">-e</span> option for setting up a hello world example. Let's do it. So first
+        of all navigate to the directory where you want to init your project in, then run the just learned
+        command:
+    </p>
+<pre class="syntax shell">cd /path/to/folder
+espresso init -e -p HelloWorldSample</pre>
+    <p class="text">
+        Espresso now will initialize your project, copy all the required resources and set up some sample
+        code, since we chose the <span class="code">-e</span> option.
+    </p>
+<pre class="syntax shell">LOG: /Users/dominik/Desktop/HelloWorldSample/config.json generated!
+LOG: /Users/dominik/Desktop/HelloWorldSample/app/main.js generated!
+LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/images/Icon@2x.png generated!
+LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/images/Icon-72.png generated!
+LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/images/Icon.png generated!
+LOG: /Users/dominik/Desktop/HelloWorldSample/app/resources/base/style.css generated!
+Project successfully generated!</pre>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
-
-<div class="contentExample">
-    <a name="examples"><h2 class="line">Examples</h2></a>
-
-    <h3>
-        Sending a simple GET request.
-    </h3>
-    <p class="text">
-
-    </p>
-
-    <pre class="syntax javascript">
-        M.Request.init({
-            url: 'http://search.twitter.com/search.json',
-            method: 'GET',
-            isJSON: YES,
-            onSuccess: function(data, msg, xhr) {
-                console.log('Request succesful');
-            },
-            onError: function(xhr, msg) {
-                console.log('Error: ' + msg);
-            }
-        }).send();  /* 'cause init returns the request object, we can chain the send call */
-    </pre>
-
-    <h3>
-        Sending a POST request.
-    </h3>
-    <pre class="syntax javascript">
-        M.Request.init({
-            url: 'http://mypostservice.com/',
-            method: 'POST',
-            isJSON: YES,
-            data: { foo:'bar', bla: 'blub' },
-            onSuccess: function(data, msg, xhr) {
-                console.log('Request succesful');
-            },
-            onError: function(xhr, msg) {
-                console.log('Error: ' + msg);
-            }
-        }).send();
-    </pre>
-
-    <h3>
-        Sending a PUT request.
-    </h3>
-    <pre class="syntax javascript">
-        M.Request.init({
-            url: 'http://mypostservice.com/',
-            method: 'PUT',
-            isJSON: YES,
-            data: { foo:'bar', bla: 'blub' },
-            /* we have to manually set the request header information to let it be a 'PUT' request */
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("X-Http-Method-Override", 'PUT');
-            },
-            onSuccess: function(data, msg, xhr) {
-                console.log('Request succesful');
-            },
-            onError: function(xhr, msg) {
-                console.log('Error: ' + msg);
-            }
-        }).send();
-    </pre>
-
-    <h3>
-        Sending request with a set espresso proxy
-    </h3>
-    <p class="text">
-        Making requests to other domains is usually not working in browsers, due to the <span class="boldText">Same-Origin-Policy</span>. It's possible fulfill the task
-        of accessing remote services, located on other domains, by using a proxy. Our Espresso server supports this feature. Hooray! See the following example to learn how
-        to use a proxy and name it in the request call.
-    </p>
-    <p class="text">
-        Assume, we have the following proxy entry in the project's config.json:
-    </p>
-    <pre class="syntax javascript">
-        ...
-        "proxies":[
-                  {
-                    "proxyAlias": "foo",
-                    "baseUrl": "https://foobaz:23"
-                  }
-          ],
-        ...
-    </pre>
-    <p class="text">
-        Now assume, we want to request a script, bar.php, located at https://foobaz:23/bar.php . This is what we have to write:
-    </p>
-    <pre class="syntax javascript">
-        M.Request.init({
-            url: '/foo/bar.php',    /* writing the proxyAlias instead of the "real" url */
-            method: 'GET',
-            isJSON: YES,
-            onSuccess: function(data, msg, xhr) {
-                console.log('Request succesful');
-            },
-            onError: function(xhr, msg) {
-                console.log('Error: ' + msg);
-            }
-        }).send();
-    </pre>
-
-
-    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
-</div>
-<!-- END OF EXAMPLE -->
