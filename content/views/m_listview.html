@@ -233,24 +233,17 @@
         <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
     </p>
 <pre class="syntax javascript">
-//Include the file which defines the template (MyApp.MyListTemplate)
+// Include the file which defines the template (MyApp.MyListTemplate) m_require
 m_require('app/views/list_view_template.js');
 M.PageView.design({
-		//the List View
-		M.ListView.design({
-	
-		    listItemTemplateView: MyApp.MyListTemplate,
-		
-	    	contentBinding: 'MyApp.MyController.listObject',
-	    	
-	    	idName: 'name'
-	
+    M.ListView.design({
+        listItemTemplateView: MyApp.MyListTemplate,
+        contentBinding: 'MyApp.MyController.listObject',
+        idName: 'name'
 	});
-});
-</pre>
+});</pre>
     <p class="text">The list_view_template.js file:</p>
-<pre class="syntax javascript">
-MyApp.MyListTemplate = M.ListItemView.design({
+<pre class="syntax javascript">MyApp.MyListTemplate = M.ListItemView.design({
     childViews: 'name',
     events: {
         tap: {
@@ -261,10 +254,8 @@ MyApp.MyListTemplate = M.ListItemView.design({
     name: M.LabelView.design({
         valuePattern: '<%= name %>'
     })
-});
-</pre>
-<pre class="syntax javascript">
-//a list expects an array with listItemViews
+});</pre>
+<pre class="syntax javascript">//a list expects an array with listItemViews
 var myList = [
     {
         name: "List Item 1",
@@ -277,20 +268,16 @@ var myList = [
     {
         name: "List Item 3",
         prop: "another property"
-
     }
 ];
 //you can set the list items in every Controller. Through the content binding the list view will be automatically updated
-MyApp.MyController.set('listObject', myList);
-</pre>
-<pre class="syntax javascript">
-//as first parameter you get the DOM id, second one is the nameId specified in the list view definition
+MyApp.MyController.set('listObject', myList);</pre>
+<pre class="syntax javascript">//as first parameter you get the DOM id, second one is the nameId specified in the list view definition
 MyApp.MyController = M.Controller.extend({
 	listObjectClicked : function(id, nameId){
 		console.log('you clicked on the list item with the DOM id:', id, 'and has the name', nameId);
 	}
-});
-</pre>
+});</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
