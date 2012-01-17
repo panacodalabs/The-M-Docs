@@ -149,59 +149,100 @@
 </div>
 <!-- END OF METHODS -->
 
+<!-- PUBLIC EVENTS -->
+<div class="contentMethods">
+    <a name="events"><h2 class="line">Events</h2></a>
+
+    <p class="text">
+        There are no actual events for the dashboard view itself. All events are based on the dashboard's items.
+        But you can use the tap/click event of the dashboard view to handle them globally for all items instead
+        of adding special behaviour to each dashboard item.
+        <div class="note">
+            Note: You can also combine these global events with individual events for some/all dashboard items. Once a user
+            clicks/taps an item, both events are fired (local first).
+        </div>
+    </p>
+
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">click</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">domID</span> (String): The DOM id of the tapped dashboard item.
+                    </li>
+                </ul>
+            </td>
+            <td>This event is fired when a user clicks/selects a dashboard item.</td>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">domID</span> (String): The DOM id of the tapped dashboard item.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user taps/selects a dashboard item. We recommend to use this event instead of click!
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
 <!-- EXAMPLE -->
 <div class="contentExample">
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        Setup a dashboard view with content binding:
     </p>
-<pre class="syntax javascript">
-// Include the file which defines the template (MyApp.MyListTemplate) m_require
-m_require('app/views/list_view_template.js');
-M.PageView.design({
-    M.ListView.design({
-        listItemTemplateView: MyApp.MyListTemplate,
-        contentBinding: 'MyApp.MyController.listObject',
-        idName: 'name'
-	});
-});</pre>
-    <p class="text">The list_view_template.js file:</p>
-<pre class="syntax javascript">MyApp.MyListTemplate = M.ListItemView.design({
-    childViews: 'name',
-    events: {
-        tap: {
-            target: MyApp.MyController,
-            action:'listObjectClicked'
-        }
-    },
-    name: M.LabelView.design({
-        valuePattern: '<%= name %>'
-    })
-});</pre>
-<pre class="syntax javascript">//a list expects an array with listItemViews
-var myList = [
-    {
-        name: "List Item 1",
-        prop: "another property"
-    },
-    {
-        name: "List Item 2",
-        prop: "another property"
-    },
-    {
-        name: "List Item 3",
-        prop: "another property"
+<pre class="syntax javascript">M.DashboardView.design({
+    contentBinding: {
+        target: DashboardSample.ApplicationController,
+        property: 'items'
     }
-];
-//you can set the list items in every Controller. Through the content binding the list view will be automatically updated
-MyApp.MyController.set('listObject', myList);</pre>
-<pre class="syntax javascript">//as first parameter you get the DOM id, second one is the nameId specified in the list view definition
-MyApp.MyController = M.Controller.extend({
-	listObjectClicked : function(id, nameId){
-		console.log('you clicked on the list item with the DOM id:', id, 'and has the name', nameId);
-	}
-});</pre>
+})</pre>
+
+    <p class="text">
+        This is what the content binding could look like:
+    </p>
+<pre class="syntax javascript">var items = [{
+    icon: 'theme/images/icon_settings.png',
+    label: 'Settings',
+    value: 'settings'
+},
+{
+    icon: 'theme/images/icon_edit.png',
+    label: 'Edit',
+    value: 'edit'
+},
+{
+    icon: 'theme/images/icon_wifi.png',
+    label: 'WiFi',
+    value: 'wifi'
+}]</pre>
+
+    <p class="text">
+        Setup a configured dashboard view:
+    </p>
+<pre class="syntax javascript">M.DashboardView.design({
+    itemsPerLine: 3,
+    isEditable: NO,
+    contentBinding: {
+        target: DashboardSample.ApplicationController,
+        property: 'items'
+    }
+})</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
@@ -211,10 +252,8 @@ MyApp.MyController = M.Controller.extend({
     <a name="css"><h2 class="line">CSS Styles</h2></a>
 
     <p class="text">
-        There basically is only one relevant CSS class for a list view:</p>
-    <ul class="text">
-        <li><span class="code">ui-listview</span>: This class defines the general positioning and layout of the list view.</li>
-    </ul>
+        There are no CSS classes added to the dashboard item view by default.
+    </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
