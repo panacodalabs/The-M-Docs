@@ -11,7 +11,8 @@
     <span class="navlink" onclick="scroll('content')">Content</span> &#183;
     <span class="navlink" onclick="scroll('req')">Requirements</span> &#183;
     <span class="navlink" onclick="scroll('config')">Configuration</span> &#183;
-    <span class="navlink" onclick="scroll('run')">Run it</span>
+    <span class="navlink" onclick="scroll('run')">Run it</span> &#183;
+    <span class="navlink" onclick="scroll('style')">Styling</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -244,6 +245,55 @@ help           Command to show help for a subcommand</pre>
     <p class="text">
         If we did it all right, this should launch the iOS simulator and start an app called Twitter which is the original
         The-M-Project app inside of a native iOS container.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="style"><h2 class="line">What about styling?</h2></a>
+
+    <p class="text">
+        Did you notice that the app showed a default PhoneGap splashscreen on startup? And are you maybe unpleased with
+        the app icon? Or is there even no app icon at all? Let's take a closer look at these things now.
+    </p>
+
+    <p class="text">
+        First of all: There's no need for more configurations! Styling (app icons/splashscreen) is based on resources,
+        so Espresso handles this automatically and based on some conventions regarding the resources' file name. All you
+        have to do is to place some PNG files with the right filename into your project's images directory (app/resources/images)
+        and Espresso will do the rest. But what are these naming conventions?
+    </p>
+
+    <ol>
+        <li>
+            <strong>App icon</strong>
+            <br/>Basically it's: Name the file <span class="code">icon-SIZE.png</span>, with <span class="code">SIZE</span>
+            being the pixel-size of the squared icon. What sizes are supported depends on the platform. For iOS it basically is:
+            <ol>
+                <li>
+                    <strong>icon-57.png</strong>: iPhone without retina display (< iPhone 4)
+                </li>
+                <li>
+                    <strong>icon-72.png</strong>: iPad
+                </li>
+                <li>
+                    <strong>icon-114.png</strong>: iPhone with retina display (> iPhone 4)
+                </li>
+            </ol>
+        </li>
+        <li>
+            <strong>Splash screen</strong>
+            <br/>The naming convention for the splash screen is: Call it <span class="code">splash.png</span> resp.
+            <span class="code">splash@2x.png</span>. The size of these images should be 320x480 resp. 640x960.
+        </li>
+    </ol>
+
+    <p class="text">
+        Now be creative and add some images to your project's image directory. If you're not in the mood, you can also
+        download a set of sample icons <a href="raw/gh-pages/sample_icons_packaging.zip">right here</a>.
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
