@@ -44,7 +44,7 @@
     </p>
 
     <p class="text">
-        So let's first talk about Android. What you will need to do is:
+        So let's first talk about <strong>Android</strong>. What you will need to do is:
     </p>
     
     <ol>
@@ -59,6 +59,12 @@
             Add the SDK's <span class="code">tools/</span> and <span class="code">platform-tools/</span> directories
             to your <span class="code">PATH</span> environment variable: Look for "How to update your PATH" on the
             instructions page
+        </li>
+        <li>
+            Setup at least on so called Android Virtual Device (AVD) with the desired API level:
+            <a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/guide/developing/devices/index.html</a>
+            Later on you will have to tell Espresso that API level and it will automatically launch the application in the corresponding
+            emulator.
         </li>
     </ol>
 
