@@ -141,32 +141,39 @@
 
     <ol>
         <li>
-            <strong>method</strong>: This property specifies what packaging method to use. By now we only support PhoneGap. In the future there might come more.
+            <strong>method</strong>
+            <br/>This property specifies what packaging method to use. By now we only support PhoneGap. In the future there might come more.
         </li>
         <li>
-            <strong>os</strong>: This property specifies what the targeted operating system for this configuration is. Currently this has to be
+            <strong>os</strong>
+            <br/>This property specifies what the targeted operating system for this configuration is. Currently this has to be
             <span class="code">iOS</span> or <span class="code">Android</span>
         </li>
         <li>
-            <strong>sdk</strong>: This property specifies what target (simulator/device) and which SDK version to use. It should have the
+            <strong>sdk</strong>
+            <br/>This property specifies what target (simulator/device) and which SDK version to use. It should have the
             form <span class="code">iphonesimulator&lt;version&gt;</span> or <span class="code">iphoneos&lt;version&gt;</span> with &lt;version&gt;
             being greater or equal to 4.0. Make sure the specified SDK version is available on your system.
         </li>
         <li>
-            <strong>package</strong>: Provide a package name your the application in the form <span class="code">&lt;tld&gt;.&lt;yourdomain&gt;.&lt;yourapp&gt;</span>.
+            <strong>package</strong>
+            <br/>Provide a package name your the application in the form <span class="code">&lt;tld&gt;.&lt;yourdomain&gt;.&lt;yourapp&gt;</span>.
             The default value is <span class="code">com.test.mypackage</span>.
         </li>
         <li>
-            <strong>activity</strong>: This specifies the name of the activity resp. the native application's name. The default is
+            <strong>activity</strong>
+            <br/>This specifies the name of the activity resp. the native application's name. The default is
             <span class="code">MyActivity</span>. Typically you would set this to the web app's name.
         </li>
         <li>
-            <strong>mode</strong>: This determines the build mode of the application. Currently there are two modes available:
+            <strong>mode</strong>
+            <br/>This determines the build mode of the application. Currently there are two modes available:
             <span class="code">debug</span> (default) and <span class="code">release</span>. In debug mode, you won't have to provide any further information. If
             the release mode is activated, you will have to specify additional information for the code signing process. We will discuss this later.
         </li>
         <li>
-            <strong>plists</strong>: This property can be used to edit the native project's plist file. The provided JSON will automatically be transformed
+            <strong>plists</strong>
+            <br/>This property can be used to edit the native project's plist file. The provided JSON will automatically be transformed
             into a proper XML file for the native build process. One important section of the plist is the <span class="code">PhoneGap</span> section. As you
             can see in the sample configuration we set the <span class="code">ExternalHosts</span> to <span class="code">*</span> to be able to connect to
             any URL out there. Depending on your application their might be more properties needed within this section. If you are using some PhoneGap features
