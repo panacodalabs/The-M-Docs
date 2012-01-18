@@ -9,8 +9,8 @@
 	</div>
 
     <span class="navlink" onclick="scroll('content')">Content</span> &#183;
-    <!--<span class="navlink" onclick="scroll('tmp_mvc')">MVC and TMP</span> &#183;
-    <span class="navlink" onclick="scroll('incluence')">How does MVC influence app development with The-M-Project?</span>-->
+    <span class="navlink" onclick="scroll('req')">Requirements</span> &#183;
+    <!--<span class="navlink" onclick="scroll('incluence')">How does MVC influence app development with The-M-Project?</span>-->
 </div>
 <!-- END OF HEADER -->
 
@@ -26,6 +26,42 @@
         some explanation might help anyway. Afterwards we will take a look at the available Espresso commands
         for this feature and then finally end up in a working sample. Let's go!
     </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+
+<!-- END OF BASICS -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="req"><h2 class="line">The requirements</h2></a>
+
+    <p class="text">
+        The Espresso package feature currently supports native build for iOS and Android. But since Espresso
+        basically only offers a simple and convenient interface to the platform's tools, there need to be some
+        things available on your system in order to use this feature. Espresso does not ship with an Android SDK,
+        an iOS SDK or a iOS PhoneGap installation - but, depending on the targeted platform, they are required.
+    </p>
+
+    <p class="text">
+        So let's first talk about Android. What you will need to do is:
+    </p>
+    
+    <ul>
+        <li>
+            Download the Android SDK:
+            <a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/sdk/index.html</a>
+        </li>
+        <li>
+            Follow the install and setup instructions
+        </li>
+        <li>
+            Add the SDK's <span class="code">tools/</span> and <span class="code">platform-tools/</span> directories
+            to your <span class="code">PATH</span> environment variable:
+            <a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/sdk/installing.html#sdkContents</a>
+            (look for How to update your PATH)
+        </li>
+    </ul>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
