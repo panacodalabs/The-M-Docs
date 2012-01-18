@@ -11,7 +11,7 @@
     <span class="navlink" onclick="scroll('content')">Content</span> &#183;
     <span class="navlink" onclick="scroll('req')">Requirements</span> &#183;
     <span class="navlink" onclick="scroll('config')">Configuration</span> &#183;
-    <!--<span class="navlink" onclick="scroll('incluence')">How does MVC influence app development with The-M-Project?</span>-->
+    <span class="navlink" onclick="scroll('run')">Run it</span>
 </div>
 <!-- END OF HEADER -->
 
@@ -136,7 +136,7 @@
 
     <p class="text">
         Depending on the application and the targeted platform(s) this configuration might be more complex. But for not let's talk
-        about the basic properties for the <strong>iOS</strong> platform:
+        about the basic properties for <strong>iOS</strong>:
     </p>
 
     <ol>
@@ -191,6 +191,60 @@
 </div>
 <!-- END OF BASICS -->
 
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="run"><h2 class="line">Run it!</h2></a>
+
+    <p class="text">
+        With a valid <span class="code">package</span> section in the project's config.json, we are ready to let
+        Espresso do some magic stuff. If you couldn't figure out so far what this new command is called, let's see
+        if Espresso can tell us. Type the following in your terminal:
+    </p>
+<pre class="syntax shell">espresso help</pre>
+
+    <p class="text">
+        This will let Espresso print all the available commands.
+    </p>
+
+<pre class="syntax shell">Available commands:
+build          Command to build a project
+deploy         Command deploy projects
+generate       Command to generate new or additional files for a project
+init           Command line tool to generate a new project
+package        Command to build native applications
+server         Command to run the Development server
+version        Command to print the Espresso version
+help           Command to show help for a subcommand</pre>
+
+    <p class="text">
+        As you can see there is a command available called <span class="code">package</span>. This is what we were
+        looking for. The usage of this command is as follows:
+    </p>
+
+<pre class="syntax shell">espresso package <mode> <configName></pre>
+
+    <ol>
+        <li>
+            <strong>mode</strong>
+            <br/>This determines whether to run the app in the simulator/emulator - <span class="code">run</span> -
+            or to create an output file (*.apk/*.ipa) - <span class="code">build</span>.
+        </li>
+        <li>
+            <strong>configName</strong>
+            <br/>This is needed to specify which configuration to use. It refers to the configuration's key within the JSON
+            in config.json.
+        </li>
+    </ol>
+    <p class="text">
+
+        So for launching our sample iOS configuration in debug mode (=simulator), we will have to run the following command:
+    </p>
+
+<pre class="syntax shell">espresso package run myIOSConfig</pre>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
 
 
 
