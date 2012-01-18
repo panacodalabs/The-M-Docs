@@ -106,6 +106,80 @@
         But feel free to work with your own app. It shouldn't be hard to adjust these following steps to your app.
     </p>
 
+    <p class="text">
+        There's only one file you will have to work on to get the packaging up and running. One you might have worked on
+        before for other reasons: your project's <strong>config.json</strong>
+        <br/>
+        With the native packaging feature the <strong>config.json</strong> accepts a new section called <span class="code">package</span>.
+    </p>
+
+    <p class="text">
+        To get started let's take a look at a working <span class="code">package</span> configuration for the mentioned Twitter sample. Since
+        you might (and often will) have several configurations for different platforms, we have to name them. In this sample our configuration
+        is called <span class="code">myIOSConfig</span>. This name will be used later on for the actual espresso package call.
+    </p>
+<pre class="syntax javascript">"package": {
+    "myIOSConfig": {
+        "method": "PhoneGap",
+        "os": "iOS",
+        "sdk": "iphonesimulator4.3",
+        "package": "com.tmp.twitter",
+        "activity": "Twitter",
+        "mode": "debug",
+        "plists": {
+            "PhoneGap": {
+                "ExternalHosts": ["*"]
+            }
+        }
+    }
+}</pre>
+
+    <p class="text">
+        Depending on the application and the targeted platform(s) this configuration might be more complex. But for not let's talk
+        about the basic properties for the <strong>iOS</strong> platform:
+    </p>
+
+    <ol>
+        <li>
+            <strong>method</strong>: This property specifies what packaging method to use. By now we only support PhoneGap. In the future there might come more.
+        </li>
+        <li>
+            <strong>os</strong>: This property specifies what the targeted operating system for this configuration is. Currently this has to be
+            <span class="code">iOS</span> or <span class="code">Android</span>
+        </li>
+        <li>
+            <strong>sdk</strong>: This property specifies what target (simulator/device) and which SDK version to use. It should have the
+            form <span class="code">iphonesimulator&lt;version&gt;</span> or <span class="code">iphoneos&lt;version&gt;</span> with &lt;version&gt;
+            being greater or equal to 4.0. Make sure the specified SDK version is available on your system.
+        </li>
+        <li>
+            <strong>package</strong>: Provide a package name your the application in the form <span class="code">&lt;tld&gt;.&lt;yourdomain&gt;.&lt;yourapp&gt;</span>.
+            The default value is <span class="code">com.test.mypackage</span>.
+        </li>
+        <li>
+            <strong>activity</strong>: This specifies the name of the activity resp. the native application's name. The default is
+            <span class="code">MyActivity</span>. Typically you would set this to the web app's name.
+        </li>
+        <li>
+            <strong>mode</strong>: This determines the build mode of the application. Currently there are two modes available:
+            <span class="code">debug</span> (default) and <span class="code">release</span>. In debug mode, you won't have to provide any further information. If
+            the release mode is activated, you will have to specify additional information for the code signing process. We will discuss this later.
+        </li>
+        <li>
+            <strong>plists</strong>: This property can be used to edit the native project's plist file. The provided JSON will automatically be transformed
+            into a proper XML file for the native build process. One important section of the plist is the <span class="code">PhoneGap</span> section. As you
+            can see in the sample configuration we set the <span class="code">ExternalHosts</span> to <span class="code">*</span> to be able to connect to
+            any URL out there. Depending on your application their might be more properties needed within this section. If you are using some PhoneGap features
+            like the accelerometer, you e.g. will have to add a <span class="code">Plugins</span> section to that property as follows:
+<pre class="syntax javascript">"PhoneGap": {
+    "ExternalHosts": ["*"],
+    "Plugins": {
+        "com.phonegap.accelerometer": "PGAccelerometer"
+    }
+}</pre>
+        </li>
+    </ol>
+
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
