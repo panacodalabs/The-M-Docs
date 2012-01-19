@@ -757,7 +757,7 @@ label1 : M.LabelView.design({
           removeTodo: function(domId, modelId) {
             var doDelete = confirm('Do you really want to delete this item?');
             if(doDelete) {
-              var record = Todos.Task.recordManager.getRecordById(modelId);
+              var record = Todos.Task.recordManager.getRecordForId(modelId);
               record.del();
               this.set('todos', Todos.Task.records());
               this.calculateCounter();
@@ -850,7 +850,7 @@ label1 : M.LabelView.design({
         removeTodo: function(viewId, recordId) {
             var doDelete = confirm('Do you really want to delete this item?');
             if(doDelete) {
-              var record = Todos.Task.recordManager.getRecordById(recordId);
+              var record = Todos.Task.recordManager.getRecordForId(recordId);
               record.del();
               this.set('todos', Todos.Task.records());
               this.calculateCounter();
@@ -867,7 +867,7 @@ label1 : M.LabelView.design({
     </p>
     
     <p class="text">
-        First we get the model from the models <span class="code">M.RecordManager</span> with <span class="code">getRecordById</span>.
+        First we get the model from the models <span class="code">M.RecordManager</span> with <span class="code">getRecordForId</span>.
         Every model has a record manager. We used it before with the <span class="code">records method</span>,
         which simply delegates a call to the model's record manager to simply return all
         currently saved models in memory. Next, we delete it. It is automatically deleted
