@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
     <span class="navlink" onclick="scroll('example')">Example</span> &#183;
     <span class="navlink" onclick="scroll('css')">CSS Styles</span>
 </div>
@@ -255,6 +256,58 @@
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF METHODS -->
+
+<!-- PUBLIC EVENTS -->
+<div class="contentMethods">
+    <a name="events"><h2 class="line">Events</h2></a>
+    
+    <p>
+        Instead of specifying the tap/click events for a list item view within the template itself, you can also specify them right with
+        the definition of the list.
+        <div class="note">Note: If there is an events property in both the list and the list item template, this one will be ignored!</div>
+    </p>
+    
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">click</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">domID</span> (String): The list item view's DOM id.
+                    </li>
+                    <li>
+                        <span class="code">itemID</span> (String): The list item's id based on the <span class="code">idName</span> property of its list view.
+                    </li>
+                </ul>
+            </td>
+            <td>This event is fired when a user clicks/selects a list item view.</td>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">domID</span> (String): The list item view's DOM id.
+                    </li>
+                    <li>
+                        <span class="code">itemID</span> (String): The list item's id based on the <span class="code">idName</span> property of its list view.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                This event is fired when a user taps/selects a list item view. We recommend to use this event instead of click!
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
 
 <!-- EXAMPLE -->
 <div class="contentExample">
