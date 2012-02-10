@@ -88,6 +88,28 @@
             <td style="font-family:monospace">YES</td>
             <td>This property can be used to specify whether a selection list item can be selected or not. Note, that this only affects styling stuff. If set to NO, you still can apply e.g. tap events.</td>
         </tr>
+        <tr>
+            <td><span class="code">swipeButton</span></td>
+            <td>optional</td>
+            <td>M.ButtonView</td>
+            <td style="font-family:monospace">M.ButtonView.design({ value: 'delete', cssClass: 'a tmp-actionsheet-destructive-button tmp-swipe-button' })</td>
+            <td>
+                This property can be used to specify a button that appears on a swipe left or swipe righ gesture (as known from the iphone). Simply specify a
+                tap event for that button and provide a custom method to handle the event. This can e.g. be used as a delete button.
+                <br/>
+                By default the button will look like a delete button (in red) and display 'delete'. To change this, simply pass a value to set the label
+                and make use of the cssClass property. To get a standard button as you now it from the other parts of the framework, set the cssClass
+                property's value to:
+                <ul>
+                    <li>'a'  ->  black</li>
+                    <li>'b'  ->  blue</li>
+                    <li>'c'  ->  light grey</li>
+                    <li>'d'  ->  white</li>
+                    <li>'e'  ->  yellow</li>
+                </ul>
+                Check the jQM docs for further information and visual samples of these themes: http://jquerymobile.com/test/docs/buttons/buttons-themes.html
+            </td>
+        </tr>
     </table>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -173,6 +195,27 @@
     <p class="text">Use the <span class="code">listItemTemplateView</span> property of the list view to connect the template to the list:</p>
 <pre class="syntax javascript">M.ListView.design({
     listItemTemplateView: MyApp.MyListTemplate
+});</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
+
+    <p class="text">Finally lets take a look at how to use the <span class="code">swipeButton</span> property:</p>
+<pre class="syntax javascript">MyApp.MyListTemplate = M.ListItemView.design({
+    childViews: 'name',
+    swipeButton: M.ButtonView.design({
+        events: {
+            tap: {
+                target: MyApp.MyController,
+                action: 'removeItem'
+            }
+        },
+        cssClass: 'e',
+        value: 'remove'
+    })
+    name: M.LabelView.design({
+        valuePattern: '<%= name %>'
+    })
 });</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
