@@ -43,14 +43,15 @@
         The Espresso package feature currently supports native build for iOS and Android. But since Espresso
         basically only offers a simple and convenient interface to the platform's tools, there need to be some
         things available on your system in order to use this feature. Espresso does not ship with an Android SDK,
-        an iOS SDK or a iOS PhoneGap installation - but, depending on the targeted platform, they are required.
+        an iOS SDK or a iOS PhoneGap installation - but, depending on the targeted platform, they are required. What
+        you will need to do is:
     </p>
 
-    <p class="text">
-        So let's first talk about <strong>Android</strong>. What you will need to do is:
+    <p class="text" onclick="$('#setup_android').slideToggle();">
+        <strong>Android</strong>
     </p>
     
-    <ol>
+    <ol style="display: none" id="setup_android">
         <li>
             Download the Android SDK:
             <a href="http://developer.android.com/sdk/index.html" target="_blank">http://developer.android.com/sdk/index.html</a>
@@ -71,11 +72,11 @@
         </li>
     </ol>
 
-    <p class="text">
-        And how about <strong>iOS</strong>? Here we go:
+    <p class="text" onclick="$('#setup_ios').slideToggle();">
+        <strong>iOS</strong>
     </p>
 
-    <ol>
+    <ol style="display: none" id="setup_ios">
         <li>
             Make sure you are running on Mac OS X! Unfortunately there is no alternative when building for iOS.
         </li>
