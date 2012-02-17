@@ -13,6 +13,7 @@
     <span class="navlink" onclick="scroll('config')">Configuration</span> &#183;
     <span class="navlink" onclick="scroll('run')">Run it</span> &#183;
     <span class="navlink" onclick="scroll('style')">Styling</span> &#183;
+    <span class="navlink" onclick="scroll('ios_signing')">iOS Signing</span> &#183;
     <span class="navlink" onclick="scroll('next')">Next</span>
 </div>
 <!-- END OF HEADER -->
@@ -299,6 +300,74 @@ help           Command to show help for a subcommand</pre>
         app icon. Now play around a little with the simulator and try to switch from iPhone to iPad to iPhone (Retina) and see
         what icons are presented.
     </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="ios_signing"><h2 class="line">The iOS signing part</h2></a>
+
+    <p class="text">
+        For now we only ran the package process in debug mode, so no certificate or anything was required. But now we want to take
+        a closer look at how to create App Store ready ipa files by using the release mode of the packaging process. Therefore
+        we will need to make some adjustments to the configuration and add some parts for the signing stuff.
+    </p>
+
+    <p class="text">
+       There are three configuration parameters available that need to be set in order to successfully build a release version of
+        your application:
+   </p>
+
+   <ol>
+       <li>
+           <strong>sign</strong>
+           <br/>This property is used to specify the iPhone Developer name as shown in the keychain management app within the
+           corresponding certificate.
+       </li>
+       <li>
+           <strong>embed</strong>
+           <br/>This property is used for specifying the absolute path of the provisioning profile to use.
+       </li>
+       <li>
+           <strong>keychain</strong>
+           <br/>This property specifies the absolute path to the keychain to use. By default this is set to <span class="code">
+           $HOME/Library/keychains/login.keychain</span>, which should be the correct path in most cases. So if you never stored
+           your keychain anywhere apart from the default location on your system you probably won't have to specify this property
+           at all.
+       </li>
+   </ol>
+
+    <p class="text">
+        Ok, with these new properties added to the configuration we're all set now? Now, we're not. We still need to make some
+        changes on the "older" configuration parameters. We will have to change the <span class="code">mode</span> to
+        <span class="code">release</span> and set the targeted sdk to e.g. <span class="code">iphoneos5.0</span>. So this is
+        how the final release configuration might look like:
+    </p>
+<pre class="syntax javascript">"package": {
+    "myIOSConfig": {
+        "method": "PhoneGap",
+        "os": "iOS",
+        "sdk": "iphoneos5.0",
+        "package": "com.tmp.twitter",
+        "activity": "Twitter",
+        "mode": "release",
+        "plists": {
+            "PhoneGap": {
+                "ExternalHosts": ["*"]
+            }
+        },
+        "sign": "Dominik Laubach",
+        "embed": "/Users/dominik/Path/To/My/Profiles/Twitter.mobileprovision"
+    }
+}</pre>
+
+    <p class="text">
+        No let's run it and let Espresso build an App Store ready ipa file. Voilà!
+    </p>
+
+    <pre class="syntax shell">espresso package build myIOSConfig</pre>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
