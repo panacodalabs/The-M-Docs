@@ -235,7 +235,7 @@ Todos.app = M.Application.design({
 
     <div class="note text">
         Note: The name that we're giving the property is also the name we're passing as first parameter to the <span class="code">getView</span> call of the
-        <span class="navlink" onclick="loadArticle('components/m_viewmanager');">M.ViewManager </span> object.
+        <span class="navlink" onclick="loadArticle('components_&_utilities/m_viewmanager');">M.ViewManager </span> object.
     </div>
 
 
@@ -803,7 +803,7 @@ label1 : M.LabelView.design({
     <p class="text">
         As the name indicates, we use this method to add a new todo task.
         At first we have to get the user's input from the text field.
-        The application global object <span class="navlink" onclick="loadArticle('components/m_viewmanager')">M.ViewManager</span> is the perfect one to ask for the
+        The application global object <span class="navlink" onclick="loadArticle('components_&_utilities/m_viewmanager')">M.ViewManager</span> is the perfect one to ask for the
         <span class="code">ìnputField</span> object and its value.
         If no text was entered before pressing the return key we do nothing and return.
         We don't want empty tasks in our list. If a text has been entered we create a new Task with it and save it:
