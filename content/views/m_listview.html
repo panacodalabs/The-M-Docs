@@ -322,7 +322,10 @@ m_require('app/views/list_view_template.js');
 M.PageView.design({
     M.ListView.design({
         listItemTemplateView: MyApp.MyListTemplate,
-        contentBinding: 'MyApp.MyController.listObject',
+        contentBinding: {
+        	target: 'MyApp.MyController',
+        	property: 'listObject'
+        }
         idName: 'name'
 	});
 });</pre>
