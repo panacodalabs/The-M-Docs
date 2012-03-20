@@ -354,7 +354,7 @@ header: M.ToolbarView.design({
       icon: 'gear',
       events: {
         tap: {
-          target: Todos.TodosController,
+          target: Todos.TodoController,
           action: 'edit'
         }
       }
@@ -365,7 +365,7 @@ header: M.ToolbarView.design({
       icon: 'check',
       events: {
         tap: {
-          target: Todos.TodosController,
+          target: Todos.TodoController,
           action: 'edit'
         }
       }
@@ -676,7 +676,7 @@ label1 : M.LabelView.design({
               isRequired:YES
             }
 
-        }, M.DataProviderLocalStorage);
+        }), M.DataProviderLocalStorage);
     </pre>
     
     <p class="text">
@@ -734,7 +734,7 @@ label1 : M.LabelView.design({
           counter: 0,
 
           init: function() {
-            this.set('todos', Todos.Task.find(););
+            this.set('todos', Todos.Task.find());
             this.calculateCounter();
           },
 
@@ -941,7 +941,7 @@ label1 : M.LabelView.design({
 
         events: {
             pageshow: {
-                target: Todos.TodosController,
+                target: Todos.TodoController,
                 action: 'init'
             }
         },
