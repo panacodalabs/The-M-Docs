@@ -339,7 +339,7 @@ Todos.app = M.Application.design({
 
 <pre class="syntax javascript">
 header: M.ToolbarView.design({
-  anchorLocation: M.TOP
+  anchorLocation: M.TOP,
   childViews: 'centerLabel toggleView',
 
   toggleView: M.ToggleView.design({
@@ -351,12 +351,13 @@ header: M.ToolbarView.design({
 
     button1: M.ButtonView.design({
       value: 'Edit',
-      icon: 'gear'
+      icon: 'gear',
       events: {
         tap: {
           target: Todos.TodosController,
           action: 'edit'
         }
+      }
     }),
 
     button2: M.ButtonView.design({
