@@ -423,7 +423,7 @@ header: M.ToolbarView.design({
         contentBinding: {
             target: Todos.TodoController,
             property: 'counter'
-        }
+        },
         isInline: YES
       }),
 
@@ -444,7 +444,7 @@ header: M.ToolbarView.design({
       }),
 
       todoList: M.ListView.design({
-        listItemTemplateView: Todos.TodoItemView
+        listItemTemplateView: Todos.TodoItemView,
         contentBinding: {
             target: Todos.TodoController,
             property: 'todos'
