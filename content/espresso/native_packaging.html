@@ -134,7 +134,8 @@
             "PhoneGap": {
                 "ExternalHosts": ["*"]
             }
-        }
+        },
+        "autoScaleIcon": true
     }
 }</pre>
 
@@ -188,6 +189,15 @@
         "com.phonegap.accelerometer": "PGAccelerometer"
     }
 }</pre>
+        </li>
+        <li>
+            <strong>autoScaleIcon</strong>
+            <br/>With this flag you can determine whether Espresso should autoscale a default app icon to each required size or not. If set to <span class="code">true</span>,
+            you will need to provide a file called <span class="code">appicon.png</span> within the <span class="code">images</span>-folder of your app directory. Concerning
+            the different icons sizes, this should at least be 144x144 pixels.<br/>
+            If set to <span class="code">false</span>, Espresso will not autoscale a default icon to each required size. Instead you will have to provide a singel icon for
+            each icon size called like <span class="code">appicon-{SIZE}.png</span>, e.g. <span class="code">appicon-72.png</span>.
+            <div class="note">Note: If you are using the autoscale feature of Espresso, you will have to install <a href="http://www.imagemagick.org/script/binary-releases.php?ImageMagick=u1phq35vp4ho1s7umpaqa30071">Imagemagick</a> on your system first!</div>
         </li>
     </ol>
 
@@ -273,19 +283,23 @@ help           Command to show help for a subcommand</pre>
     <ol>
         <li>
             <strong>App icon</strong>
-            <br/>Basically it's: Name the file <span class="code">icon-SIZE.png</span>, with <span class="code">SIZE</span>
+            <br/>Basically it's: Name the file <span class="code">appicon-{SIZE}.png</span>, with <span class="code">{SIZE}</span>
             being the pixel-size of the squared icon. What sizes are supported depends on the platform. For iOS it basically is:
             <ol>
                 <li>
-                    <strong>icon-57.png</strong>: iPhone without retina display (< iPhone 4)
+                    <strong>appicon-57.png</strong>: iPhone without retina display (< iPhone 4)
                 </li>
                 <li>
-                    <strong>icon-72.png</strong>: iPad
+                    <strong>appicon-72.png</strong>: iPad
                 </li>
                 <li>
-                    <strong>icon-114.png</strong>: iPhone with retina display (> iPhone 4)
+                    <strong>appicon-114.png</strong>: iPhone with retina display (> iPhone 4)
                 </li>
             </ol>
+            If you don't want to take care of different icon sizes, simply set the <span class="code">scaleAppIcon</span>-flag to true
+            in your config.json and let Espresso take care of it. Then you will only have to add a file called <span class="code">appicon.png</span>
+            to the images folder of your project.
+            <div class="note">Note: If you are using the autoscale feature of Espresso, you will have to install <a href="http://www.imagemagick.org/script/binary-releases.php?ImageMagick=u1phq35vp4ho1s7umpaqa30071">Imagemagick</a> on your system first!</div>
         </li>
         <li>
             <strong>Splash screen</strong>
