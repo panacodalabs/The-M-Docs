@@ -1,0 +1,66 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>How to use Espresso on Windows</h1>
+
+    <div class="directoryPath">
+        Using command line tools on a OS not famous for it ;)
+    </div>
+
+    <span class="navlink" onclick="scroll('setup')">Set it up</span> &#183;
+</div>
+<!-- END OF HEADER -->
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="setup"><h2 class="line">Set it up</h2></a>
+
+    You're just a few steps away from using Espresso on windows. We'll direct you to the pages where you find additional information instead of keeping redundant information
+    here.
+
+    <ol>
+        <li>
+            Install Gow (GNU On Windows):<br />
+            <a href="https://github.com/bmatzelle/gow/downloads" target="_blank">https://github.com/bmatzelle/gow/downloads</a>
+        </li>
+        <li>
+            Install win-bash:<br />
+            <a href="http://sourceforge.net/projects/win-bash/files/latest/download?source=files" target="_blank">http://sourceforge.net/projects/win-bash/files/latest/download?source=files</a>
+        </li>
+        <li>
+            Install node:<br />
+            <a href="http://nodejs.org/#download" target="_blank">http://nodejs.org/#download</a>
+        </li>
+        <li>
+            Download Espresso/The-M-Project SDK: <br />
+            <a href="http://the-m-project.org/download/" target="_blank">http://the-m-project.org/download/</a>
+        </li>
+        <li>
+            Add Espresso DosKey (Unix alias equivalent): <br />
+            <pre class="syntax shell">
+                doskey espresso=node C:\Path\To\Espresso\bin\espresso.js $1 $2 $3 $4
+            </pre>
+            There's also a tutorial on how to persist the doskey so you don't have to enter it again and again on each start,<a href="http://devblog.point2.com/2010/05/14/setup-persistent-aliases-macros-in-windows-command-prompt-cmd-exe-using-doskey/" alt="Tutorial for persisting doskey">here</a>.
+        </li>
+        <li>
+            Test the configuration:
+            <ol>
+                <li>
+                    open command line (via shortcut if you followed the tutorial above for persisting the doskey)
+                </li>
+                <li>
+                    enter: <pre>espresso.js version</pre>
+                </li>
+                <li>
+                    output should say: <pre>Espresso 1.1.0</pre>
+                </li>
+            </ol>
+
+            </pre>
+        </li>
+    </ol>
+
+
+</div>
+<!-- END OF BASICS -->

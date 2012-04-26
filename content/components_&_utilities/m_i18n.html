@@ -90,11 +90,16 @@
                     <li>
                         <span class="code">key</span> (String): The key to the localized string.
                     </li>
+                    <li>
+                        <span class="code">context</span> (Object): Optional. An object defining the values for a parameterized, dynamic translation.
+                    </li>
                 </ul>
             </td>
             <td>String</td>
             <td>
-                This method returns the localized string for the given key based on the current language.
+                This method returns the localized string for the given key based on the current language. If <span class="code">context</span> is passed, the input string
+                is searched for pattern <span class="code"><%= the_key %></span> to be replaced by the property named <span class="code">the_key</span> of <span class="code">context</span>.
+                With this, dynamic parts in translations can be achieved.
             </td>
         </tr>
         <tr>
@@ -137,19 +142,30 @@
         do the magic. The following code snippets show you how to use this feature within an application.
     </p>
 <pre class="syntax javascript">
-/* localize a label */
+/* localizing a label */
 label: M.LabelView.design({
     value: M.I18N.l('register')
 })
+
+/* now assuming sth. like this in a language file: */
+/* 'greeting': 'Hello, <%= name %>!'  */
+
+/* localizing a label parameterized */
+label: M.LabelView.design({
+    value: M.I18N.l('greeting', { name: 'Brendan' })
+})
+/* Result, e.g.: 'Hello, Brendan!' */
+
+
 /* Result, e.g.: 'Register', 'Registrieren', 'Registro' */
 
-/* localize a button */
+/* localizing a button */
 button: M.ButtonView.design({
     value: M.I18N.l('confirm')
 })
 /* Result, e.g.: 'Confirm', 'Bestätigen', 'Confirmar' */
 
-/* localize an image */
+/* localizing an image */
 button: M.ButtonView.design({
     value: M.I18N.l('headerImage')
 })
