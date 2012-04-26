@@ -189,6 +189,15 @@
         "com.phonegap.accelerometer": "PGAccelerometer"
     }
 }</pre>
+            The other important part of the plist is the <span class="code">info</span> section. Within this section you can specify lots of properties concerning
+            the iOS app in general such as the supported orientations (as shown in the sample below). For further information see the
+                        <a href="http://developer.apple.com/library/ios/#documentation/general/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html" target="_blank">iOS docs</a>.
+<pre class="syntax javascript">"info": {
+    "UISupportedInterfaceOrientations": [
+        "UIInterfaceOrientationPortrait",
+        "UIInterfaceOrientationLandscapeRight"
+    ]
+}</pre>
         </li>
         <li>
             <strong>autoScaleIcon</strong>
