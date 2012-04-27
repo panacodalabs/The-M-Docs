@@ -78,7 +78,7 @@
 	Todos.Task = M.Model.create({
 		/* Define model properties and methods here */
 		...
-	});</pre>
+	}, M.DataProviderLocalStorage);</pre>
    	
    	<p class="text">Defining a TodosController, that has a method to create new records. The controller not just interacts with a model to create, store or read data, it also communicates with views.</p>
    	<pre class="syntax javascript">
@@ -88,6 +88,8 @@
    				var t = Todos.Task.createRecord({
    					/* define the properties of the task */
    				});
+
+                t.save();
    				...
    				this.switchToPage('OverviewPage'); /* after adding a task, show the overview again */
    			}
