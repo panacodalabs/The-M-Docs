@@ -1,0 +1,254 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.CarouselView</h1>
+
+    <div class="directoryPath">
+        A View that holds other views that can be swiped through.
+    </div>
+
+    <!-- remove unused links -->
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+</div>
+<!-- END OF HEADER -->
+
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        A Carousel View holds other views (<span class="navlink" onclick="loadArticle('views/m_carouselitemview');">M.CarouselItemView</span>).
+        Only one view is
+        displayed at a time and you can navigate through these views by swiping the view's area. This gives you a sort
+        of page browsing behaviour. This view can be used
+        for many purposes, e.g. a picture gallery.
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- SCREENSHOTS -->
+
+<div class="contentScreenshots">
+    <a name="screens"><h2 class="line">Screenshots</h2></a>
+
+    <div class="screens">
+        <img src="images/views/screen_container_view_markup.png" alt='M.ContainerView'/>
+    </div>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF SCREENSHOTS -->
+
+
+<!-- PROPERTIES -->
+<div class="contentProperties">
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:15%;">Relevance</th>
+            <th style="width:10%;">Type</th>
+            <th style="width:20%;">Default value</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">showPaginator</span></td>
+            <td>optional</td>
+            <td>BOOLEAN</td>
+            <td style="font-family:monospace">YES</td>
+            <td>
+                This property can be used to specify whether or not to show a paginator with
+                the carousel. If set to YES, there will be dots visible, indicating the total
+                number of items and highlighting the currently visible item.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">direction</span></td>
+            <td>optional</td>
+            <td>String</td>
+            <td style="font-family:monospace"><span class="code">M.HORIZONTAL</span></td>
+            <td>This property determines whether the carousel is vertically or horizontally
+                scrollable.
+
+                Possible values are:
+                <ul>
+                    <li><span class="code">M.HORIZONTAL</span>: horizontal</li>
+                    <li><span class="code">M.VERTICAL</span>: vertical</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">sizeCalculator</span></td>
+            <td>optional</td>
+            <td>Number</td>
+            <td style="font-family:monospace"><span class="code">M.CAROUSEL_SIZE_CONTENT</span></td>
+            <td>This property can be used to specify on what bases the size of the carousel
+                shall be calculated. By default the content of the items determine that size (<span class="code">M.CAROUSEL_SIZE_CONTENT</span>).
+                So the item with the longest / biggest content sets the size for all the other
+                items and the carousel itself.
+
+                If set to <span class="code">M.CAROUSEL_SIZE_SURROUNDING_ELEMENT</span>, the surrounding element will
+                determine the size of the carousel.
+
+                If set to <span class="code">M.CAROUSEL_SIZE_NONE</span>, there will be no special size calculation for
+                the carousel. You will have to take care about this instead.
+            </td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF PROPERTIES -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Parameters</th>
+            <th style="width:15%;">Return Type</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">setActiveItem</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">item</span> (M.CarouselItemView|String): The ID or the object of a M.CarouselItemView.
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method activates one specific item within the carousel. Simply pass a valid
+                <span class="code">M.CarouselItemView</span> object or the ID of the view and it gets shown.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">next</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        none
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method activates the next item in the row.
+            </td>
+        </tr>
+        <tr>
+            <td><span class="code">prev</span></td>
+            <td>
+                <!-- METHOD PARAMETERS -->
+                <ul class="isFirstLine">
+                    <li>
+                        none
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+            <td>
+                This method activates the previous item in the row.
+            </td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+    </p>
+<pre class="syntax javascript">
+M.ContainerView.design({
+        cssClass: 'greyBox'
+})
+</pre>
+<pre class="syntax javascript">
+M.CarouselView.design({
+    childViews: 'item1 item2 item3 item4',
+    sizeCalculator: M.CAROUSEL_SIZE_SURROUNDING_ELEMENT,
+    events: {
+        change: {
+            action: function(item, index) {
+                console.log('Item at index ' + index + ': ' + item.tag);
+            }
+        }
+    },
+    contentBinding: {
+        target: SampleApp.ApplicationController,
+        property: 'items'
+    },
+    item1: M.CarouselItemView.design({
+        childViews: 'label',
+        tag: 'Item1',
+        label: M.LabelView.design({
+            value: 'Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1 Item 1',
+            cssClass: 'label red'
+        })
+    }),
+    item2: M.CarouselItemView.design({
+        childViews: 'label',
+        tag: 'Item2',
+        label: M.LabelView.design({
+            value: 'Item 2',
+            cssClass: 'label green'
+        })
+    }),
+    item3: M.CarouselItemView.design({
+        childViews: 'label',
+        tag: 'Item3',
+        label: M.LabelView.design({
+            value: 'Item 3',
+            cssClass: 'label blue'
+        })
+    }),
+    item4: M.CarouselItemView.design({
+        childViews: 'label',
+        tag: 'Item4',
+        label: M.LabelView.design({
+            value: 'Item 4',
+            cssClass: 'label yellow'
+        })
+    })
+})
+</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        The styling of the carousel itself is written down in a CSS file named tmp.css located in <span class="code">modules/tmp_themes/</span>
+        in the framework's directory.
+        All relevant styling properties are written down here:
+    </p>
+    <ul class="text">
+        <li><span class="code">tmp-carousel-wrapper</span>: The wrapper of the carousel.</li>
+        <li><span class="code">tmp-carousel-scroller</span>: The inner scroller component that includes the elements.</li>
+        <li><span class="code">ul.tmp-carousel-list li</span>: for the several items in the carousel</li>
+        <li><span class="code">tmp-carousel-paginator</span>and <span class="code">tmp-carousel-paginator-horizontal (or vertical)</span>: The paginator</li>
+    </ul>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS -->
