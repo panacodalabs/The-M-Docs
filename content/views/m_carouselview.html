@@ -40,7 +40,7 @@
     <a name="screens"><h2 class="line">Screenshots</h2></a>
 
     <div class="screens">
-        <img src="images/views/screen_container_view_markup.png" alt='M.ContainerView'/>
+        <img src="images/views/screen_carouselview.png" alt='M.CarouselView'/>
     </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
@@ -173,13 +173,10 @@
     <a name="example"><h2 class="line">Example</h2></a>
 
     <p class="text">
-        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        The content of the carousel must be defined via <span class="navlink" onclick="loadArticle('views/m_carouselitemview');">M.CarouselItemViews</span>.
+        This container can contain all other view elements, except a M.PageView.
     </p>
-<pre class="syntax javascript">
-M.ContainerView.design({
-        cssClass: 'greyBox'
-})
-</pre>
+
 <pre class="syntax javascript">
 M.CarouselView.design({
     childViews: 'item1 item2 item3 item4',
@@ -190,10 +187,6 @@ M.CarouselView.design({
                 console.log('Item at index ' + index + ': ' + item.tag);
             }
         }
-    },
-    contentBinding: {
-        target: SampleApp.ApplicationController,
-        property: 'items'
     },
     item1: M.CarouselItemView.design({
         childViews: 'label',
