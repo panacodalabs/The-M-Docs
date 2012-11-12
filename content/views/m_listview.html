@@ -357,6 +357,7 @@ var myList = [
         prop: "another property"
     }
 ];
+
 //you can set the list items in every Controller. Through the content binding the list view will be automatically updated
 MyApp.MyController.set('listObject', myList);</pre>
 <pre class="syntax javascript">//as first parameter you get the DOM id, second one is the nameId specified in the list view definition
@@ -365,6 +366,44 @@ MyApp.MyController = M.Controller.extend({
 		console.log('you clicked on the list item with the DOM id:', id, 'and has the name', nameId);
 	}
 });</pre>
+<pre class="syntax javascript">//If a list is a isDividedList the contentBinding is also an array of objects. The objects should have a label for the divider headline and an items array known from the listView. 
+var dividedList = [
+    {
+        "label": "First Divider",
+        "items": [
+	        {
+		        name: "List Item 1",
+	        	prop: "another property"
+		    },
+		    {
+		        name: "List Item 2",
+		        prop: "another property"
+		    },
+		    {
+		        name: "List Item 3",
+		        prop: "another property"
+		    }
+	    ]
+	},
+    {
+        "label": "Second Divider",
+        "items": [
+            {
+		        name: "List Item 1",
+	        	prop: "another property"
+		    },
+		    {
+		        name: "List Item 2",
+		        prop: "another property"
+		    },
+		    {
+		        name: "List Item 3",
+		        prop: "another property"
+		    }
+        ]
+    }
+];
+</pre>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF EXAMPLE -->
