@@ -125,7 +125,7 @@ function generateIndex() {
                         var content = '';
                         if(regexResult) {
                             for (var i = 0; i < regexResult.length; ++i) {
-                                var tmp = regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1);
+                                var tmp = regexResult[i].replace(/<[^>]*>([\S\s]+)<\/[^>]*>/g, RegExp.$1 || '$1');
                                 tmp = tmp.replace(/<span[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
                                 tmp = tmp.replace(/<p[A-Za-z\s0-9="\/\(\)'_;]*>/g, '');
                                 tmp = tmp.replace(/<img[A-Za-z\s0-9="\/\(\)'_;\.]*>/g, '');
