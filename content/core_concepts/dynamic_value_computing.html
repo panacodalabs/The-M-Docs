@@ -57,7 +57,7 @@ M.LabelView.design({
     <p class="text">
         As you can see, we defined an <span class="code">M.LabelView</span> and its <span class="code">computedValue</span>
         property. This property is kind of the trigger for using Dynamic Value Computing at all. Now everytime the bound
-        controller property, <span class="code">SampleApp.MyController.aNumber</span>, changes, the method defined with
+        controller property, <span class="code">SampleApp.MyController.myNumber</span>, changes, the method defined with
         the <span class="code">operation</span> property is applied to the value and the result of this method is then
         assigned to the label's value. For example, let's say <span class="code">SampleApp.MyController.aNumber</span> is
         set to 4, then this number is passed as he first parameter, <span class="code">v</span>, to our custom method.
@@ -68,7 +68,7 @@ M.LabelView.design({
 return M.Math.pow(4, 2);</pre>
 
     <p class="text">
-        The result of this operation, 16, is then assigned to the label's value. 
+        The result of this operation, 16, is then assigned to the label's value.
     </p>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
@@ -97,7 +97,7 @@ DynamicValueComputing.app = M.Application.design({
 
         content: M.ScrollView.design({
             childViews: 'label1 label2 button1',
-    
+
             label1: M.LabelView.design({
                 contentBinding: {
                     target: DynamicValueComputing.CountController,
@@ -185,6 +185,6 @@ MyApp.myTemplateView = M.ListItemView.design({
 });</pre>
 
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
-    
+
 </div>
 <!-- HOWTO3 -->
