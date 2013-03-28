@@ -1,0 +1,164 @@
+<!-- HEADER -->
+<div class="contentHeader">
+    <a name="top"></a>
+
+    <h1>M.MovableLabelView</h1>
+
+    <div class="directoryPath">
+        A special LabelView that moves from left to right via css3 animation.
+    </div>
+
+    <!-- remove unused links -->
+    <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
+    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
+    <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
+    <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
+    <span class="navlink" onclick="scroll('events')">Events</span> &#183;
+    <span class="navlink" onclick="scroll('example')">Example</span> &#183;
+    <span class="navlink" onclick="scroll('css')">CSS Styles</span>
+</div>
+<!-- END OF HEADER -->
+
+
+<!-- BASICS-->
+<div class="contentBasics">
+    <a name="basics"><h2 class="line">Basics</h2></a>
+
+    <p class="text">
+        The <span class="code">M.MovableLabelView</span> inherits all methods and properties from the standard M.LabelView
+        and extends it with special methods in order to make it movable via css3 animation.
+        An internal calculation of the value/width checks if an animation of the label is necessary. If so an additional div container
+        is created around this label and additional classes and styles are inserted into the DOM in order to make it move.
+
+        For more information about the methods and properties of the standard M.LabelView please take a look at
+        <span class="navlink" onclick="loadArticle('views/m_labelview');">M.LabelView</span>
+    </p>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF BASICS -->
+
+<!-- PROPERTIES -->
+<div class="contentProperties">
+    <a name="properties"><h2 class="line">Properties</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:15%;">Relevance</th>
+            <th style="width:10%;">Type</th>
+            <th style="width:20%;">Default value</th>
+            <th style="width:35%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">movable</span></td>
+            <td>optional</td>
+            <td>Object</td>
+            <td style="font-family:monospace">NO</td>
+            <td>
+                This object must be passed to the label in order to make it movable. If not passed you have a standard M.LabelView.
+                There are three properties available for movable:
+                <ul>
+                    <li><span class="code">time</span> OR <span class="code">pxPerSec</span>, one of these two must be set.
+                        <br /><span class="code">time</span>, for the label to move. The wider the label gets the faster it will move.
+                        <br /><span class="code">pxPerSec</span>, calculates the time for the animation by width/pxPerSec.
+                    </li>
+                    <li><span class="code">offset</span>, (optional). If set it will add an offset to the left and right of the label div</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF PROPERTIES -->
+
+<!-- PUBLIC METHODS -->
+<div class="contentMethods">
+    <a name="methods"><h2 class="line">Methods</h2></a>
+    <!--
+        IF NO PUBLIC METHODS AVAILABLE, INSERT THIS AND DELETE THE TABLE:
+        <p class="text">There are no public methods available.</p>
+
+        ELSE LEAVE THIS TABLE:
+    -->
+    <p class="text">There are no additional public methods available.</p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF METHODS -->
+
+
+<!-- PUBLIC EVENTS -->
+<div class="contentEvents">
+    <a name="events"><h2 class="line">Events</h2></a>
+    <table class="reference" cellpadding="0" cellspacing="0">
+        <tr style="height:50px;">
+            <th style="width:20%;">Name</th>
+            <th style="width:30%;">Passed Properties</th>
+            <th style="width:50%;">Description</th>
+        </tr>
+        <tr>
+            <td><span class="code">tap</span></td>
+            <td>
+                <ul class="isFirstLine">
+                    <li>
+                        <span class="code">viewId</span> (String): The Id of the label, e.g. 'm_502';
+                    </li>
+                    <li>
+                        <span class="code">event</span> (Object): The event object.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                The event is fired when a user taps on the label.
+            </td>
+        </tr>
+    </table>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EVENTS -->
+
+<!-- EXAMPLE -->
+<div class="contentExample">
+    <a name="example"><h2 class="line">Example</h2></a>
+
+    <p class="text">
+        <!-- TEXT THAT DESCRIBES THE EXAMPLE AND GIVES ADDITIONAL HINTS -->
+        A MovableLabel with a "time: 10". By omitting offset it uses the
+        standard value for offset.
+    </p>
+<pre class="syntax javascript">
+M.MovableLabelView.design({
+    value: 'Make this slightly slightly slightly too big label move',
+    movable: {
+        time: 10
+    }
+});</pre>
+    <p class="text">
+        A movable label with both pxPerSec and offset:
+    </p>
+<pre class="syntax javascript">
+M.MovableLabelView.design({
+    value: 'Make this a movable label too',
+    movable: {
+        offset: 5,
+        pxPerSec: 20
+    }
+});
+</pre>
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF EXAMPLE -->
+
+<!-- CSS STYLES -->
+<div class="contentCss">
+    <a name="css"><h2 class="line">CSS Styles</h2></a>
+
+    <p class="text">
+        Based on the internal calculation additional styles are either removed or added.
+        Extra styling is possible by passing classes to it via the <span class="code">cssClass</span>
+        property.
+    </p>
+
+    <span class="navlink" onclick="scroll('top')">&uarr; top</span>
+</div>
+<!-- END OF CSS -->
