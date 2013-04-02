@@ -10,7 +10,6 @@
 
     <!-- remove unused links -->
     <span class="navlink" onclick="scroll('basics')">Basics</span> &#183;
-    <span class="navlink" onclick="scroll('screens')">Screenshots</span> &#183;
     <span class="navlink" onclick="scroll('properties')">Properties</span> &#183;
     <span class="navlink" onclick="scroll('methods')">Methods</span> &#183;
     <span class="navlink" onclick="scroll('events')">Events</span> &#183;
@@ -33,6 +32,11 @@
         For more information about the methods and properties of the standard M.LabelView please take a look at
         <span class="navlink" onclick="loadArticle('views/m_labelview');">M.LabelView</span>
     </p>
+        <div class="note text">
+            Important: You have to make shure that the MovableLabel's renderUpdate method gets triggered by the pageshow event
+            of the PageView in which the Label resides. Otherwise it won't move. That is because every page besides the entryPage has
+            'display: none' on first load.
+        </div>
     <span class="navlink" onclick="scroll('top')">&uarr; top</span>
 </div>
 <!-- END OF BASICS -->
